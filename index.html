@@ -101,7 +101,7 @@
 
         /* Top Header */
         header {
-            background-color: rgba(251, 246, 241, 0.92);
+            background-color: rgba(251, 246, 241, 0.94);
             backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--border-color);
             position: sticky;
@@ -113,11 +113,12 @@
         .header-container {
             max-width: 1320px;
             margin: 0 auto;
-            padding: 16px 20px;
+            padding: 12px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .logo {
@@ -131,6 +132,7 @@
             gap: 8px;
             line-height: 1.3;
             transition: transform 0.25s ease;
+            flex-shrink: 0;
         }
 
         .logo:hover {
@@ -160,15 +162,69 @@
             box-shadow: 0 2px 6px rgba(29, 161, 242, 0.35);
         }
 
+        /* Real-time Clock & Greeting Widget in Header */
+        .realtime-widget {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 6px 14px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(36, 25, 20, 0.03);
+            flex-grow: 1;
+            max-width: 420px;
+            order: 3;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .realtime-widget {
+                order: 0;
+                width: auto;
+                flex-direction: row;
+                gap: 12px;
+                padding: 7px 16px;
+            }
+        }
+
+        .greeting-text {
+            font-size: 13px;
+            font-weight: 700;
+            color: #C85A3C;
+            white-space: nowrap;
+        }
+
+        .clock-divider {
+            display: none;
+            color: var(--border-color);
+        }
+
+        @media (min-width: 768px) {
+            .clock-divider {
+                display: inline;
+            }
+        }
+
+        .clock-datetime {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-main);
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+
         .nav-links {
             display: none;
-            gap: 24px;
+            gap: 20px;
             list-style: none;
             font-size: 14px;
             font-weight: 500;
         }
 
-        @media (min-width: 900px) {
+        @media (min-width: 1120px) {
             .nav-links {
                 display: flex;
             }
@@ -207,7 +263,7 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             flex-shrink: 0;
         }
 
@@ -375,10 +431,10 @@
 
         @media (min-width: 1024px) {
             .catalog-layout {
-                grid-template-columns: 260px 1fr 340px;
+                grid-template-columns: 270px 1fr 350px;
                 align-items: start;
             }
-            .header-container { padding: 20px 32px; }
+            .header-container { padding: 16px 32px; }
             .breadcrumb-container { padding: 20px 32px 0 32px; }
             .main-container { padding: 24px 32px 60px 32px; }
             .page-title-box h1 { font-size: 42px; }
@@ -487,18 +543,23 @@
 
         .size-tags {
             display: flex;
+            flex-direction: column;
             gap: 8px;
-            flex-wrap: wrap;
         }
 
         .size-tag-btn {
             background: var(--tag-bg);
             border: 1px solid var(--border-color);
-            padding: 6px 14px;
+            padding: 8px 12px;
             border-radius: 6px;
             font-size: 13px;
+            font-weight: 500;
             cursor: pointer;
             transition: var(--transition);
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .size-tag-btn:hover {
@@ -588,7 +649,7 @@
         }
 
         .product-card.out-of-stock {
-            opacity: 0.75;
+            opacity: 0.78;
         }
 
         .product-image-wrap {
@@ -631,7 +692,6 @@
             background: #D32F2F;
         }
 
-        /* Hiệu ứng lửa cháy cho sản phẩm bán chạy */
         .card-status-badge.hot-flame {
             background: linear-gradient(135deg, #FF5722, #FF9800);
             color: white;
@@ -789,7 +849,7 @@
 
         .weight-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 8px;
             margin-bottom: 14px;
         }
@@ -797,9 +857,9 @@
         .weight-btn {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            padding: 10px 6px;
+            padding: 9px 8px;
             border-radius: 6px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             cursor: pointer;
             text-align: center;
@@ -1715,14 +1775,59 @@
             .about-workshop-img { height: 300px; }
         }
 
+        /* Footer & Contact Button */
         footer {
             border-top: 1px solid var(--border-color);
             background: var(--surface-color);
-            padding: 30px 20px;
+            padding: 32px 20px 44px 20px;
             text-align: center;
-            font-size: 12px;
+            font-size: 13px;
             color: var(--text-muted);
             margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .contact-footer-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 26px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 6px 20px rgba(36, 25, 20, 0.16);
+            transition: var(--transition);
+        }
+
+        .contact-footer-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(244, 150, 125, 0.4);
+        }
+
+        .zalo-note-card {
+            background: #F0F7FF;
+            border: 1.5px solid #0068FF;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin: 12px 0 18px 0;
+        }
+
+        .zalo-number-highlight {
+            font-size: 22px;
+            font-weight: 800;
+            color: #0068FF;
+            letter-spacing: 0.5px;
+            margin: 6px 0;
+            user-select: all;
         }
     </style>
 </head>
@@ -1735,6 +1840,14 @@
                 <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 Xà Bông Handmade <span class="verified-badge-icon" title="Doanh nghiệp đã xác thực">✓</span>
             </a>
+
+            <!-- Đồng hồ thời gian thực & Lời chào -->
+            <div class="realtime-widget" id="realtimeWidget">
+                <span class="greeting-text" id="greetingMessage">Chào Buổi Tối 🌙</span>
+                <span class="clock-divider">|</span>
+                <span class="clock-datetime" id="realtimeClockDisplay">19:07:00 · Thứ Ba, 17/11/2026</span>
+            </div>
+
             <ul class="nav-links">
                 <li><a href="#" onclick="switchView('shop'); return false;">Sản phẩm</a></li>
                 <li><a href="#reviews-section" onclick="scrollToSection('reviews-section'); return false;">Đánh giá</a></li>
@@ -1801,18 +1914,30 @@
                         <div class="price-slider-box">
                             <div class="price-inputs">
                                 <span id="minPriceLbl">30.000 đ</span>
-                                <span id="maxPriceLbl">100.000 đ</span>
+                                <span id="maxPriceLbl">150.000 đ</span>
                             </div>
-                            <input type="range" min="30000" max="100000" step="5000" value="100000" class="range-slider" id="priceRange">
+                            <input type="range" min="30000" max="150000" step="5000" value="150000" class="range-slider" id="priceRange">
                         </div>
                     </div>
 
                     <div class="filter-group" style="margin-bottom: 0;">
                         <div class="filter-group-title">Quy cách đóng gói</div>
-                        <div class="size-tags">
-                            <button class="size-tag-btn active" type="button">60g</button>
-                            <button class="size-tag-btn" type="button">120g</button>
-                            <button class="size-tag-btn" type="button">Combo 3 bánh</button>
+                        <div class="size-tags" id="filterPackButtons">
+                            <button class="size-tag-btn active" type="button" data-pack="1 Bánh (90g)" data-price="30000">
+                                <span>1 Bánh (90g)</span> <strong>30k</strong>
+                            </button>
+                            <button class="size-tag-btn" type="button" data-pack="2 Bánh" data-price="55000">
+                                <span>2 Bánh</span> <strong>55k</strong>
+                            </button>
+                            <button class="size-tag-btn" type="button" data-pack="3 Bánh" data-price="80000">
+                                <span>3 Bánh</span> <strong>80k</strong>
+                            </button>
+                            <button class="size-tag-btn" type="button" data-pack="4 Bánh" data-price="105000">
+                                <span>4 Bánh</span> <strong>105k</strong>
+                            </button>
+                            <button class="size-tag-btn" type="button" data-pack="5 Bánh" data-price="125000">
+                                <span>5 Bánh</span> <strong>125k</strong>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1850,12 +1975,14 @@
                     </div>
 
                     <div class="option-section-title">
-                        Trọng lượng / Combo <span id="selectedWeightLbl">60g</span>
+                        Quy cách đóng gói <span id="selectedWeightLbl">1 Bánh (90g)</span>
                     </div>
                     <div class="weight-grid" id="weightButtonsContainer">
-                        <button class="weight-btn active" type="button" data-weight="60g" data-price="30000">60g</button>
-                        <button class="weight-btn" type="button" data-weight="120g" data-price="55000">120g</button>
-                        <button class="weight-btn" type="button" data-weight="Combo 3 bánh" data-price="80000">Combo 3 bánh</button>
+                        <button class="weight-btn active" type="button" data-weight="1 Bánh (90g)" data-price="30000">1 Bánh (90g) - 30k</button>
+                        <button class="weight-btn" type="button" data-weight="2 Bánh" data-price="55000">2 Bánh - 55k</button>
+                        <button class="weight-btn" type="button" data-weight="3 Bánh" data-price="80000">3 Bánh - 80k</button>
+                        <button class="weight-btn" type="button" data-weight="4 Bánh" data-price="105000">4 Bánh - 105k</button>
+                        <button class="weight-btn" style="grid-column: span 2;" type="button" data-weight="5 Bánh" data-price="125000">5 Bánh (Tiết kiệm nhất) - 125k</button>
                     </div>
 
                     <div class="stock-status-note" id="sbStockNote">
@@ -1887,7 +2014,7 @@
                 <div class="reviews-header" style="margin-bottom: 20px;">
                     <div>
                         <h2 style="font-size: 26px; font-weight: 600; margin-bottom: 4px;">Đánh giá & Cảm nhận khách hàng</h2>
-                        <p style="color: var(--text-muted); font-size: 13px;">Phản hồi thực tế sau khi trải nghiệm sản phẩm.</p>
+                        <p style="color: var(--text-muted); font-size: 13px;">Phản hồi thực tế từ các khách hàng đã trải nghiệm sản phẩm.</p>
                     </div>
                 </div>
 
@@ -1895,18 +2022,18 @@
                     <div class="rating-overview">
                         <div class="rating-score-big" id="avgRatingDisplay">4.9</div>
                         <div class="stars-container">★★★★★</div>
-                        <div class="rating-count-text" id="totalReviewsCountText">Dựa trên các đánh giá thực tế</div>
+                        <div class="rating-count-text" id="totalReviewsCountText">Dựa trên 12 đánh giá thực tế</div>
                     </div>
                     <div class="rating-bars">
                         <div class="rating-bar-row">
                             <span>5 sao</span>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
-                            <span style="width: 30px; text-align: right;">90%</span>
+                            <div class="bar-bg"><div class="bar-fill" style="width: 92%;"></div></div>
+                            <span style="width: 30px; text-align: right;">92%</span>
                         </div>
                         <div class="rating-bar-row">
                             <span>4 sao</span>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 10%;"></div></div>
-                            <span style="width: 30px; text-align: right;">10%</span>
+                            <div class="bar-bg"><div class="bar-fill" style="width: 8%;"></div></div>
+                            <span style="width: 30px; text-align: right;">8%</span>
                         </div>
                         <div class="rating-bar-row">
                             <span>3 sao</span>
@@ -2152,8 +2279,28 @@
         </div>
     </div>
 
+    <!-- Modal Liên Hệ Zalo -->
+    <div class="modal-overlay" id="contactZaloModal">
+        <div class="modal-content">
+            <button class="modal-close-btn" id="closeContactModalBtn" type="button">&times;</button>
+            <h3 style="font-size: 22px; font-weight: 700; text-align: center; margin-bottom: 6px;">Liên hệ tư vấn & đặt hàng</h3>
+            <p style="font-size: 13px; color: var(--text-muted); text-align: center;">Kết nối trực tiếp với Xà Bông Handmade ✓ qua Zalo</p>
+            <div class="zalo-note-card">
+                <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">Thông tin liên hệ Zalo</div>
+                <div class="zalo-number-highlight" id="zaloPhoneCopyTarget">Zalo: 84+333507317</div>
+                <div style="font-size: 12px; color: var(--text-muted);">Hỗ trợ giải đáp & tư vấn chọn bánh xà phòng phù hợp với làn da của bạn</div>
+            </div>
+            <button type="button" class="search-btn" id="copyZaloBtn" style="width: 100%; justify-content: center; background: #0068FF;">
+                Sao chép số Zalo
+            </button>
+        </div>
+    </div>
+
     <footer>
-        © 2026 Xà Bông Handmade ✓. Bảo lưu mọi quyền.
+        <button type="button" class="contact-footer-btn" id="openContactFooterBtn">
+            ☎️ Liên Hệ
+        </button>
+        <div>© 2026 Xà Bông Handmade ✓. Bảo lưu mọi quyền.</div>
     </footer>
 
     <!-- JavaScript Application Logic -->
@@ -2213,7 +2360,7 @@
                 soldCount: 420,
                 image: "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=600&q=80",
                 subtitle: "Lá trà xanh nguyên chất kết hợp tinh dầu bạc hà mát lạnh",
-                description: "Mang lại cảm giác sảng khoái tức thì với hương thơm bạc Hà mát lạnh kết hợp bột trà xanh chống oxy hóa mạnh mẽ."
+                description: "Mang lại cảm giác sảng khoái tức thì với hương thơm bạc hà mát lạnh kết hợp bột trà xanh chống oxy hóa mạnh mẽ."
             }
         ];
 
@@ -2224,49 +2371,144 @@
                 product: "Xà Phòng Handmade",
                 stars: 5,
                 date: "Hôm qua",
-                comment: "Bánh xà phòng thơm nhẹ tự nhiên, rửa tay hay tắm đều tạo bọt mịn mà không làm khô da. Rất ủng hộ sản phẩm của Xà Bông Handmade ✓!",
-                shopReply: "Xà Bông Handmade ✓ cảm ơn bạn đã tin tưởng và ủng hộ sản phẩm thủ công của shop ạ!"
+                comment: "Bánh xà phòng 90g cầm rất chắc tay, thơm nhẹ tự nhiên, rửa tay hay tắm đều tạo bọt mịn mà không làm khô da. Mình mua hẳn gói 5 bánh 125k dùng dần siêu tiết kiệm!",
+                shopReply: "Xà Bông Handmade ✓ cảm ơn bạn đã tin tưởng và ủng hộ gói 5 bánh của shop ạ!"
             },
             {
                 id: 2,
                 name: "Trần Quốc Bảo",
-                product: "Xà Phòng Handmade",
+                product: "Xà Bông Khổ Qua",
                 stars: 5,
                 date: "2 ngày trước",
-                comment: "Giá 30k cho 1 bánh 60g rất hợp lý, làm từ dầu dừa và dầu ô liu nên dùng cực kỳ lành tính, không bị rít da như xà phòng công nghiệp.",
-                shopReply: "Cảm ơn đánh giá chân thực của bạn! Chúc bạn có trải nghiệm thật tốt."
+                comment: "Dùng xà bông khổ qua tắm lưng đỡ mụn hẳn sau 2 tuần. Mùi thảo mộc dễ chịu, rất mong shop sớm làm mẻ mới để đặt thêm 3 bánh.",
+                shopReply: "Cảm ơn bạn đã yêu thích Xà Bông Khổ Qua! Shop đang phơi mẻ mới và sẽ mở bán lại sớm nhất ạ."
             },
             {
                 id: 3,
                 name: "Lê Thị Thu Hà",
-                product: "Xà Phòng Handmade",
+                product: "Xà Bông Bạc Hà Trà Xanh",
+                stars: 5,
+                date: "3 ngày trước",
+                comment: "Tắm xong mát lạnh sảng khoái cực kỳ, hương bạc hà và trà xanh tự nhiên chứ không bị nồng mùi hóa chất.",
+                shopReply: "Cảm ơn phản hồi dễ thương của chị Thu Hà nhé!"
+            },
+            {
+                id: 4,
+                name: "Phạm Hoàng Nam",
+                product: "Xà Bông Mướp Đắng Tự Nhiên",
                 stars: 4,
                 date: "4 ngày trước",
-                comment: "Mình mua combo 3 bánh dùng dần rất tiết kiệm. Bánh cầm chắc tay, đóng gói chỉn chu.",
-                shopReply: "Cảm ơn bạn đã ủng hộ Combo 3 bánh của shop nhé!"
+                comment: "Da mình nhạy cảm dùng loại mướp đắng này rất êm, không bị kích ứng hay rít da. Đóng gói giấy kraft bảo vệ môi trường rất ưng.",
+                shopReply: "Xà Bông Handmade ✓ cảm ơn anh Nam đã tin dùng sản phẩm lành tính của xưởng!"
+            },
+            {
+                id: 5,
+                name: "Vũ Thanh Thảo",
+                product: "Xà Phòng Handmade",
+                stars: 5,
+                date: "5 ngày trước",
+                comment: "Giá 30k cho 1 bánh 90g quá chất lượng so với xà phòng thủ công ngoài thị trường. Mua 2 bánh 55k tặng mẹ mà mẹ khen nức nở.",
+                shopReply: "Cảm ơn bạn Thảo nhiều ạ, chúc bác và gia đình luôn mạnh khỏe!"
+            },
+            {
+                id: 6,
+                name: "Đặng Minh Quân",
+                product: "Xà Bông Khổ Qua",
+                stars: 5,
+                date: "1 tuần trước",
+                comment: "Bánh xà phòng đặc, lâu tan, dùng cả tháng mới hết 1 bánh. Rất sạch nhờn vào mùa nóng.",
+                shopReply: "Cảm ơn anh Quân đã để lại đánh giá chi tiết cho Xà Bông Khổ Qua!"
+            },
+            {
+                id: 7,
+                name: "Hoàng Ngọc Diệp",
+                product: "Xà Bông Bạc Hà Trà Xanh",
+                stars: 5,
+                date: "1 tuần trước",
+                comment: "Lần trước mua 4 bánh dùng hết sạch rồi, giờ quay lại đặt thêm mà thấy báo hết hàng. Shop mau nhập lại nha!",
+                shopReply: "Dạ shop đang hoàn thiện quy trình xà phòng hóa tự nhiên 4 tuần cho mẻ trà xanh mới, chị chờ thêm vài hôm nhé!"
+            },
+            {
+                id: 8,
+                name: "Bùi Tuấn Kiệt",
+                product: "Xà Phòng Handmade",
+                stars: 5,
+                date: "2 tuần trước",
+                comment: "Giao hàng nhanh, đóng gói cẩn thận, mùi dầu dừa và sáp ong thoang thoảng rất thư giãn.",
+                shopReply: "Cảm ơn bạn Tuấn Kiệt đã ủng hộ Xà Bông Handmade ✓!"
             }
         ];
 
         let currentSelectedProduct = products[0];
-        let currentSelectedWeight = "60g";
+        let currentSelectedWeight = "1 Bánh (90g)";
         let currentSelectedPrice = 30000;
         let currentActiveOrderId = "";
         let cartItems = [
             {
                 id: 1,
                 name: "Xà Phòng Handmade",
-                weight: "60g",
+                weight: "1 Bánh (90g)",
                 price: 30000,
                 qty: 1,
                 image: products[0].image
             }
         ];
 
+        // Đồng hồ thời gian thực & lời chào theo buổi
+        function updateRealtimeClockAndGreeting() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const hoursStr = String(hours).padStart(2, '0');
+
+            const daysOfWeek = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+            const dayName = daysOfWeek[now.getDay()];
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const year = now.getFullYear();
+
+            let greeting = "Chào Buổi Sáng ⛅️";
+            if (hours >= 5 && hours < 11) {
+                greeting = "Chào Buổi Sáng ⛅️";
+            } else if (hours >= 11 && hours < 14) {
+                greeting = "Chào Buổi Trưa ☀️";
+            } else if (hours >= 14 && hours < 18) {
+                greeting = "Chào Buổi Chiều 🌤️";
+            } else {
+                greeting = "Chào Buổi Tối 🌙";
+            }
+
+            const greetingEl = document.getElementById('greetingMessage');
+            const clockEl = document.getElementById('realtimeClockDisplay');
+            if (greetingEl) greetingEl.innerText = greeting;
+            if (clockEl) clockEl.innerText = `${hoursStr}:${minutes}:${seconds} · ${dayName}, ${day}/${month}/${year}`;
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
+            updateRealtimeClockAndGreeting();
+            setInterval(updateRealtimeClockAndGreeting, 1000);
+
             renderProducts(products);
             renderReviews(reviewsList);
             updateCartBadge();
             updateSidebarDetails(currentSelectedProduct);
+
+            // Nút Liên Hệ Zalo ở cuối trang
+            document.getElementById('openContactFooterBtn').addEventListener('click', function() {
+                document.getElementById('contactZaloModal').classList.add('open');
+            });
+            document.getElementById('closeContactModalBtn').addEventListener('click', function() {
+                document.getElementById('contactZaloModal').classList.remove('open');
+            });
+            document.getElementById('copyZaloBtn').addEventListener('click', function() {
+                navigator.clipboard.writeText('84+333507317').then(() => {
+                    this.innerText = '✓ Đã sao chép Zalo: 84+333507317';
+                    setTimeout(() => {
+                        this.innerText = 'Sao chép số Zalo';
+                    }, 2200);
+                });
+            });
 
             // Tương tác giỏ hàng
             document.getElementById('openCartBtn').addEventListener('click', openCartDrawer);
@@ -2285,19 +2527,33 @@
                 }
             });
 
-            // Chọn trọng lượng / Combo
-            const weightBtns = document.querySelectorAll('#weightButtonsContainer .weight-btn');
-            weightBtns.forEach(btn => {
+            // Đồng bộ chọn quy cách đóng gói giữa Bộ lọc và Sidebar
+            function selectPackOption(packName, packPrice) {
+                currentSelectedWeight = packName;
+                currentSelectedPrice = packPrice;
+                document.getElementById('selectedWeightLbl').innerText = currentSelectedWeight;
+                const priceEl = document.getElementById('sbPriceLbl');
+                priceEl.innerText = currentSelectedPrice.toLocaleString() + ' đ';
+                priceEl.style.transform = 'scale(1.08)';
+                setTimeout(() => { priceEl.style.transform = 'scale(1)'; }, 180);
+
+                document.querySelectorAll('#weightButtonsContainer .weight-btn').forEach(b => {
+                    b.classList.toggle('active', b.getAttribute('data-weight') === packName);
+                });
+                document.querySelectorAll('#filterPackButtons .size-tag-btn').forEach(b => {
+                    b.classList.toggle('active', b.getAttribute('data-pack') === packName);
+                });
+            }
+
+            document.querySelectorAll('#weightButtonsContainer .weight-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
-                    weightBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    currentSelectedWeight = this.getAttribute('data-weight');
-                    currentSelectedPrice = parseInt(this.getAttribute('data-price'));
-                    document.getElementById('selectedWeightLbl').innerText = currentSelectedWeight;
-                    const priceEl = document.getElementById('sbPriceLbl');
-                    priceEl.innerText = currentSelectedPrice.toLocaleString() + ' đ';
-                    priceEl.style.transform = 'scale(1.08)';
-                    setTimeout(() => { priceEl.style.transform = 'scale(1)'; }, 180);
+                    selectPackOption(this.getAttribute('data-weight'), parseInt(this.getAttribute('data-price')));
+                });
+            });
+
+            document.querySelectorAll('#filterPackButtons .size-tag-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    selectPackOption(this.getAttribute('data-pack'), parseInt(this.getAttribute('data-price')));
                 });
             });
 
@@ -2392,7 +2648,7 @@
                             <div class="product-name">${p.name}</div>
                             <div class="product-sales-count">🔥 Đã bán: ${p.soldCount} lượt</div>
                             <div class="product-desc-short">${p.description}</div>
-                            <div class="product-price">Chỉ từ ${p.price.toLocaleString()} đ / bánh 60g</div>
+                            <div class="product-price">Chỉ từ ${p.price.toLocaleString()} đ / 1 bánh (90g)</div>
                         </div>
                         <div class="product-card-footer">
                             <span>${p.rating}.0 ★★★★★</span>
@@ -2557,7 +2813,6 @@
                     alert('Giỏ hàng trống! Vui lòng thêm sản phẩm vào giỏ trước.');
                     return;
                 }
-                // Tạo mã đơn hàng mới khi vào trang thanh toán
                 currentActiveOrderId = '#XBHM-' + Math.floor(1000 + Math.random() * 9000);
                 document.getElementById('qrOrderCodeText').innerText = currentActiveOrderId;
                 document.getElementById('qrNoteCodeText').innerText = currentActiveOrderId;
@@ -2604,7 +2859,6 @@
             const processingOverlay = document.getElementById('processingOverlay');
             processingOverlay.classList.add('active');
 
-            // Hiển thị đang xử lý đơn hàng trong 1.8 giây
             setTimeout(() => {
                 processingOverlay.classList.remove('active');
                 document.getElementById('checkoutFormContent').style.display = 'none';
@@ -2612,7 +2866,6 @@
                 document.getElementById('stepIndicator2').classList.remove('active');
                 document.getElementById('stepIndicator2').classList.add('completed');
                 document.getElementById('stepIndicator3').classList.add('active');
-                // Gán đúng mã đơn hàng đã hiển thị ở phần thanh toán QR sang màn hình thành công
                 document.getElementById('successOrderId').innerText = currentActiveOrderId;
                 cartItems = [];
                 updateCartBadge();
@@ -2622,6 +2875,7 @@
 
         function renderReviews(list) {
             const grid = document.getElementById('reviewsGrid');
+            document.getElementById('totalReviewsCountText').innerText = `Dựa trên ${reviewsList.length} đánh giá thực tế`;
             if (list.length === 0) {
                 grid.innerHTML = `<div style="grid-column: span 2; text-align:center; padding: 24px; color: var(--text-muted);">Chưa có đánh giá nào ở mức sao này.</div>`;
                 return;
@@ -2691,8 +2945,8 @@
 
         function resetFilters() {
             document.getElementById('searchInput').value = '';
-            document.getElementById('priceRange').value = 100000;
-            document.getElementById('maxPriceLbl').innerText = '100.000 đ';
+            document.getElementById('priceRange').value = 150000;
+            document.getElementById('maxPriceLbl').innerText = '150.000 đ';
             renderProducts(products);
         }
 
