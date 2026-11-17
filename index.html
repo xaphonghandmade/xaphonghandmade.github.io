@@ -7,7 +7,7 @@
     <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #FBF6F1;
@@ -58,11 +58,11 @@
         @keyframes scaleIn {
             from {
                 opacity: 0;
-                transform: scale(0.95);
+                transform: scale(0.92) translateY(12px);
             }
             to {
                 opacity: 1;
-                transform: scale(1);
+                transform: scale(1) translateY(0);
             }
         }
 
@@ -268,24 +268,27 @@
         }
 
         .icon-btn {
-            background: none;
-            border: none;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
             transition: var(--transition);
-            padding: 8px 12px;
-            border-radius: 8px;
+            padding: 8px 14px;
+            border-radius: 99px;
             white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(36, 25, 20, 0.04);
         }
 
         .icon-btn:hover {
-            background: var(--tag-bg);
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
             transform: translateY(-1px);
         }
 
@@ -293,9 +296,9 @@
             background-color: var(--accent);
             color: white;
             font-size: 11px;
-            padding: 2px 7px;
+            padding: 2px 8px;
             border-radius: 10px;
-            font-weight: 600;
+            font-weight: 700;
             transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
@@ -649,13 +652,13 @@
         }
 
         .product-card.out-of-stock {
-            opacity: 0.78;
+            opacity: 0.82;
         }
 
         .product-image-wrap {
             position: relative;
             width: 100%;
-            height: 200px;
+            height: 210px;
             background: #F4EBE1;
             overflow: hidden;
             display: flex;
@@ -686,6 +689,7 @@
             padding: 4px 10px;
             border-radius: 4px;
             letter-spacing: 0.3px;
+            z-index: 2;
         }
 
         .card-status-badge.sold-out {
@@ -973,175 +977,256 @@
             line-height: 1.4;
         }
 
-        /* Slide-over Cart Drawer */
-        .cart-drawer-overlay {
+        /* ================= MODERN SMART FLOATING CART MODAL ================= */
+        .smart-cart-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(36,25,20,0.4);
-            backdrop-filter: blur(4px);
-            z-index: 999;
+            inset: 0;
+            background: rgba(36, 25, 20, 0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1200;
             display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
-        .cart-drawer-overlay.open {
-            display: block;
+        .smart-cart-overlay.open {
+            display: flex;
             opacity: 1;
         }
 
-        .cart-drawer {
-            position: fixed;
-            top: 0;
-            right: -100%;
+        .smart-cart-window {
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(234, 223, 213, 0.9);
+            border-radius: 22px;
             width: 100%;
-            max-width: 380px;
-            height: 100%;
-            background: var(--surface-color);
-            z-index: 1000;
-            box-shadow: -8px 0 30px rgba(36,25,20,0.1);
-            transition: right 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            max-width: 520px;
+            max-height: 88vh;
+            box-shadow: 0 24px 60px rgba(36, 25, 20, 0.22);
             display: flex;
             flex-direction: column;
+            overflow: hidden;
+            animation: scaleIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
-        .cart-drawer.open {
-            right: 0;
-        }
-
-        .cart-drawer-header {
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cart-drawer-body {
-            padding: 16px 20px;
-            flex-grow: 1;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .cart-item-row {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            padding-bottom: 14px;
+        .smart-cart-top {
+            padding: 18px 22px;
+            background: linear-gradient(135deg, #FBF6F1 0%, #FFFFFF 100%);
             border-bottom: 1px solid var(--border-light);
-            animation: fadeInUp 0.3s ease both;
-        }
-
-        .cart-item-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 6px;
-            object-fit: cover;
-        }
-
-        .cart-item-details {
-            flex-grow: 1;
-        }
-
-        .cart-item-name {
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .cart-item-meta {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-        }
-
-        .cart-item-price {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .cart-item-qty {
-            display: flex;
-            align-items: center;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            width: fit-content;
-            margin-top: 4px;
-            background: var(--surface-color);
-        }
-
-        .cart-item-qty button {
-            background: none;
-            border: none;
-            width: 26px;
-            height: 26px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 14px;
-            transition: background 0.2s;
-        }
-
-        .cart-item-qty button:hover {
-            background: var(--tag-bg);
-        }
-
-        .cart-item-qty span {
-            padding: 0 8px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .cart-remove-btn {
-            background: none;
-            border: none;
-            color: #C85A3C;
-            font-size: 11px;
-            cursor: pointer;
-            margin-top: 4px;
-            text-decoration: underline;
-        }
-
-        .cart-drawer-footer {
-            padding: 16px 20px;
-            border-top: 1px solid var(--border-color);
-            background: var(--tag-bg);
-        }
-
-        .cart-total-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
-            font-size: 15px;
-            font-weight: 700;
         }
 
-        .checkout-drawer-btn {
-            width: 100%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
+        .smart-cart-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .smart-cart-icon-pill {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: #FCE8E2;
+            color: #C85A3C;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .smart-cart-close {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: white;
             cursor: pointer;
-            text-align: center;
-            display: block;
-            text-decoration: none;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
             transition: var(--transition);
         }
 
-        .checkout-drawer-btn:hover {
+        .smart-cart-close:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Smart Progress Banner inside Floating Cart */
+        .smart-perk-bar {
+            background: #F4FBF6;
+            border-bottom: 1px solid #DDF2E4;
+            padding: 10px 22px;
+            font-size: 12px;
+            color: #246838;
+        }
+
+        .smart-perk-track {
+            width: 100%;
+            height: 6px;
+            background: #DCEEE2;
+            border-radius: 99px;
+            margin-top: 6px;
+            overflow: hidden;
+        }
+
+        .smart-perk-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2E7D32, #4CAF50);
+            border-radius: 99px;
+            transition: width 0.4s ease;
+        }
+
+        .smart-cart-body {
+            padding: 16px 22px;
+            overflow-y: auto;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .smart-cart-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg-color);
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            padding: 10px 12px;
+            transition: var(--transition);
+        }
+
+        .smart-cart-item:hover {
+            border-color: var(--accent);
+            background: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(36, 25, 20, 0.04);
+        }
+
+        .smart-cart-thumb {
+            width: 58px;
+            height: 58px;
+            border-radius: 10px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .smart-cart-info {
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        .smart-cart-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .smart-cart-pack {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin: 2px 0 4px 0;
+        }
+
+        .smart-cart-unit-price {
+            font-size: 13px;
+            font-weight: 700;
+            color: #C85A3C;
+        }
+
+        .smart-qty-pill {
+            display: inline-flex;
+            align-items: center;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 99px;
+            padding: 2px;
+            gap: 6px;
+        }
+
+        .smart-qty-pill button {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: none;
+            background: var(--tag-bg);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--text-main);
+            transition: background 0.2s;
+        }
+
+        .smart-qty-pill button:hover {
             background: var(--accent);
-            transform: translateY(-1px);
+            color: white;
+        }
+
+        .smart-qty-pill span {
+            font-size: 13px;
+            font-weight: 700;
+            min-width: 18px;
+            text-align: center;
+        }
+
+        .smart-del-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 8px;
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .smart-del-btn:hover {
+            color: #D32F2F;
+            background: #FFEBEE;
+        }
+
+        .smart-cart-footer {
+            padding: 16px 22px 20px 22px;
+            background: var(--tag-bg);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .smart-summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .smart-checkout-cta {
+            width: 100%;
+            background: linear-gradient(135deg, #241914 0%, #3E2C24 100%);
+            color: white;
+            border: none;
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(36, 25, 20, 0.18);
+        }
+
+        .smart-checkout-cta:hover {
+            background: linear-gradient(135deg, #F4967D 0%, #E08269 100%);
+            transform: translateY(-2px);
         }
 
         /* Checkout View Styles */
@@ -1403,6 +1488,38 @@
             margin: 0 auto 16px auto;
         }
 
+        .qr-zalo-alert-box {
+            background: #F0F7FF;
+            border: 1.5px solid #0068FF;
+            border-radius: 12px;
+            padding: 18px;
+            max-width: 520px;
+            margin: 16px auto 20px auto;
+            text-align: center;
+        }
+
+        .zalo-send-bill-btn {
+            background: #0068FF;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            box-shadow: 0 4px 14px rgba(0, 104, 255, 0.28);
+            transition: var(--transition);
+        }
+
+        .zalo-send-bill-btn:hover {
+            background: #0054CC;
+            transform: translateY(-2px);
+        }
+
         /* Reviews Section */
         .reviews-section {
             margin-top: 40px;
@@ -1662,7 +1779,7 @@
             height: 100%;
             background: rgba(36,25,20,0.5);
             backdrop-filter: blur(4px);
-            z-index: 1100;
+            z-index: 1300;
             display: none;
             align-items: center;
             justify-content: center;
@@ -1675,11 +1792,11 @@
 
         .modal-content {
             background: var(--surface-color);
-            border-radius: 12px;
+            border-radius: 16px;
             width: 100%;
             max-width: 460px;
             padding: 24px;
-            box-shadow: 0 10px 30px rgba(36,25,20,0.15);
+            box-shadow: 0 14px 40px rgba(36,25,20,0.18);
             position: relative;
             animation: scaleIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
@@ -1845,7 +1962,7 @@
             <div class="realtime-widget" id="realtimeWidget">
                 <span class="greeting-text" id="greetingMessage">Chào Buổi Tối 🌙</span>
                 <span class="clock-divider">|</span>
-                <span class="clock-datetime" id="realtimeClockDisplay">19:07:00 · Thứ Ba, 17/11/2026</span>
+                <span class="clock-datetime" id="realtimeClockDisplay">19:32:00 · Thứ Ba, 17/11/2026</span>
             </div>
 
             <ul class="nav-links">
@@ -1856,7 +1973,7 @@
             <div class="header-actions">
                 <button class="icon-btn" id="openCartBtn" type="button">
                     <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
-                    Giỏ hàng <span class="cart-badge" id="cartCountBadge">0</span>
+                    Giỏ hàng <span class="cart-badge" id="cartCountBadge">1</span>
                 </button>
             </div>
         </div>
@@ -1882,7 +1999,7 @@
                 </div>
                 <div class="search-input-group">
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                    <input type="text" id="searchInput" placeholder="Tìm sản phẩm xà phòng (khổ qua, mướp,...)...">
+                    <input type="text" id="searchInput" placeholder="Tìm sản phẩm xà phòng (xơ mướp, mướp đắng, trà xanh...)...">
                     <button class="search-btn" id="searchExecBtn" type="button">Tìm &rarr;</button>
                 </div>
             </div>
@@ -1902,7 +2019,7 @@
                             <input type="checkbox" checked> Dầu dừa & Dầu ô liu
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" checked> Khổ qua & Mướp tự nhiên
+                            <input type="checkbox" checked> Xơ mướp & Mướp đắng tự nhiên
                         </label>
                         <label class="checkbox-label">
                             <input type="checkbox" checked> Bơ hạt mỡ & Sáp ong
@@ -2022,7 +2139,7 @@
                     <div class="rating-overview">
                         <div class="rating-score-big" id="avgRatingDisplay">4.9</div>
                         <div class="stars-container">★★★★★</div>
-                        <div class="rating-count-text" id="totalReviewsCountText">Dựa trên 12 đánh giá thực tế</div>
+                        <div class="rating-count-text" id="totalReviewsCountText">Dựa trên 8 đánh giá thực tế</div>
                     </div>
                     <div class="rating-bars">
                         <div class="rating-bar-row">
@@ -2187,7 +2304,21 @@
                     <div class="success-icon">✓</div>
                     <h2 style="font-size: 28px; margin-bottom: 6px;">Đặt hàng thành công!</h2>
                     <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 8px;">Cảm ơn bạn đã ủng hộ <strong>Xà Bông Handmade ✓</strong>.</p>
-                    <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 16px;">Mã đơn hàng của bạn: <strong id="successOrderId" style="color: var(--accent);">#XBHM-8839</strong></p>
+                    <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">Mã đơn hàng của bạn: <strong id="successOrderId" style="color: var(--accent);">#XBHM-8839</strong></p>
+
+                    <!-- Thông báo riêng khi chọn thanh toán QR ngân hàng -->
+                    <div id="qrSuccessNoticeBox" class="qr-zalo-alert-box" style="display: none;">
+                        <div style="font-size: 15px; font-weight: 700; color: #0054CC; margin-bottom: 6px;">
+                            📦 Shop sẽ kiểm tra đơn hàng và đóng gói!
+                        </div>
+                        <div style="font-size: 13px; color: var(--text-main); line-height: 1.5;">
+                            Bạn đã chọn thanh toán bằng <strong>QR Ngân hàng</strong>. Hãy gửi bill chuyển khoản kèm mã đơn hàng cho shop qua Zalo: <strong>84+333507317</strong> để shop xác nhận nhanh nhất nhé!
+                        </div>
+                        <button type="button" class="zalo-send-bill-btn" id="copyBillZaloBtn">
+                            💬 Sao chép Zalo: 84+333507317 để gửi bill
+                        </button>
+                    </div>
+
                     <button class="search-btn" id="backToHomeSuccessBtn" style="margin: 0 auto;" type="button">Quay về trang chủ</button>
                 </div>
             </div>
@@ -2201,20 +2332,48 @@
         <div style="font-size: 13px; color: var(--text-muted);">Vui lòng không đóng trình duyệt trong giây lát</div>
     </div>
 
-    <!-- Slide-over Cart Drawer -->
-    <div class="cart-drawer-overlay" id="cartOverlay"></div>
-    <div class="cart-drawer" id="cartDrawer">
-        <div class="cart-drawer-header">
-            <h3 style="font-size: 16px; font-weight: 600;">Giỏ hàng của bạn</h3>
-            <button id="closeCartBtn" type="button" style="background:none; border:none; font-size:22px; cursor:pointer;">&times;</button>
-        </div>
-        <div class="cart-drawer-body" id="cartDrawerItemsList"></div>
-        <div class="cart-drawer-footer">
-            <div class="cart-total-row">
-                <span>Tạm tính:</span>
-                <span id="drawerTotalPrice">30.000 đ</span>
+    <!-- ================= SMART FLOATING CART MODAL ================= -->
+    <div class="smart-cart-overlay" id="smartCartOverlay">
+        <div class="smart-cart-window">
+            <div class="smart-cart-top">
+                <div class="smart-cart-title-group">
+                    <div class="smart-cart-icon-pill">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 18px; font-weight: 700; line-height: 1.2;">Giỏ hàng thông minh</h3>
+                        <span style="font-size: 11px; color: var(--text-muted);" id="smartCartSubtitleCount">1 sản phẩm đã chọn</span>
+                    </div>
+                </div>
+                <button class="smart-cart-close" id="closeCartBtn" type="button" title="Đóng giỏ hàng">&times;</button>
             </div>
-            <button class="checkout-drawer-btn" id="goToCheckoutBtn" type="button">Tiến hành thanh toán &rarr;</button>
+
+            <!-- Thanh tiến trình ưu đãi thông minh -->
+            <div class="smart-perk-bar">
+                <div style="display: flex; justify-content: space-between; font-weight: 600;">
+                    <span id="smartPerkText">🎉 Bạn đã được Miễn phí vận chuyển toàn quốc!</span>
+                    <span id="smartPerkPercent">100%</span>
+                </div>
+                <div class="smart-perk-track">
+                    <div class="smart-perk-fill" id="smartPerkFill" style="width: 100%;"></div>
+                </div>
+            </div>
+
+            <div class="smart-cart-body" id="cartDrawerItemsList"></div>
+
+            <div class="smart-cart-footer">
+                <div class="smart-summary-row">
+                    <div>
+                        <div style="font-size: 12px; color: var(--text-muted);">Tổng thanh toán dự kiến</div>
+                        <div style="font-size: 11px; color: #2E7D32; font-weight: 600;">✓ Đã áp dụng Freeship & Đóng gói thân thiện</div>
+                    </div>
+                    <div style="font-size: 20px; font-weight: 800; color: var(--primary);" id="drawerTotalPrice">30.000 đ</div>
+                </div>
+                <button class="smart-checkout-cta" id="goToCheckoutBtn" type="button">
+                    <span>Tiến hành thanh toán</span>
+                    <span>Đặt ngay &rarr;</span>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -2255,7 +2414,7 @@
                     <label>Sản phẩm trải nghiệm</label>
                     <select id="revProductSelect">
                         <option value="Xà Phòng Handmade">Xà Phòng Handmade</option>
-                        <option value="Xà Bông Khổ Qua">Xà Bông Khổ Qua</option>
+                        <option value="Xà Bông Xơ Mướp">Xà Bông Xơ Mướp</option>
                         <option value="Xà Bông Mướp Đắng Tự Nhiên">Xà Bông Mướp Đắng Tự Nhiên</option>
                         <option value="Xà Bông Bạc Hà Trà Xanh">Xà Bông Bạc Hà Trà Xanh</option>
                     </select>
@@ -2324,15 +2483,15 @@
                 id: 2,
                 tag: "Hết hàng",
                 badgeClass: "sold-out",
-                name: "Xà Bông Khổ Qua",
-                category: "Thanh lọc & Hỗ trợ giảm mụn lưng",
+                name: "Xà Bông Xơ Mướp",
+                category: "Tẩy tế bào chết dịu nhẹ & Sáng da",
                 price: 35000,
                 rating: 5,
                 inStock: false,
                 soldCount: 245,
-                image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80",
-                subtitle: "Chiết xuất khổ qua tươi kết hợp dầu dừa nguyên chất",
-                description: "Được ép từ trái khổ qua tươi nguyên chất giúp kháng khuẩn, làm sạch sâu, hỗ trợ cải thiện tình trạng mụn lưng và làm sáng da tự nhiên."
+                image: "https://cdn.phototourl.com/anon/2026-11-17-bef8eee2-9116-4045-bc02-c83a500c31c2.jpg",
+                subtitle: "Xơ mướp tự nhiên kết hợp phôi xà phòng dầu dừa & dầu ô liu",
+                description: "Sự kết hợp hoàn hảo giữa sợi xơ mướp tự nhiên mềm mại và xà phòng thảo mộc giúp massage thư giãn, loại bỏ tế bào chết nhẹ nhàng và làm thông thoáng lỗ chân lông."
             },
             {
                 id: 3,
@@ -2344,9 +2503,9 @@
                 rating: 4,
                 inStock: false,
                 soldCount: 310,
-                image: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80",
-                subtitle: "Tinh chất mướp đắng & dầu thực vật",
-                description: "Sản phẩm thủ công giàu vitamin C và chất chống oxy hóa từ mướp đắng, giúp làm dịu vùng da mẩn đỏ và nuôi dưỡng làn da khỏe mạnh."
+                image: "https://cdn.phototourl.com/anon/2026-11-17-4a7b9ed2-824a-4090-9fe6-e3acbf0e9731.jpg",
+                subtitle: "Tinh chất mướp đắng tươi & dầu thực vật nguyên chất",
+                description: "Sản phẩm thủ công giàu vitamin C và chất chống oxy hóa từ mướp đắng tươi, giúp kháng khuẩn, hỗ trợ giảm mụn lưng và làm dịu vùng da nhạy cảm."
             },
             {
                 id: 4,
@@ -2358,7 +2517,7 @@
                 rating: 5,
                 inStock: false,
                 soldCount: 420,
-                image: "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=600&q=80",
+                image: "https://cdn.phototourl.com/anon/2026-11-17-ad107c0e-a35e-423d-ab94-673165fa72da.webp",
                 subtitle: "Lá trà xanh nguyên chất kết hợp tinh dầu bạc hà mát lạnh",
                 description: "Mang lại cảm giác sảng khoái tức thì với hương thơm bạc hà mát lạnh kết hợp bột trà xanh chống oxy hóa mạnh mẽ."
             }
@@ -2377,11 +2536,11 @@
             {
                 id: 2,
                 name: "Trần Quốc Bảo",
-                product: "Xà Bông Khổ Qua",
+                product: "Xà Bông Xơ Mướp",
                 stars: 5,
                 date: "2 ngày trước",
-                comment: "Dùng xà bông khổ qua tắm lưng đỡ mụn hẳn sau 2 tuần. Mùi thảo mộc dễ chịu, rất mong shop sớm làm mẻ mới để đặt thêm 3 bánh.",
-                shopReply: "Cảm ơn bạn đã yêu thích Xà Bông Khổ Qua! Shop đang phơi mẻ mới và sẽ mở bán lại sớm nhất ạ."
+                comment: "Bánh xà bông xơ mướp tắm cực thích luôn, sợi xơ mướp mềm giúp tẩy da chết nhẹ nhàng mà không bị rát. Rất mong shop sớm làm mẻ mới để đặt thêm 3 bánh.",
+                shopReply: "Cảm ơn bạn đã yêu thích Xà Bông Xơ Mướp! Shop đang phơi mẻ mới và sẽ mở bán lại sớm nhất ạ."
             },
             {
                 id: 3,
@@ -2398,7 +2557,7 @@
                 product: "Xà Bông Mướp Đắng Tự Nhiên",
                 stars: 4,
                 date: "4 ngày trước",
-                comment: "Da mình nhạy cảm dùng loại mướp đắng này rất êm, không bị kích ứng hay rít da. Đóng gói giấy kraft bảo vệ môi trường rất ưng.",
+                comment: "Da mình nhạy cảm dùng loại mướp đắng này rất êm, giảm mụn lưng rõ rệt sau 2 tuần sử dụng.",
                 shopReply: "Xà Bông Handmade ✓ cảm ơn anh Nam đã tin dùng sản phẩm lành tính của xưởng!"
             },
             {
@@ -2413,11 +2572,11 @@
             {
                 id: 6,
                 name: "Đặng Minh Quân",
-                product: "Xà Bông Khổ Qua",
+                product: "Xà Bông Xơ Mướp",
                 stars: 5,
                 date: "1 tuần trước",
-                comment: "Bánh xà phòng đặc, lâu tan, dùng cả tháng mới hết 1 bánh. Rất sạch nhờn vào mùa nóng.",
-                shopReply: "Cảm ơn anh Quân đã để lại đánh giá chi tiết cho Xà Bông Khổ Qua!"
+                comment: "Thiết kế xơ mướp nằm gọn trong bánh xà phòng rất tiện, vừa tạo bọt nhiều vừa sạch sâu vùng khuỷu tay và lưng.",
+                shopReply: "Cảm ơn anh Quân đã để lại đánh giá chi tiết cho Xà Bông Xơ Mướp!"
             },
             {
                 id: 7,
@@ -2443,6 +2602,7 @@
         let currentSelectedWeight = "1 Bánh (90g)";
         let currentSelectedPrice = 30000;
         let currentActiveOrderId = "";
+        let selectedPaymentMethod = "cod";
         let cartItems = [
             {
                 id: 1,
@@ -2510,10 +2670,26 @@
                 });
             });
 
-            // Tương tác giỏ hàng
-            document.getElementById('openCartBtn').addEventListener('click', openCartDrawer);
-            document.getElementById('closeCartBtn').addEventListener('click', closeCartDrawer);
-            document.getElementById('cartOverlay').addEventListener('click', closeCartDrawer);
+            // Nút sao chép Zalo ở màn hình đặt hàng thành công bằng QR
+            document.getElementById('copyBillZaloBtn').addEventListener('click', function() {
+                const copyText = `Zalo: 84+333507317 (Mã đơn: ${currentActiveOrderId})`;
+                navigator.clipboard.writeText('84+333507317').then(() => {
+                    this.innerText = `✓ Đã sao chép Zalo: 84+333507317`;
+                    setTimeout(() => {
+                        this.innerText = `💬 Sao chép Zalo: 84+333507317 để gửi bill`;
+                    }, 2400);
+                });
+            });
+
+            // Cửa sổ nổi Giỏ hàng thông minh
+            const smartCartOverlay = document.getElementById('smartCartOverlay');
+            document.getElementById('openCartBtn').addEventListener('click', openSmartCartModal);
+            document.getElementById('closeCartBtn').addEventListener('click', closeSmartCartModal);
+            smartCartOverlay.addEventListener('click', function(e) {
+                if (e.target === smartCartOverlay) {
+                    closeSmartCartModal();
+                }
+            });
             document.getElementById('goToCheckoutBtn').addEventListener('click', function() {
                 switchView('checkout');
             });
@@ -2617,8 +2793,9 @@
                     this.classList.add('selected');
                     const radio = this.querySelector('input');
                     radio.checked = true;
+                    selectedPaymentMethod = this.getAttribute('data-method');
 
-                    if (this.getAttribute('data-method') === 'qr') {
+                    if (selectedPaymentMethod === 'qr') {
                         qrPanel.classList.add('visible');
                     } else {
                         qrPanel.classList.remove('visible');
@@ -2712,18 +2889,16 @@
                 });
             }
             updateCartBadge();
-            openCartDrawer();
+            openSmartCartModal();
         }
 
-        function openCartDrawer() {
-            renderCartDrawerItems();
-            document.getElementById('cartOverlay').classList.add('open');
-            document.getElementById('cartDrawer').classList.add('open');
+        function openSmartCartModal() {
+            renderSmartCartItems();
+            document.getElementById('smartCartOverlay').classList.add('open');
         }
 
-        function closeCartDrawer() {
-            document.getElementById('cartOverlay').classList.remove('open');
-            document.getElementById('cartDrawer').classList.remove('open');
+        function closeSmartCartModal() {
+            document.getElementById('smartCartOverlay').classList.remove('open');
         }
 
         function updateCartBadge() {
@@ -2734,37 +2909,66 @@
             setTimeout(() => { badge.style.transform = 'scale(1)'; }, 220);
         }
 
-        function renderCartDrawerItems() {
+        function renderSmartCartItems() {
             const container = document.getElementById('cartDrawerItemsList');
+            const subtitleCount = document.getElementById('smartCartSubtitleCount');
+            const perkText = document.getElementById('smartPerkText');
+            const perkPercent = document.getElementById('smartPerkPercent');
+            const perkFill = document.getElementById('smartPerkFill');
+
             let subtotal = 0;
+            let totalQty = cartItems.reduce((sum, item) => sum + item.qty, 0);
+            subtitleCount.innerText = `${totalQty} sản phẩm đã chọn`;
 
             if(cartItems.length === 0) {
-                container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 30px 0;">Giỏ hàng của bạn đang trống.</div>`;
+                container.innerHTML = `
+                    <div style="text-align: center; color: var(--text-muted); padding: 36px 12px;">
+                        <div style="font-size: 36px; margin-bottom: 8px;">🧼</div>
+                        <div style="font-weight: 600; color: var(--text-main); margin-bottom: 4px;">Giỏ hàng của bạn đang trống</div>
+                        <div style="font-size: 12px;">Hãy chọn các bánh xà phòng thiên nhiên yêu thích để thêm vào giỏ nhé!</div>
+                    </div>`;
                 document.getElementById('drawerTotalPrice').innerText = '0 đ';
+                perkText.innerText = 'Thêm sản phẩm để nhận ưu đãi Freeship';
+                perkPercent.innerText = '0%';
+                perkFill.style.width = '0%';
                 return;
             }
 
             container.innerHTML = cartItems.map((item, idx) => {
                 subtotal += item.price * item.qty;
                 return `
-                    <div class="cart-item-row">
-                        <img src="${item.image}" class="cart-item-img" alt="">
-                        <div class="cart-item-details">
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-meta">Quy cách: ${item.weight}</div>
-                            <div class="cart-item-price">${item.price.toLocaleString()} đ</div>
-                            <div class="cart-item-qty">
-                                <button type="button" class="qty-dec-btn" data-index="${idx}">-</button>
-                                <span>${item.qty}</span>
-                                <button type="button" class="qty-inc-btn" data-index="${idx}">+</button>
-                            </div>
-                            <button type="button" class="cart-remove-btn" data-index="${idx}">Xóa sản phẩm</button>
+                    <div class="smart-cart-item">
+                        <img src="${item.image}" class="smart-cart-thumb" alt="">
+                        <div class="smart-cart-info">
+                            <div class="smart-cart-name">${item.name}</div>
+                            <div class="smart-cart-pack">Quy cách: ${item.weight}</div>
+                            <div class="smart-cart-unit-price">${(item.price * item.qty).toLocaleString()} đ</div>
                         </div>
+                        <div class="smart-qty-pill">
+                            <button type="button" class="qty-dec-btn" data-index="${idx}">-</button>
+                            <span>${item.qty}</span>
+                            <button type="button" class="qty-inc-btn" data-index="${idx}">+</button>
+                        </div>
+                        <button type="button" class="smart-del-btn cart-remove-btn" data-index="${idx}" title="Xóa sản phẩm">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                        </button>
                     </div>
                 `;
             }).join('');
 
             document.getElementById('drawerTotalPrice').innerText = subtotal.toLocaleString() + ' đ';
+
+            if (subtotal >= 80000) {
+                perkText.innerText = '🎁 Tuyệt vời! Đơn hàng được Freeship + Tặng túi lưới tạo bọt';
+                perkPercent.innerText = '100%';
+                perkFill.style.width = '100%';
+            } else {
+                const remain = 80000 - subtotal;
+                const pct = Math.min(100, Math.round((subtotal / 80000) * 100));
+                perkText.innerText = `🚚 Freeship sẵn sàng! Mua thêm ${remain.toLocaleString()}đ nhận túi lưới tạo bọt`;
+                perkPercent.innerText = pct + '%';
+                perkFill.style.width = pct + '%';
+            }
 
             container.querySelectorAll('.qty-dec-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -2792,17 +2996,17 @@
             cartItems[index].qty += delta;
             if(cartItems[index].qty <= 0) cartItems.splice(index, 1);
             updateCartBadge();
-            renderCartDrawerItems();
+            renderSmartCartItems();
         }
 
         function removeCartItem(index) {
             cartItems.splice(index, 1);
             updateCartBadge();
-            renderCartDrawerItems();
+            renderSmartCartItems();
         }
 
         function switchView(viewName) {
-            closeCartDrawer();
+            closeSmartCartModal();
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
             if(viewName === 'shop') {
@@ -2867,6 +3071,14 @@
                 document.getElementById('stepIndicator2').classList.add('completed');
                 document.getElementById('stepIndicator3').classList.add('active');
                 document.getElementById('successOrderId').innerText = currentActiveOrderId;
+
+                const qrNoticeBox = document.getElementById('qrSuccessNoticeBox');
+                if (selectedPaymentMethod === 'qr') {
+                    qrNoticeBox.style.display = 'block';
+                } else {
+                    qrNoticeBox.style.display = 'none';
+                }
+
                 cartItems = [];
                 updateCartBadge();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
