@@ -547,6 +547,12 @@
             gap: 16px;
         }
 
+        @media (min-width: 640px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         .product-card {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
@@ -570,10 +576,14 @@
             box-shadow: 0 0 0 2px var(--primary);
         }
 
+        .product-card.out-of-stock {
+            opacity: 0.75;
+        }
+
         .product-image-wrap {
             position: relative;
             width: 100%;
-            height: 240px;
+            height: 200px;
             background: #F4EBE1;
             overflow: hidden;
             display: flex;
@@ -604,6 +614,10 @@
             padding: 4px 10px;
             border-radius: 4px;
             letter-spacing: 0.3px;
+        }
+
+        .card-status-badge.sold-out {
+            background: #D32F2F;
         }
 
         .product-info {
@@ -815,12 +829,20 @@
             color: #2E7D32;
         }
 
+        .stock-badge-inline.out {
+            color: #D32F2F;
+        }
+
         .stock-badge-inline::before {
             content: '';
             width: 6px;
             height: 6px;
             background: #2E7D32;
             border-radius: 50%;
+        }
+
+        .stock-badge-inline.out::before {
+            background: #D32F2F;
         }
 
         .add-to-cart-btn {
@@ -849,6 +871,13 @@
 
         .add-to-cart-btn:active {
             transform: translateY(0);
+        }
+
+        .add-to-cart-btn:disabled {
+            background: #D1C7BD;
+            cursor: not-allowed;
+            animation: none;
+            box-shadow: none;
         }
 
         .panel-footer-note {
@@ -1714,7 +1743,7 @@
                 </div>
                 <div class="search-input-group">
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                    <input type="text" id="searchInput" placeholder="Tìm sản phẩm xà phòng...">
+                    <input type="text" id="searchInput" placeholder="Tìm sản phẩm xà phòng (khổ qua, mướp,...)...">
                     <button class="search-btn" id="searchExecBtn" type="button">Tìm &rarr;</button>
                 </div>
             </div>
@@ -1734,10 +1763,10 @@
                             <input type="checkbox" checked> Dầu dừa & Dầu ô liu
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" checked> Bơ hạt mỡ & Sáp ong
+                            <input type="checkbox" checked> Khổ qua & Mướp tự nhiên
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" checked> Tinh dầu thiên nhiên
+                            <input type="checkbox" checked> Bơ hạt mỡ & Sáp ong
                         </label>
                     </div>
 
@@ -1765,7 +1794,7 @@
                 <!-- Column 2: Product List -->
                 <div class="product-list-section">
                     <div class="list-toolbar">
-                        <div class="result-count">Hiển thị <span id="productCountNum">1</span> sản phẩm</div>
+                        <div class="result-count">Hiển thị <span id="productCountNum">4</span> sản phẩm</div>
                         <select class="sort-select" id="sortSelect">
                             <option value="popular">Phổ biến nhất</option>
                             <option value="price-asc">Giá: Thấp đến cao</option>
@@ -1804,7 +1833,7 @@
                     </div>
 
                     <div class="stock-status-note" id="sbStockNote">
-                        Được xà phòng hóa từ các chất béo thực vật tinh khiết (dầu dừa, dầu ô liu, bơ hạt mỡ) giúp giữ ẩm tự nhiên, tạo bọt mịn và làm sạch dịu nhẹ.
+                        Được xà phòng hóa từ các chất béo thực vật tinh khiết giúp giữ ẩm tự nhiên, tạo bọt mịn và làm sạch dịu nhẹ.
                     </div>
 
                     <div class="price-display-box">
@@ -1813,7 +1842,7 @@
                     </div>
 
                     <div style="margin-bottom: 12px;">
-                        <span class="stock-badge-inline">Còn hàng sẵn sàng giao</span>
+                        <span class="stock-badge-inline" id="sbStockIndicator">Còn hàng sẵn sàng giao</span>
                     </div>
 
                     <button class="add-to-cart-btn" id="addToCartMainBtn" type="button">
@@ -1832,7 +1861,7 @@
                 <div class="reviews-header" style="margin-bottom: 20px;">
                     <div>
                         <h2 style="font-size: 26px; font-weight: 600; margin-bottom: 4px;">Đánh giá & Cảm nhận khách hàng</h2>
-                        <p style="color: var(--text-muted); font-size: 13px;">Phản hồi thực tế sau khi trải nghiệm Xà Phòng Handmade.</p>
+                        <p style="color: var(--text-muted); font-size: 13px;">Phản hồi thực tế sau khi trải nghiệm sản phẩm.</p>
                     </div>
                 </div>
 
@@ -2073,6 +2102,9 @@
                     <label>Sản phẩm trải nghiệm</label>
                     <select id="revProductSelect">
                         <option value="Xà Phòng Handmade">Xà Phòng Handmade</option>
+                        <option value="Xà Bông Khổ Qua">Xà Bông Khổ Qua</option>
+                        <option value="Xà Bông Mướp Đắng Tự Nhiên">Xà Bông Mướp Đắng Tự Nhiên</option>
+                        <option value="Xà Bông Bạc Hà Trà Xanh">Xà Bông Bạc Hà Trà Xanh</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -2103,14 +2135,51 @@
         const products = [
             {
                 id: 1,
-                tag: "Thủ công tự nhiên",
+                tag: "Bán chạy",
                 name: "Xà Phòng Handmade",
                 category: "Dưỡng ẩm & Làm sạch dịu nhẹ",
                 price: 30000,
                 rating: 5,
+                inStock: true,
                 image: "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=600&q=80",
                 subtitle: "Làm từ chất béo thực vật (dầu dừa, dầu ô liu, bơ hạt mỡ) & sáp ong tự nhiên",
                 description: "Sản phẩm được chế tác thủ công từ nguồn chất béo thực vật tinh khiết như dầu dừa, dầu ô liu nguyên chất và bơ hạt mỡ, giúp làm sạch dịu nhẹ, giữ ẩm tự nhiên và an toàn cho da."
+            },
+            {
+                id: 2,
+                tag: "Hết hàng",
+                name: "Xà Bông Khổ Qua",
+                category: "Thanh lọc & Hỗ trợ giảm mụn lưng",
+                price: 35000,
+                rating: 5,
+                inStock: false,
+                image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80",
+                subtitle: "Chiết xuất khổ qua tươi kết hợp dầu dừa nguyên chất",
+                description: "Được ép từ trái khổ qua tươi nguyên chất giúp kháng khuẩn, làm sạch sâu, hỗ trợ cải thiện tình trạng mụn lưng và làm sáng da tự nhiên."
+            },
+            {
+                id: 3,
+                tag: "Hết hàng",
+                name: "Xà Bông Mướp Đắng Tự Nhiên",
+                category: "Làm dịu da & Kháng khuẩn",
+                price: 32000,
+                rating: 4,
+                inStock: false,
+                image: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80",
+                subtitle: "Tinh chất mướp đắng & dầu thực vật",
+                description: "Sản phẩm thủ công giàu vitamin C và chất chống oxy hóa từ mướp đắng, giúp làm dịu vùng da mẩn đỏ và nuôi dưỡng làn da khỏe mạnh."
+            },
+            {
+                id: 4,
+                tag: "Hết hàng",
+                name: "Xà Bông Bạc Hà Trà Xanh",
+                category: "Sảng khoái & Thư giãn",
+                price: 38000,
+                rating: 5,
+                inStock: false,
+                image: "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=600&q=80",
+                subtitle: "Lá trà xanh nguyên chất kết hợp tinh dầu bạc hà mát lạnh",
+                description: "Mang lại cảm giác sảng khoái tức thì với hương thơm bạc Hà mát lạnh kết hợp bột trà xanh chống oxy hóa mạnh mẽ."
             }
         ];
 
@@ -2175,7 +2244,11 @@
 
             // Thêm vào giỏ từ Sidebar
             document.getElementById('addToCartMainBtn').addEventListener('click', function() {
-                addProductToCart();
+                if(currentSelectedProduct.inStock) {
+                    addProductToCart();
+                } else {
+                    alert('Sản phẩm này hiện đang hết hàng. Vui lòng chọn sản phẩm có sẵn!');
+                }
             });
 
             // Chọn trọng lượng / Combo
@@ -2274,9 +2347,9 @@
             }
 
             grid.innerHTML = list.map(p => `
-                <div class="product-card ${p.id === currentSelectedProduct.id ? 'selected' : ''}" data-id="${p.id}">
+                <div class="product-card ${p.id === currentSelectedProduct.id ? 'selected' : ''} ${!p.inStock ? 'out-of-stock' : ''}" data-id="${p.id}">
                     <div class="product-image-wrap">
-                        <span class="card-status-badge">${p.tag}</span>
+                        <span class="card-status-badge ${!p.inStock ? 'sold-out' : ''}">${p.tag}</span>
                         <img src="${p.image}" alt="${p.name}">
                     </div>
                     <div class="product-info">
@@ -2288,7 +2361,7 @@
                         </div>
                         <div class="product-card-footer">
                             <span>${p.rating}.0 ★★★★★</span>
-                            <span class="card-action-link">Chọn trọng lượng & đặt mua &rarr;</span>
+                            <span class="card-action-link">${p.inStock ? 'Chọn phiên bản &rarr;' : 'Xem chi tiết &rarr;'}</span>
                         </div>
                     </div>
                 </div>
@@ -2315,9 +2388,25 @@
             document.getElementById('sbPriceLbl').innerText = currentSelectedPrice.toLocaleString() + ' đ';
             document.getElementById('selectedWeightLbl').innerText = currentSelectedWeight;
             document.getElementById('sidebarRatingStars').innerText = '★'.repeat(p.rating);
+            
+            const stockIndicator = document.getElementById('sbStockIndicator');
+            const addToCartBtn = document.getElementById('addToCartMainBtn');
+
+            if(p.inStock) {
+                stockIndicator.className = 'stock-badge-inline';
+                stockIndicator.innerText = 'Còn hàng sẵn sàng giao';
+                addToCartBtn.disabled = false;
+                addToCartBtn.innerText = 'Thêm vào giỏ';
+            } else {
+                stockIndicator.className = 'stock-badge-inline out';
+                stockIndicator.innerText = 'Tạm thời hết hàng (Sắp có lại)';
+                addToCartBtn.disabled = true;
+                addToCartBtn.innerText = 'Sản phẩm đã hết hàng';
+            }
         }
 
         function addProductToCart() {
+            if(!currentSelectedProduct.inStock) return;
             const existingIndex = cartItems.findIndex(item => item.name === currentSelectedProduct.name && item.weight === currentSelectedWeight);
             if(existingIndex > -1) {
                 cartItems[existingIndex].qty += 1;
