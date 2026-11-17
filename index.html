@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Xà Bông Handmade ✓ - Nhóm 1 A2-K25 Tân Kỳ 3</title>
+    <title>Xà Bông Handmade ✓ - Tự nhiên & Lành tính</title>
     <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
             --border-light: #F2ECE4;
             --tag-bg: #F7F1EA;
             --verified-blue: #1DA1F2;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         * {
@@ -43,13 +43,60 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
+        /* Keyframe Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 4px 12px rgba(244, 150, 125, 0.3);
+            }
+            50% {
+                box-shadow: 0 6px 20px rgba(244, 150, 125, 0.55);
+            }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        .delay-1 { animation-delay: 0.08s; }
+        .delay-2 { animation-delay: 0.16s; }
+        .delay-3 { animation-delay: 0.24s; }
+
         /* Top Header */
         header {
-            background-color: var(--bg-color);
+            background-color: rgba(251, 246, 241, 0.92);
+            backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
+            transition: var(--transition);
         }
 
         .header-container {
@@ -72,6 +119,11 @@
             align-items: center;
             gap: 8px;
             line-height: 1.3;
+            transition: transform 0.25s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
         }
 
         .logo svg {
@@ -94,6 +146,7 @@
             font-weight: bold;
             margin-left: 2px;
             vertical-align: middle;
+            box-shadow: 0 2px 6px rgba(29, 161, 242, 0.35);
         }
 
         .nav-links {
@@ -116,11 +169,28 @@
         .nav-links a {
             text-decoration: none;
             color: var(--text-main);
+            position: relative;
+            padding-bottom: 2px;
             transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--accent);
+            transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
             color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .header-actions {
@@ -142,22 +212,24 @@
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
             transition: var(--transition);
-            padding: 6px 10px;
-            border-radius: 6px;
+            padding: 8px 12px;
+            border-radius: 8px;
             white-space: nowrap;
         }
 
         .icon-btn:hover {
             background: var(--tag-bg);
+            transform: translateY(-1px);
         }
 
         .cart-badge {
             background-color: var(--accent);
             color: white;
             font-size: 11px;
-            padding: 2px 6px;
+            padding: 2px 7px;
             border-radius: 10px;
             font-weight: 600;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         /* Views management */
@@ -166,6 +238,7 @@
         }
         .view-section.active {
             display: block;
+            animation: fadeInUp 0.45s ease both;
         }
 
         /* Breadcrumb */
@@ -215,6 +288,11 @@
             gap: 12px;
             margin-bottom: 24px;
             box-shadow: 0 2px 8px rgba(36,25,20,0.02);
+            transition: var(--transition);
+        }
+
+        .search-banner:hover {
+            box-shadow: 0 6px 20px rgba(36,25,20,0.04);
         }
 
         .search-banner-label {
@@ -235,6 +313,11 @@
             padding: 8px 12px;
             width: 100%;
             gap: 10px;
+            transition: border-color 0.25s ease;
+        }
+
+        .search-input-group:focus-within {
+            border-color: var(--accent);
         }
 
         .search-input-group input {
@@ -265,6 +348,11 @@
 
         .search-btn:hover {
             background: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .search-btn:active {
+            transform: translateY(0);
         }
 
         /* Catalog Layout */
@@ -322,6 +410,11 @@
             color: var(--text-muted);
             cursor: pointer;
             text-decoration: underline;
+            transition: color 0.2s;
+        }
+
+        .clear-filter:hover {
+            color: var(--accent);
         }
 
         .filter-group {
@@ -343,6 +436,11 @@
             color: var(--text-muted);
             margin-bottom: 10px;
             cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .checkbox-label:hover {
+            color: var(--text-main);
         }
 
         .checkbox-label input {
@@ -390,6 +488,10 @@
             font-size: 13px;
             cursor: pointer;
             transition: var(--transition);
+        }
+
+        .size-tag-btn:hover {
+            border-color: var(--accent);
         }
 
         .size-tag-btn.active {
@@ -458,8 +560,8 @@
         }
 
         .product-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(36,25,20,0.06);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(36,25,20,0.08);
             border-color: var(--accent);
         }
 
@@ -471,7 +573,7 @@
         .product-image-wrap {
             position: relative;
             width: 100%;
-            height: 220px;
+            height: 240px;
             background: #F4EBE1;
             overflow: hidden;
             display: flex;
@@ -483,28 +585,29 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .product-card:hover .product-image-wrap img {
-            transform: scale(1.05);
+            transform: scale(1.06);
         }
 
         .card-status-badge {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            background: rgba(36, 25, 20, 0.8);
+            top: 12px;
+            left: 12px;
+            background: rgba(36, 25, 20, 0.82);
             backdrop-filter: blur(4px);
             color: white;
             font-size: 11px;
             font-weight: 600;
             padding: 4px 10px;
             border-radius: 4px;
+            letter-spacing: 0.3px;
         }
 
         .product-info {
-            padding: 16px;
+            padding: 18px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -520,7 +623,7 @@
         }
 
         .product-name {
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 600;
             margin-bottom: 6px;
             color: var(--text-main);
@@ -529,15 +632,15 @@
         .product-desc-short {
             font-size: 13px;
             color: var(--text-muted);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             line-height: 1.5;
         }
 
         .product-price {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .product-card-footer {
@@ -545,7 +648,7 @@
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid var(--border-light);
-            padding-top: 10px;
+            padding-top: 12px;
             font-size: 12px;
             color: var(--text-muted);
         }
@@ -553,6 +656,13 @@
         .card-action-link {
             color: var(--primary);
             font-weight: 600;
+            transition: transform 0.25s ease;
+            display: inline-block;
+        }
+
+        .product-card:hover .card-action-link {
+            transform: translateX(4px);
+            color: var(--accent-hover);
         }
 
         .list-footer-info {
@@ -569,6 +679,7 @@
             border-radius: 12px;
             padding: 20px;
             box-shadow: 0 4px 16px rgba(36,25,20,0.04);
+            transition: var(--transition);
         }
 
         @media (min-width: 1024px) {
@@ -655,10 +766,16 @@
             transition: var(--transition);
         }
 
+        .weight-btn:hover {
+            border-color: var(--accent);
+            transform: translateY(-1px);
+        }
+
         .weight-btn.active {
             background: #FCE8E2;
             border-color: var(--accent);
             color: #C85A3C;
+            box-shadow: 0 2px 8px rgba(244, 150, 125, 0.2);
         }
 
         .stock-status-note {
@@ -686,6 +803,7 @@
             font-size: 22px;
             font-weight: 700;
             color: var(--primary);
+            transition: transform 0.2s ease;
         }
 
         .stock-badge-inline {
@@ -720,12 +838,17 @@
             justify-content: center;
             gap: 8px;
             transition: var(--transition);
-            box-shadow: 0 4px 12px rgba(244,150,125,0.3);
+            animation: pulseGlow 2.8s infinite;
             margin-bottom: 12px;
         }
 
         .add-to-cart-btn:hover {
             background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .add-to-cart-btn:active {
+            transform: translateY(0);
         }
 
         .panel-footer-note {
@@ -765,7 +888,7 @@
             background: var(--surface-color);
             z-index: 1000;
             box-shadow: -8px 0 30px rgba(36,25,20,0.1);
-            transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: right 0.35s cubic-bezier(0.22, 1, 0.36, 1);
             display: flex;
             flex-direction: column;
         }
@@ -797,6 +920,7 @@
             align-items: center;
             padding-bottom: 14px;
             border-bottom: 1px solid var(--border-light);
+            animation: fadeInUp 0.3s ease both;
         }
 
         .cart-item-img {
@@ -846,6 +970,11 @@
             cursor: pointer;
             font-weight: 700;
             font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .cart-item-qty button:hover {
+            background: var(--tag-bg);
         }
 
         .cart-item-qty span {
@@ -897,6 +1026,7 @@
 
         .checkout-drawer-btn:hover {
             background: var(--accent);
+            transform: translateY(-1px);
         }
 
         /* Checkout View Styles */
@@ -1019,9 +1149,40 @@
             transition: var(--transition);
         }
 
+        .payment-method-option:hover {
+            border-color: var(--accent);
+        }
+
         .payment-method-option.selected {
             border-color: var(--primary);
             background: var(--tag-bg);
+        }
+
+        /* QR Code Box Animation & Styling */
+        .qr-payment-panel {
+            display: none;
+            margin-top: 12px;
+            padding: 18px;
+            background: #FDFBF9;
+            border: 1.5px dashed var(--accent);
+            border-radius: 10px;
+            text-align: center;
+            animation: scaleIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        .qr-payment-panel.visible {
+            display: block;
+        }
+
+        .qr-payment-panel img {
+            width: 220px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin: 10px auto;
+            display: block;
+            box-shadow: 0 4px 12px rgba(36, 25, 20, 0.08);
         }
 
         .summary-line {
@@ -1062,6 +1223,7 @@
 
         .pay-action-btn:hover {
             background: var(--accent-hover);
+            transform: translateY(-2px);
         }
 
         .back-to-shop-link {
@@ -1073,10 +1235,44 @@
             text-decoration: none;
         }
 
+        /* Processing Overlay */
+        .processing-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(251, 246, 241, 0.88);
+            backdrop-filter: blur(6px);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .processing-overlay.active {
+            display: flex;
+            animation: fadeInUp 0.25s ease both;
+        }
+
+        .spinner-ring {
+            width: 48px;
+            height: 48px;
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+
         /* Success Screen */
         .success-screen {
             text-align: center;
-            padding: 30px 16px;
+            padding: 36px 20px;
+            animation: scaleIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
         .success-icon {
@@ -1179,6 +1375,7 @@
             height: 100%;
             background: #F5A623;
             border-radius: 4px;
+            transition: width 0.6s ease;
         }
 
         .review-write-cta {
@@ -1217,6 +1414,7 @@
         .btn-outline-custom:hover {
             background: var(--primary);
             color: white;
+            transform: translateY(-1px);
         }
 
         .review-filters-bar {
@@ -1237,6 +1435,10 @@
             transition: var(--transition);
             font-weight: 500;
             white-space: nowrap;
+        }
+
+        .review-filter-pill:hover {
+            border-color: var(--accent);
         }
 
         .review-filter-pill.active {
@@ -1265,6 +1467,13 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            transition: var(--transition);
+            animation: fadeInUp 0.4s ease both;
+        }
+
+        .review-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(36, 25, 20, 0.05);
         }
 
         .reviewer-info-row {
@@ -1357,6 +1566,7 @@
             padding: 24px;
             box-shadow: 0 10px 30px rgba(36,25,20,0.15);
             position: relative;
+            animation: scaleIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
         .modal-close-btn {
@@ -1391,6 +1601,11 @@
             background: var(--surface-color);
             color: var(--text-main);
             outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: var(--accent);
         }
 
         .form-group textarea {
@@ -1463,12 +1678,12 @@
         <div class="header-container">
             <a href="#" class="logo" onclick="switchView('shop'); return false;">
                 <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                Xà Bông Handmade <span class="verified-badge-icon" title="Tài khoản doanh nghiệp đã xác thực">✓</span>
+                Xà Bông Handmade <span class="verified-badge-icon" title="Doanh nghiệp đã xác thực">✓</span>
             </a>
             <ul class="nav-links">
                 <li><a href="#" onclick="switchView('shop'); return false;">Sản phẩm</a></li>
                 <li><a href="#reviews-section" onclick="scrollToSection('reviews-section'); return false;">Đánh giá</a></li>
-                <li><a href="#about-workshop" onclick="scrollToSection('about-workshop'); return false;">Về Nhóm 1</a></li>
+                <li><a href="#about-workshop" onclick="scrollToSection('about-workshop'); return false;">Giới thiệu</a></li>
             </ul>
             <div class="header-actions">
                 <button class="icon-btn" id="openCartBtn" type="button">
@@ -1481,31 +1696,31 @@
 
     <!-- ================= VIEW 1: SHOP CATALOG & DETAIL ================= -->
     <div id="shopView" class="view-section active">
-        <div class="breadcrumb-container">
-            Trang chủ / <span>Xà Bông Handmade ✓ (Nhóm 1 A2-K25 Tân Kỳ 3)</span>
+        <div class="breadcrumb-container animate-fade-up">
+            Trang chủ / <span>Xà Bông Handmade ✓</span>
         </div>
 
         <div class="main-container">
-            <div class="page-title-box">
-                <h1>Xà Bông Handmade ✓</h1>
+            <div class="page-title-box animate-fade-up delay-1">
+                <h1>Xà Bông Handmade <span class="verified-badge-icon" style="width:22px;height:22px;font-size:13px;" title="Doanh nghiệp đã xác thực">✓</span></h1>
                 <p>Sản phẩm thủ công tự nhiên từ dầu thực vật nguyên chất, an toàn và lành tính cho mọi làn da.</p>
             </div>
 
             <!-- Search Banner -->
-            <div class="search-banner">
+            <div class="search-banner animate-fade-up delay-2">
                 <div>
                     <div class="search-banner-label">SẢN PHẨM THỦ CÔNG</div>
                     <div style="font-size: 16px; font-weight: 600;">Chiết xuất từ dầu dừa, dầu ô liu & sáp ong tự nhiên</div>
                 </div>
                 <div class="search-input-group">
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                    <input type="text" id="searchInput" placeholder="Tìm sản phẩm của Nhóm 1...">
+                    <input type="text" id="searchInput" placeholder="Tìm sản phẩm xà phòng...">
                     <button class="search-btn" id="searchExecBtn" type="button">Tìm &rarr;</button>
                 </div>
             </div>
 
             <!-- Catalog Grid -->
-            <div class="catalog-layout">
+            <div class="catalog-layout animate-fade-up delay-3">
                 <!-- Column 1: Filters -->
                 <div class="filter-card">
                     <div class="filter-header">
@@ -1560,7 +1775,7 @@
                     <div class="products-grid" id="productsGrid"></div>
 
                     <div class="list-footer-info">
-                        Sản phẩm được nghiên cứu và thực hiện thủ công bởi Nhóm 1 - Lớp A2-K25 THPT Tân Kỳ 3.
+                        Sản phẩm được chế tác thủ công với nguồn nguyên liệu tự nhiên an toàn.
                     </div>
                 </div>
 
@@ -1574,7 +1789,7 @@
                     <div class="selected-preview-card">
                         <img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=300&q=80" id="sbThumb" class="selected-thumb" alt="">
                         <div>
-                            <div class="selected-title" id="sbTitle">Xà Phòng Handmade Do Nhóm 1 Làm</div>
+                            <div class="selected-title" id="sbTitle">Xà Phòng Handmade</div>
                             <div class="selected-subtitle" id="sbSubtitle">Từ dầu dừa, dầu ô liu, sáp ong & bơ hạt mỡ</div>
                         </div>
                     </div>
@@ -1607,7 +1822,7 @@
                     </button>
 
                     <div class="panel-footer-note">
-                        Ủng hộ sản phẩm sáng tạo của Nhóm 1 A2-K25 Tân Kỳ 3.
+                        Giao hàng toàn quốc · Đóng gói thân thiện môi trường.
                     </div>
                 </div>
             </div>
@@ -1617,7 +1832,7 @@
                 <div class="reviews-header" style="margin-bottom: 20px;">
                     <div>
                         <h2 style="font-size: 26px; font-weight: 600; margin-bottom: 4px;">Đánh giá & Cảm nhận khách hàng</h2>
-                        <p style="color: var(--text-muted); font-size: 13px;">Phản hồi thực tế sau khi trải nghiệm Xà Phòng Handmade Do Nhóm 1 Làm.</p>
+                        <p style="color: var(--text-muted); font-size: 13px;">Phản hồi thực tế sau khi trải nghiệm Xà Phòng Handmade.</p>
                     </div>
                 </div>
 
@@ -1655,7 +1870,7 @@
                         </div>
                     </div>
                     <div class="review-write-cta">
-                        <div style="font-size: 12px; font-weight: 600; text-align: center; color: var(--text-muted);">Bạn đã dùng thử xà phòng của Nhóm 1?</div>
+                        <div style="font-size: 12px; font-weight: 600; text-align: center; color: var(--text-muted);">Bạn đã dùng thử xà phòng của chúng tôi?</div>
                         <button class="btn-outline-custom" id="openReviewModalBtn" type="button">Viết đánh giá (1–5 sao)</button>
                     </div>
                 </div>
@@ -1675,12 +1890,12 @@
             <!-- About Workshop Section -->
             <div class="about-workshop-section" id="about-workshop">
                 <div class="about-workshop-content">
-                    <h2>Xà Bông Handmade ✓ (Nhóm 1 A2-K25 Tân Kỳ 3)</h2>
+                    <h2>Xà Bông Handmade <span class="verified-badge-icon">✓</span></h2>
                     <p>Được làm thủ công từ các loại chất béo thực vật giàu dưỡng chất như dầu dừa, dầu ô liu, bơ hạt mỡ kết hợp cùng sáp ong tự nhiên qua phản ứng xà phòng hóa an toàn.</p>
                     <p>Sản phẩm giữ lại lượng Glycerin tự nhiên giúp làn da luôn mềm mịn, sạch thoáng mà không hề gây khô rít sau khi sử dụng.</p>
                 </div>
                 <div>
-                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" class="about-workshop-img" alt="Xà phòng handmade Nhóm 1">
+                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" class="about-workshop-img" alt="Xà phòng handmade">
                 </div>
             </div>
         </div>
@@ -1730,20 +1945,30 @@
 
                         <div class="checkout-box" style="margin-bottom: 0;">
                             <div class="checkout-box-title">Phương thức thanh toán</div>
-                            <label class="payment-method-option selected">
-                                <input type="radio" name="payMethod" checked>
+                            <label class="payment-method-option selected" data-method="cod">
+                                <input type="radio" name="payMethod" value="cod" checked>
                                 <div>
                                     <div style="font-weight: 600; font-size: 13px;">Thanh toán khi nhận hàng (COD)</div>
                                     <div style="font-size: 11px; color: var(--text-muted);">Kiểm tra hàng và thanh toán tiền mặt khi nhận</div>
                                 </div>
                             </label>
-                            <label class="payment-method-option">
-                                <input type="radio" name="payMethod">
+                            <label class="payment-method-option" data-method="qr">
+                                <input type="radio" name="payMethod" value="qr">
                                 <div>
                                     <div style="font-weight: 600; font-size: 13px;">Chuyển khoản ngân hàng / QR</div>
-                                    <div style="font-size: 11px; color: var(--text-muted);">Chuyển khoản nhanh qua ứng dụng ngân hàng</div>
+                                    <div style="font-size: 11px; color: var(--text-muted);">Quét mã QR ngân hàng để thanh toán nhanh chóng</div>
                                 </div>
                             </label>
+
+                            <!-- QR Payment Panel -->
+                            <div class="qr-payment-panel" id="qrPaymentPanel">
+                                <div style="font-weight: 700; font-size: 14px; color: var(--primary);">Quét mã QR để thanh toán</div>
+                                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Số tiền cần thanh toán: <strong id="qrAmountDisplay" style="color: #C85A3C;">30.000 đ</strong></div>
+                                <img src="https://cdn.phototourl.com/anon/2026-11-17-08ca0b2a-f4e1-4e4b-a2af-7454c1426c9b.jpg" alt="Mã QR chuyển khoản ngân hàng">
+                                <div style="font-size: 11px; color: var(--text-muted); line-height: 1.4;">
+                                    Vui lòng kiểm tra kỹ thông tin người nhận và nhập nội dung chuyển khoản là <strong>Số điện thoại đặt hàng</strong> trước khi bấm Đặt hàng.
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -1782,6 +2007,13 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Order Processing Overlay -->
+    <div class="processing-overlay" id="processingOverlay">
+        <div class="spinner-ring"></div>
+        <div style="font-size: 18px; font-weight: 700; color: var(--primary);">Đang xử lý đơn hàng của bạn...</div>
+        <div style="font-size: 13px; color: var(--text-muted);">Vui lòng không đóng trình duyệt trong giây lát</div>
     </div>
 
     <!-- Slide-over Cart Drawer -->
@@ -1837,7 +2069,7 @@
                 <div class="form-group">
                     <label>Sản phẩm trải nghiệm</label>
                     <select id="revProductSelect">
-                        <option value="Xà Phòng Handmade Do Nhóm 1 Làm">Xà Phòng Handmade Do Nhóm 1 Làm</option>
+                        <option value="Xà Phòng Handmade">Xà Phòng Handmade</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -1860,7 +2092,7 @@
     </div>
 
     <footer>
-        © 2026 Xà Bông Handmade ✓. Sản phẩm học tập & sáng tạo thủ công Nhóm 1 A2-K25 Tân Kỳ 3.
+        © 2026 Xà Bông Handmade ✓. Bảo lưu mọi quyền.
     </footer>
 
     <!-- JavaScript Application Logic -->
@@ -1868,8 +2100,8 @@
         const products = [
             {
                 id: 1,
-                tag: "Thủ công Nhóm 1",
-                name: "Xà Phòng Handmade Do Nhóm 1 Làm",
+                tag: "Thủ công tự nhiên",
+                name: "Xà Phòng Handmade",
                 category: "Dưỡng ẩm & Làm sạch dịu nhẹ",
                 price: 30000,
                 rating: 5,
@@ -1883,16 +2115,16 @@
             {
                 id: 1,
                 name: "Nguyễn Minh Anh",
-                product: "Xà Phòng Handmade Do Nhóm 1 Làm",
+                product: "Xà Phòng Handmade",
                 stars: 5,
                 date: "Hôm qua",
                 comment: "Bánh xà phòng thơm nhẹ tự nhiên, rửa tay hay tắm đều tạo bọt mịn mà không làm khô da. Rất ủng hộ sản phẩm của Xà Bông Handmade ✓!",
-                shopReply: "Xà Bông Handmade ✓ cảm ơn bạn đã tin tưởng và ủng hộ sản phẩm thủ công của nhóm ạ!"
+                shopReply: "Xà Bông Handmade ✓ cảm ơn bạn đã tin tưởng và ủng hộ sản phẩm thủ công của shop ạ!"
             },
             {
                 id: 2,
                 name: "Trần Quốc Bảo",
-                product: "Xà Phòng Handmade Do Nhóm 1 Làm",
+                product: "Xà Phòng Handmade",
                 stars: 5,
                 date: "2 ngày trước",
                 comment: "Giá 30k cho 1 bánh 60g rất hợp lý, làm từ dầu dừa và dầu ô liu nên dùng cực kỳ lành tính, không bị rít da như xà phòng công nghiệp.",
@@ -1901,11 +2133,11 @@
             {
                 id: 3,
                 name: "Lê Thị Thu Hà",
-                product: "Xà Phòng Handmade Do Nhóm 1 Làm",
+                product: "Xà Phòng Handmade",
                 stars: 4,
                 date: "4 ngày trước",
                 comment: "Mình mua combo 3 bánh dùng dần rất tiết kiệm. Bánh cầm chắc tay, đóng gói chỉn chu.",
-                shopReply: "Cảm ơn bạn đã ủng hộ Combo 3 bánh của chúng tôi nhé!"
+                shopReply: "Cảm ơn bạn đã ủng hộ Combo 3 bánh của shop nhé!"
             }
         ];
 
@@ -1915,7 +2147,7 @@
         let cartItems = [
             {
                 id: 1,
-                name: "Xà Phòng Handmade Do Nhóm 1 Làm",
+                name: "Xà Phòng Handmade",
                 weight: "60g",
                 price: 30000,
                 qty: 1,
@@ -1951,7 +2183,10 @@
                     currentSelectedWeight = this.getAttribute('data-weight');
                     currentSelectedPrice = parseInt(this.getAttribute('data-price'));
                     document.getElementById('selectedWeightLbl').innerText = currentSelectedWeight;
-                    document.getElementById('sbPriceLbl').innerText = currentSelectedPrice.toLocaleString() + ' đ';
+                    const priceEl = document.getElementById('sbPriceLbl');
+                    priceEl.innerText = currentSelectedPrice.toLocaleString() + ' đ';
+                    priceEl.style.transform = 'scale(1.08)';
+                    setTimeout(() => { priceEl.style.transform = 'scale(1)'; }, 180);
                 });
             });
 
@@ -2007,12 +2242,20 @@
             });
             document.getElementById('completeOrderBtn').addEventListener('click', completeCheckoutOrder);
 
-            // Phương thức thanh toán
+            // Phương thức thanh toán & Hiển thị QR
+            const qrPanel = document.getElementById('qrPaymentPanel');
             document.querySelectorAll('.payment-method-option').forEach(opt => {
                 opt.addEventListener('click', function() {
                     document.querySelectorAll('.payment-method-option').forEach(o => o.classList.remove('selected'));
                     this.classList.add('selected');
-                    this.querySelector('input').checked = true;
+                    const radio = this.querySelector('input');
+                    radio.checked = true;
+
+                    if (this.getAttribute('data-method') === 'qr') {
+                        qrPanel.classList.add('visible');
+                    } else {
+                        qrPanel.classList.remove('visible');
+                    }
                 });
             });
         });
@@ -2027,7 +2270,7 @@
             }
 
             grid.innerHTML = list.map(p => `
-                <div class="product-card ${p.id === currentSelectedProduct.id ? 'selected' : ''}" data-id="${p.id}" style="grid-column: span 2;">
+                <div class="product-card ${p.id === currentSelectedProduct.id ? 'selected' : ''}" data-id="${p.id}">
                     <div class="product-image-wrap">
                         <span class="card-status-badge">${p.tag}</span>
                         <img src="${p.image}" alt="${p.name}">
@@ -2101,7 +2344,10 @@
 
         function updateCartBadge() {
             const totalCount = cartItems.reduce((sum, item) => sum + item.qty, 0);
-            document.getElementById('cartCountBadge').innerText = totalCount;
+            const badge = document.getElementById('cartCountBadge');
+            badge.innerText = totalCount;
+            badge.style.transform = 'scale(1.25)';
+            setTimeout(() => { badge.style.transform = 'scale(1)'; }, 220);
         }
 
         function renderCartDrawerItems() {
@@ -2187,6 +2433,9 @@
                 document.getElementById('checkoutView').classList.add('active');
                 document.getElementById('checkoutFormContent').style.display = 'block';
                 document.getElementById('successScreenContent').style.display = 'none';
+                document.getElementById('stepIndicator2').classList.add('active');
+                document.getElementById('stepIndicator2').classList.remove('completed');
+                document.getElementById('stepIndicator3').classList.remove('active');
                 renderCheckoutSummary();
             }
         }
@@ -2211,18 +2460,30 @@
                 `;
             }).join('');
 
-            document.getElementById('summarySubtotal').innerText = subtotal.toLocaleString() + ' đ';
-            document.getElementById('summaryTotalAmount').innerText = subtotal.toLocaleString() + ' đ';
-            document.getElementById('payBtnAmountLabel').innerText = subtotal.toLocaleString() + ' đ';
+            const formattedTotal = subtotal.toLocaleString() + ' đ';
+            document.getElementById('summarySubtotal').innerText = formattedTotal;
+            document.getElementById('summaryTotalAmount').innerText = formattedTotal;
+            document.getElementById('payBtnAmountLabel').innerText = formattedTotal;
+            document.getElementById('qrAmountDisplay').innerText = formattedTotal;
         }
 
         function completeCheckoutOrder() {
-            document.getElementById('checkoutFormContent').style.display = 'none';
-            document.getElementById('successScreenContent').style.display = 'block';
-            document.getElementById('successOrderId').innerText = '#XBHM-' + Math.floor(1000 + Math.random() * 9000);
-            cartItems = [];
-            updateCartBadge();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const processingOverlay = document.getElementById('processingOverlay');
+            processingOverlay.classList.add('active');
+
+            // Hiển thị đang xử lý đơn hàng trong 1.8 giây
+            setTimeout(() => {
+                processingOverlay.classList.remove('active');
+                document.getElementById('checkoutFormContent').style.display = 'none';
+                document.getElementById('successScreenContent').style.display = 'block';
+                document.getElementById('stepIndicator2').classList.remove('active');
+                document.getElementById('stepIndicator2').classList.add('completed');
+                document.getElementById('stepIndicator3').classList.add('active');
+                document.getElementById('successOrderId').innerText = '#XBHM-' + Math.floor(1000 + Math.random() * 9000);
+                cartItems = [];
+                updateCartBadge();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 1800);
         }
 
         function renderReviews(list) {
