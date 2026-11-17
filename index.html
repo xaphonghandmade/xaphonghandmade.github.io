@@ -194,10 +194,16 @@
         .header-container {
             max-width: 1320px;
             margin: 0 auto;
-            padding: 12px 20px;
+            padding: 10px 14px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
+        }
+
+        @media (min-width: 768px) {
+            .header-container {
+                padding: 12px 24px;
+            }
         }
 
         @media (min-width: 1024px) {
@@ -206,28 +212,35 @@
             }
         }
 
-        /* Hàng trên: Đồng hồ thời gian thực & Lời chào */
+        /* Hàng trên: Lời chào & Đồng hồ thời gian thực */
         .realtime-widget-row {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
-            padding-bottom: 8px;
+            padding-bottom: 6px;
             border-bottom: 1px solid var(--border-light);
         }
 
         .realtime-widget {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 5px 14px;
+            border-radius: 99px;
+            padding: 4px 12px;
             text-align: center;
             box-shadow: var(--card-shadow);
-            font-size: 13px;
+            font-size: 11.5px;
             transition: var(--transition);
+        }
+
+        @media (min-width: 768px) {
+            .realtime-widget {
+                font-size: 12.5px;
+                padding: 5px 14px;
+            }
         }
 
         .greeting-text {
@@ -247,37 +260,42 @@
             white-space: nowrap;
         }
 
-        /* Hàng dưới: Logo, Menu, Nút điều hướng & Giỏ hàng */
+        /* Hàng dưới: Logo, Menu, Nút Sáng/Tối & Giỏ hàng */
         .header-main-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .logo {
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 700;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.2px;
             color: var(--text-main);
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             line-height: 1.3;
             transition: transform 0.25s ease;
+            flex-shrink: 0;
+            min-width: 0;
+        }
+
+        @media (min-width: 768px) {
+            .logo { font-size: 18px; gap: 8px; }
+        }
+
+        .logo svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--accent);
             flex-shrink: 0;
         }
 
         @media (min-width: 768px) {
-            .logo { font-size: 20px; }
-        }
-
-        .logo svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--accent);
-            flex-shrink: 0;
+            .logo svg { width: 20px; height: 20px; }
         }
 
         .verified-badge-icon {
@@ -286,19 +304,24 @@
             justify-content: center;
             background-color: var(--verified-blue);
             color: white;
-            width: 16px;
-            height: 16px;
+            width: 15px;
+            height: 15px;
             border-radius: 50%;
-            font-size: 10px;
+            font-size: 9.5px;
             font-weight: bold;
             margin-left: 2px;
             vertical-align: middle;
             box-shadow: 0 2px 6px rgba(29, 161, 242, 0.35);
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .verified-badge-icon { width: 16px; height: 16px; font-size: 10px; }
         }
 
         .nav-links {
             display: none;
-            gap: 20px;
+            gap: 18px;
             list-style: none;
             font-size: 14px;
             font-weight: 500;
@@ -340,31 +363,44 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             flex-shrink: 0;
         }
 
+        @media (min-width: 768px) {
+            .header-actions { gap: 10px; }
+        }
+
+        /* Nút Sáng/Tối gọn chỉ giữ lại icon */
         .theme-toggle-btn {
             background: var(--surface-color);
-            border: 1px solid var(--accent);
+            border: 1px solid var(--border-color);
             color: var(--text-main);
-            height: 38px;
-            padding: 0 16px;
-            border-radius: 99px;
-            font-size: 13px;
-            font-weight: 600;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 15px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
             box-shadow: var(--card-shadow);
             transition: var(--transition);
-            font-family: inherit;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .theme-toggle-btn {
+                width: 38px;
+                height: 38px;
+                font-size: 16px;
+            }
         }
 
         .theme-toggle-btn:hover {
+            border-color: var(--accent);
             background: var(--accent-soft);
-            transform: translateY(-1px) scale(1.03);
+            transform: translateY(-1px) scale(1.05);
         }
 
         .icon-btn {
@@ -373,17 +409,27 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
-            height: 38px;
-            font-size: 13px;
+            gap: 6px;
+            height: 36px;
+            font-size: 12.5px;
             font-weight: 600;
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
             transition: var(--transition);
-            padding: 0 16px;
+            padding: 0 12px;
             border-radius: 99px;
             white-space: nowrap;
             box-shadow: var(--card-shadow);
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .icon-btn {
+                height: 38px;
+                padding: 0 16px;
+                font-size: 13px;
+                gap: 8px;
+            }
         }
 
         .icon-btn:hover {
@@ -398,8 +444,8 @@
         .cart-badge {
             background-color: var(--accent);
             color: #1A1412;
-            font-size: 11px;
-            padding: 1px 7px;
+            font-size: 10.5px;
+            padding: 1px 6px;
             border-radius: 10px;
             font-weight: 800;
             transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -418,9 +464,17 @@
         .breadcrumb-container {
             max-width: 1320px;
             margin: 0 auto;
-            padding: 16px 20px 0 20px;
-            font-size: 13px;
+            padding: 14px 16px 0 16px;
+            font-size: 12.5px;
             color: var(--text-muted);
+        }
+
+        @media (min-width: 768px) {
+            .breadcrumb-container { padding: 18px 24px 0 24px; font-size: 13px; }
+        }
+
+        @media (min-width: 1024px) {
+            .breadcrumb-container { padding: 20px 32px 0 32px; }
         }
 
         .breadcrumb-container span {
@@ -432,22 +486,46 @@
         .main-container {
             max-width: 1320px;
             margin: 0 auto;
-            padding: 20px 20px 40px 20px;
+            padding: 16px 16px 36px 16px;
+        }
+
+        @media (min-width: 768px) {
+            .main-container { padding: 20px 24px 48px 24px; }
+        }
+
+        @media (min-width: 1024px) {
+            .main-container { padding: 24px 32px 60px 32px; }
         }
 
         .page-title-box {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .page-title-box { margin-bottom: 20px; }
         }
 
         .page-title-box h1 {
-            font-size: 32px;
+            font-size: 26px;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
+        }
+
+        @media (min-width: 768px) {
+            .page-title-box h1 { font-size: 34px; }
+        }
+
+        @media (min-width: 1024px) {
+            .page-title-box h1 { font-size: 42px; }
         }
 
         .page-title-box p {
             color: var(--text-muted);
-            font-size: 14px;
+            font-size: 13px;
+        }
+
+        @media (min-width: 768px) {
+            .page-title-box p { font-size: 14px; }
         }
 
         /* Search Bar Banner */
@@ -455,21 +533,28 @@
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: 14px;
-            padding: 16px 20px;
+            padding: 14px 16px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-bottom: 24px;
+            gap: 10px;
+            margin-bottom: 20px;
             box-shadow: var(--card-shadow);
             transition: var(--transition);
         }
 
-        .search-banner:hover {
-            box-shadow: var(--card-shadow-hover);
+        @media (min-width: 1024px) {
+            .search-banner {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 24px;
+                margin-bottom: 24px;
+            }
+            .search-input-group { width: 420px; }
         }
 
         .search-banner-label {
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 600;
             color: var(--text-muted);
             text-transform: uppercase;
@@ -508,9 +593,9 @@
             background: var(--primary);
             color: var(--primary-contrast);
             border: none;
-            padding: 10px 16px;
+            padding: 9px 14px;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: 700;
             cursor: pointer;
             display: flex;
@@ -534,24 +619,15 @@
         .catalog-layout {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 24px;
+            gap: 20px;
         }
 
         @media (min-width: 1024px) {
             .catalog-layout {
                 grid-template-columns: 270px 1fr 350px;
+                gap: 24px;
                 align-items: start;
             }
-            .breadcrumb-container { padding: 20px 32px 0 32px; }
-            .main-container { padding: 24px 32px 60px 32px; }
-            .page-title-box h1 { font-size: 42px; }
-            .search-banner {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                padding: 20px 24px;
-            }
-            .search-input-group { width: 420px; }
         }
 
         /* Column 1: Filters */
@@ -559,22 +635,26 @@
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: 14px;
-            padding: 20px;
+            padding: 16px;
             box-shadow: var(--card-shadow);
             transition: var(--transition);
+        }
+
+        @media (min-width: 768px) {
+            .filter-card { padding: 20px; }
         }
 
         .filter-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
-            padding-bottom: 10px;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
             border-bottom: 1px solid var(--border-light);
         }
 
         .filter-header h3 {
-            font-size: 16px;
+            font-size: 15px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -593,13 +673,13 @@
         }
 
         .filter-group {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .filter-group-title {
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--text-main);
         }
 
@@ -607,9 +687,9 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 14px;
+            font-size: 13.5px;
             color: var(--text-muted);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             cursor: pointer;
             transition: color 0.2s;
         }
@@ -628,14 +708,14 @@
         .price-slider-box {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .price-inputs {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 13px;
+            font-size: 12.5px;
             color: var(--text-main);
             font-weight: 600;
             background: var(--tag-bg);
@@ -652,16 +732,16 @@
         .size-tags {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
         }
 
         .size-tag-btn {
             background: var(--tag-bg);
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            padding: 8px 12px;
+            padding: 7px 10px;
             border-radius: 8px;
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: 500;
             cursor: pointer;
             transition: var(--transition);
@@ -686,7 +766,7 @@
         .product-list-section {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
 
         .list-toolbar {
@@ -694,7 +774,7 @@
             justify-content: space-between;
             align-items: center;
             background: var(--surface-color);
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-radius: 12px;
             border: 1px solid var(--border-color);
             flex-wrap: wrap;
@@ -703,7 +783,7 @@
         }
 
         .result-count {
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: 500;
         }
 
@@ -717,7 +797,7 @@
             border: 1px solid var(--border-color);
             padding: 6px 10px;
             border-radius: 8px;
-            font-size: 13px;
+            font-size: 12.5px;
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--text-main);
             outline: none;
@@ -727,7 +807,7 @@
         .products-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 16px;
+            gap: 14px;
         }
 
         @media (min-width: 640px) {
@@ -768,12 +848,16 @@
         .product-image-wrap {
             position: relative;
             width: 100%;
-            height: 210px;
+            height: 190px;
             background: var(--tag-bg);
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+            .product-image-wrap { height: 210px; }
         }
 
         .product-image-wrap img {
@@ -790,14 +874,14 @@
 
         .card-status-badge {
             position: absolute;
-            top: 12px;
-            left: 12px;
+            top: 10px;
+            left: 10px;
             background: rgba(36, 25, 20, 0.82);
             backdrop-filter: blur(4px);
             color: white;
-            font-size: 11px;
+            font-size: 10.5px;
             font-weight: 600;
-            padding: 4px 10px;
+            padding: 3px 8px;
             border-radius: 6px;
             letter-spacing: 0.3px;
             z-index: 2;
@@ -815,15 +899,19 @@
         }
 
         .product-info {
-            padding: 18px;
+            padding: 14px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
             justify-content: space-between;
         }
 
+        @media (min-width: 768px) {
+            .product-info { padding: 18px; }
+        }
+
         .product-tag-small {
-            font-size: 11px;
+            font-size: 10.5px;
             text-transform: uppercase;
             color: var(--text-muted);
             letter-spacing: 0.5px;
@@ -831,31 +919,31 @@
         }
 
         .product-name {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             color: var(--text-main);
         }
 
         .product-desc-short {
-            font-size: 13px;
+            font-size: 12.5px;
             color: var(--text-muted);
-            margin-bottom: 12px;
-            line-height: 1.5;
+            margin-bottom: 10px;
+            line-height: 1.45;
         }
 
         .product-sales-count {
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 600;
             color: var(--accent-soft-text);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .product-price {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             color: var(--text-main);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .product-card-footer {
@@ -863,8 +951,8 @@
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid var(--border-light);
-            padding-top: 12px;
-            font-size: 12px;
+            padding-top: 10px;
+            font-size: 11.5px;
             color: var(--text-muted);
         }
 
@@ -880,9 +968,9 @@
         }
 
         .list-footer-info {
-            font-size: 12px;
+            font-size: 11.5px;
             color: var(--text-muted);
-            margin-top: 4px;
+            margin-top: 2px;
             text-align: center;
         }
 
@@ -891,9 +979,13 @@
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: 14px;
-            padding: 20px;
+            padding: 16px;
             box-shadow: var(--card-shadow);
             transition: var(--transition);
+        }
+
+        @media (min-width: 768px) {
+            .sidebar-panel { padding: 20px; }
         }
 
         @media (min-width: 1024px) {
@@ -904,10 +996,10 @@
         }
 
         .panel-heading {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
-            margin-bottom: 14px;
-            padding-bottom: 10px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
             border-bottom: 1px solid var(--border-light);
             display: flex;
             justify-content: space-between;
@@ -916,9 +1008,9 @@
 
         .selected-preview-card {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             align-items: center;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             background: var(--tag-bg);
             padding: 10px;
             border-radius: 10px;
@@ -926,8 +1018,8 @@
         }
 
         .selected-thumb {
-            width: 56px;
-            height: 56px;
+            width: 50px;
+            height: 50px;
             border-radius: 8px;
             object-fit: cover;
             flex-shrink: 0;
@@ -939,24 +1031,24 @@
         }
 
         .selected-title {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             margin-bottom: 2px;
         }
 
         .selected-subtitle {
-            font-size: 12px;
+            font-size: 11.5px;
             color: var(--text-muted);
-            line-height: 1.4;
+            line-height: 1.35;
         }
 
         .option-section-title {
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 600;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             display: flex;
             justify-content: space-between;
         }
@@ -970,17 +1062,17 @@
         .weight-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            margin-bottom: 14px;
+            gap: 6px;
+            margin-bottom: 12px;
         }
 
         .weight-btn {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            padding: 9px 8px;
+            padding: 8px 6px;
             border-radius: 8px;
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 600;
             cursor: pointer;
             text-align: center;
@@ -1000,28 +1092,28 @@
         }
 
         .stock-status-note {
-            font-size: 12px;
+            font-size: 11.5px;
             color: var(--text-muted);
-            margin-bottom: 14px;
-            padding-bottom: 12px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
             border-bottom: 1px solid var(--border-light);
-            line-height: 1.5;
+            line-height: 1.45;
         }
 
         .price-display-box {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .price-display-box .label {
-            font-size: 13px;
+            font-size: 12.5px;
             color: var(--text-muted);
         }
 
         .price-display-box .amount {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--text-main);
             transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -1031,7 +1123,7 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 600;
             color: #43A047;
         }
@@ -1059,9 +1151,9 @@
             background: var(--accent);
             color: #1A1412;
             border: none;
-            padding: 14px;
+            padding: 13px;
             border-radius: 10px;
-            font-size: 15px;
+            font-size: 14.5px;
             font-weight: 800;
             cursor: pointer;
             display: flex;
@@ -1070,7 +1162,7 @@
             gap: 8px;
             transition: var(--transition);
             animation: pulseGlow 2.8s infinite;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             position: relative;
             overflow: hidden;
         }
@@ -1125,7 +1217,7 @@
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 16px;
+            padding: 14px;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -1138,10 +1230,10 @@
         .smart-cart-window {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 22px;
+            border-radius: 20px;
             width: 100%;
-            max-width: 520px;
-            max-height: 88vh;
+            max-width: 500px;
+            max-height: 86vh;
             box-shadow: 0 24px 64px rgba(0, 0, 0, 0.32);
             display: flex;
             flex-direction: column;
@@ -1150,7 +1242,7 @@
         }
 
         .smart-cart-top {
-            padding: 18px 22px;
+            padding: 16px 20px;
             background: var(--surface-elevated);
             border-bottom: 1px solid var(--border-light);
             display: flex;
@@ -1165,9 +1257,9 @@
         }
 
         .smart-cart-icon-pill {
-            width: 38px;
-            height: 38px;
-            border-radius: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             background: var(--accent-soft);
             color: var(--accent-soft-text);
             display: flex;
@@ -1176,13 +1268,13 @@
         }
 
         .smart-cart-close {
-            width: 34px;
-            height: 34px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             border: 1px solid var(--border-color);
             background: var(--surface-color);
             cursor: pointer;
-            font-size: 18px;
+            font-size: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1200,8 +1292,8 @@
         .smart-perk-bar {
             background: rgba(46, 125, 50, 0.12);
             border-bottom: 1px solid rgba(46, 125, 50, 0.22);
-            padding: 10px 22px;
-            font-size: 12px;
+            padding: 10px 20px;
+            font-size: 11.5px;
             color: #4CAF50;
         }
 
@@ -1222,22 +1314,22 @@
         }
 
         .smart-cart-body {
-            padding: 16px 22px;
+            padding: 14px 20px;
             overflow-y: auto;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .smart-cart-item {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             background: var(--bg-color);
             border: 1px solid var(--border-light);
-            border-radius: 14px;
-            padding: 10px 12px;
+            border-radius: 12px;
+            padding: 10px;
             transition: var(--transition);
         }
 
@@ -1247,9 +1339,9 @@
         }
 
         .smart-cart-thumb {
-            width: 58px;
-            height: 58px;
-            border-radius: 10px;
+            width: 52px;
+            height: 52px;
+            border-radius: 8px;
             object-fit: cover;
             flex-shrink: 0;
         }
@@ -1260,7 +1352,7 @@
         }
 
         .smart-cart-name {
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: 700;
             color: var(--text-main);
             white-space: nowrap;
@@ -1271,11 +1363,11 @@
         .smart-cart-pack {
             font-size: 11px;
             color: var(--text-muted);
-            margin: 2px 0 4px 0;
+            margin: 2px 0 3px 0;
         }
 
         .smart-cart-unit-price {
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: 700;
             color: var(--accent-soft-text);
         }
@@ -1287,18 +1379,18 @@
             border: 1px solid var(--border-color);
             border-radius: 99px;
             padding: 2px;
-            gap: 6px;
+            gap: 4px;
         }
 
         .smart-qty-pill button {
-            width: 26px;
-            height: 26px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             border: none;
             background: var(--tag-bg);
             cursor: pointer;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-main);
             transition: background 0.2s;
         }
@@ -1309,9 +1401,9 @@
         }
 
         .smart-qty-pill span {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
-            min-width: 18px;
+            min-width: 16px;
             text-align: center;
         }
 
@@ -1331,7 +1423,7 @@
         }
 
         .smart-cart-footer {
-            padding: 16px 22px 20px 22px;
+            padding: 14px 20px 18px 20px;
             background: var(--tag-bg);
             border-top: 1px solid var(--border-color);
         }
@@ -1340,7 +1432,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
         .smart-checkout-cta {
@@ -1348,9 +1440,9 @@
             background: var(--primary);
             color: var(--primary-contrast);
             border: none;
-            padding: 14px 18px;
+            padding: 13px 16px;
             border-radius: 12px;
-            font-size: 15px;
+            font-size: 14.5px;
             font-weight: 800;
             cursor: pointer;
             display: flex;
@@ -1369,16 +1461,20 @@
         /* Checkout View Styles */
         .checkout-container {
             max-width: 1000px;
-            margin: 20px auto 40px auto;
-            padding: 0 16px;
+            margin: 16px auto 36px auto;
+            padding: 0 14px;
+        }
+
+        @media (min-width: 768px) {
+            .checkout-container { padding: 0 24px; margin: 20px auto 40px auto; }
         }
 
         .checkout-header-steps {
             display: flex;
             justify-content: flex-end;
-            gap: 16px;
-            margin-bottom: 20px;
-            font-size: 12px;
+            gap: 14px;
+            margin-bottom: 18px;
+            font-size: 11.5px;
             overflow-x: auto;
         }
 
@@ -1421,7 +1517,7 @@
         .checkout-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 18px;
         }
 
         @media (min-width: 900px) {
@@ -1434,22 +1530,22 @@
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: 14px;
-            padding: 18px;
-            margin-bottom: 16px;
+            padding: 16px;
+            margin-bottom: 14px;
             box-shadow: var(--card-shadow);
         }
 
         .checkout-box-title {
-            font-size: 15px;
+            font-size: 14.5px;
             font-weight: 700;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .edit-address-link {
-            font-size: 12px;
+            font-size: 11.5px;
             color: var(--accent);
             cursor: pointer;
             font-weight: 600;
@@ -1463,7 +1559,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
+            padding: 9px 0;
             border-bottom: 1px solid var(--border-light);
         }
 
@@ -1479,7 +1575,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 12px 14px;
+            padding: 11px 12px;
             border: 1px solid var(--border-color);
             border-radius: 10px;
             margin-bottom: 8px;
@@ -1500,7 +1596,7 @@
         .qr-payment-panel {
             display: none;
             margin-top: 12px;
-            padding: 18px;
+            padding: 16px;
             background: var(--surface-elevated);
             border: 1.5px dashed var(--accent);
             border-radius: 12px;
@@ -1513,7 +1609,7 @@
         }
 
         .qr-payment-panel img {
-            width: 220px;
+            width: 200px;
             max-width: 100%;
             height: auto;
             border-radius: 10px;
@@ -1526,18 +1622,18 @@
         .summary-line {
             display: flex;
             justify-content: space-between;
-            font-size: 13px;
-            margin-bottom: 10px;
+            font-size: 12.5px;
+            margin-bottom: 9px;
             color: var(--text-muted);
         }
 
         .summary-line.total {
-            font-size: 16px;
+            font-size: 15.5px;
             font-weight: 700;
             color: var(--text-main);
             border-top: 1px solid var(--border-color);
-            padding-top: 12px;
-            margin-top: 12px;
+            padding-top: 11px;
+            margin-top: 11px;
         }
 
         .pay-action-btn {
@@ -1545,9 +1641,9 @@
             background: var(--accent);
             color: #1A1412;
             border: none;
-            padding: 14px;
+            padding: 13px;
             border-radius: 10px;
-            font-size: 15px;
+            font-size: 14.5px;
             font-weight: 800;
             cursor: pointer;
             display: flex;
@@ -1556,7 +1652,7 @@
             gap: 8px;
             transition: var(--transition);
             box-shadow: 0 4px 16px rgba(244,150,125,0.3);
-            margin-top: 12px;
+            margin-top: 10px;
         }
 
         .pay-action-btn:hover {
@@ -1567,8 +1663,8 @@
         .back-to-shop-link {
             display: block;
             text-align: center;
-            margin-top: 12px;
-            font-size: 12px;
+            margin-top: 10px;
+            font-size: 11.5px;
             color: var(--text-muted);
             text-decoration: none;
         }
@@ -1598,8 +1694,8 @@
         }
 
         .spinner-ring {
-            width: 48px;
-            height: 48px;
+            width: 46px;
+            height: 46px;
             border: 4px solid var(--border-color);
             border-top: 4px solid var(--accent);
             border-radius: 50%;
@@ -1609,30 +1705,30 @@
         /* Success Screen */
         .success-screen {
             text-align: center;
-            padding: 36px 20px;
+            padding: 32px 18px;
             animation: scaleIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
         .success-icon {
-            width: 64px;
-            height: 64px;
+            width: 60px;
+            height: 60px;
             background: rgba(46, 125, 50, 0.16);
             color: #4CAF50;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            margin: 0 auto 16px auto;
+            font-size: 26px;
+            margin: 0 auto 14px auto;
         }
 
         .qr-zalo-alert-box {
             background: rgba(0, 104, 255, 0.1);
             border: 1.5px solid #0068FF;
             border-radius: 12px;
-            padding: 18px;
-            max-width: 520px;
-            margin: 16px auto 20px auto;
+            padding: 16px;
+            max-width: 500px;
+            margin: 14px auto 18px auto;
             text-align: center;
         }
 
@@ -1640,15 +1736,15 @@
             background: #0068FF;
             color: white;
             border: none;
-            padding: 12px 22px;
+            padding: 11px 20px;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: 700;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            margin-top: 12px;
+            margin-top: 10px;
             box-shadow: 0 4px 14px rgba(0, 104, 255, 0.28);
             transition: var(--transition);
         }
@@ -1660,21 +1756,21 @@
 
         /* Reviews Section */
         .reviews-section {
-            margin-top: 40px;
+            margin-top: 36px;
             border-top: 1px solid var(--border-color);
-            padding-top: 30px;
+            padding-top: 26px;
         }
 
         .reviews-summary-card {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: 14px;
-            padding: 20px;
+            padding: 18px;
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 18px;
             align-items: center;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             box-shadow: var(--card-shadow);
         }
 
@@ -1689,7 +1785,7 @@
         .rating-overview {
             text-align: center;
             border-bottom: 1px solid var(--border-light);
-            padding-bottom: 16px;
+            padding-bottom: 14px;
         }
 
         @media (min-width: 900px) {
@@ -1701,7 +1797,7 @@
         }
 
         .rating-score-big {
-            font-size: 42px;
+            font-size: 40px;
             font-weight: 700;
             font-family: 'Cormorant Garamond', serif;
             color: var(--text-main);
@@ -1711,12 +1807,12 @@
 
         .stars-container {
             color: #F5A623;
-            font-size: 15px;
+            font-size: 14px;
             margin-bottom: 4px;
         }
 
         .rating-count-text {
-            font-size: 12px;
+            font-size: 11.5px;
             color: var(--text-muted);
         }
 
@@ -1730,13 +1826,13 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 12px;
+            font-size: 11.5px;
             color: var(--text-muted);
         }
 
         .bar-bg {
             flex-grow: 1;
-            height: 8px;
+            height: 7px;
             background: var(--tag-bg);
             border-radius: 4px;
             overflow: hidden;
@@ -1756,7 +1852,7 @@
             align-items: center;
             justify-content: center;
             border-top: 1px solid var(--border-light);
-            padding-top: 16px;
+            padding-top: 14px;
         }
 
         @media (min-width: 900px) {
@@ -1772,9 +1868,9 @@
             background: var(--surface-color);
             border: 1px solid var(--primary);
             color: var(--text-main);
-            padding: 10px 16px;
+            padding: 9px 14px;
             border-radius: 8px;
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
@@ -1791,7 +1887,7 @@
         .review-filters-bar {
             display: flex;
             gap: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             overflow-x: auto;
             padding-bottom: 4px;
         }
@@ -1800,9 +1896,9 @@
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            padding: 6px 14px;
+            padding: 6px 13px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 11.5px;
             cursor: pointer;
             transition: var(--transition);
             font-weight: 500;
@@ -1822,7 +1918,7 @@
         .reviews-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 16px;
+            gap: 14px;
         }
 
         @media (min-width: 900px) {
@@ -1835,10 +1931,10 @@
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: 14px;
-            padding: 16px;
+            padding: 15px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
             transition: var(--transition);
             box-shadow: var(--card-shadow);
         }
@@ -1856,50 +1952,50 @@
 
         .reviewer-name {
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13.5px;
             margin-bottom: 2px;
         }
 
         .review-product-tag {
-            font-size: 11px;
+            font-size: 10.5px;
             color: var(--text-muted);
             background: var(--tag-bg);
-            padding: 2px 8px;
+            padding: 2px 7px;
             border-radius: 6px;
             display: inline-block;
             margin-top: 2px;
         }
 
         .review-date {
-            font-size: 11px;
+            font-size: 10.5px;
             color: var(--text-muted);
         }
 
         .review-comment {
-            font-size: 13px;
+            font-size: 12.5px;
             color: var(--text-main);
-            line-height: 1.5;
+            line-height: 1.45;
         }
 
         .verified-badge {
-            font-size: 10px;
+            font-size: 9.5px;
             color: #4CAF50;
             background: rgba(76, 175, 80, 0.14);
-            padding: 2px 6px;
+            padding: 2px 5px;
             border-radius: 4px;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
-            gap: 4px;
+            gap: 3px;
         }
 
         .shop-reply-box {
             background: var(--tag-bg);
-            padding: 10px 12px;
+            padding: 9px 11px;
             border-radius: 8px;
-            font-size: 12px;
+            font-size: 11.5px;
             color: var(--text-muted);
-            margin-top: 6px;
+            margin-top: 4px;
             border-left: 2px solid var(--accent);
         }
 
@@ -1907,7 +2003,7 @@
             font-weight: 600;
             color: var(--text-main);
             margin-bottom: 2px;
-            font-size: 11px;
+            font-size: 10.5px;
         }
 
         /* Modal Overlay */
@@ -1923,7 +2019,7 @@
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 16px;
+            padding: 14px;
         }
 
         .modal-overlay.open {
@@ -1935,8 +2031,8 @@
             border: 1px solid var(--border-color);
             border-radius: 18px;
             width: 100%;
-            max-width: 460px;
-            padding: 24px;
+            max-width: 440px;
+            padding: 22px;
             box-shadow: 0 18px 46px rgba(0, 0, 0, 0.25);
             position: relative;
             animation: scaleIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -1944,33 +2040,33 @@
 
         .modal-close-btn {
             position: absolute;
-            top: 16px;
-            right: 16px;
+            top: 14px;
+            right: 14px;
             background: none;
             border: none;
-            font-size: 22px;
+            font-size: 20px;
             cursor: pointer;
             color: var(--text-muted);
         }
 
         .form-group {
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
         .form-group label {
             display: block;
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
-            padding: 10px 12px;
+            padding: 9px 11px;
             border: 1px solid var(--border-color);
             border-radius: 8px;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 14px;
+            font-size: 13.5px;
             background: var(--bg-color);
             color: var(--text-main);
             outline: none;
@@ -1982,20 +2078,20 @@
         }
 
         .form-group textarea {
-            height: 90px;
+            height: 85px;
             resize: vertical;
         }
 
         /* About Workshop Section */
         .about-workshop-section {
-            margin-top: 40px;
+            margin-top: 36px;
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 24px;
+            padding: 20px;
             display: grid;
             grid-template-columns: 1fr;
-            gap: 24px;
+            gap: 20px;
             align-items: center;
             box-shadow: var(--card-shadow);
         }
@@ -2003,50 +2099,50 @@
         @media (min-width: 900px) {
             .about-workshop-section {
                 grid-template-columns: 1fr 1fr;
-                padding: 40px;
-                gap: 40px;
+                padding: 36px;
+                gap: 36px;
             }
         }
 
         .about-workshop-content h2 {
-            font-size: 28px;
-            margin-bottom: 12px;
+            font-size: 26px;
+            margin-bottom: 10px;
         }
 
         @media (min-width: 900px) {
-            .about-workshop-content h2 { font-size: 34px; }
+            .about-workshop-content h2 { font-size: 32px; }
         }
 
         .about-workshop-content p {
             color: var(--text-muted);
-            font-size: 14px;
-            margin-bottom: 12px;
+            font-size: 13.5px;
+            margin-bottom: 10px;
         }
 
         .about-workshop-img {
             width: 100%;
-            height: 240px;
+            height: 220px;
             border-radius: 12px;
             object-fit: cover;
         }
 
         @media (min-width: 900px) {
-            .about-workshop-img { height: 300px; }
+            .about-workshop-img { height: 280px; }
         }
 
         /* Footer & Contact Button */
         footer {
             border-top: 1px solid var(--border-color);
             background: var(--surface-color);
-            padding: 32px 20px 44px 20px;
+            padding: 28px 16px 38px 16px;
             text-align: center;
-            font-size: 13px;
+            font-size: 12.5px;
             color: var(--text-muted);
-            margin-top: 40px;
+            margin-top: 36px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
             transition: background-color 0.4s ease, border-color 0.4s ease;
         }
 
@@ -2054,9 +2150,9 @@
             background: var(--primary);
             color: var(--primary-contrast);
             border: none;
-            padding: 12px 26px;
+            padding: 11px 24px;
             border-radius: 30px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             cursor: pointer;
             display: inline-flex;
@@ -2077,13 +2173,13 @@
             background: rgba(0, 104, 255, 0.1);
             border: 1.5px solid #0068FF;
             border-radius: 12px;
-            padding: 20px;
+            padding: 18px;
             text-align: center;
-            margin: 12px 0 18px 0;
+            margin: 10px 0 16px 0;
         }
 
         .zalo-number-highlight {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 800;
             color: #1E88E5;
             letter-spacing: 0.5px;
@@ -2112,7 +2208,7 @@
                 </div>
             </div>
 
-            <!-- Hàng dưới: Logo, Menu, Nút Sáng/Tối & Giỏ hàng -->
+            <!-- Hàng dưới: Logo, Menu, Nút Sáng/Tối (chỉ icon) & Giỏ hàng -->
             <div class="header-main-row">
                 <a href="#" class="logo" onclick="switchView('shop'); return false;">
                     <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -2126,14 +2222,13 @@
                 </ul>
 
                 <div class="header-actions">
-                    <!-- Nút chuyển nền Sáng / Tối -->
+                    <!-- Nút chuyển nền Sáng / Tối (Đã bỏ chữ, chỉ giữ lại biểu tượng) -->
                     <button class="theme-toggle-btn" id="themeToggleBtn" type="button" title="Chuyển chế độ Sáng / Tối">
                         <span id="themeIcon">🌙</span>
-                        <span id="themeLabel">Tối</span>
                     </button>
 
                     <button class="icon-btn" id="openCartBtn" type="button">
-                        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
                         Giỏ hàng <span class="cart-badge" id="cartCountBadge">1</span>
                     </button>
                 </div>
@@ -2149,7 +2244,7 @@
 
         <div class="main-container">
             <div class="page-title-box animate-fade-up delay-1">
-                <h1>Xà Bông Handmade <span class="verified-badge-icon" style="width:22px;height:22px;font-size:13px;" title="Doanh nghiệp đã xác thực">✓</span></h1>
+                <h1>Xà Bông Handmade <span class="verified-badge-icon" style="width:20px;height:20px;font-size:11px;" title="Doanh nghiệp đã xác thực">✓</span></h1>
                 <p>Sản phẩm thủ công tự nhiên từ dầu thực vật nguyên chất, an toàn và lành tính cho mọi làn da.</p>
             </div>
 
@@ -2157,7 +2252,7 @@
             <div class="search-banner animate-fade-up delay-2">
                 <div>
                     <div class="search-banner-label">SẢN PHẨM THỦ CÔNG</div>
-                    <div style="font-size: 16px; font-weight: 600;">Chiết xuất từ dầu dừa, dầu ô liu & sáp ong tự nhiên</div>
+                    <div style="font-size: 15px; font-weight: 600;">Chiết xuất từ dầu dừa, dầu ô liu & sáp ong tự nhiên</div>
                 </div>
                 <div class="search-input-group">
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
@@ -2290,9 +2385,9 @@
 
             <!-- Customer Reviews Section -->
             <div class="reviews-section reveal-item" id="reviews-section">
-                <div class="reviews-header" style="margin-bottom: 20px;">
+                <div class="reviews-header" style="margin-bottom: 18px;">
                     <div>
-                        <h2 style="font-size: 26px; font-weight: 600; margin-bottom: 4px;">Đánh giá & Cảm nhận khách hàng</h2>
+                        <h2 style="font-size: 24px; font-weight: 600; margin-bottom: 4px;">Đánh giá & Cảm nhận khách hàng</h2>
                         <p style="color: var(--text-muted); font-size: 13px;">Phản hồi thực tế từ các khách hàng đã trải nghiệm sản phẩm.</p>
                     </div>
                 </div>
@@ -2398,10 +2493,10 @@
                                 <button type="button" class="edit-address-link" id="openEditAddressBtn">Chỉnh sửa địa chỉ</button>
                             </div>
                             <div class="shipping-info-card">
-                                <div style="font-weight: 700; font-size: 14px; margin-bottom: 4px;" id="displayReceiverNamePhone">Nguyễn Văn A · 0912345678</div>
-                                <div style="font-size: 13px; color: var(--text-muted);" id="displayReceiverAddress">Số 12, Đường Mẫu, Phường Bến Thành, TP. Hồ Chí Minh</div>
+                                <div style="font-weight: 700; font-size: 13.5px; margin-bottom: 4px;" id="displayReceiverNamePhone">Nguyễn Văn A · 0912345678</div>
+                                <div style="font-size: 12.5px; color: var(--text-muted);" id="displayReceiverAddress">Số 12, Đường Mẫu, Phường Bến Thành, TP. Hồ Chí Minh</div>
                             </div>
-                            <div style="font-size: 12px; color: #4CAF50; font-weight: 600;">✓ Giao tiêu chuẩn · Dự kiến 1–3 ngày (Miễn phí)</div>
+                            <div style="font-size: 11.5px; color: #4CAF50; font-weight: 600;">✓ Giao tiêu chuẩn · Dự kiến 1–3 ngày (Miễn phí)</div>
                         </div>
 
                         <div class="checkout-box" style="margin-bottom: 0;">
@@ -2423,9 +2518,9 @@
 
                             <!-- QR Payment Panel -->
                             <div class="qr-payment-panel" id="qrPaymentPanel">
-                                <div style="font-weight: 700; font-size: 14px; color: var(--text-main);">Quét mã QR để thanh toán</div>
-                                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Số tiền: <strong id="qrAmountDisplay" style="color: var(--accent-soft-text);">30.000 đ</strong></div>
-                                <div style="font-size: 13px; font-weight: 700; color: var(--accent-soft-text); background: var(--accent-soft); padding: 6px 10px; border-radius: 6px; display: inline-block; margin: 8px 0;">
+                                <div style="font-weight: 700; font-size: 13.5px; color: var(--text-main);">Quét mã QR để thanh toán</div>
+                                <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 2px;">Số tiền: <strong id="qrAmountDisplay" style="color: var(--accent-soft-text);">30.000 đ</strong></div>
+                                <div style="font-size: 12.5px; font-weight: 700; color: var(--accent-soft-text); background: var(--accent-soft); padding: 5px 10px; border-radius: 6px; display: inline-block; margin: 8px 0;">
                                     Mã đơn hàng: <span id="qrOrderCodeText" style="letter-spacing: 0.5px;">#XBHM-8839</span>
                                 </div>
                                 <img src="https://cdn.phototourl.com/anon/2026-11-17-08ca0b2a-f4e1-4e4b-a2af-7454c1426c9b.jpg" alt="Mã QR chuyển khoản ngân hàng">
@@ -2464,16 +2559,16 @@
             <div id="successScreenContent" style="display: none;">
                 <div class="checkout-box success-screen">
                     <div class="success-icon">✓</div>
-                    <h2 style="font-size: 28px; margin-bottom: 6px;">Đặt hàng thành công!</h2>
-                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 8px;">Cảm ơn bạn đã ủng hộ <strong>Xà Bông Handmade ✓</strong>.</p>
-                    <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">Mã đơn hàng của bạn: <strong id="successOrderId" style="color: var(--accent);">#XBHM-8839</strong></p>
+                    <h2 style="font-size: 26px; margin-bottom: 6px;">Đặt hàng thành công!</h2>
+                    <p style="color: var(--text-muted); font-size: 13.5px; margin-bottom: 8px;">Cảm ơn bạn đã ủng hộ <strong>Xà Bông Handmade ✓</strong>.</p>
+                    <p style="color: var(--text-muted); font-size: 12.5px; margin-bottom: 12px;">Mã đơn hàng của bạn: <strong id="successOrderId" style="color: var(--accent);">#XBHM-8839</strong></p>
 
                     <!-- Thông báo riêng khi chọn thanh toán QR ngân hàng -->
                     <div id="qrSuccessNoticeBox" class="qr-zalo-alert-box" style="display: none;">
-                        <div style="font-size: 15px; font-weight: 700; color: #1E88E5; margin-bottom: 6px;">
+                        <div style="font-size: 14.5px; font-weight: 700; color: #1E88E5; margin-bottom: 6px;">
                             📦 Shop sẽ kiểm tra đơn hàng và đóng gói!
                         </div>
-                        <div style="font-size: 13px; color: var(--text-main); line-height: 1.5;">
+                        <div style="font-size: 12.5px; color: var(--text-main); line-height: 1.5;">
                             Bạn đã chọn thanh toán bằng <strong>QR Ngân hàng</strong>. Hãy gửi bill chuyển khoản kèm mã đơn hàng cho shop qua Zalo: <strong>84+333507317</strong> để shop xác nhận nhanh nhất nhé!
                         </div>
                         <button type="button" class="zalo-send-bill-btn" id="copyBillZaloBtn">
@@ -2490,8 +2585,8 @@
     <!-- Order Processing Overlay -->
     <div class="processing-overlay" id="processingOverlay">
         <div class="spinner-ring"></div>
-        <div style="font-size: 18px; font-weight: 700; color: var(--text-main);">Đang xử lý đơn hàng của bạn...</div>
-        <div style="font-size: 13px; color: var(--text-muted);">Vui lòng không đóng trình duyệt trong giây lát</div>
+        <div style="font-size: 17px; font-weight: 700; color: var(--text-main);">Đang xử lý đơn hàng của bạn...</div>
+        <div style="font-size: 12.5px; color: var(--text-muted);">Vui lòng không đóng trình duyệt trong giây lát</div>
     </div>
 
     <!-- ================= SMART FLOATING CART MODAL ================= -->
@@ -2500,10 +2595,10 @@
             <div class="smart-cart-top">
                 <div class="smart-cart-title-group">
                     <div class="smart-cart-icon-pill">
-                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
                     </div>
                     <div>
-                        <h3 style="font-size: 18px; font-weight: 700; line-height: 1.2;">Giỏ hàng thông minh</h3>
+                        <h3 style="font-size: 17px; font-weight: 700; line-height: 1.2;">Giỏ hàng thông minh</h3>
                         <span style="font-size: 11px; color: var(--text-muted);" id="smartCartSubtitleCount">1 sản phẩm đã chọn</span>
                     </div>
                 </div>
@@ -2526,10 +2621,10 @@
             <div class="smart-cart-footer">
                 <div class="smart-summary-row">
                     <div>
-                        <div style="font-size: 12px; color: var(--text-muted);">Tổng thanh toán dự kiến</div>
+                        <div style="font-size: 11.5px; color: var(--text-muted);">Tổng thanh toán dự kiến</div>
                         <div style="font-size: 11px; color: #4CAF50; font-weight: 600;">✓ Đã áp dụng Freeship & Đóng gói thân thiện</div>
                     </div>
-                    <div style="font-size: 20px; font-weight: 800; color: var(--text-main);" id="drawerTotalPrice">30.000 đ</div>
+                    <div style="font-size: 19px; font-weight: 800; color: var(--text-main);" id="drawerTotalPrice">30.000 đ</div>
                 </div>
                 <button class="smart-checkout-cta" id="goToCheckoutBtn" type="button">
                     <span>Tiến hành thanh toán</span>
@@ -2543,7 +2638,7 @@
     <div class="modal-overlay" id="editAddressModal">
         <div class="modal-content">
             <button class="modal-close-btn" id="closeAddressModalBtn" type="button">&times;</button>
-            <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 14px;">Chỉnh sửa địa chỉ nhận hàng</h3>
+            <h3 style="font-size: 19px; font-weight: 600; margin-bottom: 12px;">Chỉnh sửa địa chỉ nhận hàng</h3>
             <form id="editAddressForm">
                 <div class="form-group">
                     <label>Họ và tên người nhận</label>
@@ -2566,7 +2661,7 @@
     <div class="modal-overlay" id="reviewModal">
         <div class="modal-content">
             <button class="modal-close-btn" id="closeModalBtn" type="button">&times;</button>
-            <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 14px;">Gửi đánh giá sản phẩm</h3>
+            <h3 style="font-size: 19px; font-weight: 600; margin-bottom: 12px;">Gửi đánh giá sản phẩm</h3>
             <form id="reviewForm">
                 <div class="form-group">
                     <label>Họ và tên của bạn</label>
@@ -2604,12 +2699,12 @@
     <div class="modal-overlay" id="contactZaloModal">
         <div class="modal-content">
             <button class="modal-close-btn" id="closeContactModalBtn" type="button">&times;</button>
-            <h3 style="font-size: 22px; font-weight: 700; text-align: center; margin-bottom: 6px;">Liên hệ tư vấn & đặt hàng</h3>
-            <p style="font-size: 13px; color: var(--text-muted); text-align: center;">Kết nối trực tiếp với Xà Bông Handmade ✓ qua Zalo</p>
+            <h3 style="font-size: 21px; font-weight: 700; text-align: center; margin-bottom: 6px;">Liên hệ tư vấn & đặt hàng</h3>
+            <p style="font-size: 12.5px; color: var(--text-muted); text-align: center;">Kết nối trực tiếp với Xà Bông Handmade ✓ qua Zalo</p>
             <div class="zalo-note-card">
-                <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">Thông tin liên hệ Zalo</div>
+                <div style="font-size: 11.5px; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">Thông tin liên hệ Zalo</div>
                 <div class="zalo-number-highlight" id="zaloPhoneCopyTarget">Zalo: 84+333507317</div>
-                <div style="font-size: 12px; color: var(--text-muted);">Hỗ trợ giải đáp & tư vấn chọn bánh xà phòng phù hợp với làn da của bạn</div>
+                <div style="font-size: 11.5px; color: var(--text-muted);">Hỗ trợ giải đáp & tư vấn chọn bánh xà phòng phù hợp với làn da của bạn</div>
             </div>
             <button type="button" class="search-btn" id="copyZaloBtn" style="width: 100%; justify-content: center; background: #0068FF; color: white;">
                 Sao chép số Zalo
@@ -2785,15 +2880,12 @@
 
         function applyTheme(theme) {
             const iconEl = document.getElementById('themeIcon');
-            const labelEl = document.getElementById('themeLabel');
             if (theme === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'dark');
                 if (iconEl) iconEl.innerText = '☀️';
-                if (labelEl) labelEl.innerText = 'Sáng';
             } else {
                 document.documentElement.removeAttribute('data-theme');
                 if (iconEl) iconEl.innerText = '🌙';
-                if (labelEl) labelEl.innerText = 'Tối';
             }
             localStorage.setItem('xbhm-theme', theme);
         }
@@ -2864,7 +2956,7 @@
                 const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
                 const nextTheme = isDark ? 'light' : 'dark';
                 applyTheme(nextTheme);
-                showToast(nextTheme === 'dark' ? 'Đã bật chế độ nền Tối 🌙' : 'Đã bật chế độ nền Sáng ☀️');
+                showToast(nextTheme === 'dark' ? 'Đã bật chế độ tối 🌙' : 'Đã bật chế độ sáng ☀️');
             });
 
             renderProducts(products);
@@ -3150,10 +3242,10 @@
 
             if(cartItems.length === 0) {
                 container.innerHTML = `
-                    <div style="text-align: center; color: var(--text-muted); padding: 36px 12px;">
-                        <div style="font-size: 36px; margin-bottom: 8px;">🧼</div>
+                    <div style="text-align: center; color: var(--text-muted); padding: 32px 12px;">
+                        <div style="font-size: 34px; margin-bottom: 8px;">🧼</div>
                         <div style="font-weight: 600; color: var(--text-main); margin-bottom: 4px;">Giỏ hàng của bạn đang trống</div>
-                        <div style="font-size: 12px;">Hãy chọn các bánh xà phòng thiên nhiên yêu thích để thêm vào giỏ nhé!</div>
+                        <div style="font-size: 11.5px;">Hãy chọn các bánh xà phòng thiên nhiên yêu thích để thêm vào giỏ nhé!</div>
                     </div>`;
                 document.getElementById('drawerTotalPrice').innerText = '0 đ';
                 perkText.innerText = 'Thêm sản phẩm để nhận ưu đãi Freeship';
@@ -3178,7 +3270,7 @@
                             <button type="button" class="qty-inc-btn" data-index="${idx}">+</button>
                         </div>
                         <button type="button" class="smart-del-btn cart-remove-btn" data-index="${idx}" title="Xóa sản phẩm">
-                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
                         </button>
                     </div>
                 `;
@@ -3317,7 +3409,7 @@
             const grid = document.getElementById('reviewsGrid');
             document.getElementById('totalReviewsCountText').innerText = `Dựa trên ${reviewsList.length} đánh giá thực tế`;
             if (list.length === 0) {
-                grid.innerHTML = `<div style="grid-column: span 2; text-align:center; padding: 24px; color: var(--text-muted);">Chưa có đánh giá nào ở mức sao này.</div>`;
+                grid.innerHTML = `<div style="grid-column: span 2; text-align:center; padding: 22px; color: var(--text-muted);">Chưa có đánh giá nào ở mức sao này.</div>`;
                 return;
             }
 
