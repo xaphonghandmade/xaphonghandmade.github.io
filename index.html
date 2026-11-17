@@ -12,16 +12,43 @@
         :root {
             --bg-color: #FBF6F1;
             --surface-color: #FFFFFF;
+            --surface-elevated: #FDFBF9;
+            --header-bg: rgba(251, 246, 241, 0.88);
             --text-main: #241914;
             --text-muted: #6E615B;
             --primary: #241914;
+            --primary-contrast: #FFFFFF;
             --accent: #F4967D;
             --accent-hover: #E08269;
+            --accent-soft: #FCE8E2;
+            --accent-soft-text: #C85A3C;
             --border-color: #EADFD5;
             --border-light: #F2ECE4;
             --tag-bg: #F7F1EA;
             --verified-blue: #1DA1F2;
+            --card-shadow: 0 4px 16px rgba(36, 25, 20, 0.04);
+            --card-shadow-hover: 0 14px 32px rgba(36, 25, 20, 0.09);
             --transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #161210;
+            --surface-color: #211B18;
+            --surface-elevated: #2A221E;
+            --header-bg: rgba(22, 18, 16, 0.88);
+            --text-main: #F5ECE6;
+            --text-muted: #B2A39A;
+            --primary: #F4967D;
+            --primary-contrast: #1A1412;
+            --accent: #F4967D;
+            --accent-hover: #FFA891;
+            --accent-soft: rgba(244, 150, 125, 0.16);
+            --accent-soft-text: #FFAD96;
+            --border-color: #362D28;
+            --border-light: #2C2420;
+            --tag-bg: #29221E;
+            --card-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+            --card-shadow-hover: 0 16px 36px rgba(0, 0, 0, 0.45);
         }
 
         * {
@@ -37,53 +64,70 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
         h1, h2, h3, h4, .serif-font {
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Keyframe Animations */
+        /* ================= GPU-ACCELERATED KEYFRAME ANIMATIONS ================= */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(18px);
+                transform: translate3d(0, 22px, 0);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translate3d(0, 0, 0);
             }
         }
 
         @keyframes scaleIn {
             from {
                 opacity: 0;
-                transform: scale(0.92) translateY(12px);
+                transform: scale3d(0.93, 0.93, 1) translate3d(0, 12px, 0);
             }
             to {
                 opacity: 1;
-                transform: scale(1) translateY(0);
+                transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
             }
+        }
+
+        @keyframes shimmerSweep {
+            0% { transform: translateX(-120%) skewX(-20deg); }
+            60%, 100% { transform: translateX(220%) skewX(-20deg); }
         }
 
         @keyframes pulseGlow {
             0%, 100% {
-                box-shadow: 0 4px 12px rgba(244, 150, 125, 0.3);
+                box-shadow: 0 4px 14px rgba(244, 150, 125, 0.32);
             }
             50% {
-                box-shadow: 0 6px 20px rgba(244, 150, 125, 0.55);
+                box-shadow: 0 8px 24px rgba(244, 150, 125, 0.58);
             }
         }
 
         @keyframes flamePulse {
             0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 0 8px rgba(255, 87, 34, 0.4);
+                transform: scale3d(1, 1, 1);
+                box-shadow: 0 0 8px rgba(255, 87, 34, 0.45);
             }
             50% {
-                transform: scale(1.06);
-                box-shadow: 0 0 16px rgba(255, 87, 34, 0.8);
+                transform: scale3d(1.06, 1.06, 1);
+                box-shadow: 0 0 18px rgba(255, 87, 34, 0.85);
             }
+        }
+
+        @keyframes cartBounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            30% { transform: scale(1.22) rotate(-10deg); }
+            60% { transform: scale(1.15) rotate(8deg); }
+        }
+
+        @keyframes floatGentle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
         }
 
         @keyframes spin {
@@ -92,22 +136,64 @@
         }
 
         .animate-fade-up {
-            animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+            animation: fadeInUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
         .delay-1 { animation-delay: 0.08s; }
         .delay-2 { animation-delay: 0.16s; }
         .delay-3 { animation-delay: 0.24s; }
 
+        /* Scroll Reveal Utility */
+        .reveal-item {
+            opacity: 0;
+            transform: translate3d(0, 20px, 0);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-item.is-visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+
+        /* Toast Notification */
+        .toast-notification {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--surface-color);
+            color: var(--text-main);
+            border: 1px solid var(--accent);
+            padding: 12px 18px;
+            border-radius: 14px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            z-index: 2500;
+            opacity: 0;
+            transform: translate3d(0, 20px, 0) scale(0.95);
+            pointer-events: none;
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .toast-notification.show {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+
         /* Top Header */
         header {
-            background-color: rgba(251, 246, 241, 0.94);
-            backdrop-filter: blur(8px);
+            background-color: var(--header-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
-            transition: var(--transition);
+            transition: background-color 0.4s ease, border-color 0.4s ease;
         }
 
         .header-container {
@@ -144,6 +230,7 @@
             height: 18px;
             fill: var(--accent);
             flex-shrink: 0;
+            animation: floatGentle 3.5s ease-in-out infinite;
         }
 
         .verified-badge-icon {
@@ -170,14 +257,15 @@
             justify-content: center;
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 6px 14px;
             text-align: center;
-            box-shadow: 0 2px 8px rgba(36, 25, 20, 0.03);
+            box-shadow: var(--card-shadow);
             flex-grow: 1;
             max-width: 420px;
             order: 3;
             width: 100%;
+            transition: var(--transition);
         }
 
         @media (min-width: 768px) {
@@ -193,7 +281,7 @@
         .greeting-text {
             font-size: 13px;
             font-weight: 700;
-            color: #C85A3C;
+            color: var(--accent-soft-text);
             white-space: nowrap;
         }
 
@@ -224,7 +312,7 @@
             font-weight: 500;
         }
 
-        @media (min-width: 1120px) {
+        @media (min-width: 1160px) {
             .nav-links {
                 display: flex;
             }
@@ -263,8 +351,35 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             flex-shrink: 0;
+        }
+
+        .theme-toggle-btn {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            height: 38px;
+            padding: 0 12px;
+            border-radius: 99px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--accent);
+            transform: translateY(-1px) scale(1.03);
+        }
+
+        .theme-toggle-btn:active {
+            transform: scale(0.96);
         }
 
         .icon-btn {
@@ -274,31 +389,36 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 14px;
+            height: 38px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
             transition: var(--transition);
-            padding: 8px 14px;
+            padding: 0 14px;
             border-radius: 99px;
             white-space: nowrap;
-            box-shadow: 0 2px 8px rgba(36, 25, 20, 0.04);
+            box-shadow: var(--card-shadow);
         }
 
         .icon-btn:hover {
             background: var(--primary);
-            color: white;
+            color: var(--primary-contrast);
             border-color: var(--primary);
             transform: translateY(-1px);
         }
 
+        .icon-btn.bounce {
+            animation: cartBounce 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
         .cart-badge {
             background-color: var(--accent);
-            color: white;
+            color: #1A1412;
             font-size: 11px;
-            padding: 2px 8px;
+            padding: 1px 7px;
             border-radius: 10px;
-            font-weight: 700;
+            font-weight: 800;
             transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
@@ -351,18 +471,18 @@
         .search-banner {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 16px 20px;
             display: flex;
             flex-direction: column;
             gap: 12px;
             margin-bottom: 24px;
-            box-shadow: 0 2px 8px rgba(36,25,20,0.02);
+            box-shadow: var(--card-shadow);
             transition: var(--transition);
         }
 
         .search-banner:hover {
-            box-shadow: 0 6px 20px rgba(36,25,20,0.04);
+            box-shadow: var(--card-shadow-hover);
         }
 
         .search-banner-label {
@@ -379,15 +499,16 @@
             align-items: center;
             background: var(--bg-color);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 8px 12px;
             width: 100%;
             gap: 10px;
-            transition: border-color 0.25s ease;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
         }
 
         .search-input-group:focus-within {
             border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(244, 150, 125, 0.16);
         }
 
         .search-input-group input {
@@ -402,12 +523,12 @@
 
         .search-btn {
             background: var(--primary);
-            color: white;
+            color: var(--primary-contrast);
             border: none;
             padding: 10px 16px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -418,11 +539,12 @@
 
         .search-btn:hover {
             background: var(--accent);
+            color: #1A1412;
             transform: translateY(-1px);
         }
 
         .search-btn:active {
-            transform: translateY(0);
+            transform: translateY(0) scale(0.98);
         }
 
         /* Catalog Layout */
@@ -437,7 +559,7 @@
                 grid-template-columns: 270px 1fr 350px;
                 align-items: start;
             }
-            .header-container { padding: 16px 32px; }
+            .header-container { padding: 14px 32px; }
             .breadcrumb-container { padding: 20px 32px 0 32px; }
             .main-container { padding: 24px 32px 60px 32px; }
             .page-title-box h1 { font-size: 42px; }
@@ -454,9 +576,10 @@
         .filter-card {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 20px;
-            box-shadow: 0 2px 8px rgba(36,25,20,0.02);
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
         }
 
         .filter-header {
@@ -514,7 +637,7 @@
         }
 
         .checkbox-label input {
-            accent-color: var(--primary);
+            accent-color: var(--accent);
             width: 16px;
             height: 16px;
             cursor: pointer;
@@ -535,12 +658,12 @@
             font-weight: 600;
             background: var(--tag-bg);
             padding: 8px 12px;
-            border-radius: 6px;
+            border-radius: 8px;
         }
 
         .range-slider {
             width: 100%;
-            accent-color: var(--primary);
+            accent-color: var(--accent);
             cursor: pointer;
         }
 
@@ -553,8 +676,9 @@
         .size-tag-btn {
             background: var(--tag-bg);
             border: 1px solid var(--border-color);
+            color: var(--text-main);
             padding: 8px 12px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 13px;
             font-weight: 500;
             cursor: pointer;
@@ -567,11 +691,12 @@
 
         .size-tag-btn:hover {
             border-color: var(--accent);
+            transform: translateX(3px);
         }
 
         .size-tag-btn.active {
             background: var(--primary);
-            color: white;
+            color: var(--primary-contrast);
             border-color: var(--primary);
         }
 
@@ -588,10 +713,11 @@
             align-items: center;
             background: var(--surface-color);
             padding: 12px 16px;
-            border-radius: 10px;
+            border-radius: 12px;
             border: 1px solid var(--border-color);
             flex-wrap: wrap;
             gap: 10px;
+            box-shadow: var(--card-shadow);
         }
 
         .result-count {
@@ -608,7 +734,7 @@
             background: var(--tag-bg);
             border: 1px solid var(--border-color);
             padding: 6px 10px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 13px;
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--text-main);
@@ -631,35 +757,37 @@
         .product-card {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 14px;
             overflow: hidden;
             cursor: pointer;
-            transition: var(--transition);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.3s ease;
             display: flex;
             flex-direction: column;
             position: relative;
+            box-shadow: var(--card-shadow);
+            will-change: transform;
         }
 
         .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(36,25,20,0.08);
+            transform: translate3d(0, -6px, 0);
+            box-shadow: var(--card-shadow-hover);
             border-color: var(--accent);
         }
 
         .product-card.selected {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px var(--primary);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent), var(--card-shadow-hover);
         }
 
         .product-card.out-of-stock {
-            opacity: 0.82;
+            opacity: 0.84;
         }
 
         .product-image-wrap {
             position: relative;
             width: 100%;
             height: 210px;
-            background: #F4EBE1;
+            background: var(--tag-bg);
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -670,11 +798,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform;
         }
 
         .product-card:hover .product-image-wrap img {
-            transform: scale(1.06);
+            transform: scale3d(1.07, 1.07, 1);
         }
 
         .card-status-badge {
@@ -687,7 +816,7 @@
             font-size: 11px;
             font-weight: 600;
             padding: 4px 10px;
-            border-radius: 4px;
+            border-radius: 6px;
             letter-spacing: 0.3px;
             z-index: 2;
         }
@@ -736,14 +865,14 @@
         .product-sales-count {
             font-size: 12px;
             font-weight: 600;
-            color: #C85A3C;
+            color: var(--accent-soft-text);
             margin-bottom: 8px;
         }
 
         .product-price {
             font-size: 16px;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--text-main);
             margin-bottom: 12px;
         }
 
@@ -758,7 +887,7 @@
         }
 
         .card-action-link {
-            color: var(--primary);
+            color: var(--accent-soft-text);
             font-weight: 600;
             transition: transform 0.25s ease;
             display: inline-block;
@@ -766,7 +895,6 @@
 
         .product-card:hover .card-action-link {
             transform: translateX(4px);
-            color: var(--accent-hover);
         }
 
         .list-footer-info {
@@ -780,9 +908,9 @@
         .sidebar-panel {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 20px;
-            box-shadow: 0 4px 16px rgba(36,25,20,0.04);
+            box-shadow: var(--card-shadow);
             transition: var(--transition);
         }
 
@@ -811,15 +939,21 @@
             margin-bottom: 16px;
             background: var(--tag-bg);
             padding: 10px;
-            border-radius: 8px;
+            border-radius: 10px;
+            transition: var(--transition);
         }
 
         .selected-thumb {
             width: 56px;
             height: 56px;
-            border-radius: 6px;
+            border-radius: 8px;
             object-fit: cover;
             flex-shrink: 0;
+            transition: transform 0.35s ease;
+        }
+
+        .selected-preview-card:hover .selected-thumb {
+            transform: scale(1.06);
         }
 
         .selected-title {
@@ -861,8 +995,9 @@
         .weight-btn {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
+            color: var(--text-main);
             padding: 9px 8px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 12px;
             font-weight: 600;
             cursor: pointer;
@@ -872,14 +1007,14 @@
 
         .weight-btn:hover {
             border-color: var(--accent);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
 
         .weight-btn.active {
-            background: #FCE8E2;
+            background: var(--accent-soft);
             border-color: var(--accent);
-            color: #C85A3C;
-            box-shadow: 0 2px 8px rgba(244, 150, 125, 0.2);
+            color: var(--accent-soft-text);
+            box-shadow: 0 2px 8px rgba(244, 150, 125, 0.22);
         }
 
         .stock-status-note {
@@ -906,8 +1041,8 @@
         .price-display-box .amount {
             font-size: 22px;
             font-weight: 700;
-            color: var(--primary);
-            transition: transform 0.2s ease;
+            color: var(--text-main);
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .stock-badge-inline {
@@ -916,34 +1051,36 @@
             gap: 6px;
             font-size: 12px;
             font-weight: 600;
-            color: #2E7D32;
+            color: #43A047;
         }
 
         .stock-badge-inline.out {
-            color: #D32F2F;
+            color: #E53935;
         }
 
         .stock-badge-inline::before {
             content: '';
-            width: 6px;
-            height: 6px;
-            background: #2E7D32;
+            width: 7px;
+            height: 7px;
+            background: #43A047;
             border-radius: 50%;
+            box-shadow: 0 0 8px #43A047;
         }
 
         .stock-badge-inline.out::before {
-            background: #D32F2F;
+            background: #E53935;
+            box-shadow: none;
         }
 
         .add-to-cart-btn {
             width: 100%;
             background: var(--accent);
-            color: white;
+            color: #1A1412;
             border: none;
             padding: 14px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 15px;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -952,6 +1089,19 @@
             transition: var(--transition);
             animation: pulseGlow 2.8s infinite;
             margin-bottom: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .add-to-cart-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 45%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+            animation: shimmerSweep 3.2s infinite;
         }
 
         .add-to-cart-btn:hover {
@@ -960,14 +1110,19 @@
         }
 
         .add-to-cart-btn:active {
-            transform: translateY(0);
+            transform: translateY(0) scale(0.98);
         }
 
         .add-to-cart-btn:disabled {
-            background: #D1C7BD;
+            background: var(--border-color);
+            color: var(--text-muted);
             cursor: not-allowed;
             animation: none;
             box-shadow: none;
+        }
+
+        .add-to-cart-btn:disabled::after {
+            display: none;
         }
 
         .panel-footer-note {
@@ -981,7 +1136,7 @@
         .smart-cart-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(36, 25, 20, 0.45);
+            background: rgba(15, 12, 10, 0.55);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             z-index: 1200;
@@ -999,13 +1154,13 @@
         }
 
         .smart-cart-window {
-            background: rgba(255, 255, 255, 0.96);
-            border: 1px solid rgba(234, 223, 213, 0.9);
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
             border-radius: 22px;
             width: 100%;
             max-width: 520px;
             max-height: 88vh;
-            box-shadow: 0 24px 60px rgba(36, 25, 20, 0.22);
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.32);
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -1014,7 +1169,7 @@
 
         .smart-cart-top {
             padding: 18px 22px;
-            background: linear-gradient(135deg, #FBF6F1 0%, #FFFFFF 100%);
+            background: var(--surface-elevated);
             border-bottom: 1px solid var(--border-light);
             display: flex;
             justify-content: space-between;
@@ -1031,8 +1186,8 @@
             width: 38px;
             height: 38px;
             border-radius: 12px;
-            background: #FCE8E2;
-            color: #C85A3C;
+            background: var(--accent-soft);
+            color: var(--accent-soft-text);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1043,7 +1198,7 @@
             height: 34px;
             border-radius: 50%;
             border: 1px solid var(--border-color);
-            background: white;
+            background: var(--surface-color);
             cursor: pointer;
             font-size: 18px;
             display: flex;
@@ -1055,23 +1210,23 @@
 
         .smart-cart-close:hover {
             background: var(--primary);
-            color: white;
+            color: var(--primary-contrast);
             border-color: var(--primary);
         }
 
         /* Smart Progress Banner inside Floating Cart */
         .smart-perk-bar {
-            background: #F4FBF6;
-            border-bottom: 1px solid #DDF2E4;
+            background: rgba(46, 125, 50, 0.12);
+            border-bottom: 1px solid rgba(46, 125, 50, 0.22);
             padding: 10px 22px;
             font-size: 12px;
-            color: #246838;
+            color: #4CAF50;
         }
 
         .smart-perk-track {
             width: 100%;
             height: 6px;
-            background: #DCEEE2;
+            background: rgba(76, 175, 80, 0.2);
             border-radius: 99px;
             margin-top: 6px;
             overflow: hidden;
@@ -1079,7 +1234,7 @@
 
         .smart-perk-fill {
             height: 100%;
-            background: linear-gradient(90deg, #2E7D32, #4CAF50);
+            background: linear-gradient(90deg, #2E7D32, #66BB6A);
             border-radius: 99px;
             transition: width 0.4s ease;
         }
@@ -1106,8 +1261,7 @@
 
         .smart-cart-item:hover {
             border-color: var(--accent);
-            background: #FFFFFF;
-            box-shadow: 0 4px 12px rgba(36, 25, 20, 0.04);
+            background: var(--surface-elevated);
         }
 
         .smart-cart-thumb {
@@ -1141,13 +1295,13 @@
         .smart-cart-unit-price {
             font-size: 13px;
             font-weight: 700;
-            color: #C85A3C;
+            color: var(--accent-soft-text);
         }
 
         .smart-qty-pill {
             display: inline-flex;
             align-items: center;
-            background: white;
+            background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: 99px;
             padding: 2px;
@@ -1169,7 +1323,7 @@
 
         .smart-qty-pill button:hover {
             background: var(--accent);
-            color: white;
+            color: #1A1412;
         }
 
         .smart-qty-pill span {
@@ -1190,8 +1344,8 @@
         }
 
         .smart-del-btn:hover {
-            color: #D32F2F;
-            background: #FFEBEE;
+            color: #E53935;
+            background: rgba(229, 57, 53, 0.12);
         }
 
         .smart-cart-footer {
@@ -1209,23 +1363,24 @@
 
         .smart-checkout-cta {
             width: 100%;
-            background: linear-gradient(135deg, #241914 0%, #3E2C24 100%);
-            color: white;
+            background: var(--primary);
+            color: var(--primary-contrast);
             border: none;
             padding: 14px 18px;
             border-radius: 12px;
             font-size: 15px;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: space-between;
             transition: var(--transition);
-            box-shadow: 0 8px 20px rgba(36, 25, 20, 0.18);
+            box-shadow: var(--card-shadow);
         }
 
         .smart-checkout-cta:hover {
-            background: linear-gradient(135deg, #F4967D 0%, #E08269 100%);
+            background: var(--accent-hover);
+            color: #1A1412;
             transform: translateY(-2px);
         }
 
@@ -1273,7 +1428,7 @@
 
         .step-item.active .step-num {
             background: var(--primary);
-            color: white;
+            color: var(--primary-contrast);
         }
 
         .step-item.completed .step-num {
@@ -1296,9 +1451,10 @@
         .checkout-box {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 18px;
             margin-bottom: 16px;
+            box-shadow: var(--card-shadow);
         }
 
         .checkout-box-title {
@@ -1332,7 +1488,7 @@
         .shipping-info-card {
             background: var(--tag-bg);
             padding: 12px 14px;
-            border-radius: 8px;
+            border-radius: 10px;
             margin-bottom: 10px;
             border: 1px solid var(--border-color);
         }
@@ -1343,7 +1499,7 @@
             gap: 10px;
             padding: 12px 14px;
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 10px;
             margin-bottom: 8px;
             cursor: pointer;
             transition: var(--transition);
@@ -1354,7 +1510,7 @@
         }
 
         .payment-method-option.selected {
-            border-color: var(--primary);
+            border-color: var(--accent);
             background: var(--tag-bg);
         }
 
@@ -1363,9 +1519,9 @@
             display: none;
             margin-top: 12px;
             padding: 18px;
-            background: #FDFBF9;
+            background: var(--surface-elevated);
             border: 1.5px dashed var(--accent);
-            border-radius: 10px;
+            border-radius: 12px;
             text-align: center;
             animation: scaleIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
@@ -1378,11 +1534,11 @@
             width: 220px;
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
+            border-radius: 10px;
             border: 1px solid var(--border-color);
             margin: 10px auto;
             display: block;
-            box-shadow: 0 4px 12px rgba(36, 25, 20, 0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .summary-line {
@@ -1405,12 +1561,12 @@
         .pay-action-btn {
             width: 100%;
             background: var(--accent);
-            color: white;
+            color: #1A1412;
             border: none;
             padding: 14px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 15px;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -1442,8 +1598,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(251, 246, 241, 0.88);
-            backdrop-filter: blur(6px);
+            background: var(--header-bg);
+            backdrop-filter: blur(8px);
             z-index: 2000;
             display: none;
             flex-direction: column;
@@ -1478,8 +1634,8 @@
         .success-icon {
             width: 64px;
             height: 64px;
-            background: #E8F5E9;
-            color: #2E7D32;
+            background: rgba(46, 125, 50, 0.16);
+            color: #4CAF50;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -1489,7 +1645,7 @@
         }
 
         .qr-zalo-alert-box {
-            background: #F0F7FF;
+            background: rgba(0, 104, 255, 0.1);
             border: 1.5px solid #0068FF;
             border-radius: 12px;
             padding: 18px;
@@ -1530,13 +1686,14 @@
         .reviews-summary-card {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 20px;
             display: grid;
             grid-template-columns: 1fr;
             gap: 20px;
             align-items: center;
             margin-bottom: 24px;
+            box-shadow: var(--card-shadow);
         }
 
         @media (min-width: 900px) {
@@ -1632,9 +1789,9 @@
         .btn-outline-custom {
             background: var(--surface-color);
             border: 1px solid var(--primary);
-            color: var(--primary);
+            color: var(--text-main);
             padding: 10px 16px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 13px;
             font-weight: 600;
             cursor: pointer;
@@ -1645,7 +1802,7 @@
 
         .btn-outline-custom:hover {
             background: var(--primary);
-            color: white;
+            color: var(--primary-contrast);
             transform: translateY(-1px);
         }
 
@@ -1660,6 +1817,7 @@
         .review-filter-pill {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
+            color: var(--text-main);
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 12px;
@@ -1675,7 +1833,7 @@
 
         .review-filter-pill.active {
             background: var(--primary);
-            color: white;
+            color: var(--primary-contrast);
             border-color: var(--primary);
         }
 
@@ -1694,18 +1852,18 @@
         .review-card {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 16px;
             display: flex;
             flex-direction: column;
             gap: 10px;
             transition: var(--transition);
-            animation: fadeInUp 0.4s ease both;
+            box-shadow: var(--card-shadow);
         }
 
         .review-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(36, 25, 20, 0.05);
+            transform: translateY(-3px);
+            box-shadow: var(--card-shadow-hover);
         }
 
         .reviewer-info-row {
@@ -1724,8 +1882,8 @@
             font-size: 11px;
             color: var(--text-muted);
             background: var(--tag-bg);
-            padding: 2px 6px;
-            border-radius: 4px;
+            padding: 2px 8px;
+            border-radius: 6px;
             display: inline-block;
             margin-top: 2px;
         }
@@ -1743,8 +1901,8 @@
 
         .verified-badge {
             font-size: 10px;
-            color: #2E7D32;
-            background: #E8F5E9;
+            color: #4CAF50;
+            background: rgba(76, 175, 80, 0.14);
             padding: 2px 6px;
             border-radius: 4px;
             font-weight: 600;
@@ -1756,7 +1914,7 @@
         .shop-reply-box {
             background: var(--tag-bg);
             padding: 10px 12px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 12px;
             color: var(--text-muted);
             margin-top: 6px;
@@ -1777,8 +1935,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(36,25,20,0.5);
-            backdrop-filter: blur(4px);
+            background: rgba(15, 12, 10, 0.55);
+            backdrop-filter: blur(6px);
             z-index: 1300;
             display: none;
             align-items: center;
@@ -1792,11 +1950,12 @@
 
         .modal-content {
             background: var(--surface-color);
-            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
             width: 100%;
             max-width: 460px;
             padding: 24px;
-            box-shadow: 0 14px 40px rgba(36,25,20,0.18);
+            box-shadow: 0 18px 46px rgba(0, 0, 0, 0.25);
             position: relative;
             animation: scaleIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
@@ -1827,10 +1986,10 @@
             width: 100%;
             padding: 10px 12px;
             border: 1px solid var(--border-color);
-            border-radius: 6px;
+            border-radius: 8px;
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 14px;
-            background: var(--surface-color);
+            background: var(--bg-color);
             color: var(--text-main);
             outline: none;
             transition: border-color 0.2s;
@@ -1856,6 +2015,7 @@
             grid-template-columns: 1fr;
             gap: 24px;
             align-items: center;
+            box-shadow: var(--card-shadow);
         }
 
         @media (min-width: 900px) {
@@ -1905,11 +2065,12 @@
             flex-direction: column;
             align-items: center;
             gap: 14px;
+            transition: background-color 0.4s ease, border-color 0.4s ease;
         }
 
         .contact-footer-btn {
             background: var(--primary);
-            color: white;
+            color: var(--primary-contrast);
             border: none;
             padding: 12px 26px;
             border-radius: 30px;
@@ -1919,18 +2080,19 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 6px 20px rgba(36, 25, 20, 0.16);
+            box-shadow: var(--card-shadow);
             transition: var(--transition);
         }
 
         .contact-footer-btn:hover {
             background: var(--accent);
-            transform: translateY(-2px);
+            color: #1A1412;
+            transform: translateY(-2px) scale(1.03);
             box-shadow: 0 8px 24px rgba(244, 150, 125, 0.4);
         }
 
         .zalo-note-card {
-            background: #F0F7FF;
+            background: rgba(0, 104, 255, 0.1);
             border: 1.5px solid #0068FF;
             border-radius: 12px;
             padding: 20px;
@@ -1941,7 +2103,7 @@
         .zalo-number-highlight {
             font-size: 22px;
             font-weight: 800;
-            color: #0068FF;
+            color: #1E88E5;
             letter-spacing: 0.5px;
             margin: 6px 0;
             user-select: all;
@@ -1949,6 +2111,12 @@
     </style>
 </head>
 <body>
+
+    <!-- Toast thông báo mượt mà -->
+    <div class="toast-notification" id="toastNotification">
+        <span>✨</span>
+        <span id="toastMessage">Đã thêm sản phẩm vào giỏ hàng!</span>
+    </div>
 
     <!-- Header Navigation -->
     <header>
@@ -1962,7 +2130,7 @@
             <div class="realtime-widget" id="realtimeWidget">
                 <span class="greeting-text" id="greetingMessage">Chào Buổi Tối 🌙</span>
                 <span class="clock-divider">|</span>
-                <span class="clock-datetime" id="realtimeClockDisplay">19:32:00 · Thứ Ba, 17/11/2026</span>
+                <span class="clock-datetime" id="realtimeClockDisplay">19:49:00 · Thứ Ba, 17/11/2026</span>
             </div>
 
             <ul class="nav-links">
@@ -1971,8 +2139,14 @@
                 <li><a href="#about-workshop" onclick="scrollToSection('about-workshop'); return false;">Giới thiệu</a></li>
             </ul>
             <div class="header-actions">
+                <!-- Nút chuyển nền Sáng / Tối -->
+                <button class="theme-toggle-btn" id="themeToggleBtn" type="button" title="Chuyển chế độ Sáng / Tối">
+                    <span id="themeIcon">🌙</span>
+                    <span id="themeLabel">Tối</span>
+                </button>
+
                 <button class="icon-btn" id="openCartBtn" type="button">
-                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+                    <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
                     Giỏ hàng <span class="cart-badge" id="cartCountBadge">1</span>
                 </button>
             </div>
@@ -2127,7 +2301,7 @@
             </div>
 
             <!-- Customer Reviews Section -->
-            <div class="reviews-section" id="reviews-section">
+            <div class="reviews-section reveal-item" id="reviews-section">
                 <div class="reviews-header" style="margin-bottom: 20px;">
                     <div>
                         <h2 style="font-size: 26px; font-weight: 600; margin-bottom: 4px;">Đánh giá & Cảm nhận khách hàng</h2>
@@ -2187,7 +2361,7 @@
             </div>
 
             <!-- About Workshop Section -->
-            <div class="about-workshop-section" id="about-workshop">
+            <div class="about-workshop-section reveal-item" id="about-workshop">
                 <div class="about-workshop-content">
                     <h2>Xà Bông Handmade <span class="verified-badge-icon">✓</span></h2>
                     <p>Được làm thủ công từ các loại chất béo thực vật giàu dưỡng chất như dầu dừa, dầu ô liu, bơ hạt mỡ kết hợp cùng sáp ong tự nhiên qua phản ứng xà phòng hóa an toàn.</p>
@@ -2239,7 +2413,7 @@
                                 <div style="font-weight: 700; font-size: 14px; margin-bottom: 4px;" id="displayReceiverNamePhone">Nguyễn Văn A · 0912345678</div>
                                 <div style="font-size: 13px; color: var(--text-muted);" id="displayReceiverAddress">Số 12, Đường Mẫu, Phường Bến Thành, TP. Hồ Chí Minh</div>
                             </div>
-                            <div style="font-size: 12px; color: #2E7D32; font-weight: 600;">✓ Giao tiêu chuẩn · Dự kiến 1–3 ngày (Miễn phí)</div>
+                            <div style="font-size: 12px; color: #4CAF50; font-weight: 600;">✓ Giao tiêu chuẩn · Dự kiến 1–3 ngày (Miễn phí)</div>
                         </div>
 
                         <div class="checkout-box" style="margin-bottom: 0;">
@@ -2261,9 +2435,9 @@
 
                             <!-- QR Payment Panel -->
                             <div class="qr-payment-panel" id="qrPaymentPanel">
-                                <div style="font-weight: 700; font-size: 14px; color: var(--primary);">Quét mã QR để thanh toán</div>
-                                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Số tiền: <strong id="qrAmountDisplay" style="color: #C85A3C;">30.000 đ</strong></div>
-                                <div style="font-size: 13px; font-weight: 700; color: #C85A3C; background: #FCE8E2; padding: 6px 10px; border-radius: 6px; display: inline-block; margin: 8px 0;">
+                                <div style="font-weight: 700; font-size: 14px; color: var(--text-main);">Quét mã QR để thanh toán</div>
+                                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Số tiền: <strong id="qrAmountDisplay" style="color: var(--accent-soft-text);">30.000 đ</strong></div>
+                                <div style="font-size: 13px; font-weight: 700; color: var(--accent-soft-text); background: var(--accent-soft); padding: 6px 10px; border-radius: 6px; display: inline-block; margin: 8px 0;">
                                     Mã đơn hàng: <span id="qrOrderCodeText" style="letter-spacing: 0.5px;">#XBHM-8839</span>
                                 </div>
                                 <img src="https://cdn.phototourl.com/anon/2026-11-17-08ca0b2a-f4e1-4e4b-a2af-7454c1426c9b.jpg" alt="Mã QR chuyển khoản ngân hàng">
@@ -2283,7 +2457,7 @@
                             </div>
                             <div class="summary-line">
                                 <span>Phí giao hàng</span>
-                                <span style="color: #2E7D32;">Miễn phí</span>
+                                <span style="color: #4CAF50;">Miễn phí</span>
                             </div>
                             <div class="summary-line total">
                                 <span>Tổng thanh toán</span>
@@ -2308,7 +2482,7 @@
 
                     <!-- Thông báo riêng khi chọn thanh toán QR ngân hàng -->
                     <div id="qrSuccessNoticeBox" class="qr-zalo-alert-box" style="display: none;">
-                        <div style="font-size: 15px; font-weight: 700; color: #0054CC; margin-bottom: 6px;">
+                        <div style="font-size: 15px; font-weight: 700; color: #1E88E5; margin-bottom: 6px;">
                             📦 Shop sẽ kiểm tra đơn hàng và đóng gói!
                         </div>
                         <div style="font-size: 13px; color: var(--text-main); line-height: 1.5;">
@@ -2328,7 +2502,7 @@
     <!-- Order Processing Overlay -->
     <div class="processing-overlay" id="processingOverlay">
         <div class="spinner-ring"></div>
-        <div style="font-size: 18px; font-weight: 700; color: var(--primary);">Đang xử lý đơn hàng của bạn...</div>
+        <div style="font-size: 18px; font-weight: 700; color: var(--text-main);">Đang xử lý đơn hàng của bạn...</div>
         <div style="font-size: 13px; color: var(--text-muted);">Vui lòng không đóng trình duyệt trong giây lát</div>
     </div>
 
@@ -2365,9 +2539,9 @@
                 <div class="smart-summary-row">
                     <div>
                         <div style="font-size: 12px; color: var(--text-muted);">Tổng thanh toán dự kiến</div>
-                        <div style="font-size: 11px; color: #2E7D32; font-weight: 600;">✓ Đã áp dụng Freeship & Đóng gói thân thiện</div>
+                        <div style="font-size: 11px; color: #4CAF50; font-weight: 600;">✓ Đã áp dụng Freeship & Đóng gói thân thiện</div>
                     </div>
-                    <div style="font-size: 20px; font-weight: 800; color: var(--primary);" id="drawerTotalPrice">30.000 đ</div>
+                    <div style="font-size: 20px; font-weight: 800; color: var(--text-main);" id="drawerTotalPrice">30.000 đ</div>
                 </div>
                 <button class="smart-checkout-cta" id="goToCheckoutBtn" type="button">
                     <span>Tiến hành thanh toán</span>
@@ -2449,7 +2623,7 @@
                 <div class="zalo-number-highlight" id="zaloPhoneCopyTarget">Zalo: 84+333507317</div>
                 <div style="font-size: 12px; color: var(--text-muted);">Hỗ trợ giải đáp & tư vấn chọn bánh xà phòng phù hợp với làn da của bạn</div>
             </div>
-            <button type="button" class="search-btn" id="copyZaloBtn" style="width: 100%; justify-content: center; background: #0068FF;">
+            <button type="button" class="search-btn" id="copyZaloBtn" style="width: 100%; justify-content: center; background: #0068FF; color: white;">
                 Sao chép số Zalo
             </button>
         </div>
@@ -2603,6 +2777,7 @@
         let currentSelectedPrice = 30000;
         let currentActiveOrderId = "";
         let selectedPaymentMethod = "cod";
+        let toastTimer = null;
         let cartItems = [
             {
                 id: 1,
@@ -2613,6 +2788,52 @@
                 image: products[0].image
             }
         ];
+
+        // Chuyển đổi nền Sáng / Tối
+        function initTheme() {
+            const savedTheme = localStorage.getItem('xbhm-theme') || 'light';
+            applyTheme(savedTheme);
+        }
+
+        function applyTheme(theme) {
+            const iconEl = document.getElementById('themeIcon');
+            const labelEl = document.getElementById('themeLabel');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                if (iconEl) iconEl.innerText = '☀️';
+                if (labelEl) labelEl.innerText = 'Sáng';
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                if (iconEl) iconEl.innerText = '🌙';
+                if (labelEl) labelEl.innerText = 'Tối';
+            }
+            localStorage.setItem('xbhm-theme', theme);
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toastNotification');
+            const msgEl = document.getElementById('toastMessage');
+            msgEl.innerText = msg;
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2400);
+        }
+
+        // Scroll Reveal Observer
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal-item').forEach(el => observer.observe(el));
+        }
 
         // Đồng hồ thời gian thực & lời chào theo buổi
         function updateRealtimeClockAndGreeting() {
@@ -2646,8 +2867,17 @@
         }
 
         document.addEventListener("DOMContentLoaded", function() {
+            initTheme();
+            initScrollReveal();
             updateRealtimeClockAndGreeting();
             setInterval(updateRealtimeClockAndGreeting, 1000);
+
+            document.getElementById('themeToggleBtn').addEventListener('click', function() {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                const nextTheme = isDark ? 'light' : 'dark';
+                applyTheme(nextTheme);
+                showToast(nextTheme === 'dark' ? 'Đã bật chế độ nền Tối 🌙' : 'Đã bật chế độ nền Sáng ☀️');
+            });
 
             renderProducts(products);
             renderReviews(reviewsList);
@@ -2664,6 +2894,7 @@
             document.getElementById('copyZaloBtn').addEventListener('click', function() {
                 navigator.clipboard.writeText('84+333507317').then(() => {
                     this.innerText = '✓ Đã sao chép Zalo: 84+333507317';
+                    showToast('Đã sao chép số Zalo: 84+333507317');
                     setTimeout(() => {
                         this.innerText = 'Sao chép số Zalo';
                     }, 2200);
@@ -2672,9 +2903,9 @@
 
             // Nút sao chép Zalo ở màn hình đặt hàng thành công bằng QR
             document.getElementById('copyBillZaloBtn').addEventListener('click', function() {
-                const copyText = `Zalo: 84+333507317 (Mã đơn: ${currentActiveOrderId})`;
                 navigator.clipboard.writeText('84+333507317').then(() => {
                     this.innerText = `✓ Đã sao chép Zalo: 84+333507317`;
+                    showToast('Đã sao chép Zalo để gửi bill chuyển khoản!');
                     setTimeout(() => {
                         this.innerText = `💬 Sao chép Zalo: 84+333507317 để gửi bill`;
                     }, 2400);
@@ -2710,8 +2941,8 @@
                 document.getElementById('selectedWeightLbl').innerText = currentSelectedWeight;
                 const priceEl = document.getElementById('sbPriceLbl');
                 priceEl.innerText = currentSelectedPrice.toLocaleString() + ' đ';
-                priceEl.style.transform = 'scale(1.08)';
-                setTimeout(() => { priceEl.style.transform = 'scale(1)'; }, 180);
+                priceEl.style.transform = 'scale(1.1)';
+                setTimeout(() => { priceEl.style.transform = 'scale(1)'; }, 200);
 
                 document.querySelectorAll('#weightButtonsContainer .weight-btn').forEach(b => {
                     b.classList.toggle('active', b.getAttribute('data-weight') === packName);
@@ -2758,6 +2989,7 @@
                 document.getElementById('displayReceiverNamePhone').innerText = `${newName} · ${newPhone}`;
                 document.getElementById('displayReceiverAddress').innerText = newAddr;
                 document.getElementById('editAddressModal').classList.remove('open');
+                showToast('Đã cập nhật địa chỉ nhận hàng!');
             });
 
             // Review Modal (1-5 sao)
@@ -2813,8 +3045,8 @@
                 return;
             }
 
-            grid.innerHTML = list.map(p => `
-                <div class="product-card ${p.id === currentSelectedProduct.id ? 'selected' : ''} ${!p.inStock ? 'out-of-stock' : ''}" data-id="${p.id}">
+            grid.innerHTML = list.map((p, index) => `
+                <div class="product-card animate-fade-up ${p.id === currentSelectedProduct.id ? 'selected' : ''} ${!p.inStock ? 'out-of-stock' : ''}" style="animation-delay: ${index * 0.06}s;" data-id="${p.id}">
                     <div class="product-image-wrap">
                         <span class="card-status-badge ${p.badgeClass}">${p.tag}</span>
                         <img src="${p.image}" alt="${p.name}">
@@ -2888,7 +3120,8 @@
                     image: currentSelectedProduct.image
                 });
             }
-            updateCartBadge();
+            updateCartBadge(true);
+            showToast(`Đã thêm ${currentSelectedProduct.name} (${currentSelectedWeight})`);
             openSmartCartModal();
         }
 
@@ -2901,12 +3134,19 @@
             document.getElementById('smartCartOverlay').classList.remove('open');
         }
 
-        function updateCartBadge() {
+        function updateCartBadge(animateBtn = false) {
             const totalCount = cartItems.reduce((sum, item) => sum + item.qty, 0);
             const badge = document.getElementById('cartCountBadge');
+            const cartBtn = document.getElementById('openCartBtn');
             badge.innerText = totalCount;
-            badge.style.transform = 'scale(1.25)';
-            setTimeout(() => { badge.style.transform = 'scale(1)'; }, 220);
+            badge.style.transform = 'scale(1.3)';
+            setTimeout(() => { badge.style.transform = 'scale(1)'; }, 240);
+
+            if (animateBtn && cartBtn) {
+                cartBtn.classList.remove('bounce');
+                void cartBtn.offsetWidth;
+                cartBtn.classList.add('bounce');
+            }
         }
 
         function renderSmartCartItems() {
@@ -3082,7 +3322,7 @@
                 cartItems = [];
                 updateCartBadge();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 1800);
+            }, 1600);
         }
 
         function renderReviews(list) {
@@ -3093,8 +3333,8 @@
                 return;
             }
 
-            grid.innerHTML = list.map(r => `
-                <div class="review-card">
+            grid.innerHTML = list.map((r, i) => `
+                <div class="review-card animate-fade-up" style="animation-delay: ${i * 0.05}s;">
                     <div class="reviewer-info-row">
                         <div>
                             <div class="reviewer-name">${r.name} <span class="verified-badge">✓ Đã trải nghiệm</span></div>
@@ -3137,6 +3377,7 @@
             });
             renderReviews(reviewsList);
             closeReviewModal();
+            showToast('Cảm ơn bạn đã gửi đánh giá!');
             document.getElementById('revNameInput').value = '';
             document.getElementById('revCommentInput').value = '';
         }
