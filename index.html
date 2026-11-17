@@ -1963,10 +1963,13 @@
                             <!-- QR Payment Panel -->
                             <div class="qr-payment-panel" id="qrPaymentPanel">
                                 <div style="font-weight: 700; font-size: 14px; color: var(--primary);">Quét mã QR để thanh toán</div>
-                                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Số tiền cần thanh toán: <strong id="qrAmountDisplay" style="color: #C85A3C;">30.000 đ</strong></div>
+                                <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Số tiền: <strong id="qrAmountDisplay" style="color: #C85A3C;">30.000 đ</strong></div>
+                                <div style="font-size: 13px; font-weight: 700; color: #C85A3C; background: #FCE8E2; padding: 6px 10px; border-radius: 6px; display: inline-block; margin: 8px 0;">
+                                    Mã đơn hàng: <span id="qrOrderCodeText" style="letter-spacing: 0.5px;">#XBHM-8839</span>
+                                </div>
                                 <img src="https://cdn.phototourl.com/anon/2026-11-17-08ca0b2a-f4e1-4e4b-a2af-7454c1426c9b.jpg" alt="Mã QR chuyển khoản ngân hàng">
                                 <div style="font-size: 11px; color: var(--text-muted); line-height: 1.4;">
-                                    Vui lòng kiểm tra kỹ thông tin người nhận và nhập nội dung chuyển khoản là <strong>Số điện thoại đặt hàng</strong> trước khi bấm Đặt hàng.
+                                    Vui lòng nhập chính xác nội dung chuyển khoản là <strong id="qrNoteCodeText">#XBHM-8839</strong> khi quét mã thanh toán.
                                 </div>
                             </div>
                         </div>
@@ -2002,7 +2005,7 @@
                     <div class="success-icon">✓</div>
                     <h2 style="font-size: 28px; margin-bottom: 6px;">Đặt hàng thành công!</h2>
                     <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 8px;">Cảm ơn bạn đã ủng hộ <strong>Xà Bông Handmade ✓</strong>.</p>
-                    <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 16px;">Mã đơn hàng của bạn: <strong id="successOrderId">#XBHM-8839</strong></p>
+                    <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 16px;">Mã đơn hàng của bạn: <strong id="successOrderId" style="color: var(--accent);">#XBHM-8839</strong></p>
                     <button class="search-btn" id="backToHomeSuccessBtn" style="margin: 0 auto;" type="button">Quay về trang chủ</button>
                 </div>
             </div>
@@ -2144,6 +2147,7 @@
         let currentSelectedProduct = products[0];
         let currentSelectedWeight = "60g";
         let currentSelectedPrice = 30000;
+        let currentActiveOrderId = "";
         let cartItems = [
             {
                 id: 1,
@@ -2242,7 +2246,7 @@
             });
             document.getElementById('completeOrderBtn').addEventListener('click', completeCheckoutOrder);
 
-            // Phương thức thanh toán & Hiển thị QR
+            // Phương thức thanh toán & Hiển thị QR với Mã đơn hàng khớp
             const qrPanel = document.getElementById('qrPaymentPanel');
             document.querySelectorAll('.payment-method-option').forEach(opt => {
                 opt.addEventListener('click', function() {
@@ -2429,6 +2433,11 @@
                     alert('Giỏ hàng trống! Vui lòng thêm sản phẩm vào giỏ trước.');
                     return;
                 }
+                // Tạo mã đơn hàng mới khi vào trang thanh toán
+                currentActiveOrderId = '#XBHM-' + Math.floor(1000 + Math.random() * 9000);
+                document.getElementById('qrOrderCodeText').innerText = currentActiveOrderId;
+                document.getElementById('qrNoteCodeText').innerText = currentActiveOrderId;
+
                 document.getElementById('shopView').classList.remove('active');
                 document.getElementById('checkoutView').classList.add('active');
                 document.getElementById('checkoutFormContent').style.display = 'block';
@@ -2479,7 +2488,8 @@
                 document.getElementById('stepIndicator2').classList.remove('active');
                 document.getElementById('stepIndicator2').classList.add('completed');
                 document.getElementById('stepIndicator3').classList.add('active');
-                document.getElementById('successOrderId').innerText = '#XBHM-' + Math.floor(1000 + Math.random() * 9000);
+                // Gán đúng mã đơn hàng đã hiển thị ở phần thanh toán QR sang màn hình thành công
+                document.getElementById('successOrderId').innerText = currentActiveOrderId;
                 cartItems = [];
                 updateCartBadge();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
