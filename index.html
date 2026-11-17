@@ -13,7 +13,7 @@
             --bg-color: #FBF6F1;
             --surface-color: #FFFFFF;
             --surface-elevated: #FDFBF9;
-            --header-bg: rgba(251, 246, 241, 0.88);
+            --header-bg: rgba(251, 246, 241, 0.92);
             --text-main: #241914;
             --text-muted: #6E615B;
             --primary: #241914;
@@ -35,7 +35,7 @@
             --bg-color: #161210;
             --surface-color: #211B18;
             --surface-elevated: #2A221E;
-            --header-bg: rgba(22, 18, 16, 0.88);
+            --header-bg: rgba(22, 18, 16, 0.92);
             --text-main: #F5ECE6;
             --text-muted: #B2A39A;
             --primary: #F4967D;
@@ -125,11 +125,6 @@
             60% { transform: scale(1.15) rotate(8deg); }
         }
 
-        @keyframes floatGentle {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
-        }
-
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -199,18 +194,71 @@
         .header-container {
             max-width: 1320px;
             margin: 0 auto;
-            padding: 12px 16px;
+            padding: 12px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        @media (min-width: 1024px) {
+            .header-container {
+                padding: 14px 32px;
+            }
+        }
+
+        /* Hàng trên: Đồng hồ thời gian thực & Lời chào */
+        .realtime-widget-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .realtime-widget {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 5px 14px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            font-size: 13px;
+            transition: var(--transition);
+        }
+
+        .greeting-text {
+            font-weight: 700;
+            color: var(--accent-soft-text);
+            white-space: nowrap;
+        }
+
+        .clock-divider {
+            color: var(--border-color);
+        }
+
+        .clock-datetime {
+            font-weight: 600;
+            color: var(--text-main);
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+
+        /* Hàng dưới: Logo, Menu, Nút điều hướng & Giỏ hàng */
+        .header-main-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
+            gap: 12px;
         }
 
         .logo {
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 700;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
             color: var(--text-main);
             text-decoration: none;
             display: flex;
@@ -221,16 +269,15 @@
             flex-shrink: 0;
         }
 
-        .logo:hover {
-            transform: scale(1.02);
+        @media (min-width: 768px) {
+            .logo { font-size: 20px; }
         }
 
         .logo svg {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             fill: var(--accent);
             flex-shrink: 0;
-            animation: floatGentle 3.5s ease-in-out infinite;
         }
 
         .verified-badge-icon {
@@ -249,61 +296,6 @@
             box-shadow: 0 2px 6px rgba(29, 161, 242, 0.35);
         }
 
-        /* Real-time Clock & Greeting Widget in Header */
-        .realtime-widget {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 6px 14px;
-            text-align: center;
-            box-shadow: var(--card-shadow);
-            flex-grow: 1;
-            max-width: 420px;
-            order: 3;
-            width: 100%;
-            transition: var(--transition);
-        }
-
-        @media (min-width: 768px) {
-            .realtime-widget {
-                order: 0;
-                width: auto;
-                flex-direction: row;
-                gap: 12px;
-                padding: 7px 16px;
-            }
-        }
-
-        .greeting-text {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--accent-soft-text);
-            white-space: nowrap;
-        }
-
-        .clock-divider {
-            display: none;
-            color: var(--border-color);
-        }
-
-        @media (min-width: 768px) {
-            .clock-divider {
-                display: inline;
-            }
-        }
-
-        .clock-datetime {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-main);
-            font-variant-numeric: tabular-nums;
-            white-space: nowrap;
-        }
-
         .nav-links {
             display: none;
             gap: 20px;
@@ -315,9 +307,6 @@
         @media (min-width: 1160px) {
             .nav-links {
                 display: flex;
-            }
-            .logo {
-                font-size: 18px;
             }
         }
 
@@ -357,10 +346,10 @@
 
         .theme-toggle-btn {
             background: var(--surface-color);
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--accent);
             color: var(--text-main);
             height: 38px;
-            padding: 0 12px;
+            padding: 0 16px;
             border-radius: 99px;
             font-size: 13px;
             font-weight: 600;
@@ -374,12 +363,8 @@
         }
 
         .theme-toggle-btn:hover {
-            border-color: var(--accent);
+            background: var(--accent-soft);
             transform: translateY(-1px) scale(1.03);
-        }
-
-        .theme-toggle-btn:active {
-            transform: scale(0.96);
         }
 
         .icon-btn {
@@ -395,16 +380,14 @@
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
             transition: var(--transition);
-            padding: 0 14px;
+            padding: 0 16px;
             border-radius: 99px;
             white-space: nowrap;
             box-shadow: var(--card-shadow);
         }
 
         .icon-btn:hover {
-            background: var(--primary);
-            color: var(--primary-contrast);
-            border-color: var(--primary);
+            border-color: var(--accent);
             transform: translateY(-1px);
         }
 
@@ -559,7 +542,6 @@
                 grid-template-columns: 270px 1fr 350px;
                 align-items: start;
             }
-            .header-container { padding: 14px 32px; }
             .breadcrumb-container { padding: 20px 32px 0 32px; }
             .main-container { padding: 24px 32px 60px 32px; }
             .page-title-box h1 { font-size: 42px; }
@@ -2121,34 +2103,40 @@
     <!-- Header Navigation -->
     <header>
         <div class="header-container">
-            <a href="#" class="logo" onclick="switchView('shop'); return false;">
-                <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                Xà Bông Handmade <span class="verified-badge-icon" title="Doanh nghiệp đã xác thực">✓</span>
-            </a>
-
-            <!-- Đồng hồ thời gian thực & Lời chào -->
-            <div class="realtime-widget" id="realtimeWidget">
-                <span class="greeting-text" id="greetingMessage">Chào Buổi Tối 🌙</span>
-                <span class="clock-divider">|</span>
-                <span class="clock-datetime" id="realtimeClockDisplay">19:49:00 · Thứ Ba, 17/11/2026</span>
+            <!-- Hàng trên: Lời chào & Đồng hồ thời gian thực -->
+            <div class="realtime-widget-row">
+                <div class="realtime-widget" id="realtimeWidget">
+                    <span class="greeting-text" id="greetingMessage">Chào Buổi Tối 🌙</span>
+                    <span class="clock-divider">·</span>
+                    <span class="clock-datetime" id="realtimeClockDisplay">20:12:34 · Thứ Ba, 17/11/2026</span>
+                </div>
             </div>
 
-            <ul class="nav-links">
-                <li><a href="#" onclick="switchView('shop'); return false;">Sản phẩm</a></li>
-                <li><a href="#reviews-section" onclick="scrollToSection('reviews-section'); return false;">Đánh giá</a></li>
-                <li><a href="#about-workshop" onclick="scrollToSection('about-workshop'); return false;">Giới thiệu</a></li>
-            </ul>
-            <div class="header-actions">
-                <!-- Nút chuyển nền Sáng / Tối -->
-                <button class="theme-toggle-btn" id="themeToggleBtn" type="button" title="Chuyển chế độ Sáng / Tối">
-                    <span id="themeIcon">🌙</span>
-                    <span id="themeLabel">Tối</span>
-                </button>
+            <!-- Hàng dưới: Logo, Menu, Nút Sáng/Tối & Giỏ hàng -->
+            <div class="header-main-row">
+                <a href="#" class="logo" onclick="switchView('shop'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Xà Bông Handmade <span class="verified-badge-icon" title="Doanh nghiệp đã xác thực">✓</span>
+                </a>
 
-                <button class="icon-btn" id="openCartBtn" type="button">
-                    <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
-                    Giỏ hàng <span class="cart-badge" id="cartCountBadge">1</span>
-                </button>
+                <ul class="nav-links">
+                    <li><a href="#" onclick="switchView('shop'); return false;">Sản phẩm</a></li>
+                    <li><a href="#reviews-section" onclick="scrollToSection('reviews-section'); return false;">Đánh giá</a></li>
+                    <li><a href="#about-workshop" onclick="scrollToSection('about-workshop'); return false;">Giới thiệu</a></li>
+                </ul>
+
+                <div class="header-actions">
+                    <!-- Nút chuyển nền Sáng / Tối -->
+                    <button class="theme-toggle-btn" id="themeToggleBtn" type="button" title="Chuyển chế độ Sáng / Tối">
+                        <span id="themeIcon">🌙</span>
+                        <span id="themeLabel">Tối</span>
+                    </button>
+
+                    <button class="icon-btn" id="openCartBtn" type="button">
+                        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+                        Giỏ hàng <span class="cart-badge" id="cartCountBadge">1</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
