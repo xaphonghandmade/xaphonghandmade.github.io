@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Xà Phòng Handmade A2K25 - Tự nhiên & Lành tính</title>
+    <title>Xà Phòng Handmade Nhóm 1 A2-K25 Tân Kỳ 3</title>
     <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,31 +58,43 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 12px;
         }
 
         .logo {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             color: var(--text-main);
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            line-height: 1.3;
         }
 
         .logo svg {
             width: 18px;
             height: 18px;
             fill: var(--accent);
+            flex-shrink: 0;
         }
 
         .nav-links {
-            display: flex;
+            display: none;
             gap: 24px;
             list-style: none;
             font-size: 14px;
             font-weight: 500;
+        }
+
+        @media (min-width: 900px) {
+            .nav-links {
+                display: flex;
+            }
+            .logo {
+                font-size: 19px;
+            }
         }
 
         .nav-links a {
@@ -98,7 +110,8 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
+            flex-shrink: 0;
         }
 
         .icon-btn {
@@ -115,6 +128,7 @@
             transition: var(--transition);
             padding: 6px 10px;
             border-radius: 6px;
+            white-space: nowrap;
         }
 
         .icon-btn:hover {
@@ -246,11 +260,10 @@
 
         @media (min-width: 1024px) {
             .catalog-layout {
-                grid-template-columns: 260px 1fr 320px;
+                grid-template-columns: 260px 1fr 340px;
                 align-items: start;
             }
             .header-container { padding: 20px 32px; }
-            .logo { font-size: 20px; }
             .breadcrumb-container { padding: 20px 32px 0 32px; }
             .main-container { padding: 24px 32px 60px 32px; }
             .page-title-box h1 { font-size: 42px; }
@@ -412,14 +425,13 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            grid-template-columns: 1fr;
+            gap: 16px;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 640px) {
             .products-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 16px;
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -449,16 +461,12 @@
         .product-image-wrap {
             position: relative;
             width: 100%;
-            height: 160px;
+            height: 220px;
             background: #F4EBE1;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        @media (min-width: 768px) {
-            .product-image-wrap { height: 200px; }
         }
 
         .product-image-wrap img {
@@ -474,53 +482,52 @@
 
         .card-status-badge {
             position: absolute;
-            top: 8px;
-            left: 8px;
-            background: rgba(36, 25, 20, 0.75);
+            top: 10px;
+            left: 10px;
+            background: rgba(36, 25, 20, 0.8);
             backdrop-filter: blur(4px);
             color: white;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 600;
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 4px;
         }
 
         .product-info {
-            padding: 12px;
+            padding: 16px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
             justify-content: space-between;
         }
 
-        @media (min-width: 768px) {
-            .product-info { padding: 16px; }
-        }
-
         .product-tag-small {
-            font-size: 10px;
+            font-size: 11px;
             text-transform: uppercase;
             color: var(--text-muted);
             letter-spacing: 0.5px;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
 
         .product-name {
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             color: var(--text-main);
         }
 
-        @media (min-width: 768px) {
-            .product-name { font-size: 16px; }
+        .product-desc-short {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            line-height: 1.5;
         }
 
         .product-price {
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .product-card-footer {
@@ -528,8 +535,8 @@
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid var(--border-light);
-            padding-top: 8px;
-            font-size: 11px;
+            padding-top: 10px;
+            font-size: 12px;
             color: var(--text-muted);
         }
 
@@ -583,10 +590,11 @@
         }
 
         .selected-thumb {
-            width: 50px;
-            height: 50px;
+            width: 56px;
+            height: 56px;
             border-radius: 6px;
             object-fit: cover;
+            flex-shrink: 0;
         }
 
         .selected-title {
@@ -596,8 +604,9 @@
         }
 
         .selected-subtitle {
-            font-size: 11px;
+            font-size: 12px;
             color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .option-section-title {
@@ -606,7 +615,7 @@
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             display: flex;
             justify-content: space-between;
         }
@@ -627,7 +636,7 @@
         .weight-btn {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            padding: 8px;
+            padding: 10px 6px;
             border-radius: 6px;
             font-size: 13px;
             font-weight: 600;
@@ -643,11 +652,12 @@
         }
 
         .stock-status-note {
-            font-size: 11px;
+            font-size: 12px;
             color: var(--text-muted);
             margin-bottom: 14px;
-            padding-bottom: 10px;
+            padding-bottom: 12px;
             border-bottom: 1px solid var(--border-light);
+            line-height: 1.5;
         }
 
         .price-display-box {
@@ -658,7 +668,7 @@
         }
 
         .price-display-box .label {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--text-muted);
         }
 
@@ -960,11 +970,15 @@
             align-items: center;
         }
 
-        .checkout-box-title span {
+        .edit-address-link {
             font-size: 12px;
             color: var(--accent);
             cursor: pointer;
-            font-weight: 500;
+            font-weight: 600;
+            text-decoration: underline;
+            background: none;
+            border: none;
+            font-family: inherit;
         }
 
         .checkout-product-row {
@@ -1190,6 +1204,11 @@
             text-align: center;
         }
 
+        .btn-outline-custom:hover {
+            background: var(--primary);
+            color: white;
+        }
+
         .review-filters-bar {
             display: flex;
             gap: 8px;
@@ -1300,7 +1319,7 @@
             font-size: 11px;
         }
 
-        /* Modal Review Form */
+        /* Modal Overlay */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -1336,7 +1355,7 @@
             right: 16px;
             background: none;
             border: none;
-            font-size: 20px;
+            font-size: 22px;
             cursor: pointer;
             color: var(--text-muted);
         }
@@ -1434,12 +1453,12 @@
         <div class="header-container">
             <a href="#" class="logo" onclick="switchView('shop'); return false;">
                 <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                XÀ PHÒNG A2K25
+                Xà Phòng Handmade Nhóm 1 A2-K25 Tân Kỳ 3
             </a>
-            <ul class="nav-links" style="display: none;">
-                <li><a href="#" onclick="switchView('shop'); return false;">Bộ sưu tập</a></li>
+            <ul class="nav-links">
+                <li><a href="#" onclick="switchView('shop'); return false;">Sản phẩm</a></li>
                 <li><a href="#reviews-section" onclick="scrollToSection('reviews-section'); return false;">Đánh giá</a></li>
-                <li><a href="#about-workshop" onclick="scrollToSection('about-workshop'); return false;">Về A2K25</a></li>
+                <li><a href="#about-workshop" onclick="scrollToSection('about-workshop'); return false;">Về Nhóm 1</a></li>
             </ul>
             <div class="header-actions">
                 <button class="icon-btn" id="openCartBtn" type="button">
@@ -1453,24 +1472,24 @@
     <!-- ================= VIEW 1: SHOP CATALOG & DETAIL ================= -->
     <div id="shopView" class="view-section active">
         <div class="breadcrumb-container">
-            Trang chủ / <span>Xà phòng handmade tự nhiên</span>
+            Trang chủ / <span>Xà Phòng Handmade Nhóm 1 A2-K25 Tân Kỳ 3</span>
         </div>
 
         <div class="main-container">
             <div class="page-title-box">
-                <h1>Tìm bánh xà phòng của bạn</h1>
-                <p>Khám phá xà phòng hữu cơ thủ công theo nốt hương thiên nhiên và dưỡng chất.</p>
+                <h1>Xà Phòng Handmade Nhóm 1 A2-K25 Tân Kỳ 3</h1>
+                <p>Sản phẩm thủ công tự nhiên từ dầu thực vật nguyên chất, an toàn và lành tính cho mọi làn da.</p>
             </div>
 
             <!-- Search Banner -->
             <div class="search-banner">
                 <div>
-                    <div class="search-banner-label">TÌM TRONG BỘ SƯU TẬP</div>
-                    <div style="font-size: 16px; font-weight: 600;">Lọc theo thành phần & công dụng</div>
+                    <div class="search-banner-label">SẢN PHẨM THỦ CÔNG</div>
+                    <div style="font-size: 16px; font-weight: 600;">Chiết xuất từ dầu dừa, dầu ô liu & sáp ong tự nhiên</div>
                 </div>
                 <div class="search-input-group">
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                    <input type="text" id="searchInput" placeholder="Ví dụ: Nghệ mật ong, oải hương...">
+                    <input type="text" id="searchInput" placeholder="Tìm sản phẩm của Nhóm 1...">
                     <button class="search-btn" id="searchExecBtn" type="button">Tìm &rarr;</button>
                 </div>
             </div>
@@ -1485,15 +1504,15 @@
                     </div>
 
                     <div class="filter-group">
-                        <div class="filter-group-title">Nhóm công dụng</div>
+                        <div class="filter-group-title">Thành phần chính</div>
                         <label class="checkbox-label">
-                            <input type="checkbox" checked> Tất cả dòng dưỡng
+                            <input type="checkbox" checked> Dầu dừa & Dầu ô liu
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox"> Dưỡng ẩm & Sáng da
+                            <input type="checkbox" checked> Bơ hạt mỡ & Sáp ong
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox"> Kháng khuẩn & Ngừa mụn
+                            <input type="checkbox" checked> Tinh dầu thiên nhiên
                         </label>
                     </div>
 
@@ -1501,19 +1520,19 @@
                         <div class="filter-group-title">Khoảng giá</div>
                         <div class="price-slider-box">
                             <div class="price-inputs">
-                                <span id="minPriceLbl">40.000 đ</span>
-                                <span id="maxPriceLbl">250.000 đ</span>
+                                <span id="minPriceLbl">30.000 đ</span>
+                                <span id="maxPriceLbl">100.000 đ</span>
                             </div>
-                            <input type="range" min="40000" max="250000" step="10000" value="250000" class="range-slider" id="priceRange">
+                            <input type="range" min="30000" max="100000" step="5000" value="100000" class="range-slider" id="priceRange">
                         </div>
                     </div>
 
                     <div class="filter-group" style="margin-bottom: 0;">
-                        <div class="filter-group-title">Trọng lượng</div>
+                        <div class="filter-group-title">Quy cách đóng gói</div>
                         <div class="size-tags">
-                            <button class="size-tag-btn active" type="button">80g</button>
+                            <button class="size-tag-btn active" type="button">60g</button>
                             <button class="size-tag-btn" type="button">120g</button>
-                            <button class="size-tag-btn" type="button">Combo 3</button>
+                            <button class="size-tag-btn" type="button">Combo 3 bánh</button>
                         </div>
                     </div>
                 </div>
@@ -1521,18 +1540,17 @@
                 <!-- Column 2: Product List -->
                 <div class="product-list-section">
                     <div class="list-toolbar">
-                        <div class="result-count">Hiển thị <span id="productCountNum">6</span> sản phẩm</div>
+                        <div class="result-count">Hiển thị <span id="productCountNum">1</span> sản phẩm</div>
                         <select class="sort-select" id="sortSelect">
-                            <option value="popular">Phù hợp nhất</option>
+                            <option value="popular">Phổ biến nhất</option>
                             <option value="price-asc">Giá: Thấp đến cao</option>
-                            <option value="price-desc">Giá: Cao đến thấp</option>
                         </select>
                     </div>
 
                     <div class="products-grid" id="productsGrid"></div>
 
                     <div class="list-footer-info">
-                        Tiêu chuẩn xà phòng ủ lạnh thủ công xưởng A2K25.
+                        Sản phẩm được nghiên cứu và thực hiện thủ công bởi Nhóm 1 - Lớp A2-K25 THPT Tân Kỳ 3.
                     </div>
                 </div>
 
@@ -1546,31 +1564,31 @@
                     <div class="selected-preview-card">
                         <img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=300&q=80" id="sbThumb" class="selected-thumb" alt="">
                         <div>
-                            <div class="selected-title" id="sbTitle">Nghệ Mật Ong 01</div>
-                            <div class="selected-subtitle" id="sbSubtitle">Chiết xuất nghệ tươi & mật ong rừng</div>
+                            <div class="selected-title" id="sbTitle">Xà Phòng Handmade Do Nhóm 1 Làm</div>
+                            <div class="selected-subtitle" id="sbSubtitle">Từ dầu dừa, dầu ô liu, sáp ong & bơ hạt mỡ</div>
                         </div>
                     </div>
 
                     <div class="option-section-title">
-                        Trọng lượng <span id="selectedWeightLbl">80g</span>
+                        Trọng lượng / Combo <span id="selectedWeightLbl">60g</span>
                     </div>
                     <div class="weight-grid" id="weightButtonsContainer">
-                        <button class="weight-btn active" type="button" data-weight="80g" data-price="85000">80g</button>
-                        <button class="weight-btn" type="button" data-weight="120g" data-price="125000">120g</button>
-                        <button class="weight-btn" type="button" data-weight="Combo 3 bánh" data-price="240000">Combo 3</button>
+                        <button class="weight-btn active" type="button" data-weight="60g" data-price="30000">60g</button>
+                        <button class="weight-btn" type="button" data-weight="120g" data-price="55000">120g</button>
+                        <button class="weight-btn" type="button" data-weight="Combo 3 bánh" data-price="80000">Combo 3 bánh</button>
                     </div>
 
                     <div class="stock-status-note" id="sbStockNote">
-                        Phiên bản 120g được ưa chuộng nhờ tiết kiệm.
+                        Được xà phòng hóa từ các chất béo thực vật tinh khiết (dầu dừa, dầu ô liu, bơ hạt mỡ) giúp giữ ẩm tự nhiên, tạo bọt mịn và làm sạch dịu nhẹ.
                     </div>
 
                     <div class="price-display-box">
                         <span class="label">Giá phiên bản</span>
-                        <span class="amount" id="sbPriceLbl">85.000 đ</span>
+                        <span class="amount" id="sbPriceLbl">30.000 đ</span>
                     </div>
 
                     <div style="margin-bottom: 12px;">
-                        <span class="stock-badge-inline">Còn hàng tại xưởng</span>
+                        <span class="stock-badge-inline">Còn hàng sẵn sàng giao</span>
                     </div>
 
                     <button class="add-to-cart-btn" id="addToCartMainBtn" type="button">
@@ -1579,7 +1597,7 @@
                     </button>
 
                     <div class="panel-footer-note">
-                        Tặng kèm túi lưới tạo bọt thiên nhiên cho mọi đơn hàng.
+                        Ủng hộ sản phẩm sáng tạo của Nhóm 1 A2-K25 Tân Kỳ 3.
                     </div>
                 </div>
             </div>
@@ -1588,34 +1606,57 @@
             <div class="reviews-section" id="reviews-section">
                 <div class="reviews-header" style="margin-bottom: 20px;">
                     <div>
-                        <h2 style="font-size: 26px; font-weight: 600; margin-bottom: 4px;">Đánh giá từ khách hàng</h2>
-                        <p style="color: var(--text-muted); font-size: 13px;">Trải nghiệm thực tế từ cộng đồng sử dụng.</p>
+                        <h2 style="font-size: 26px; font-weight: 600; margin-bottom: 4px;">Đánh giá & Cảm nhận khách hàng</h2>
+                        <p style="color: var(--text-muted); font-size: 13px;">Phản hồi thực tế sau khi trải nghiệm Xà Phòng Handmade Do Nhóm 1 Làm.</p>
                     </div>
                 </div>
 
                 <div class="reviews-summary-card">
                     <div class="rating-overview">
-                        <div class="rating-score-big">4.9</div>
+                        <div class="rating-score-big" id="avgRatingDisplay">4.9</div>
                         <div class="stars-container">★★★★★</div>
-                        <div class="rating-count-text">428 đánh giá xác thực</div>
+                        <div class="rating-count-text" id="totalReviewsCountText">Dựa trên các đánh giá thực tế</div>
                     </div>
                     <div class="rating-bars">
                         <div class="rating-bar-row">
                             <span>5 sao</span>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 92%;"></div></div>
-                            <span style="width: 30px; text-align: right;">92%</span>
+                            <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
+                            <span style="width: 30px; text-align: right;">90%</span>
+                        </div>
+                        <div class="rating-bar-row">
+                            <span>4 sao</span>
+                            <div class="bar-bg"><div class="bar-fill" style="width: 10%;"></div></div>
+                            <span style="width: 30px; text-align: right;">10%</span>
+                        </div>
+                        <div class="rating-bar-row">
+                            <span>3 sao</span>
+                            <div class="bar-bg"><div class="bar-fill" style="width: 0%;"></div></div>
+                            <span style="width: 30px; text-align: right;">0%</span>
+                        </div>
+                        <div class="rating-bar-row">
+                            <span>2 sao</span>
+                            <div class="bar-bg"><div class="bar-fill" style="width: 0%;"></div></div>
+                            <span style="width: 30px; text-align: right;">0%</span>
+                        </div>
+                        <div class="rating-bar-row">
+                            <span>1 sao</span>
+                            <div class="bar-bg"><div class="bar-fill" style="width: 0%;"></div></div>
+                            <span style="width: 30px; text-align: right;">0%</span>
                         </div>
                     </div>
                     <div class="review-write-cta">
-                        <div style="font-size: 12px; font-weight: 600; text-align: center; color: var(--text-muted);">Đã sử dụng sản phẩm?</div>
-                        <button class="btn-outline-custom" id="openReviewModalBtn" type="button">Viết đánh giá</button>
+                        <div style="font-size: 12px; font-weight: 600; text-align: center; color: var(--text-muted);">Bạn đã dùng thử xà phòng của Nhóm 1?</div>
+                        <button class="btn-outline-custom" id="openReviewModalBtn" type="button">Viết đánh giá (1–5 sao)</button>
                     </div>
                 </div>
 
                 <div class="review-filters-bar">
-                    <button class="review-filter-pill active" type="button" data-filter="all">Tất cả (12)</button>
+                    <button class="review-filter-pill active" type="button" data-filter="all">Tất cả đánh giá</button>
                     <button class="review-filter-pill" type="button" data-filter="5">⭐⭐⭐⭐⭐ 5 Sao</button>
-                    <button class="review-filter-pill" type="button" data-filter="Nghệ Mật Ong">Nghệ Mật Ong</button>
+                    <button class="review-filter-pill" type="button" data-filter="4">⭐⭐⭐⭐ 4 Sao</button>
+                    <button class="review-filter-pill" type="button" data-filter="3">⭐⭐⭐ 3 Sao</button>
+                    <button class="review-filter-pill" type="button" data-filter="2">⭐⭐ 2 Sao</button>
+                    <button class="review-filter-pill" type="button" data-filter="1">⭐ 1 Sao</button>
                 </div>
 
                 <div class="reviews-grid" id="reviewsGrid"></div>
@@ -1624,12 +1665,12 @@
             <!-- About Workshop Section -->
             <div class="about-workshop-section" id="about-workshop">
                 <div class="about-workshop-content">
-                    <h2>Quy trình ủ lạnh thủ công A2K25</h2>
-                    <p>Mỗi bánh xà phòng được ủ lạnh truyền thống trong 48 giờ để giữ trọn vẹn Glycerin tự nhiên cấp ẩm sâu.</p>
-                    <p>Cam kết 3 KHÔNG: Không SLS, không paraben và không hương liệu tổng hợp.</p>
+                    <h2>Xà Phòng Handmade Nhóm 1 A2-K25 Tân Kỳ 3</h2>
+                    <p>Được làm thủ công từ các loại chất béo thực vật giàu dưỡng chất như dầu dừa, dầu ô liu, bơ hạt mỡ kết hợp cùng sáp ong tự nhiên qua phản ứng xà phòng hóa an toàn.</p>
+                    <p>Sản phẩm giữ lại lượng Glycerin tự nhiên giúp làn da luôn mềm mịn, sạch thoáng mà không hề gây khô rít sau khi sử dụng.</p>
                 </div>
                 <div>
-                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" class="about-workshop-img" alt="">
+                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" class="about-workshop-img" alt="Xà phòng handmade Nhóm 1">
                 </div>
             </div>
         </div>
@@ -1653,27 +1694,28 @@
             <div id="checkoutFormContent">
                 <div class="page-title-box">
                     <h1>Giỏ hàng và thanh toán</h1>
-                    <p>Kiểm tra thông tin giao hàng và tổng tiền trước khi đặt đơn.</p>
+                    <p>Kiểm tra sản phẩm, chỉnh sửa địa chỉ giao hàng và hoàn tất đặt đơn.</p>
                 </div>
 
                 <div class="checkout-grid">
                     <div>
                         <div class="checkout-box">
                             <div class="checkout-box-title">
-                                Sản phẩm <span id="checkoutItemCountLabel">1 sản phẩm</span>
+                                Sản phẩm trong giỏ <span id="checkoutItemCountLabel">1 sản phẩm</span>
                             </div>
                             <div id="checkoutItemsListContainer"></div>
                         </div>
 
                         <div class="checkout-box">
                             <div class="checkout-box-title">
-                                Giao hàng <span>Chỉnh sửa</span>
+                                Địa chỉ nhận hàng 
+                                <button type="button" class="edit-address-link" id="openEditAddressBtn">Chỉnh sửa địa chỉ</button>
                             </div>
                             <div class="shipping-info-card">
-                                <div style="font-weight: 700; font-size: 13px; margin-bottom: 2px;">Hà Văn Thành · 09•••••482</div>
-                                <div style="font-size: 12px; color: var(--text-muted);">Tiên Kỳ, Tân Kỳ, Nghệ An</div>
+                                <div style="font-weight: 700; font-size: 14px; margin-bottom: 4px;" id="displayReceiverNamePhone">Hà Văn Thành · 09•••••482</div>
+                                <div style="font-size: 13px; color: var(--text-muted);" id="displayReceiverAddress">Tiên Kỳ, Tân Kỳ, Nghệ An (Gần trường THPT Tân Kỳ 3)</div>
                             </div>
-                            <div style="font-size: 12px; color: #2E7D32; font-weight: 600;">✓ Giao tiêu chuẩn · 2–3 ngày (Miễn phí)</div>
+                            <div style="font-size: 12px; color: #2E7D32; font-weight: 600;">✓ Giao tiêu chuẩn · Dự kiến 1–3 ngày (Miễn phí)</div>
                         </div>
 
                         <div class="checkout-box" style="margin-bottom: 0;">
@@ -1681,15 +1723,15 @@
                             <label class="payment-method-option selected">
                                 <input type="radio" name="payMethod" checked>
                                 <div>
-                                    <div style="font-weight: 600; font-size: 13px;">Thẻ ngân hàng / Chuyển khoản QR</div>
-                                    <div style="font-size: 11px; color: var(--text-muted);">Bảo mật qua mã QR ngân hàng</div>
+                                    <div style="font-weight: 600; font-size: 13px;">Thanh toán khi nhận hàng (COD)</div>
+                                    <div style="font-size: 11px; color: var(--text-muted);">Kiểm tra hàng và thanh toán tiền mặt khi nhận</div>
                                 </div>
                             </label>
                             <label class="payment-method-option">
                                 <input type="radio" name="payMethod">
                                 <div>
-                                    <div style="font-weight: 600; font-size: 13px;">Thanh toán khi nhận hàng (COD)</div>
-                                    <div style="font-size: 11px; color: var(--text-muted);">Trả tiền mặt khi nhận hàng</div>
+                                    <div style="font-weight: 600; font-size: 13px;">Chuyển khoản ngân hàng / QR</div>
+                                    <div style="font-size: 11px; color: var(--text-muted);">Chuyển khoản nhanh qua ứng dụng ngân hàng</div>
                                 </div>
                             </label>
                         </div>
@@ -1700,7 +1742,7 @@
                             <div class="checkout-box-title">Tổng chi phí</div>
                             <div class="summary-line">
                                 <span>Tạm tính</span>
-                                <span id="summarySubtotal">85.000 đ</span>
+                                <span id="summarySubtotal">30.000 đ</span>
                             </div>
                             <div class="summary-line">
                                 <span>Phí giao hàng</span>
@@ -1708,12 +1750,12 @@
                             </div>
                             <div class="summary-line total">
                                 <span>Tổng thanh toán</span>
-                                <span id="summaryTotalAmount">85.000 đ</span>
+                                <span id="summaryTotalAmount">30.000 đ</span>
                             </div>
                             <button class="pay-action-btn" id="completeOrderBtn" type="button">
-                                Thanh toán <span id="payBtnAmountLabel">85.000 đ</span> &rarr;
+                                Đặt hàng <span id="payBtnAmountLabel">30.000 đ</span> &rarr;
                             </button>
-                            <a href="#" class="back-to-shop-link" id="backToShopFromCheckout" style="text-decoration: underline;">&larr; Tiếp tục mua sắm</a>
+                            <a href="#" class="back-to-shop-link" id="backToShopFromCheckout" style="text-decoration: underline;">&larr; Tiếp tục xem sản phẩm</a>
                         </div>
                     </div>
                 </div>
@@ -1724,7 +1766,8 @@
                 <div class="checkout-box success-screen">
                     <div class="success-icon">✓</div>
                     <h2 style="font-size: 28px; margin-bottom: 6px;">Đặt hàng thành công!</h2>
-                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">Mã đơn hàng: <strong id="successOrderId">#A2K25-8839</strong>.</p>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 8px;">Cảm ơn bạn đã ủng hộ <strong>Xà Phòng Handmade Nhóm 1 A2-K25 Tân Kỳ 3</strong>.</p>
+                    <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 16px;">Mã đơn hàng của bạn: <strong id="successOrderId">#NHOM1-8839</strong></p>
                     <button class="search-btn" id="backToHomeSuccessBtn" style="margin: 0 auto;" type="button">Quay về trang chủ</button>
                 </div>
             </div>
@@ -1742,72 +1785,133 @@
         <div class="cart-drawer-footer">
             <div class="cart-total-row">
                 <span>Tạm tính:</span>
-                <span id="drawerTotalPrice">85.000 đ</span>
+                <span id="drawerTotalPrice">30.000 đ</span>
             </div>
             <button class="checkout-drawer-btn" id="goToCheckoutBtn" type="button">Tiến hành thanh toán &rarr;</button>
         </div>
     </div>
 
-    <!-- Modal Review Form -->
+    <!-- Modal Edit Shipping Address -->
+    <div class="modal-overlay" id="editAddressModal">
+        <div class="modal-content">
+            <button class="modal-close-btn" id="closeAddressModalBtn" type="button">&times;</button>
+            <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 14px;">Chỉnh sửa địa chỉ nhận hàng</h3>
+            <form id="editAddressForm">
+                <div class="form-group">
+                    <label>Họ và tên người nhận</label>
+                    <input type="text" id="inputReceiverName" required value="Hà Văn Thành">
+                </div>
+                <div class="form-group">
+                    <label>Số điện thoại liên hệ</label>
+                    <input type="tel" id="inputReceiverPhone" required value="0987654482">
+                </div>
+                <div class="form-group">
+                    <label>Địa chỉ nhận hàng chi tiết</label>
+                    <textarea id="inputReceiverAddress" required>Tiên Kỳ, Tân Kỳ, Nghệ An (Gần trường THPT Tân Kỳ 3)</textarea>
+                </div>
+                <button type="submit" class="search-btn" style="width: 100%; justify-content: center;">Lưu địa chỉ nhận hàng</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Review Form (1-5 Stars) -->
     <div class="modal-overlay" id="reviewModal">
         <div class="modal-content">
             <button class="modal-close-btn" id="closeModalBtn" type="button">&times;</button>
             <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 14px;">Gửi đánh giá sản phẩm</h3>
             <form id="reviewForm">
                 <div class="form-group">
-                    <label>Họ và tên</label>
+                    <label>Họ và tên của bạn</label>
                     <input type="text" id="revNameInput" required placeholder="Nhập họ tên...">
                 </div>
                 <div class="form-group">
-                    <label>Chọn dòng sản phẩm</label>
+                    <label>Sản phẩm trải nghiệm</label>
                     <select id="revProductSelect">
-                        <option>Nghệ Mật Ong 01</option>
-                        <option>Oải Hương Yến Mạch 02</option>
-                        <option>Than Tre Bạc Hà 03</option>
+                        <option value="Xà Phòng Handmade Do Nhóm 1 Làm">Xà Phòng Handmade Do Nhóm 1 Làm</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Xếp hạng sao</label>
+                    <label>Chọn mức đánh giá (1 đến 5 sao)</label>
                     <select id="revStarsSelect">
-                        <option value="5">⭐⭐⭐⭐⭐ (5/5 - Tuyệt vời)</option>
-                        <option value="4">⭐⭐⭐⭐ (4/5 - Hài lòng)</option>
+                        <option value="5">⭐⭐⭐⭐⭐ (5 sao - Tuyệt vời)</option>
+                        <option value="4">⭐⭐⭐⭐ (4 sao - Hài lòng)</option>
+                        <option value="3">⭐⭐⭐ (3 sao - Bình thường)</option>
+                        <option value="2">⭐⭐ (2 sao - Chưa hài lòng)</option>
+                        <option value="1">⭐ (1 sao - Rất tệ)</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Nội dung đánh giá</label>
-                    <textarea id="revCommentInput" required placeholder="Chia sẻ cảm nhận của bạn..."></textarea>
+                    <label>Nội dung bình luận</label>
+                    <textarea id="revCommentInput" required placeholder="Chia sẻ cảm nhận về độ tạo bọt, mùi hương và cảm giác trên da..."></textarea>
                 </div>
-                <button type="submit" class="search-btn" style="width: 100%; justify-content: center;">Gửi đánh giá</button>
+                <button type="submit" class="search-btn" style="width: 100%; justify-content: center;">Đăng đánh giá</button>
             </form>
         </div>
     </div>
 
     <footer>
-        © 2026 Xà Phòng Handmade A2K25. Bảo lưu mọi quyền.
+        © 2026 Xà Phòng Handmade Nhóm 1 A2-K25 Tân Kỳ 3. Sản phẩm học tập & sáng tạo thủ công.
     </footer>
 
     <!-- JavaScript Application Logic -->
     <script>
         const products = [
-            { id: 1, tag: "Bán chạy", name: "Nghệ Mật Ong 01", category: "Dưỡng ẩm & Sáng da", price: 85000, rating: 5, image: "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=500&q=80", subtitle: "Chiết xuất nghệ tươi & mật ong rừng" },
-            { id: 2, tag: "Thư giãn", name: "Oải Hương Yến Mạch 02", category: "Thư giãn", price: 95000, rating: 5, image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80", subtitle: "Tinh dầu oải hương & yến mạch" },
-            { id: 3, tag: "Kháng khuẩn", name: "Than Tre Bạc Hà 03", category: "Ngừa mụn", price: 90000, rating: 5, image: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=500&q=80", subtitle: "Than hoạt tính tre & bạc hà" },
-            { id: 4, tag: "Mới", name: "Trà Xanh Cám Gạo 04", category: "Sáng da", price: 85000, rating: 4, image: "https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=500&q=80", subtitle: "Bột trà xanh & cám gạo vitamin E" },
-            { id: 5, tag: "Siêu dưỡng", name: "Bơ Hạt Mỡ Sữa Dê 05", category: "Dưỡng ẩm", price: 110000, rating: 5, image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=500&q=80", subtitle: "Shea Butter & sữa dê tươi" },
-            { id: 6, tag: "Ấm áp", name: "Sả Chanh Gừng Ấm 06", category: "Thư giãn", price: 88000, rating: 5, image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=500&q=80", subtitle: "Sả chanh nguyên chất & gừng tươi" }
+            {
+                id: 1,
+                tag: "Thủ công Nhóm 1",
+                name: "Xà Phòng Handmade Do Nhóm 1 Làm",
+                category: "Dưỡng ẩm & Làm sạch dịu nhẹ",
+                price: 30000,
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=600&q=80",
+                subtitle: "Làm từ chất béo thực vật (dầu dừa, dầu ô liu, bơ hạt mỡ) & sáp ong tự nhiên",
+                description: "Sản phẩm được chế tác thủ công từ nguồn chất béo thực vật tinh khiết như dầu dừa, dầu ô liu nguyên chất và bơ hạt mỡ, giúp làm sạch dịu nhẹ, giữ ẩm tự nhiên và an toàn cho da."
+            }
         ];
 
         let reviewsList = [
-            { id: 1, name: "Hà Văn Thành", product: "Nghệ Mật Ong 01", stars: 5, date: "12/10/2026", comment: "Xà phòng thơm dịu mùi mật ong, bọt mịn rửa mặt sạch không bị khô da.", shopReply: "Cảm ơn anh Thành đã tin tưởng ủng hộ xưởng!" },
-            { id: 2, name: "Nguyễn Thị Mai", product: "Oải Hương Yến Mạch 02", stars: 5, date: "05/10/2026", comment: "Mùi oải hương thư giãn, tắm xong da mềm mịn nhờ hạt yến mạch.", shopReply: "A2K25 rất vui vì chị yêu thích sản phẩm." },
-            { id: 3, name: "Trần Minh Quân", product: "Than Tre Bạc Hà 03", stars: 5, date: "28/9/2026", comment: "Tắm mát lạnh sảng khoái, xà phòng cứng cáp không bị nhão.", shopReply: "Cảm ơn đánh giá chi tiết từ anh Quân." },
-            { id: 4, name: "Phạm Thu Trang", product: "Bơ Hạt Mỡ Sữa Dê 05", stars: 5, date: "15/9/2026", comment: "Da khô dùng bánh sữa dê này xong mềm mịn hẳn như thoa lotion.", shopReply: "Dạ công thức dưỡng ẩm độc quyền của xưởng ạ." }
+            {
+                id: 1,
+                name: "Nguyễn Minh Anh",
+                product: "Xà Phòng Handmade Do Nhóm 1 Làm",
+                stars: 5,
+                date: "Hôm qua",
+                comment: "Bánh xà phòng thơm nhẹ tự nhiên, rửa tay hay tắm đều tạo bọt mịn mà không làm khô da. Rất ủng hộ sản phẩm của Nhóm 1 A2-K25!",
+                shopReply: "Nhóm 1 A2-K25 Tân Kỳ 3 cảm ơn bạn đã tin tưởng và ủng hộ sản phẩm thủ công của nhóm ạ!"
+            },
+            {
+                id: 2,
+                name: "Trần Quốc Bảo",
+                product: "Xà Phòng Handmade Do Nhóm 1 Làm",
+                stars: 5,
+                date: "2 ngày trước",
+                comment: "Giá 30k cho 1 bánh 60g rất hợp lý, làm từ dầu dừa và dầu ô liu nên dùng cực kỳ lành tính, không bị rít da như xà phòng công nghiệp.",
+                shopReply: "Cảm ơn đánh giá chân thực của bạn! Chúc bạn có trải nghiệm thật tốt."
+            },
+            {
+                id: 3,
+                name: "Lê Thị Thu Hà",
+                product: "Xà Phòng Handmade Do Nhóm 1 Làm",
+                stars: 4,
+                date: "4 ngày trước",
+                comment: "Mình mua combo 3 bánh dùng dần rất tiết kiệm. Bánh cầm chắc tay, đóng gói chỉn chu.",
+                shopReply: "Cảm ơn bạn đã ủng hộ Combo 3 bánh của Nhóm 1 nhé!"
+            }
         ];
 
         let currentSelectedProduct = products[0];
-        let currentSelectedWeight = "80g";
-        let currentSelectedPrice = 85000;
-        let cartItems = [{ id: 1, name: "Nghệ Mật Ong 01", weight: "80g", price: 85000, qty: 1, image: products[0].image }];
+        let currentSelectedWeight = "60g";
+        let currentSelectedPrice = 30000;
+        let cartItems = [
+            {
+                id: 1,
+                name: "Xà Phòng Handmade Do Nhóm 1 Làm",
+                weight: "60g",
+                price: 30000,
+                qty: 1,
+                image: products[0].image
+            }
+        ];
 
         document.addEventListener("DOMContentLoaded", function() {
             renderProducts(products);
@@ -1815,7 +1919,7 @@
             updateCartBadge();
             updateSidebarDetails(currentSelectedProduct);
 
-            // Gán sự kiện tương tác giỏ hàng
+            // Tương tác giỏ hàng
             document.getElementById('openCartBtn').addEventListener('click', openCartDrawer);
             document.getElementById('closeCartBtn').addEventListener('click', closeCartDrawer);
             document.getElementById('cartOverlay').addEventListener('click', closeCartDrawer);
@@ -1828,7 +1932,7 @@
                 addProductToCart();
             });
 
-            // Chọn trọng lượng
+            // Chọn trọng lượng / Combo
             const weightBtns = document.querySelectorAll('#weightButtonsContainer .weight-btn');
             weightBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -1850,12 +1954,30 @@
             });
             document.getElementById('sortSelect').addEventListener('change', sortProducts);
 
-            // Review Modal
+            // Chỉnh sửa địa chỉ nhận hàng
+            document.getElementById('openEditAddressBtn').addEventListener('click', function() {
+                document.getElementById('editAddressModal').classList.add('open');
+            });
+            document.getElementById('closeAddressModalBtn').addEventListener('click', function() {
+                document.getElementById('editAddressModal').classList.remove('open');
+            });
+            document.getElementById('editAddressForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const newName = document.getElementById('inputReceiverName').value.trim();
+                const newPhone = document.getElementById('inputReceiverPhone').value.trim();
+                const newAddr = document.getElementById('inputReceiverAddress').value.trim();
+                
+                document.getElementById('displayReceiverNamePhone').innerText = `${newName} · ${newPhone}`;
+                document.getElementById('displayReceiverAddress').innerText = newAddr;
+                document.getElementById('editAddressModal').classList.remove('open');
+            });
+
+            // Review Modal (1-5 sao)
             document.getElementById('openReviewModalBtn').addEventListener('click', openReviewModal);
             document.getElementById('closeModalBtn').addEventListener('click', closeReviewModal);
             document.getElementById('reviewForm').addEventListener('submit', submitNewReview);
 
-            // Đánh giá filters
+            // Lọc đánh giá theo số sao
             document.querySelectorAll('.review-filter-pill').forEach(pill => {
                 pill.addEventListener('click', function() {
                     document.querySelectorAll('.review-filter-pill').forEach(p => p.classList.remove('active'));
@@ -1875,7 +1997,7 @@
             });
             document.getElementById('completeOrderBtn').addEventListener('click', completeCheckoutOrder);
 
-            // Thanh toán method
+            // Phương thức thanh toán
             document.querySelectorAll('.payment-method-option').forEach(opt => {
                 opt.addEventListener('click', function() {
                     document.querySelectorAll('.payment-method-option').forEach(o => o.classList.remove('selected'));
@@ -1889,27 +2011,32 @@
             const grid = document.getElementById('productsGrid');
             document.getElementById('productCountNum').innerText = list.length;
             
+            if (list.length === 0) {
+                grid.innerHTML = `<div style="grid-column: span 2; text-align:center; padding: 30px; color: var(--text-muted);">Không tìm thấy sản phẩm phù hợp.</div>`;
+                return;
+            }
+
             grid.innerHTML = list.map(p => `
-                <div class="product-card ${p.id === currentSelectedProduct.id ? 'selected' : ''}" data-id="${p.id}">
+                <div class="product-card ${p.id === currentSelectedProduct.id ? 'selected' : ''}" data-id="${p.id}" style="grid-column: span 2;">
                     <div class="product-image-wrap">
                         <span class="card-status-badge">${p.tag}</span>
-                        <img src="${p.image}" alt="">
+                        <img src="${p.image}" alt="${p.name}">
                     </div>
                     <div class="product-info">
                         <div>
                             <div class="product-tag-small">${p.category}</div>
                             <div class="product-name">${p.name}</div>
-                            <div class="product-price">Từ ${p.price.toLocaleString()} đ</div>
+                            <div class="product-desc-short">${p.description}</div>
+                            <div class="product-price">Chỉ từ ${p.price.toLocaleString()} đ / bánh 60g</div>
                         </div>
                         <div class="product-card-footer">
-                            <span>${p.rating} ★</span>
-                            <span class="card-action-link">Chọn &rarr;</span>
+                            <span>${p.rating}.0 ★★★★★</span>
+                            <span class="card-action-link">Chọn trọng lượng & đặt mua &rarr;</span>
                         </div>
                     </div>
                 </div>
             `).join('');
 
-            // Gắn sự kiện click vào từng card sản phẩm
             document.querySelectorAll('.product-card').forEach(card => {
                 card.addEventListener('click', function() {
                     const id = parseInt(this.getAttribute('data-id'));
@@ -1920,15 +2047,6 @@
 
         function selectProduct(id) {
             currentSelectedProduct = products.find(p => p.id === id);
-            currentSelectedPrice = currentSelectedProduct.price;
-            currentSelectedWeight = "80g";
-            
-            const weightBtns = document.querySelectorAll('#weightButtonsContainer .weight-btn');
-            weightBtns.forEach((btn, idx) => {
-                if(idx === 0) btn.classList.add('active');
-                else btn.classList.remove('active');
-            });
-
             updateSidebarDetails(currentSelectedProduct);
             renderProducts(products);
         }
@@ -1981,7 +2099,7 @@
             let subtotal = 0;
 
             if(cartItems.length === 0) {
-                container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 30px 0;">Giỏ hàng trống.</div>`;
+                container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 30px 0;">Giỏ hàng của bạn đang trống.</div>`;
                 document.getElementById('drawerTotalPrice').innerText = '0 đ';
                 return;
             }
@@ -1993,14 +2111,14 @@
                         <img src="${item.image}" class="cart-item-img" alt="">
                         <div class="cart-item-details">
                             <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-meta">${item.weight}</div>
+                            <div class="cart-item-meta">Quy cách: ${item.weight}</div>
                             <div class="cart-item-price">${item.price.toLocaleString()} đ</div>
                             <div class="cart-item-qty">
                                 <button type="button" class="qty-dec-btn" data-index="${idx}">-</button>
                                 <span>${item.qty}</span>
                                 <button type="button" class="qty-inc-btn" data-index="${idx}">+</button>
                             </div>
-                            <button type="button" class="cart-remove-btn" data-index="${idx}">Xóa</button>
+                            <button type="button" class="cart-remove-btn" data-index="${idx}">Xóa sản phẩm</button>
                         </div>
                     </div>
                 `;
@@ -2008,7 +2126,6 @@
 
             document.getElementById('drawerTotalPrice').innerText = subtotal.toLocaleString() + ' đ';
 
-            // Gắn sự kiện tăng/giảm/xóa cho giỏ hàng
             container.querySelectorAll('.qty-dec-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const idx = parseInt(this.getAttribute('data-index'));
@@ -2053,7 +2170,7 @@
                 document.getElementById('checkoutView').classList.remove('active');
             } else if(viewName === 'checkout') {
                 if(cartItems.length === 0) {
-                    alert('Giỏ hàng trống!');
+                    alert('Giỏ hàng trống! Vui lòng thêm sản phẩm vào giỏ trước.');
                     return;
                 }
                 document.getElementById('shopView').classList.remove('active');
@@ -2077,7 +2194,7 @@
                     <div class="checkout-product-row">
                         <div>
                             <div style="font-weight: 600; font-size: 13px;">${item.name} (${item.weight})</div>
-                            <div style="font-size: 11px; color: var(--text-muted);">SL: ${item.qty}</div>
+                            <div style="font-size: 11px; color: var(--text-muted);">Số lượng: ${item.qty}</div>
                         </div>
                         <div style="font-weight: 700; font-size: 13px;">${(item.price * item.qty).toLocaleString()} đ</div>
                     </div>
@@ -2092,33 +2209,42 @@
         function completeCheckoutOrder() {
             document.getElementById('checkoutFormContent').style.display = 'none';
             document.getElementById('successScreenContent').style.display = 'block';
-            document.getElementById('successOrderId').innerText = '#A2K25-' + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('successOrderId').innerText = '#NHOM1-' + Math.floor(1000 + Math.random() * 9000);
             cartItems = [];
             updateCartBadge();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function renderReviews(list) {
-            document.getElementById('reviewsGrid').innerHTML = list.map(r => `
+            const grid = document.getElementById('reviewsGrid');
+            if (list.length === 0) {
+                grid.innerHTML = `<div style="grid-column: span 2; text-align:center; padding: 24px; color: var(--text-muted);">Chưa có đánh giá nào ở mức sao này.</div>`;
+                return;
+            }
+
+            grid.innerHTML = list.map(r => `
                 <div class="review-card">
                     <div class="reviewer-info-row">
                         <div>
-                            <div class="reviewer-name">${r.name} <span class="verified-badge">✓ Mua hàng</span></div>
+                            <div class="reviewer-name">${r.name} <span class="verified-badge">✓ Đã trải nghiệm</span></div>
                             <div class="review-product-tag">${r.product}</div>
                         </div>
                         <div class="review-date">${r.date}</div>
                     </div>
-                    <div class="stars-container">${'★'.repeat(r.stars)}</div>
+                    <div class="stars-container">${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}</div>
                     <div class="review-comment">${r.comment}</div>
-                    ${r.shopReply ? `<div class="shop-reply-box"><div class="shop-reply-title">Phản hồi từ xưởng:</div><div>${r.shopReply}</div></div>` : ''}
+                    ${r.shopReply ? `<div class="shop-reply-box"><div class="shop-reply-title">Phản hồi từ Nhóm 1 A2-K25 Tân Kỳ 3:</div><div>${r.shopReply}</div></div>` : ''}
                 </div>
             `).join('');
         }
 
         function filterReviews(criteria) {
-            if(criteria === 'all') renderReviews(reviewsList);
-            else if(criteria === '5') renderReviews(reviewsList.filter(r => r.stars === 5));
-            else renderReviews(reviewsList.filter(r => r.product.includes(criteria)));
+            if(criteria === 'all') {
+                renderReviews(reviewsList);
+            } else {
+                const starNum = parseInt(criteria);
+                renderReviews(reviewsList.filter(r => r.stars === starNum));
+            }
         }
 
         function openReviewModal() { document.getElementById('reviewModal').classList.add('open'); }
@@ -2126,23 +2252,31 @@
 
         function submitNewReview(e) {
             e.preventDefault();
+            const starsVal = parseInt(document.getElementById('revStarsSelect').value);
             reviewsList.unshift({
                 id: reviewsList.length + 1,
                 name: document.getElementById('revNameInput').value,
                 product: document.getElementById('revProductSelect').value,
-                stars: parseInt(document.getElementById('revStarsSelect').value),
-                date: "Hôm nay",
+                stars: starsVal,
+                date: "Vừa xong",
                 comment: document.getElementById('revCommentInput').value,
-                shopReply: "Cảm ơn đánh giá tuyệt vời của bạn!"
+                shopReply: starsVal >= 4 
+                    ? "Cảm ơn đánh giá tích cực của bạn dành cho Xà Phòng Handmade Nhóm 1 A2-K25 Tân Kỳ 3!" 
+                    : "Nhóm 1 A2-K25 Tân Kỳ 3 xin ghi nhận góp ý của bạn để cải thiện sản phẩm tốt hơn."
             });
             renderReviews(reviewsList);
             closeReviewModal();
-            alert('Đánh giá của bạn đã được đăng thành công!');
+            document.getElementById('revNameInput').value = '';
+            document.getElementById('revCommentInput').value = '';
         }
 
         function executeSearch() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
-            renderProducts(products.filter(p => p.name.toLowerCase().includes(query) || p.subtitle.toLowerCase().includes(query)));
+            renderProducts(products.filter(p => 
+                p.name.toLowerCase().includes(query) || 
+                p.subtitle.toLowerCase().includes(query) || 
+                p.description.toLowerCase().includes(query)
+            ));
         }
 
         function updatePriceFilter(val) {
@@ -2152,8 +2286,8 @@
 
         function resetFilters() {
             document.getElementById('searchInput').value = '';
-            document.getElementById('priceRange').value = 250000;
-            document.getElementById('maxPriceLbl').innerText = '250.000 đ';
+            document.getElementById('priceRange').value = 100000;
+            document.getElementById('maxPriceLbl').innerText = '100.000 đ';
             renderProducts(products);
         }
 
@@ -2161,7 +2295,6 @@
             const val = document.getElementById('sortSelect').value;
             let sorted = [...products];
             if(val === 'price-asc') sorted.sort((a,b) => a.price - b.price);
-            if(val === 'price-desc') sorted.sort((a,b) => b.price - a.price);
             renderProducts(sorted);
         }
 
@@ -2171,4 +2304,5 @@
     </script>
 </body>
 </html>
+
 
