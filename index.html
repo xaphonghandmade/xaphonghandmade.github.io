@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Xà Phòng Handmade A2K25 - Tự nhiên & Lành tính</title>
     <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,6 @@
             --accent-hover: #E08269;
             --border-color: #EADFD5;
             --border-light: #F2ECE4;
-            --card-bg: #FFFFFF;
             --tag-bg: #F7F1EA;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -36,6 +35,7 @@
             color: var(--text-main);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4, .serif-font {
@@ -54,32 +54,32 @@
         .header-container {
             max-width: 1320px;
             margin: 0 auto;
-            padding: 20px 32px;
+            padding: 16px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: 700;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             color: var(--text-main);
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .logo svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             fill: var(--accent);
         }
 
         .nav-links {
             display: flex;
-            gap: 36px;
+            gap: 24px;
             list-style: none;
             font-size: 14px;
             font-weight: 500;
@@ -98,7 +98,7 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 16px;
         }
 
         .icon-btn {
@@ -107,16 +107,18 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             font-size: 14px;
             font-weight: 500;
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
             transition: var(--transition);
+            padding: 6px 10px;
+            border-radius: 6px;
         }
 
         .icon-btn:hover {
-            color: var(--accent);
+            background: var(--tag-bg);
         }
 
         .cart-badge {
@@ -140,7 +142,7 @@
         .breadcrumb-container {
             max-width: 1320px;
             margin: 0 auto;
-            padding: 20px 32px 0 32px;
+            padding: 16px 20px 0 20px;
             font-size: 13px;
             color: var(--text-muted);
         }
@@ -154,22 +156,22 @@
         .main-container {
             max-width: 1320px;
             margin: 0 auto;
-            padding: 24px 32px 60px 32px;
+            padding: 20px 20px 40px 20px;
         }
 
         .page-title-box {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .page-title-box h1 {
-            font-size: 42px;
+            font-size: 32px;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .page-title-box p {
             color: var(--text-muted);
-            font-size: 15px;
+            font-size: 14px;
         }
 
         /* Search Bar Banner */
@@ -177,21 +179,21 @@
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 20px 24px;
+            padding: 16px 20px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 32px;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
             box-shadow: 0 2px 8px rgba(36,25,20,0.02);
         }
 
         .search-banner-label {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .search-input-group {
@@ -200,9 +202,9 @@
             background: var(--bg-color);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 8px 16px;
-            width: 450px;
-            gap: 12px;
+            padding: 8px 12px;
+            width: 100%;
+            gap: 10px;
         }
 
         .search-input-group input {
@@ -219,33 +221,46 @@
             background: var(--primary);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 16px;
             border-radius: 6px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             transition: var(--transition);
+            white-space: nowrap;
         }
 
         .search-btn:hover {
             background: var(--accent);
         }
 
-        /* 3-Column Grid Layout */
+        /* Catalog Layout */
         .catalog-layout {
             display: grid;
-            grid-template-columns: 280px 1fr 340px;
-            gap: 28px;
-            align-items: start;
+            grid-template-columns: 1fr;
+            gap: 24px;
         }
 
-        @media (max-width: 1100px) {
+        @media (min-width: 1024px) {
             .catalog-layout {
-                grid-template-columns: 1fr;
+                grid-template-columns: 260px 1fr 320px;
+                align-items: start;
             }
+            .header-container { padding: 20px 32px; }
+            .logo { font-size: 20px; }
+            .breadcrumb-container { padding: 20px 32px 0 32px; }
+            .main-container { padding: 24px 32px 60px 32px; }
+            .page-title-box h1 { font-size: 42px; }
+            .search-banner {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 24px;
+            }
+            .search-input-group { width: 420px; }
         }
 
         /* Column 1: Filters */
@@ -253,7 +268,7 @@
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 24px;
+            padding: 20px;
             box-shadow: 0 2px 8px rgba(36,25,20,0.02);
         }
 
@@ -261,13 +276,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
             border-bottom: 1px solid var(--border-light);
         }
 
         .filter-header h3 {
-            font-size: 18px;
+            font-size: 16px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -281,13 +296,13 @@
         }
 
         .filter-group {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .filter-group-title {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             color: var(--text-main);
         }
 
@@ -308,15 +323,10 @@
             cursor: pointer;
         }
 
-        .checkbox-label.active {
-            color: var(--text-main);
-            font-weight: 600;
-        }
-
         .price-slider-box {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .price-inputs {
@@ -363,7 +373,7 @@
         .product-list-section {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 16px;
         }
 
         .list-toolbar {
@@ -371,13 +381,15 @@
             justify-content: space-between;
             align-items: center;
             background: var(--surface-color);
-            padding: 14px 20px;
+            padding: 12px 16px;
             border-radius: 10px;
             border: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .result-count {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
         }
 
@@ -389,7 +401,7 @@
         .sort-select {
             background: var(--tag-bg);
             border: 1px solid var(--border-color);
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 6px;
             font-size: 13px;
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -400,13 +412,14 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
         }
 
-        @media (max-width: 1300px) {
+        @media (min-width: 768px) {
             .products-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
             }
         }
 
@@ -423,8 +436,8 @@
         }
 
         .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(36,25,20,0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(36,25,20,0.06);
             border-color: var(--accent);
         }
 
@@ -436,12 +449,16 @@
         .product-image-wrap {
             position: relative;
             width: 100%;
-            height: 220px;
+            height: 160px;
             background: #F4EBE1;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+            .product-image-wrap { height: 200px; }
         }
 
         .product-image-wrap img {
@@ -457,46 +474,53 @@
 
         .card-status-badge {
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 8px;
+            left: 8px;
             background: rgba(36, 25, 20, 0.75);
             backdrop-filter: blur(4px);
             color: white;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
-            padding: 4px 10px;
+            padding: 3px 8px;
             border-radius: 4px;
-            letter-spacing: 0.5px;
         }
 
         .product-info {
-            padding: 16px;
+            padding: 12px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
             justify-content: space-between;
         }
 
+        @media (min-width: 768px) {
+            .product-info { padding: 16px; }
+        }
+
         .product-tag-small {
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
             color: var(--text-muted);
             letter-spacing: 0.5px;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .product-name {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             color: var(--text-main);
         }
 
+        @media (min-width: 768px) {
+            .product-name { font-size: 16px; }
+        }
+
         .product-price {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .product-card-footer {
@@ -504,41 +528,44 @@
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid var(--border-light);
-            padding-top: 10px;
-            font-size: 12px;
+            padding-top: 8px;
+            font-size: 11px;
             color: var(--text-muted);
         }
 
         .card-action-link {
             color: var(--primary);
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 4px;
         }
 
         .list-footer-info {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
             margin-top: 4px;
+            text-align: center;
         }
 
-        /* Column 3: Version Selector & Checkout Info */
+        /* Column 3: Version Selector & Detail Sidebar */
         .sidebar-panel {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 24px;
-            position: sticky;
-            top: 100px;
+            padding: 20px;
             box-shadow: 0 4px 16px rgba(36,25,20,0.04);
         }
 
+        @media (min-width: 1024px) {
+            .sidebar-panel {
+                position: sticky;
+                top: 90px;
+            }
+        }
+
         .panel-heading {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
             border-bottom: 1px solid var(--border-light);
             display: flex;
             justify-content: space-between;
@@ -547,39 +574,39 @@
 
         .selected-preview-card {
             display: flex;
-            gap: 14px;
+            gap: 12px;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             background: var(--tag-bg);
-            padding: 12px;
+            padding: 10px;
             border-radius: 8px;
         }
 
         .selected-thumb {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 6px;
             object-fit: cover;
         }
 
         .selected-title {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             margin-bottom: 2px;
         }
 
         .selected-subtitle {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-muted);
         }
 
         .option-section-title {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             display: flex;
             justify-content: space-between;
         }
@@ -594,23 +621,19 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 8px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .weight-btn {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            padding: 10px;
+            padding: 8px;
             border-radius: 6px;
             font-size: 13px;
             font-weight: 600;
             cursor: pointer;
             text-align: center;
             transition: var(--transition);
-        }
-
-        .weight-btn:hover {
-            border-color: var(--accent);
         }
 
         .weight-btn.active {
@@ -620,10 +643,10 @@
         }
 
         .stock-status-note {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-muted);
-            margin-bottom: 16px;
-            padding-bottom: 12px;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
             border-bottom: 1px solid var(--border-light);
         }
 
@@ -631,16 +654,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .price-display-box .label {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
         }
 
         .price-display-box .amount {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: var(--primary);
         }
@@ -675,10 +698,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             transition: var(--transition);
             box-shadow: 0 4px 12px rgba(244,150,125,0.3);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .add-to-cart-btn:hover {
@@ -689,7 +712,7 @@
             font-size: 11px;
             color: var(--text-muted);
             text-align: center;
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
         /* Slide-over Cart Drawer */
@@ -701,7 +724,7 @@
             height: 100%;
             background: rgba(36,25,20,0.4);
             backdrop-filter: blur(4px);
-            z-index: 200;
+            z-index: 999;
             display: none;
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -715,11 +738,12 @@
         .cart-drawer {
             position: fixed;
             top: 0;
-            right: -420px;
-            width: 400px;
+            right: -100%;
+            width: 100%;
+            max-width: 380px;
             height: 100%;
             background: var(--surface-color);
-            z-index: 201;
+            z-index: 1000;
             box-shadow: -8px 0 30px rgba(36,25,20,0.1);
             transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
@@ -731,7 +755,7 @@
         }
 
         .cart-drawer-header {
-            padding: 20px 24px;
+            padding: 16px 20px;
             border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
@@ -739,25 +763,25 @@
         }
 
         .cart-drawer-body {
-            padding: 20px 24px;
+            padding: 16px 20px;
             flex-grow: 1;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
 
         .cart-item-row {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             align-items: center;
-            padding-bottom: 16px;
+            padding-bottom: 14px;
             border-bottom: 1px solid var(--border-light);
         }
 
         .cart-item-img {
-            width: 56px;
-            height: 56px;
+            width: 50px;
+            height: 50px;
             border-radius: 6px;
             object-fit: cover;
         }
@@ -767,19 +791,19 @@
         }
 
         .cart-item-name {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             margin-bottom: 2px;
         }
 
         .cart-item-meta {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-muted);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .cart-item-price {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             color: var(--primary);
         }
@@ -790,15 +814,18 @@
             border: 1px solid var(--border-color);
             border-radius: 4px;
             width: fit-content;
+            margin-top: 4px;
+            background: var(--surface-color);
         }
 
         .cart-item-qty button {
             background: none;
             border: none;
-            width: 24px;
-            height: 24px;
+            width: 26px;
+            height: 26px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 14px;
         }
 
         .cart-item-qty span {
@@ -818,7 +845,7 @@
         }
 
         .cart-drawer-footer {
-            padding: 20px 24px;
+            padding: 16px 20px;
             border-top: 1px solid var(--border-color);
             background: var(--tag-bg);
         }
@@ -827,8 +854,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
-            font-size: 16px;
+            margin-bottom: 12px;
+            font-size: 15px;
             font-weight: 700;
         }
 
@@ -854,24 +881,26 @@
 
         /* Checkout View Styles */
         .checkout-container {
-            max-width: 1100px;
-            margin: 30px auto 60px auto;
-            padding: 0 20px;
+            max-width: 1000px;
+            margin: 20px auto 40px auto;
+            padding: 0 16px;
         }
 
         .checkout-header-steps {
             display: flex;
             justify-content: flex-end;
-            gap: 24px;
-            margin-bottom: 24px;
-            font-size: 13px;
+            gap: 16px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            overflow-x: auto;
         }
 
         .step-item {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             color: var(--text-muted);
+            white-space: nowrap;
         }
 
         .step-item.active {
@@ -880,15 +909,15 @@
         }
 
         .step-num {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             background: var(--border-color);
             color: var(--text-muted);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
         }
 
@@ -904,13 +933,13 @@
 
         .checkout-grid {
             display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 28px;
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
 
-        @media (max-width: 900px) {
+        @media (min-width: 900px) {
             .checkout-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 380px;
             }
         }
 
@@ -918,21 +947,21 @@
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 20px;
+            padding: 18px;
+            margin-bottom: 16px;
         }
 
         .checkout-box-title {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .checkout-box-title span {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--accent);
             cursor: pointer;
             font-weight: 500;
@@ -942,41 +971,26 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
+            padding: 10px 0;
             border-bottom: 1px solid var(--border-light);
-        }
-
-        .checkout-product-row:last-child {
-            border-bottom: none;
         }
 
         .shipping-info-card {
             background: var(--tag-bg);
-            padding: 14px 16px;
+            padding: 12px 14px;
             border-radius: 8px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             border: 1px solid var(--border-color);
-        }
-
-        .shipping-info-name {
-            font-weight: 700;
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
-
-        .shipping-info-addr {
-            font-size: 13px;
-            color: var(--text-muted);
         }
 
         .payment-method-option {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
+            gap: 10px;
+            padding: 12px 14px;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             cursor: pointer;
             transition: var(--transition);
         }
@@ -986,47 +1000,21 @@
             background: var(--tag-bg);
         }
 
-        .payment-method-option input {
-            accent-color: var(--primary);
-        }
-
         .summary-line {
             display: flex;
             justify-content: space-between;
-            font-size: 14px;
-            margin-bottom: 12px;
+            font-size: 13px;
+            margin-bottom: 10px;
             color: var(--text-muted);
         }
 
         .summary-line.total {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             color: var(--text-main);
             border-top: 1px solid var(--border-color);
-            padding-top: 14px;
-            margin-top: 14px;
-        }
-
-        .promo-applied-box {
-            background: #E8F5E9;
-            color: #2E7D32;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 13px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-
-        .promo-applied-box button {
-            background: none;
-            border: none;
-            color: #2E7D32;
-            cursor: pointer;
-            font-size: 12px;
-            text-decoration: underline;
+            padding-top: 12px;
+            margin-top: 12px;
         }
 
         .pay-action-btn {
@@ -1034,18 +1022,18 @@
             background: var(--accent);
             color: white;
             border: none;
-            padding: 16px;
+            padding: 14px;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             transition: var(--transition);
             box-shadow: 0 4px 16px rgba(244,150,125,0.3);
-            margin-top: 16px;
+            margin-top: 12px;
         }
 
         .pay-action-btn:hover {
@@ -1055,100 +1043,89 @@
         .back-to-shop-link {
             display: block;
             text-align: center;
-            margin-top: 16px;
-            font-size: 13px;
+            margin-top: 12px;
+            font-size: 12px;
             color: var(--text-muted);
             text-decoration: none;
-        }
-
-        .back-to-shop-link:hover {
-            color: var(--text-main);
-            text-decoration: underline;
         }
 
         /* Success Screen */
         .success-screen {
             text-align: center;
-            padding: 40px 20px;
+            padding: 30px 16px;
         }
 
         .success-icon {
-            width: 72px;
-            height: 72px;
+            width: 64px;
+            height: 64px;
             background: #E8F5E9;
             color: #2E7D32;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
-            margin: 0 auto 20px auto;
+            font-size: 28px;
+            margin: 0 auto 16px auto;
         }
 
         /* Reviews Section */
         .reviews-section {
-            margin-top: 60px;
+            margin-top: 40px;
             border-top: 1px solid var(--border-color);
-            padding-top: 40px;
-        }
-
-        .reviews-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            gap: 20px;
+            padding-top: 30px;
         }
 
         .reviews-summary-card {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 24px;
+            padding: 20px;
             display: grid;
-            grid-template-columns: 240px 1fr 280px;
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 20px;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
         }
 
-        @media (max-width: 900px) {
+        @media (min-width: 900px) {
             .reviews-summary-card {
-                grid-template-columns: 1fr;
+                grid-template-columns: 220px 1fr 240px;
+                padding: 24px;
+                gap: 30px;
             }
         }
 
         .rating-overview {
             text-align: center;
-            border-right: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 16px;
         }
 
-        @media (max-width: 900px) {
+        @media (min-width: 900px) {
             .rating-overview {
-                border-right: none;
-                border-bottom: 1px solid var(--border-light);
-                padding-bottom: 20px;
+                border-bottom: none;
+                border-right: 1px solid var(--border-light);
+                padding-bottom: 0;
             }
         }
 
         .rating-score-big {
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 700;
             font-family: 'Cormorant Garamond', serif;
             color: var(--text-main);
             line-height: 1;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .stars-container {
             color: #F5A623;
-            font-size: 16px;
-            margin-bottom: 6px;
+            font-size: 15px;
+            margin-bottom: 4px;
         }
 
         .rating-count-text {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
         }
 
@@ -1161,8 +1138,8 @@
         .rating-bar-row {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 13px;
+            gap: 8px;
+            font-size: 12px;
             color: var(--text-muted);
         }
 
@@ -1183,19 +1160,19 @@
         .review-write-cta {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             align-items: center;
             justify-content: center;
-            border-left: 1px solid var(--border-light);
-            padding-left: 20px;
+            border-top: 1px solid var(--border-light);
+            padding-top: 16px;
         }
 
-        @media (max-width: 900px) {
+        @media (min-width: 900px) {
             .review-write-cta {
-                border-left: none;
-                border-top: 1px solid var(--border-light);
-                padding-top: 20px;
-                padding-left: 0;
+                border-top: none;
+                border-left: 1px solid var(--border-light);
+                padding-top: 0;
+                padding-left: 20px;
             }
         }
 
@@ -1203,9 +1180,9 @@
             background: var(--surface-color);
             border: 1px solid var(--primary);
             color: var(--primary);
-            padding: 10px 20px;
+            padding: 10px 16px;
             border-radius: 6px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
@@ -1213,27 +1190,24 @@
             text-align: center;
         }
 
-        .btn-outline-custom:hover {
-            background: var(--primary);
-            color: white;
-        }
-
         .review-filters-bar {
             display: flex;
-            gap: 12px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 4px;
         }
 
         .review-filter-pill {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            padding: 6px 16px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 13px;
+            font-size: 12px;
             cursor: pointer;
             transition: var(--transition);
             font-weight: 500;
+            white-space: nowrap;
         }
 
         .review-filter-pill.active {
@@ -1244,13 +1218,13 @@
 
         .reviews-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            grid-template-columns: 1fr;
+            gap: 16px;
         }
 
-        @media (max-width: 900px) {
+        @media (min-width: 900px) {
             .reviews-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -1258,10 +1232,10 @@
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 20px;
+            padding: 16px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .reviewer-info-row {
@@ -1272,33 +1246,33 @@
 
         .reviewer-name {
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
             margin-bottom: 2px;
         }
 
         .review-product-tag {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-muted);
             background: var(--tag-bg);
-            padding: 2px 8px;
+            padding: 2px 6px;
             border-radius: 4px;
             display: inline-block;
-            margin-top: 4px;
+            margin-top: 2px;
         }
 
         .review-date {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-muted);
         }
 
         .review-comment {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-main);
             line-height: 1.5;
         }
 
         .verified-badge {
-            font-size: 11px;
+            font-size: 10px;
             color: #2E7D32;
             background: #E8F5E9;
             padding: 2px 6px;
@@ -1311,11 +1285,11 @@
 
         .shop-reply-box {
             background: var(--tag-bg);
-            padding: 10px 14px;
+            padding: 10px 12px;
             border-radius: 6px;
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
-            margin-top: 8px;
+            margin-top: 6px;
             border-left: 2px solid var(--accent);
         }
 
@@ -1323,7 +1297,7 @@
             font-weight: 600;
             color: var(--text-main);
             margin-bottom: 2px;
-            font-size: 12px;
+            font-size: 11px;
         }
 
         /* Modal Review Form */
@@ -1335,10 +1309,11 @@
             height: 100%;
             background: rgba(36,25,20,0.5);
             backdrop-filter: blur(4px);
-            z-index: 300;
+            z-index: 1100;
             display: none;
             align-items: center;
             justify-content: center;
+            padding: 16px;
         }
 
         .modal-overlay.open {
@@ -1349,16 +1324,16 @@
             background: var(--surface-color);
             border-radius: 12px;
             width: 100%;
-            max-width: 500px;
-            padding: 30px;
+            max-width: 460px;
+            padding: 24px;
             box-shadow: 0 10px 30px rgba(36,25,20,0.15);
             position: relative;
         }
 
         .modal-close-btn {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 16px;
+            right: 16px;
             background: none;
             border: none;
             font-size: 20px;
@@ -1367,19 +1342,19 @@
         }
 
         .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .form-group label {
             display: block;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             margin-bottom: 6px;
         }
 
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
-            padding: 10px 14px;
+            padding: 10px 12px;
             border: 1px solid var(--border-color);
             border-radius: 6px;
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -1390,55 +1365,65 @@
         }
 
         .form-group textarea {
-            height: 100px;
+            height: 90px;
             resize: vertical;
         }
 
-        /* Footer Info Story */
+        /* About Workshop Section */
         .about-workshop-section {
-            margin-top: 60px;
+            margin-top: 40px;
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 40px;
+            padding: 24px;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1fr;
+            gap: 24px;
             align-items: center;
         }
 
-        @media (max-width: 900px) {
+        @media (min-width: 900px) {
             .about-workshop-section {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
+                padding: 40px;
+                gap: 40px;
             }
         }
 
         .about-workshop-content h2 {
-            font-size: 36px;
-            margin-bottom: 16px;
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        @media (min-width: 900px) {
+            .about-workshop-content h2 { font-size: 34px; }
         }
 
         .about-workshop-content p {
             color: var(--text-muted);
-            font-size: 15px;
-            margin-bottom: 16px;
+            font-size: 14px;
+            margin-bottom: 12px;
         }
 
         .about-workshop-img {
             width: 100%;
-            height: 320px;
+            height: 240px;
             border-radius: 12px;
             object-fit: cover;
+        }
+
+        @media (min-width: 900px) {
+            .about-workshop-img { height: 300px; }
         }
 
         footer {
             border-top: 1px solid var(--border-color);
             background: var(--surface-color);
-            padding: 40px 32px;
+            padding: 30px 20px;
             text-align: center;
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
-            margin-top: 60px;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -1447,17 +1432,17 @@
     <!-- Header Navigation -->
     <header>
         <div class="header-container">
-            <a href="#" class="logo" onclick="switchView('shop')">
+            <a href="#" class="logo" onclick="switchView('shop'); return false;">
                 <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                XÀ PHÒNG HANDMADE A2K25
+                XÀ PHÒNG A2K25
             </a>
-            <ul class="nav-links">
-                <li><a href="#" onclick="switchView('shop')">Bộ sưu tập</a></li>
-                <li><a href="#reviews" onclick="scrollToSection('reviews-section')">Đánh giá khách hàng</a></li>
-                <li><a href="#about" onclick="scrollToSection('about-workshop')">Về A2K25</a></li>
+            <ul class="nav-links" style="display: none;">
+                <li><a href="#" onclick="switchView('shop'); return false;">Bộ sưu tập</a></li>
+                <li><a href="#reviews-section" onclick="scrollToSection('reviews-section'); return false;">Đánh giá</a></li>
+                <li><a href="#about-workshop" onclick="scrollToSection('about-workshop'); return false;">Về A2K25</a></li>
             </ul>
             <div class="header-actions">
-                <button class="icon-btn" onclick="openCartDrawer()">
+                <button class="icon-btn" id="openCartBtn" type="button">
                     <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
                     Giỏ hàng <span class="cart-badge" id="cartCountBadge">0</span>
                 </button>
@@ -1467,62 +1452,51 @@
 
     <!-- ================= VIEW 1: SHOP CATALOG & DETAIL ================= -->
     <div id="shopView" class="view-section active">
-        <!-- Breadcrumb -->
         <div class="breadcrumb-container">
-            Trang chủ / <span>Bộ sưu tập xà phòng handmade</span>
+            Trang chủ / <span>Xà phòng handmade tự nhiên</span>
         </div>
 
         <div class="main-container">
-            <!-- Page Title -->
             <div class="page-title-box">
                 <h1>Tìm bánh xà phòng của bạn</h1>
-                <p>Khám phá xà phòng hữu cơ thủ công theo nốt hương thiên nhiên, công dụng dưỡng da và trọng lượng.</p>
+                <p>Khám phá xà phòng hữu cơ thủ công theo nốt hương thiên nhiên và dưỡng chất.</p>
             </div>
 
             <!-- Search Banner -->
             <div class="search-banner">
                 <div>
                     <div class="search-banner-label">TÌM TRONG BỘ SƯU TẬP</div>
-                    <div style="font-size: 18px; font-weight: 600;">Lọc theo thành phần, chiết xuất và công dụng</div>
+                    <div style="font-size: 16px; font-weight: 600;">Lọc theo thành phần & công dụng</div>
                 </div>
                 <div class="search-input-group">
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                    <input type="text" id="searchInput" placeholder="Ví dụ: Nghệ mật ong, oải hương, tràm trà..." oninput="handleSearchInput()">
-                    <button class="search-btn" onclick="executeSearch()">Tìm kiếm &rarr;</button>
+                    <input type="text" id="searchInput" placeholder="Ví dụ: Nghệ mật ong, oải hương...">
+                    <button class="search-btn" id="searchExecBtn" type="button">Tìm &rarr;</button>
                 </div>
             </div>
 
-            <!-- 3-Column Catalog Layout -->
+            <!-- Catalog Grid -->
             <div class="catalog-layout">
-                
-                <!-- COLUMN 1: FILTERS -->
+                <!-- Column 1: Filters -->
                 <div class="filter-card">
                     <div class="filter-header">
-                        <h3>
-                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
-                            Bộ lọc
-                        </h3>
-                        <span class="clear-filter" onclick="resetFilters()">Xóa lọc</span>
+                        <h3>Bộ lọc</h3>
+                        <span class="clear-filter" id="resetFilterBtn">Xóa lọc</span>
                     </div>
 
-                    <!-- Category Group -->
                     <div class="filter-group">
                         <div class="filter-group-title">Nhóm công dụng</div>
-                        <label class="checkbox-label active">
-                            <input type="checkbox" checked onchange="filterProducts()"> Tất cả dòng dưỡng
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked> Tất cả dòng dưỡng
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" onchange="filterProducts()"> Dưỡng ẩm & Sáng da
+                            <input type="checkbox"> Dưỡng ẩm & Sáng da
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" onchange="filterProducts()"> Kháng khuẩn & Ngừa mụn
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" onchange="filterProducts()"> Thư giãn & Giảm stress
+                            <input type="checkbox"> Kháng khuẩn & Ngừa mụn
                         </label>
                     </div>
 
-                    <!-- Price Range -->
                     <div class="filter-group">
                         <div class="filter-group-title">Khoảng giá</div>
                         <div class="price-slider-box">
@@ -1530,58 +1504,47 @@
                                 <span id="minPriceLbl">40.000 đ</span>
                                 <span id="maxPriceLbl">250.000 đ</span>
                             </div>
-                            <input type="range" min="40000" max="250000" step="10000" value="250000" class="range-slider" id="priceRange" oninput="updatePriceFilter(this.value)">
+                            <input type="range" min="40000" max="250000" step="10000" value="250000" class="range-slider" id="priceRange">
                         </div>
                     </div>
 
-                    <!-- Size / Weight filter -->
-                    <div class="filter-group">
+                    <div class="filter-group" style="margin-bottom: 0;">
                         <div class="filter-group-title">Trọng lượng</div>
                         <div class="size-tags">
-                            <button class="size-tag-btn active" onclick="selectSizeTag(this)">80g</button>
-                            <button class="size-tag-btn" onclick="selectSizeTag(this)">120g</button>
-                            <button class="size-tag-btn" onclick="selectSizeTag(this)">Combo 3</button>
+                            <button class="size-tag-btn active" type="button">80g</button>
+                            <button class="size-tag-btn" type="button">120g</button>
+                            <button class="size-tag-btn" type="button">Combo 3</button>
                         </div>
-                    </div>
-
-                    <!-- In stock only -->
-                    <div class="filter-group" style="margin-bottom: 0;">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="inStockCheck" checked onchange="filterProducts()"> Chỉ hiện hàng còn
-                        </label>
                     </div>
                 </div>
 
-                <!-- COLUMN 2: PRODUCT LIST -->
+                <!-- Column 2: Product List -->
                 <div class="product-list-section">
                     <div class="list-toolbar">
-                        <div class="result-count">Hiển thị <span id="productCountNum">6</span> sản phẩm phù hợp</div>
-                        <select class="sort-select" id="sortSelect" onchange="sortProducts()">
+                        <div class="result-count">Hiển thị <span id="productCountNum">6</span> sản phẩm</div>
+                        <select class="sort-select" id="sortSelect">
                             <option value="popular">Phù hợp nhất</option>
                             <option value="price-asc">Giá: Thấp đến cao</option>
                             <option value="price-desc">Giá: Cao đến thấp</option>
-                            <option value="rating">Đánh giá cao nhất (5★)</option>
                         </select>
                     </div>
 
-                    <div class="products-grid" id="productsGrid">
-                        <!-- Rendered by JS -->
-                    </div>
+                    <div class="products-grid" id="productsGrid"></div>
 
                     <div class="list-footer-info">
-                        Đang hiển thị các dòng xà phòng handmade ủ lạnh tự nhiên tiêu chuẩn xưởng A2K25.
+                        Tiêu chuẩn xà phòng ủ lạnh thủ công xưởng A2K25.
                     </div>
                 </div>
 
-                <!-- COLUMN 3: VERSION SELECTOR & DETAIL SIDEBAR -->
+                <!-- Column 3: Version Selector & Detail Sidebar -->
                 <div class="sidebar-panel">
                     <div class="panel-heading">
                         <span>CHỌN PHIÊN BẢN</span>
-                        <div class="stars-container" style="font-size: 13px; margin:0;" id="sidebarRatingStars">★★★★★</div>
+                        <div class="stars-container" style="font-size: 12px; margin:0;" id="sidebarRatingStars">★★★★★</div>
                     </div>
 
                     <div class="selected-preview-card">
-                        <img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=300&q=80" id="sbThumb" class="selected-thumb" alt="Product">
+                        <img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=300&q=80" id="sbThumb" class="selected-thumb" alt="">
                         <div>
                             <div class="selected-title" id="sbTitle">Nghệ Mật Ong 01</div>
                             <div class="selected-subtitle" id="sbSubtitle">Chiết xuất nghệ tươi & mật ong rừng</div>
@@ -1591,14 +1554,14 @@
                     <div class="option-section-title">
                         Trọng lượng <span id="selectedWeightLbl">80g</span>
                     </div>
-                    <div class="weight-grid">
-                        <button class="weight-btn active" onclick="setProductWeight('80g', 85000)">80g</button>
-                        <button class="weight-btn" onclick="setProductWeight('120g', 125000)">120g</button>
-                        <button class="weight-btn" onclick="setProductWeight('Combo 3 bánh', 240000)">Combo 3</button>
+                    <div class="weight-grid" id="weightButtonsContainer">
+                        <button class="weight-btn active" type="button" data-weight="80g" data-price="85000">80g</button>
+                        <button class="weight-btn" type="button" data-weight="120g" data-price="125000">120g</button>
+                        <button class="weight-btn" type="button" data-weight="Combo 3 bánh" data-price="240000">Combo 3</button>
                     </div>
 
                     <div class="stock-status-note" id="sbStockNote">
-                        Phiên bản 120g được ưa chuộng nhất nhờ tiết kiệm và dùng lâu.
+                        Phiên bản 120g được ưa chuộng nhờ tiết kiệm.
                     </div>
 
                     <div class="price-display-box">
@@ -1606,105 +1569,75 @@
                         <span class="amount" id="sbPriceLbl">85.000 đ</span>
                     </div>
 
-                    <div style="margin-bottom: 16px;">
+                    <div style="margin-bottom: 12px;">
                         <span class="stock-badge-inline">Còn hàng tại xưởng</span>
                     </div>
 
-                    <button class="add-to-cart-btn" onclick="addProductToCart()">
+                    <button class="add-to-cart-btn" id="addToCartMainBtn" type="button">
                         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
                         Thêm vào giỏ
                     </button>
 
                     <div class="panel-footer-note">
-                        Giao hàng toàn quốc · Tặng kèm túi lưới tạo bọt thiên nhiên cho mọi đơn hàng.
+                        Tặng kèm túi lưới tạo bọt thiên nhiên cho mọi đơn hàng.
                     </div>
                 </div>
-
             </div>
 
             <!-- Customer Reviews Section -->
             <div class="reviews-section" id="reviews-section">
-                <div class="reviews-header">
+                <div class="reviews-header" style="margin-bottom: 20px;">
                     <div>
-                        <h2 style="font-size: 32px; font-weight: 600; margin-bottom: 4px;">Đánh giá & Bình luận của khách hàng</h2>
-                        <p style="color: var::text-muted; font-size: 14px;">Trải nghiệm thực tế từ cộng đồng sử dụng xà phòng handmade A2K25.</p>
+                        <h2 style="font-size: 26px; font-weight: 600; margin-bottom: 4px;">Đánh giá từ khách hàng</h2>
+                        <p style="color: var(--text-muted); font-size: 13px;">Trải nghiệm thực tế từ cộng đồng sử dụng.</p>
                     </div>
                 </div>
 
-                <!-- Review Summary Card -->
                 <div class="reviews-summary-card">
                     <div class="rating-overview">
                         <div class="rating-score-big">4.9</div>
                         <div class="stars-container">★★★★★</div>
-                        <div class="rating-count-text">Dựa trên 428 đánh giá xác thực</div>
+                        <div class="rating-count-text">428 đánh giá xác thực</div>
                     </div>
                     <div class="rating-bars">
                         <div class="rating-bar-row">
                             <span>5 sao</span>
                             <div class="bar-bg"><div class="bar-fill" style="width: 92%;"></div></div>
-                            <span style="width: 35px; text-align: right;">92%</span>
-                        </div>
-                        <div class="rating-bar-row">
-                            <span>4 sao</span>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 7%;"></div></div>
-                            <span style="width: 35px; text-align: right;">7%</span>
-                        </div>
-                        <div class="rating-bar-row">
-                            <span>3 sao</span>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 1%;"></div></div>
-                            <span style="width: 35px; text-align: right;">1%</span>
-                        </div>
-                        <div class="rating-bar-row">
-                            <span>2 sao</span>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 0%;"></div></div>
-                            <span style="width: 35px; text-align: right;">0%</span>
-                        </div>
-                        <div class="rating-bar-row">
-                            <span>1 sao</span>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 0%;"></div></div>
-                            <span style="width: 35px; text-align: right;">0%</span>
+                            <span style="width: 30px; text-align: right;">92%</span>
                         </div>
                     </div>
                     <div class="review-write-cta">
-                        <div style="font-size: 13px; font-weight: 600; text-align: center; color: var(--text-muted);">Bạn đã sử dụng sản phẩm của A2K25?</div>
-                        <button class="btn-outline-custom" onclick="openReviewModal()">Viết đánh giá ngay</button>
+                        <div style="font-size: 12px; font-weight: 600; text-align: center; color: var(--text-muted);">Đã sử dụng sản phẩm?</div>
+                        <button class="btn-outline-custom" id="openReviewModalBtn" type="button">Viết đánh giá</button>
                     </div>
                 </div>
 
-                <!-- Review Filter Pills -->
                 <div class="review-filters-bar">
-                    <button class="review-filter-pill active" onclick="filterReviews('all', this)">Tất cả (12)</button>
-                    <button class="review-filter-pill" onclick="filterReviews('5', this)">⭐⭐⭐⭐⭐ 5 Sao (10)</button>
-                    <button class="review-filter-pill" onclick="filterReviews('4', this)">⭐⭐⭐⭐ 4 Sao (2)</button>
-                    <button class="review-filter-pill" onclick="filterReviews('Nghệ Mật Ong', this)">Nghệ Mật Ong 01</button>
-                    <button class="review-filter-pill" onclick="filterReviews('Oải Hương', this)">Oải Hương Yến Mạch 02</button>
+                    <button class="review-filter-pill active" type="button" data-filter="all">Tất cả (12)</button>
+                    <button class="review-filter-pill" type="button" data-filter="5">⭐⭐⭐⭐⭐ 5 Sao</button>
+                    <button class="review-filter-pill" type="button" data-filter="Nghệ Mật Ong">Nghệ Mật Ong</button>
                 </div>
 
-                <!-- Reviews Grid (12 written 4-5 star reviews) -->
-                <div class="reviews-grid" id="reviewsGrid">
-                    <!-- Populated by JS -->
-                </div>
+                <div class="reviews-grid" id="reviewsGrid"></div>
             </div>
 
             <!-- About Workshop Section -->
             <div class="about-workshop-section" id="about-workshop">
                 <div class="about-workshop-content">
-                    <h2>Quy trình ủ lạnh thủ công tại Xà Phòng A2K25</h2>
-                    <p>Mỗi bánh xà phòng tại A2K25 được ra lò bằng phương pháp xà phòng hóa lạnh (Cold Process) truyền thống trong 48 giờ, giúp giữ trọn vẹn hàm lượng Glycerin tự nhiên cấp ẩm sâu cho da.</p>
-                    <p>Cam kết 3 KHÔNG: Không chất tạo bọt công nghiệp SLS, không chất bảo quản paraben và không hương liệu tổng hợp. Lành tính cho cả làn da nhạy cảm nhất.</p>
+                    <h2>Quy trình ủ lạnh thủ công A2K25</h2>
+                    <p>Mỗi bánh xà phòng được ủ lạnh truyền thống trong 48 giờ để giữ trọn vẹn Glycerin tự nhiên cấp ẩm sâu.</p>
+                    <p>Cam kết 3 KHÔNG: Không SLS, không paraben và không hương liệu tổng hợp.</p>
                 </div>
                 <div>
-                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" class="about-workshop-img" alt="Xà phòng thủ công">
+                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" class="about-workshop-img" alt="">
                 </div>
             </div>
-
         </div>
     </div>
 
     <!-- ================= VIEW 2: CART & CHECKOUT ================= -->
     <div id="checkoutView" class="view-section">
         <div class="checkout-container">
-            
             <div class="checkout-header-steps">
                 <div class="step-item completed" id="stepIndicator1">
                     <div class="step-num">✓</div> Giỏ hàng
@@ -1720,144 +1653,110 @@
             <div id="checkoutFormContent">
                 <div class="page-title-box">
                     <h1>Giỏ hàng và thanh toán</h1>
-                    <p>Kiểm tra sản phẩm, thông tin giao hàng và tổng tiền trước khi đặt đơn.</p>
+                    <p>Kiểm tra thông tin giao hàng và tổng tiền trước khi đặt đơn.</p>
                 </div>
 
                 <div class="checkout-grid">
-                    <!-- Left Column: Cart items & Shipping info -->
                     <div>
-                        <!-- Cart Summary Box -->
                         <div class="checkout-box">
                             <div class="checkout-box-title">
-                                Sản phẩm trong giỏ <span id="checkoutItemCountLabel">1 sản phẩm</span>
+                                Sản phẩm <span id="checkoutItemCountLabel">1 sản phẩm</span>
                             </div>
-                            <div id="checkoutItemsListContainer">
-                                <!-- Populated dynamically -->
-                            </div>
+                            <div id="checkoutItemsListContainer"></div>
                         </div>
 
-                        <!-- Shipping Address Box -->
                         <div class="checkout-box">
                             <div class="checkout-box-title">
-                                Giao hàng <span onclick="alert('Chức năng chỉnh sửa địa chỉ nhanh')">Chỉnh sửa</span>
+                                Giao hàng <span>Chỉnh sửa</span>
                             </div>
                             <div class="shipping-info-card">
-                                <div class="shipping-info-name" id="shipUserName">Hà Văn Thành · 09•••••482</div>
-                                <div class="shipping-info-addr" id="shipUserAddr">Tiên Kỳ, Tân Kỳ, Nghệ An (Xưởng điện tử Thú Đường)</div>
+                                <div style="font-weight: 700; font-size: 13px; margin-bottom: 2px;">Hà Văn Thành · 09•••••482</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">Tiên Kỳ, Tân Kỳ, Nghệ An</div>
                             </div>
-                            <div style="font-size: 13px; color: #2E7D32; font-weight: 600; display: flex; align-items: center; gap: 6px;">
-                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-                                Giao tiêu chuẩn · Dự kiến 2–3 ngày làm việc (Miễn phí)
-                            </div>
+                            <div style="font-size: 12px; color: #2E7D32; font-weight: 600;">✓ Giao tiêu chuẩn · 2–3 ngày (Miễn phí)</div>
                         </div>
 
-                        <!-- Payment Method Box -->
                         <div class="checkout-box" style="margin-bottom: 0;">
                             <div class="checkout-box-title">Phương thức thanh toán</div>
-                            
-                            <label class="payment-method-option selected" onclick="selectPaymentMethod(this)">
+                            <label class="payment-method-option selected">
                                 <input type="radio" name="payMethod" checked>
                                 <div>
-                                    <div style="font-weight: 600; font-size: 14px;">Thẻ ngân hàng / Chuyển khoản QR</div>
-                                    <div style="font-size: 12px; color: var(--text-muted);">Thanh toán bảo mật qua mã QR ngân hàng</div>
+                                    <div style="font-weight: 600; font-size: 13px;">Thẻ ngân hàng / Chuyển khoản QR</div>
+                                    <div style="font-size: 11px; color: var(--text-muted);">Bảo mật qua mã QR ngân hàng</div>
                                 </div>
                             </label>
-
-                            <label class="payment-method-option" onclick="selectPaymentMethod(this)">
+                            <label class="payment-method-option">
                                 <input type="radio" name="payMethod">
                                 <div>
-                                    <div style="font-weight: 600; font-size: 14px;">Thanh toán khi nhận hàng (COD)</div>
-                                    <div style="font-size: 12px; color: var(--text-muted);">Trả tiền mặt cho nhân viên giao hàng</div>
+                                    <div style="font-weight: 600; font-size: 13px;">Thanh toán khi nhận hàng (COD)</div>
+                                    <div style="font-size: 11px; color: var(--text-muted);">Trả tiền mặt khi nhận hàng</div>
                                 </div>
                             </label>
                         </div>
                     </div>
 
-                    <!-- Right Column: Summary & Pay button -->
                     <div>
-                        <div class="checkout-box" style="position: sticky; top: 100px;">
-                            <div class="checkout-box-title">Tổng chi phí <span id="checkoutRightItemCount" style="font-size:13px; color:var(--text-muted); font-weight:normal;">1 sản phẩm</span></div>
-                            
+                        <div class="checkout-box">
+                            <div class="checkout-box-title">Tổng chi phí</div>
                             <div class="summary-line">
                                 <span>Tạm tính</span>
                                 <span id="summarySubtotal">85.000 đ</span>
                             </div>
                             <div class="summary-line">
-                                <span>Ưu đãi</span>
-                                <span style="color: #2E7D32;" id="summaryDiscount">-0 đ</span>
-                            </div>
-                            <div class="summary-line">
                                 <span>Phí giao hàng</span>
                                 <span style="color: #2E7D32;">Miễn phí</span>
                             </div>
-
-                            <div class="promo-applied-box" id="promoAppliedBox" style="display: none;">
-                                <span>Mã A2K25SAVE đã áp dụng (-10.000 đ)</span>
-                                <button onclick="removePromoCode()">Bỏ mã</button>
-                            </div>
-
                             <div class="summary-line total">
                                 <span>Tổng thanh toán</span>
                                 <span id="summaryTotalAmount">85.000 đ</span>
                             </div>
-                            <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 20px;">Đã gồm phí giao hàng và ưu đãi xưởng.</div>
-
-                            <button class="pay-action-btn" onclick="completeCheckoutOrder()">
+                            <button class="pay-action-btn" id="completeOrderBtn" type="button">
                                 Thanh toán <span id="payBtnAmountLabel">85.000 đ</span> &rarr;
                             </button>
-                            
-                            <div style="text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 12px;">
-                                Thanh toán qua cổng bảo mật A2K25 SafePay
-                            </div>
-
-                            <a href="#" class="back-to-shop-link" onclick="switchView('shop')">&larr; Tiếp tục mua sắm bộ sưu tập</a>
+                            <a href="#" class="back-to-shop-link" id="backToShopFromCheckout" style="text-decoration: underline;">&larr; Tiếp tục mua sắm</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Success screen content (Hidden initially) -->
+            <!-- Success screen -->
             <div id="successScreenContent" style="display: none;">
                 <div class="checkout-box success-screen">
                     <div class="success-icon">✓</div>
-                    <h2 style="font-size: 32px; margin-bottom: 8px;">Đặt hàng thành công!</h2>
-                    <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 20px;">Cảm ơn bạn đã ủng hộ Xà Phòng Handmade A2K25. Mã đơn hàng của bạn là <strong id="successOrderId">#A2K25-8839</strong>.</p>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 30px;">Thông tin đơn hàng và lịch trình giao hàng đã được gửi đến số điện thoại của bạn.</p>
-                    <button class="search-btn" style="margin: 0 auto;" onclick="switchView('shop')">Quay về trang chủ mua sắm</button>
+                    <h2 style="font-size: 28px; margin-bottom: 6px;">Đặt hàng thành công!</h2>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">Mã đơn hàng: <strong id="successOrderId">#A2K25-8839</strong>.</p>
+                    <button class="search-btn" id="backToHomeSuccessBtn" style="margin: 0 auto;" type="button">Quay về trang chủ</button>
                 </div>
             </div>
-
         </div>
     </div>
 
     <!-- Slide-over Cart Drawer -->
-    <div class="cart-drawer-overlay" id="cartOverlay" onclick="closeCartDrawer()"></div>
+    <div class="cart-drawer-overlay" id="cartOverlay"></div>
     <div class="cart-drawer" id="cartDrawer">
         <div class="cart-drawer-header">
-            <h3 style="font-size: 18px; font-weight: 600;">Giỏ hàng của bạn</h3>
-            <button onclick="closeCartDrawer()" style="background:none; border:none; font-size:20px; cursor:pointer;">&times;</button>
+            <h3 style="font-size: 16px; font-weight: 600;">Giỏ hàng của bạn</h3>
+            <button id="closeCartBtn" type="button" style="background:none; border:none; font-size:22px; cursor:pointer;">&times;</button>
         </div>
-        <div class="cart-drawer-body" id="cartDrawerItemsList">
-            <!-- Items populated by JS -->
-        </div>
+        <div class="cart-drawer-body" id="cartDrawerItemsList"></div>
         <div class="cart-drawer-footer">
             <div class="cart-total-row">
                 <span>Tạm tính:</span>
                 <span id="drawerTotalPrice">85.000 đ</span>
             </div>
-            <button class="checkout-drawer-btn" onclick="goToCheckoutFromDrawer()">Tiến hành thanh toán &rarr;</button>
+            <button class="checkout-drawer-btn" id="goToCheckoutBtn" type="button">Tiến hành thanh toán &rarr;</button>
         </div>
     </div>
 
     <!-- Modal Review Form -->
     <div class="modal-overlay" id="reviewModal">
         <div class="modal-content">
-            <button class="modal-close-btn" onclick="closeReviewModal()">&times;</button>
-            <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px;">Gửi đánh giá sản phẩm</h3>
-            <form onsubmit="submitNewReview(event)">
+            <button class="modal-close-btn" id="closeModalBtn" type="button">&times;</button>
+            <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 14px;">Gửi đánh giá sản phẩm</h3>
+            <form id="reviewForm">
                 <div class="form-group">
                     <label>Họ và tên</label>
-                    <input type="text" id="revNameInput" required placeholder="Ví dụ: Nguyễn Văn An">
+                    <input type="text" id="revNameInput" required placeholder="Nhập họ tên...">
                 </div>
                 <div class="form-group">
                     <label>Chọn dòng sản phẩm</label>
@@ -1865,242 +1764,136 @@
                         <option>Nghệ Mật Ong 01</option>
                         <option>Oải Hương Yến Mạch 02</option>
                         <option>Than Tre Bạc Hà 03</option>
-                        <option>Trà Xanh Cám Gạo 04</option>
-                        <option>Bơ Hạt Mỡ & Sữa Dê 05</option>
-                        <option>Sả Chanh Gừng Ấm 06</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Xếp hạng sao</label>
                     <select id="revStarsSelect">
-                        <option value="5">⭐⭐⭐⭐⭐ (5/5 sao - Tuyệt vời)</option>
-                        <option value="4">⭐⭐⭐⭐ (4/5 sao - Hài lòng)</option>
+                        <option value="5">⭐⭐⭐⭐⭐ (5/5 - Tuyệt vời)</option>
+                        <option value="4">⭐⭐⭐⭐ (4/5 - Hài lòng)</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Nội dung đánh giá chi tiết</label>
-                    <textarea id="revCommentInput" required placeholder="Chia sẻ cảm nhận về mùi hương, độ tạo bọt và cảm giác mềm mịn sau khi dùng..."></textarea>
+                    <label>Nội dung đánh giá</label>
+                    <textarea id="revCommentInput" required placeholder="Chia sẻ cảm nhận của bạn..."></textarea>
                 </div>
-                <button type="submit" class="search-btn" style="width: 100%; justify-content: center;">Gửi đánh giá ngay</button>
+                <button type="submit" class="search-btn" style="width: 100%; justify-content: center;">Gửi đánh giá</button>
             </form>
         </div>
     </div>
 
+    <footer>
+        © 2026 Xà Phòng Handmade A2K25. Bảo lưu mọi quyền.
+    </footer>
+
     <!-- JavaScript Application Logic -->
     <script>
-        // Database of Handmade Soap Products
         const products = [
-            {
-                id: 1,
-                tag: "Bán chạy nhất",
-                name: "Nghệ Mật Ong 01",
-                category: "Dưỡng ẩm & Sáng da",
-                price: 85000,
-                rating: 5,
-                image: "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=500&q=80",
-                subtitle: "Chiết xuất nghệ tươi & mật ong rừng nguyên chất",
-                inStock: true
-            },
-            {
-                id: 2,
-                tag: "Thư giãn",
-                name: "Oải Hương Yến Mạch 02",
-                category: "Thư giãn & Giảm stress",
-                price: 95000,
-                rating: 5,
-                image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80",
-                subtitle: "Tinh dầu oải hương Pháp & hạt yến mạch xay mịn",
-                inStock: true
-            },
-            {
-                id: 3,
-                tag: "Kháng khuẩn",
-                name: "Than Tre Bạc Hà 03",
-                category: "Kháng khuẩn & Ngừa mụn",
-                price: 90000,
-                rating: 5,
-                image: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=500&q=80",
-                subtitle: "Than hoạt tính tre & tinh dầu bạc hà sảng khoái",
-                inStock: true
-            },
-            {
-                id: 4,
-                tag: "Mới ra mắt",
-                name: "Trà Xanh Cám Gạo 04",
-                category: "Dưỡng ẩm & Sáng da",
-                price: 85000,
-                rating: 4,
-                image: "https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=500&q=80",
-                subtitle: "Bột trà xanh nguyên chất & cám gạo giàu vitamin E",
-                inStock: true
-            },
-            {
-                id: 5,
-                tag: "Siêu dưỡng ẩm",
-                name: "Bơ Hạt Mỡ & Sữa Dê 05",
-                category: "Dưỡng ẩm & Sáng da",
-                price: 110000,
-                rating: 5,
-                image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=500&q=80",
-                subtitle: "Shea Butter hữu cơ & sữa dê tươi thuần khiết",
-                inStock: true
-            },
-            {
-                id: 6,
-                tag: "Ấm áp",
-                name: "Sả Chanh Gừng Ấm 06",
-                category: "Thư giãn & Giảm stress",
-                price: 88000,
-                rating: 5,
-                image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=500&q=80",
-                subtitle: "Tinh dầu sả chanh nguyên chất & chiết xuất gừng tươi",
-                inStock: true
-            }
+            { id: 1, tag: "Bán chạy", name: "Nghệ Mật Ong 01", category: "Dưỡng ẩm & Sáng da", price: 85000, rating: 5, image: "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=500&q=80", subtitle: "Chiết xuất nghệ tươi & mật ong rừng" },
+            { id: 2, tag: "Thư giãn", name: "Oải Hương Yến Mạch 02", category: "Thư giãn", price: 95000, rating: 5, image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80", subtitle: "Tinh dầu oải hương & yến mạch" },
+            { id: 3, tag: "Kháng khuẩn", name: "Than Tre Bạc Hà 03", category: "Ngừa mụn", price: 90000, rating: 5, image: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=500&q=80", subtitle: "Than hoạt tính tre & bạc hà" },
+            { id: 4, tag: "Mới", name: "Trà Xanh Cám Gạo 04", category: "Sáng da", price: 85000, rating: 4, image: "https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=500&q=80", subtitle: "Bột trà xanh & cám gạo vitamin E" },
+            { id: 5, tag: "Siêu dưỡng", name: "Bơ Hạt Mỡ Sữa Dê 05", category: "Dưỡng ẩm", price: 110000, rating: 5, image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=500&q=80", subtitle: "Shea Butter & sữa dê tươi" },
+            { id: 6, tag: "Ấm áp", name: "Sả Chanh Gừng Ấm 06", category: "Thư giãn", price: 88000, rating: 5, image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=500&q=80", subtitle: "Sả chanh nguyên chất & gừng tươi" }
         ];
 
-        // Default 12 4-5 star reviews
         let reviewsList = [
-            {
-                id: 1,
-                name: "Hà Văn Thành",
-                product: "Nghệ Mật Ong 01",
-                stars: 5,
-                date: "12 Tháng 10, 2026",
-                comment: "Xà phòng thơm dịu mùi mật ong tự nhiên, bọt mịn cực kỳ. Dùng rửa mặt sạch sâu mà không bị khô da, rất ưng ý với chất lượng xưởng A2K25.",
-                shopReply: "Cảm ơn anh Thành đã tin tưởng ủng hộ các dòng xà phòng handmade của xưởng! Chúc anh luôn có những phút giây thư giãn tuyệt vời."
-            },
-            {
-                id: 2,
-                name: "Nguyễn Thị Mai",
-                product: "Oải Hương Yến Mạch 02",
-                stars: 5,
-                date: "05 Tháng 10, 2026",
-                comment: "Mùi oải hương thơm thư giãn lắm, tắm xong da mềm mịn nhờ các hạt yến mạch tẩy tế bào chết nhẹ nhàng. Sẽ tiếp tục ủng hộ combo tiếp theo.",
-                shopReply: "Mộc Hương / A2K25 rất vui vì chị yêu thích hương thơm và độ mịn màng của sản phẩm."
-            },
-            {
-                id: 3,
-                name: "Trần Minh Quân",
-                product: "Than Tre Bạc Hà 03",
-                stars: 5,
-                date: "28 Tháng 9, 2026",
-                comment: "Dùng thích hợp cho da dầu lưng, tắm xong cảm giác mát lạnh sảng khoái hẳn. Xà phòng cứng cáp, để trong phòng tắm không bị nhão nhanh.",
-                shopReply: "Cảm ơn đánh giá chi tiết của anh Quân. Dòng than tre bạc Hà là lựa chọn tuyệt vời cho thời tiết nóng ẩm."
-            },
-            {
-                id: 4,
-                name: "Lê Hoàng Long",
-                product: "Sả Chanh Gừng Ấm 06",
-                stars: 4,
-                date: "20 Tháng 9, 2026",
-                comment: "Mùi sả chanh gừng rất ấm và sảng khoái, tắm mùa lạnh thì tuyệt đỉnh. Bọt nhiều và cực kỳ lành tính.",
-                shopReply: "Cảm ơn anh Long đã ủng hộ sản phẩm của xưởng."
-            },
-            {
-                id: 5,
-                name: "Phạm Thu Trang",
-                product: "Bơ Hạt Mỡ & Sữa Dê 05",
-                stars: 5,
-                date: "15 Tháng 9, 2026",
-                comment: "Da mình khô ráp mà dùng bánh sữa dê này xong mềm mịn hẳn ra như vừa thoa lotion vậy. Rất đáng tiền!",
-                shopReply: "Dạ sữa dê kết hợp bơ hạt mỡ là công thức dưỡng ẩm sâu độc quyền của A2K25 đó ạ."
-            },
-            {
-                id: 6,
-                name: "Vũ Đình Nam",
-                product: "Trà Xanh Cám Gạo 04",
-                stars: 5,
-                date: "10 Tháng 9, 2026",
-                comment: "Giao hàng nhanh, đóng gói hộp giấy rất thân thiện môi trường. Xà phòng thơm mùi trà xanh tươi mát.",
-                shopReply: "A2K25 luôn chú trọng tiêu chí xanh và sạch trong từng khâu đóng gói."
-            },
-            {
-                id: 7,
-                name: "Hoàng Thanh Hà",
-                product: "Nghệ Mật Ong 01",
-                stars: 5,
-                date: "02 Tháng 9, 2026",
-                comment: "Mua tặng bạn bè ai cũng khen thơm và lành tính. Xà phòng handmade chuẩn thủ công ủ lạnh có khác.",
-                shopReply: "Cảm ơn chị Hà đã chọn A2K25 làm quà tặng ý nghĩa cho người thân."
-            },
-            {
-                id: 8,
-                name: "Nguyễn Quốc Bảo",
-                product: "Than Tre Bạc Hà 03",
-                stars: 4,
-                date: "25 Tháng 8, 2026",
-                comment: "Bánh xà phòng to cầm chắc tay, dùng rửa tay hay tắm đều sạch sẽ, khử mùi tốt.",
-                shopReply: "Cảm ơn phản hồi tích cực từ anh Bảo ạ."
-            },
-            {
-                id: 9,
-                name: "Đặng Thị Hoa",
-                product: "Oải Hương Yến Mạch 02",
-                stars: 5,
-                date: "18 Tháng 8, 2026",
-                comment: "Rất thích túi lưới tặng kèm đi kèm, tạo bọt cực nhiều và tiện treo ráo nước sau khi dùng.",
-                shopReply: "Túi lưới tạo bọt là món quà nhỏ xưởng gửi gắm để khách hàng sử dụng tiết kiệm nhất."
-            },
-            {
-                id: 10,
-                name: "Bùi Văn Đức",
-                product: "Sả Chanh Gừng Ấm 06",
-                stars: 5,
-                date: "12 Tháng 8, 2026",
-                comment: "Chất lượng tuyệt vời vượt mong đợi, giá cả lại hợp lý cho một sản phẩm handmade hữu cơ.",
-                shopReply: "Sự hài lòng của anh Đức là động lực lớn cho đội ngũ thợ xà phòng A2K25."
-            },
-            {
-                id: 11,
-                name: "Ngô Minh Châu",
-                product: "Bơ Hạt Mỡ & Sữa Dê 05",
-                stars: 5,
-                date: "05 Tháng 8, 2026",
-                comment: "Da nhạy cảm như mình dùng hoàn toàn không bị kích ứng, da sáng và mịn hơn sau 2 tuần.",
-                shopReply: "Xà phòng A2K25 cam kết lành tính với cả làn da nhạy cảm nhất chị nhé."
-            },
-            {
-                id: 12,
-                name: "Dương Trung Kiên",
-                product: "Nghệ Mật Ong 01",
-                stars: 5,
-                date: "30 Tháng 7, 2026",
-                comment: "Dịch vụ chăm sóc khách hàng chu đáo, giao hàng siêu tốc. Sẽ mua dài lâu.",
-                shopReply: "Cảm ơn anh Kiên đã đồng hành cùng Xà Phòng Handmade A2K25."
-            }
+            { id: 1, name: "Hà Văn Thành", product: "Nghệ Mật Ong 01", stars: 5, date: "12/10/2026", comment: "Xà phòng thơm dịu mùi mật ong, bọt mịn rửa mặt sạch không bị khô da.", shopReply: "Cảm ơn anh Thành đã tin tưởng ủng hộ xưởng!" },
+            { id: 2, name: "Nguyễn Thị Mai", product: "Oải Hương Yến Mạch 02", stars: 5, date: "05/10/2026", comment: "Mùi oải hương thư giãn, tắm xong da mềm mịn nhờ hạt yến mạch.", shopReply: "A2K25 rất vui vì chị yêu thích sản phẩm." },
+            { id: 3, name: "Trần Minh Quân", product: "Than Tre Bạc Hà 03", stars: 5, date: "28/9/2026", comment: "Tắm mát lạnh sảng khoái, xà phòng cứng cáp không bị nhão.", shopReply: "Cảm ơn đánh giá chi tiết từ anh Quân." },
+            { id: 4, name: "Phạm Thu Trang", product: "Bơ Hạt Mỡ Sữa Dê 05", stars: 5, date: "15/9/2026", comment: "Da khô dùng bánh sữa dê này xong mềm mịn hẳn như thoa lotion.", shopReply: "Dạ công thức dưỡng ẩm độc quyền của xưởng ạ." }
         ];
 
-        // Active State Variables
         let currentSelectedProduct = products[0];
         let currentSelectedWeight = "80g";
         let currentSelectedPrice = 85000;
-        let cartItems = [
-            { id: 1, name: "Nghệ Mật Ong 01", weight: "80g", price: 85000, qty: 1, image: products[0].image }
-        ];
+        let cartItems = [{ id: 1, name: "Nghệ Mật Ong 01", weight: "80g", price: 85000, qty: 1, image: products[0].image }];
 
-        // Initialize App on Load
-        window.onload = function() {
+        document.addEventListener("DOMContentLoaded", function() {
             renderProducts(products);
             renderReviews(reviewsList);
             updateCartBadge();
             updateSidebarDetails(currentSelectedProduct);
-        };
 
-        // Render Products Grid
+            // Gán sự kiện tương tác giỏ hàng
+            document.getElementById('openCartBtn').addEventListener('click', openCartDrawer);
+            document.getElementById('closeCartBtn').addEventListener('click', closeCartDrawer);
+            document.getElementById('cartOverlay').addEventListener('click', closeCartDrawer);
+            document.getElementById('goToCheckoutBtn').addEventListener('click', function() {
+                switchView('checkout');
+            });
+
+            // Thêm vào giỏ từ Sidebar
+            document.getElementById('addToCartMainBtn').addEventListener('click', function() {
+                addProductToCart();
+            });
+
+            // Chọn trọng lượng
+            const weightBtns = document.querySelectorAll('#weightButtonsContainer .weight-btn');
+            weightBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    weightBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentSelectedWeight = this.getAttribute('data-weight');
+                    currentSelectedPrice = parseInt(this.getAttribute('data-price'));
+                    document.getElementById('selectedWeightLbl').innerText = currentSelectedWeight;
+                    document.getElementById('sbPriceLbl').innerText = currentSelectedPrice.toLocaleString() + ' đ';
+                });
+            });
+
+            // Tìm kiếm & Lọc
+            document.getElementById('searchExecBtn').addEventListener('click', executeSearch);
+            document.getElementById('searchInput').addEventListener('input', executeSearch);
+            document.getElementById('resetFilterBtn').addEventListener('click', resetFilters);
+            document.getElementById('priceRange').addEventListener('input', function() {
+                updatePriceFilter(this.value);
+            });
+            document.getElementById('sortSelect').addEventListener('change', sortProducts);
+
+            // Review Modal
+            document.getElementById('openReviewModalBtn').addEventListener('click', openReviewModal);
+            document.getElementById('closeModalBtn').addEventListener('click', closeReviewModal);
+            document.getElementById('reviewForm').addEventListener('submit', submitNewReview);
+
+            // Đánh giá filters
+            document.querySelectorAll('.review-filter-pill').forEach(pill => {
+                pill.addEventListener('click', function() {
+                    document.querySelectorAll('.review-filter-pill').forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+                    const filterVal = this.getAttribute('data-filter');
+                    filterReviews(filterVal);
+                });
+            });
+
+            // Thanh toán & Chuyển view
+            document.getElementById('backToShopFromCheckout').addEventListener('click', function(e) {
+                e.preventDefault();
+                switchView('shop');
+            });
+            document.getElementById('backToHomeSuccessBtn').addEventListener('click', function() {
+                switchView('shop');
+            });
+            document.getElementById('completeOrderBtn').addEventListener('click', completeCheckoutOrder);
+
+            // Thanh toán method
+            document.querySelectorAll('.payment-method-option').forEach(opt => {
+                opt.addEventListener('click', function() {
+                    document.querySelectorAll('.payment-method-option').forEach(o => o.classList.remove('selected'));
+                    this.classList.add('selected');
+                    this.querySelector('input').checked = true;
+                });
+            });
+        });
+
         function renderProducts(list) {
             const grid = document.getElementById('productsGrid');
             document.getElementById('productCountNum').innerText = list.length;
             
-            if(list.length === 0) {
-                grid.innerHTML = `<div style="grid-column: span 3; text-align:center; padding: 40px; color: var(--text-muted);">Không tìm thấy sản phẩm phù hợp với bộ lọc.</div>`;
-                return;
-            }
-
             grid.innerHTML = list.map(p => `
-                <div class="product-card ${p.id === currentSelectedProduct.id ? 'selected' : ''}" onclick="selectProduct(${p.id})">
+                <div class="product-card ${p.id === currentSelectedProduct.id ? 'selected' : ''}" data-id="${p.id}">
                     <div class="product-image-wrap">
                         <span class="card-status-badge">${p.tag}</span>
-                        <img src="${p.image}" alt="${p.name}">
+                        <img src="${p.image}" alt="">
                     </div>
                     <div class="product-info">
                         <div>
@@ -2109,29 +1902,35 @@
                             <div class="product-price">Từ ${p.price.toLocaleString()} đ</div>
                         </div>
                         <div class="product-card-footer">
-                            <span>${p.rating} ★★★★★</span>
-                            <span class="card-action-link">Xem phiên bản &rarr;</span>
+                            <span>${p.rating} ★</span>
+                            <span class="card-action-link">Chọn &rarr;</span>
                         </div>
                     </div>
                 </div>
             `).join('');
+
+            // Gắn sự kiện click vào từng card sản phẩm
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    selectProduct(id);
+                });
+            });
         }
 
-        // Select Product to display in Right Sidebar
         function selectProduct(id) {
             currentSelectedProduct = products.find(p => p.id === id);
             currentSelectedPrice = currentSelectedProduct.price;
             currentSelectedWeight = "80g";
             
-            // Reset weight buttons active state
-            const weightBtns = document.querySelectorAll('.weight-btn');
+            const weightBtns = document.querySelectorAll('#weightButtonsContainer .weight-btn');
             weightBtns.forEach((btn, idx) => {
                 if(idx === 0) btn.classList.add('active');
                 else btn.classList.remove('active');
             });
 
             updateSidebarDetails(currentSelectedProduct);
-            renderProducts(products); // re-render to update selected border
+            renderProducts(products);
         }
 
         function updateSidebarDetails(p) {
@@ -2140,26 +1939,9 @@
             document.getElementById('sbSubtitle').innerText = p.subtitle;
             document.getElementById('sbPriceLbl').innerText = currentSelectedPrice.toLocaleString() + ' đ';
             document.getElementById('selectedWeightLbl').innerText = currentSelectedWeight;
-            document.getElementById('sidebarRatingStars').innerText = '★'.repeat(p.rating) + '☆'.repeat(5 - p.rating);
-            document.getElementById('sbStockNote').innerText = `Dòng ${p.name} được ủ lạnh thủ công 48h, giữ trọn glycerin dưỡng ẩm.`;
+            document.getElementById('sidebarRatingStars').innerText = '★'.repeat(p.rating);
         }
 
-        // Weight Selector in Sidebar
-        function setProductWeight(weightStr, priceVal) {
-            currentSelectedWeight = weightStr;
-            currentSelectedPrice = priceVal;
-            document.getElementById('selectedWeightLbl').innerText = weightStr;
-            document.getElementById('sbPriceLbl').innerText = priceVal.toLocaleString() + ' đ';
-
-            // Update button styles
-            const btns = document.querySelectorAll('.weight-btn');
-            btns.forEach(b => {
-                if(b.innerText.includes(weightStr)) b.classList.add('active');
-                else b.classList.remove('active');
-            });
-        }
-
-        // Add Product to Cart from Sidebar
         function addProductToCart() {
             const existingIndex = cartItems.findIndex(item => item.name === currentSelectedProduct.name && item.weight === currentSelectedWeight);
             if(existingIndex > -1) {
@@ -2178,15 +1960,14 @@
             openCartDrawer();
         }
 
-        // Cart Drawer Operations
         function openCartDrawer() {
             renderCartDrawerItems();
-            document.getElementById('cartDrawerOverlay').classList.add('open');
+            document.getElementById('cartOverlay').classList.add('open');
             document.getElementById('cartDrawer').classList.add('open');
         }
 
         function closeCartDrawer() {
-            document.getElementById('cartDrawerOverlay').classList.remove('open');
+            document.getElementById('cartOverlay').classList.remove('open');
             document.getElementById('cartDrawer').classList.remove('open');
         }
 
@@ -2200,7 +1981,7 @@
             let subtotal = 0;
 
             if(cartItems.length === 0) {
-                container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 40px 0;">Giỏ hàng của bạn đang trống.</div>`;
+                container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 30px 0;">Giỏ hàng trống.</div>`;
                 document.getElementById('drawerTotalPrice').innerText = '0 đ';
                 return;
             }
@@ -2212,27 +1993,47 @@
                         <img src="${item.image}" class="cart-item-img" alt="">
                         <div class="cart-item-details">
                             <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-meta">Trọng lượng: ${item.weight}</div>
+                            <div class="cart-item-meta">${item.weight}</div>
                             <div class="cart-item-price">${item.price.toLocaleString()} đ</div>
-                            <div class="cart-item-qty" style="margin-top:6px;">
-                                <button onclick="changeCartQty(${idx}, -1)">-</button>
+                            <div class="cart-item-qty">
+                                <button type="button" class="qty-dec-btn" data-index="${idx}">-</button>
                                 <span>${item.qty}</span>
-                                <button onclick="changeCartQty(${idx}, 1)">+</button>
+                                <button type="button" class="qty-inc-btn" data-index="${idx}">+</button>
                             </div>
-                            <button class="cart-remove-btn" onclick="removeCartItem(${idx})">Xóa sản phẩm</button>
+                            <button type="button" class="cart-remove-btn" data-index="${idx}">Xóa</button>
                         </div>
                     </div>
                 `;
             }).join('');
 
             document.getElementById('drawerTotalPrice').innerText = subtotal.toLocaleString() + ' đ';
+
+            // Gắn sự kiện tăng/giảm/xóa cho giỏ hàng
+            container.querySelectorAll('.qty-dec-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.getAttribute('data-index'));
+                    changeCartQty(idx, -1);
+                });
+            });
+
+            container.querySelectorAll('.qty-inc-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.getAttribute('data-index'));
+                    changeCartQty(idx, 1);
+                });
+            });
+
+            container.querySelectorAll('.cart-remove-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.getAttribute('data-index'));
+                    removeCartItem(idx);
+                });
+            });
         }
 
         function changeCartQty(index, delta) {
             cartItems[index].qty += delta;
-            if(cartItems[index].qty <= 0) {
-                cartItems.splice(index, 1);
-            }
+            if(cartItems[index].qty <= 0) cartItems.splice(index, 1);
             updateCartBadge();
             renderCartDrawerItems();
         }
@@ -2243,7 +2044,6 @@
             renderCartDrawerItems();
         }
 
-        // Switch Views (Shop <-> Checkout)
         function switchView(viewName) {
             closeCartDrawer();
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2253,32 +2053,16 @@
                 document.getElementById('checkoutView').classList.remove('active');
             } else if(viewName === 'checkout') {
                 if(cartItems.length === 0) {
-                    alert('Giỏ hàng của bạn đang trống. Vui lòng thêm sản phẩm trước khi thanh toán.');
+                    alert('Giỏ hàng trống!');
                     return;
                 }
                 document.getElementById('shopView').classList.remove('active');
                 document.getElementById('checkoutView').classList.add('active');
-                
-                // Reset checkout form state
                 document.getElementById('checkoutFormContent').style.display = 'block';
                 document.getElementById('successScreenContent').style.display = 'none';
-                document.getElementById('stepIndicator2').className = 'step-item active';
-                document.getElementById('stepIndicator3').className = 'step-item';
-                
                 renderCheckoutSummary();
             }
         }
-
-        function goToCheckoutFromDrawer() {
-            if(cartItems.length === 0) {
-                alert('Giỏ hàng trống!');
-                return;
-            }
-            switchView('checkout');
-        }
-
-        // Render Checkout Summary
-        let appliedPromoDiscount = 0;
 
         function renderCheckoutSummary() {
             const container = document.getElementById('checkoutItemsListContainer');
@@ -2286,193 +2070,105 @@
             let totalQty = cartItems.reduce((sum, item) => sum + item.qty, 0);
 
             document.getElementById('checkoutItemCountLabel').innerText = totalQty + ' sản phẩm';
-            document.getElementById('checkoutRightItemCount').innerText = totalQty + ' sản phẩm';
 
             container.innerHTML = cartItems.map(item => {
                 subtotal += item.price * item.qty;
                 return `
                     <div class="checkout-product-row">
                         <div>
-                            <div style="font-weight: 600; font-size: 14px;">${item.name} (${item.weight})</div>
-                            <div style="font-size: 12px; color: var(--text-muted);">Số lượng: ${item.qty}</div>
+                            <div style="font-weight: 600; font-size: 13px;">${item.name} (${item.weight})</div>
+                            <div style="font-size: 11px; color: var(--text-muted);">SL: ${item.qty}</div>
                         </div>
-                        <div style="font-weight: 700; font-size: 14px;">${(item.price * item.qty).toLocaleString()} đ</div>
+                        <div style="font-weight: 700; font-size: 13px;">${(item.price * item.qty).toLocaleString()} đ</div>
                     </div>
                 `;
             }).join('');
 
             document.getElementById('summarySubtotal').innerText = subtotal.toLocaleString() + ' đ';
-            
-            let finalTotal = subtotal - appliedPromoDiscount;
-            if(finalTotal < 0) finalTotal = 0;
-
-            document.getElementById('summaryTotalAmount').innerText = finalTotal.toLocaleString() + ' đ';
-            document.getElementById('payBtnAmountLabel').innerText = finalTotal.toLocaleString() + ' đ';
-        }
-
-        function removePromoCode() {
-            appliedPromoDiscount = 0;
-            document.getElementById('promoAppliedBox').style.display = 'none';
-            document.getElementById('summaryDiscount').innerText = '-0 đ';
-            renderCheckoutSummary();
-        }
-
-        function selectPaymentMethod(element) {
-            const opts = document.querySelectorAll('.payment-method-option');
-            opts.forEach(o => o.classList.remove('selected'));
-            element.classList.add('selected');
-            const radio = element.querySelector('input');
-            radio.checked = true;
+            document.getElementById('summaryTotalAmount').innerText = subtotal.toLocaleString() + ' đ';
+            document.getElementById('payBtnAmountLabel').innerText = subtotal.toLocaleString() + ' đ';
         }
 
         function completeCheckoutOrder() {
             document.getElementById('checkoutFormContent').style.display = 'none';
             document.getElementById('successScreenContent').style.display = 'block';
-            
-            document.getElementById('stepIndicator2').className = 'step-item completed';
-            document.getElementById('stepIndicator2').innerHTML = '<div class="step-num">✓</div> Thanh toán';
-            document.getElementById('stepIndicator3').className = 'step-item active';
-
-            // Generate random order code
-            const randomCode = '#A2K25-' + Math.floor(1000 + Math.random() * 9000);
-            document.getElementById('successOrderId').innerText = randomCode;
-
-            // Clear cart
+            document.getElementById('successOrderId').innerText = '#A2K25-' + Math.floor(1000 + Math.random() * 9000);
             cartItems = [];
             updateCartBadge();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Reviews Rendering & Filtering
         function renderReviews(list) {
-            const grid = document.getElementById('reviewsGrid');
-            if(list.length === 0) {
-                grid.innerHTML = `<div style="grid-column: span 2; text-align:center; padding: 30px; color: var(--text-muted);">Không tìm thấy bình luận phù hợp.</div>`;
-                return;
-            }
-
-            grid.innerHTML = list.map(r => `
+            document.getElementById('reviewsGrid').innerHTML = list.map(r => `
                 <div class="review-card">
                     <div class="reviewer-info-row">
                         <div>
-                            <div class="reviewer-name">${r.name} <span class="verified-badge">✓ Đã mua hàng</span></div>
+                            <div class="reviewer-name">${r.name} <span class="verified-badge">✓ Mua hàng</span></div>
                             <div class="review-product-tag">${r.product}</div>
                         </div>
                         <div class="review-date">${r.date}</div>
                     </div>
-                    <div class="stars-container">${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}</div>
+                    <div class="stars-container">${'★'.repeat(r.stars)}</div>
                     <div class="review-comment">${r.comment}</div>
-                    ${r.shopReply ? `
-                        <div class="shop-reply-box">
-                            <div class="shop-reply-title">Phản hồi từ Xà Phòng A2K25:</div>
-                            <div>${r.shopReply}</div>
-                        </div>
-                    ` : ''}
+                    ${r.shopReply ? `<div class="shop-reply-box"><div class="shop-reply-title">Phản hồi từ xưởng:</div><div>${r.shopReply}</div></div>` : ''}
                 </div>
             `).join('');
         }
 
-        function filterReviews(criteria, btnElement) {
-            const pills = document.querySelectorAll('.review-filter-pill');
-            pills.forEach(p => p.classList.remove('active'));
-            btnElement.classList.add('active');
-
-            if(criteria === 'all') {
-                renderReviews(reviewsList);
-            } else if(criteria === '5' || criteria === '4') {
-                const starVal = parseInt(criteria);
-                const filtered = reviewsList.filter(r => r.stars === starVal);
-                renderReviews(filtered);
-            } else {
-                const filtered = reviewsList.filter(r => r.product.includes(criteria));
-                renderReviews(filtered);
-            }
+        function filterReviews(criteria) {
+            if(criteria === 'all') renderReviews(reviewsList);
+            else if(criteria === '5') renderReviews(reviewsList.filter(r => r.stars === 5));
+            else renderReviews(reviewsList.filter(r => r.product.includes(criteria)));
         }
 
-        // Modal Review Actions
-        function openReviewModal() {
-            document.getElementById('reviewModal').classList.add('open');
-        }
-
-        function closeReviewModal() {
-            document.getElementById('reviewModal').classList.remove('open');
-        }
+        function openReviewModal() { document.getElementById('reviewModal').classList.add('open'); }
+        function closeReviewModal() { document.getElementById('reviewModal').classList.remove('open'); }
 
         function submitNewReview(e) {
             e.preventDefault();
-            const name = document.getElementById('revNameInput').value;
-            const product = document.getElementById('revProductSelect').value;
-            const stars = parseInt(document.getElementById('revStarsSelect').value);
-            const comment = document.getElementById('revCommentInput').value;
-
-            const newRev = {
+            reviewsList.unshift({
                 id: reviewsList.length + 1,
-                name: name,
-                product: product,
-                stars: stars,
+                name: document.getElementById('revNameInput').value,
+                product: document.getElementById('revProductSelect').value,
+                stars: parseInt(document.getElementById('revStarsSelect').value),
                 date: "Hôm nay",
-                comment: comment,
-                shopReply: "Cảm ơn đánh giá tuyệt vời của bạn! A2K25 luôn nỗ lực mang lại những bánh xà phòng chất lượng nhất."
-            };
-
-            reviewsList.unshift(newRev);
+                comment: document.getElementById('revCommentInput').value,
+                shopReply: "Cảm ơn đánh giá tuyệt vời của bạn!"
+            });
             renderReviews(reviewsList);
             closeReviewModal();
-            alert('Cảm ơn bạn đã gửi đánh giá! Bình luận của bạn đã được đăng công khai.');
-            document.getElementById('revNameInput').value = '';
-            document.getElementById('revCommentInput').value = '';
-        }
-
-        // Search & Filter Sidebar functions for Shop
-        function handleSearchInput() {
-            executeSearch();
+            alert('Đánh giá của bạn đã được đăng thành công!');
         }
 
         function executeSearch() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
-            const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.subtitle.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
-            renderProducts(filtered);
+            renderProducts(products.filter(p => p.name.toLowerCase().includes(query) || p.subtitle.toLowerCase().includes(query)));
         }
 
         function updatePriceFilter(val) {
             document.getElementById('maxPriceLbl').innerText = parseInt(val).toLocaleString() + ' đ';
-            const filtered = products.filter(p => p.price <= parseInt(val));
-            renderProducts(filtered);
-        }
-
-        function selectSizeTag(btn) {
-            const btns = document.querySelectorAll('.size-tag-btn');
-            btns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+            renderProducts(products.filter(p => p.price <= parseInt(val)));
         }
 
         function resetFilters() {
             document.getElementById('searchInput').value = '';
             document.getElementById('priceRange').value = 250000;
             document.getElementById('maxPriceLbl').innerText = '250.000 đ';
-            document.getElementById('inStockCheck').checked = true;
             renderProducts(products);
         }
 
         function sortProducts() {
             const val = document.getElementById('sortSelect').value;
             let sorted = [...products];
-            if(val === 'price-asc') {
-                sorted.sort((a,b) => a.price - b.price);
-            } else if(val === 'price-desc') {
-                sorted.sort((a,b) => b.price - a.price);
-            } else if(val === 'rating') {
-                sorted.sort((a,b) => b.rating - a.rating);
-            }
+            if(val === 'price-asc') sorted.sort((a,b) => a.price - b.price);
+            if(val === 'price-desc') sorted.sort((a,b) => b.price - a.price);
             renderProducts(sorted);
         }
 
-        function scrollToSection(className) {
-            const el = document.getElementById(className);
-            if(el) {
-                el.scrollIntoView({ behavior: 'smooth' });
-            }
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
 </html>
+
