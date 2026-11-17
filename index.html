@@ -75,6 +75,17 @@
             }
         }
 
+        @keyframes flamePulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 8px rgba(255, 87, 34, 0.4);
+            }
+            50% {
+                transform: scale(1.06);
+                box-shadow: 0 0 16px rgba(255, 87, 34, 0.8);
+            }
+        }
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -620,6 +631,14 @@
             background: #D32F2F;
         }
 
+        /* Hiệu ứng lửa cháy cho sản phẩm bán chạy */
+        .card-status-badge.hot-flame {
+            background: linear-gradient(135deg, #FF5722, #FF9800);
+            color: white;
+            animation: flamePulse 2s infinite ease-in-out;
+            font-weight: 700;
+        }
+
         .product-info {
             padding: 18px;
             display: flex;
@@ -648,6 +667,13 @@
             color: var(--text-muted);
             margin-bottom: 12px;
             line-height: 1.5;
+        }
+
+        .product-sales-count {
+            font-size: 12px;
+            font-weight: 600;
+            color: #C85A3C;
+            margin-bottom: 8px;
         }
 
         .product-price {
@@ -2135,12 +2161,14 @@
         const products = [
             {
                 id: 1,
-                tag: "Bán chạy",
+                tag: "🔥 Bán chạy",
+                badgeClass: "hot-flame",
                 name: "Xà Phòng Handmade",
                 category: "Dưỡng ẩm & Làm sạch dịu nhẹ",
                 price: 30000,
                 rating: 5,
                 inStock: true,
+                soldCount: 680,
                 image: "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=600&q=80",
                 subtitle: "Làm từ chất béo thực vật (dầu dừa, dầu ô liu, bơ hạt mỡ) & sáp ong tự nhiên",
                 description: "Sản phẩm được chế tác thủ công từ nguồn chất béo thực vật tinh khiết như dầu dừa, dầu ô liu nguyên chất và bơ hạt mỡ, giúp làm sạch dịu nhẹ, giữ ẩm tự nhiên và an toàn cho da."
@@ -2148,11 +2176,13 @@
             {
                 id: 2,
                 tag: "Hết hàng",
+                badgeClass: "sold-out",
                 name: "Xà Bông Khổ Qua",
                 category: "Thanh lọc & Hỗ trợ giảm mụn lưng",
                 price: 35000,
                 rating: 5,
                 inStock: false,
+                soldCount: 245,
                 image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80",
                 subtitle: "Chiết xuất khổ qua tươi kết hợp dầu dừa nguyên chất",
                 description: "Được ép từ trái khổ qua tươi nguyên chất giúp kháng khuẩn, làm sạch sâu, hỗ trợ cải thiện tình trạng mụn lưng và làm sáng da tự nhiên."
@@ -2160,11 +2190,13 @@
             {
                 id: 3,
                 tag: "Hết hàng",
+                badgeClass: "sold-out",
                 name: "Xà Bông Mướp Đắng Tự Nhiên",
                 category: "Làm dịu da & Kháng khuẩn",
                 price: 32000,
                 rating: 4,
                 inStock: false,
+                soldCount: 310,
                 image: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80",
                 subtitle: "Tinh chất mướp đắng & dầu thực vật",
                 description: "Sản phẩm thủ công giàu vitamin C và chất chống oxy hóa từ mướp đắng, giúp làm dịu vùng da mẩn đỏ và nuôi dưỡng làn da khỏe mạnh."
@@ -2172,11 +2204,13 @@
             {
                 id: 4,
                 tag: "Hết hàng",
+                badgeClass: "sold-out",
                 name: "Xà Bông Bạc Hà Trà Xanh",
                 category: "Sảng khoái & Thư giãn",
                 price: 38000,
                 rating: 5,
                 inStock: false,
+                soldCount: 420,
                 image: "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=600&q=80",
                 subtitle: "Lá trà xanh nguyên chất kết hợp tinh dầu bạc hà mát lạnh",
                 description: "Mang lại cảm giác sảng khoái tức thì với hương thơm bạc Hà mát lạnh kết hợp bột trà xanh chống oxy hóa mạnh mẽ."
@@ -2349,13 +2383,14 @@
             grid.innerHTML = list.map(p => `
                 <div class="product-card ${p.id === currentSelectedProduct.id ? 'selected' : ''} ${!p.inStock ? 'out-of-stock' : ''}" data-id="${p.id}">
                     <div class="product-image-wrap">
-                        <span class="card-status-badge ${!p.inStock ? 'sold-out' : ''}">${p.tag}</span>
+                        <span class="card-status-badge ${p.badgeClass}">${p.tag}</span>
                         <img src="${p.image}" alt="${p.name}">
                     </div>
                     <div class="product-info">
                         <div>
                             <div class="product-tag-small">${p.category}</div>
                             <div class="product-name">${p.name}</div>
+                            <div class="product-sales-count">🔥 Đã bán: ${p.soldCount} lượt</div>
                             <div class="product-desc-short">${p.description}</div>
                             <div class="product-price">Chỉ từ ${p.price.toLocaleString()} đ / bánh 60g</div>
                         </div>
