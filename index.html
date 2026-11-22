@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Xà Bông Handmade ✓ - Tự nhiên & Lành tính</title>
+    <title>Xà Bông Handmade ✓ - Tự nhiên & Lành tính | Merry Christmas</title>
     <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +22,9 @@
             --accent-hover: #E08269;
             --accent-soft: #FCE8E2;
             --accent-soft-text: #C85A3C;
+            --xmas-red: #C62828;
+            --xmas-green: #2E7D32;
+            --xmas-gold: #D4AF37;
             --border-color: #EADFD5;
             --border-light: #F2ECE4;
             --tag-bg: #F7F1EA;
@@ -44,6 +47,9 @@
             --accent-hover: #FFA891;
             --accent-soft: rgba(244, 150, 125, 0.16);
             --accent-soft-text: #FFAD96;
+            --xmas-red: #E53935;
+            --xmas-green: #4CAF50;
+            --xmas-gold: #FFD54F;
             --border-color: #362D28;
             --border-light: #2C2420;
             --tag-bg: #29221E;
@@ -69,6 +75,88 @@
 
         h1, h2, h3, h4, .serif-font {
             font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* ================= HIỆU ỨNG TUYẾT RƠI GIÁNG SINH ================= */
+        .snowfall-layer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 90;
+            overflow: hidden;
+        }
+
+        .snowflake {
+            position: fixed;
+            top: -24px;
+            color: #FFFFFF;
+            text-shadow: 0 1px 4px rgba(36, 25, 20, 0.22);
+            user-select: none;
+            pointer-events: none;
+            will-change: transform, opacity;
+            animation-name: snowFall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        [data-theme="dark"] .snowflake {
+            color: #FFFDF9;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.45);
+        }
+
+        @keyframes snowFall {
+            0% {
+                transform: translate3d(0, -10vh, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.9;
+            }
+            90% {
+                opacity: 0.85;
+            }
+            100% {
+                transform: translate3d(var(--drift, 45px), 108vh, 0) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Dải đèn & vòng nguyệt quế Giáng sinh nhẹ nhàng trên header */
+        .xmas-garland-bar {
+            height: 4px;
+            width: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--xmas-red) 0px,
+                var(--xmas-red) 18px,
+                var(--xmas-gold) 18px,
+                var(--xmas-gold) 24px,
+                var(--xmas-green) 24px,
+                var(--xmas-green) 42px,
+                var(--xmas-gold) 42px,
+                var(--xmas-gold) 48px
+            );
+            opacity: 0.9;
+        }
+
+        .xmas-tag-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(198, 40, 40, 0.1);
+            border: 1px solid rgba(198, 40, 40, 0.25);
+            color: var(--xmas-red);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 9px;
+            border-radius: 99px;
+            letter-spacing: 0.2px;
+        }
+
+        [data-theme="dark"] .xmas-tag-pill {
+            background: rgba(229, 57, 53, 0.18);
+            border-color: rgba(255, 213, 79, 0.35);
+            color: #FF8A80;
         }
 
         /* ================= GPU-ACCELERATED KEYFRAME ANIMATIONS ================= */
@@ -290,7 +378,7 @@
         .logo svg {
             width: 18px;
             height: 18px;
-            fill: var(--accent);
+            fill: var(--xmas-red);
             flex-shrink: 0;
         }
 
@@ -348,12 +436,12 @@
             left: 0;
             width: 0;
             height: 1.5px;
-            background: var(--accent);
+            background: var(--xmas-red);
             transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--accent);
+            color: var(--xmas-red);
         }
 
         .nav-links a:hover::after {
@@ -442,8 +530,8 @@
         }
 
         .cart-badge {
-            background-color: var(--accent);
-            color: #1A1412;
+            background-color: var(--xmas-red);
+            color: #FFFFFF;
             font-size: 10.5px;
             padding: 1px 6px;
             border-radius: 10px;
@@ -467,6 +555,11 @@
             padding: 14px 16px 0 16px;
             font-size: 12.5px;
             color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         @media (min-width: 768px) {
@@ -509,6 +602,10 @@
             font-size: 26px;
             font-weight: 600;
             margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         @media (min-width: 768px) {
@@ -532,6 +629,7 @@
         .search-banner {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
+            border-left: 4px solid var(--xmas-red);
             border-radius: 14px;
             padding: 14px 16px;
             display: flex;
@@ -555,8 +653,8 @@
 
         .search-banner-label {
             font-size: 11.5px;
-            font-weight: 600;
-            color: var(--text-muted);
+            font-weight: 700;
+            color: var(--xmas-red);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 2px;
@@ -892,7 +990,7 @@
         }
 
         .card-status-badge.hot-flame {
-            background: linear-gradient(135deg, #FF5722, #FF9800);
+            background: linear-gradient(135deg, #C62828, #2E7D32);
             color: white;
             animation: flamePulse 2s infinite ease-in-out;
             font-weight: 700;
@@ -2190,14 +2288,18 @@
 </head>
 <body>
 
+    <!-- Lớp hiệu ứng tuyết rơi Giáng sinh -->
+    <div class="snowfall-layer" id="snowfallLayer" aria-hidden="true"></div>
+
     <!-- Toast thông báo mượt mà -->
     <div class="toast-notification" id="toastNotification">
-        <span>✨</span>
+        <span>🎄</span>
         <span id="toastMessage">Đã thêm sản phẩm vào giỏ hàng!</span>
     </div>
 
     <!-- Header Navigation -->
     <header>
+        <div class="xmas-garland-bar"></div>
         <div class="header-container">
             <!-- Hàng trên: Lời chào & Đồng hồ thời gian thực -->
             <div class="realtime-widget-row">
@@ -2239,19 +2341,23 @@
     <!-- ================= VIEW 1: SHOP CATALOG & DETAIL ================= -->
     <div id="shopView" class="view-section active">
         <div class="breadcrumb-container animate-fade-up">
-            Trang chủ / <span>Xà Bông Handmade ✓</span>
+            <div>Trang chủ / <span>Xà Bông Handmade ✓</span></div>
+            <span class="xmas-tag-pill">🎄 Mùa Giáng Sinh An Lành · Quà Tặng Tự Nhiên</span>
         </div>
 
         <div class="main-container">
             <div class="page-title-box animate-fade-up delay-1">
-                <h1>Xà Bông Handmade <span class="verified-badge-icon" style="width:20px;height:20px;font-size:11px;" title="Doanh nghiệp đã xác thực">✓</span></h1>
+                <h1>
+                    Xà Bông Handmade <span class="verified-badge-icon" style="width:20px;height:20px;font-size:11px;" title="Doanh nghiệp đã xác thực">✓</span>
+                    <span class="xmas-tag-pill">❄️ Noel Edition</span>
+                </h1>
                 <p>Sản phẩm thủ công tự nhiên từ dầu thực vật nguyên chất, an toàn và lành tính cho mọi làn da.</p>
             </div>
 
             <!-- Search Banner -->
             <div class="search-banner animate-fade-up delay-2">
                 <div>
-                    <div class="search-banner-label">SẢN PHẨM THỦ CÔNG</div>
+                    <div class="search-banner-label">🎄 BỘ SƯU TẬP QUÀ GIÁNG SINH THỦ CÔNG</div>
                     <div style="font-size: 15px; font-weight: 600;">Chiết xuất từ dầu dừa, dầu ô liu & sáp ong tự nhiên</div>
                 </div>
                 <div class="search-input-group">
@@ -2336,7 +2442,7 @@
                 <!-- Column 3: Version Selector & Detail Sidebar -->
                 <div class="sidebar-panel">
                     <div class="panel-heading">
-                        <span>CHỌN PHIÊN BẢN</span>
+                        <span>CHỌN PHIÊN BẢN 🎄</span>
                         <div class="stars-container" style="font-size: 12px; margin:0;" id="sidebarRatingStars">★★★★★</div>
                     </div>
 
@@ -2560,7 +2666,7 @@
                 <div class="checkout-box success-screen">
                     <div class="success-icon">✓</div>
                     <h2 style="font-size: 26px; margin-bottom: 6px;">Đặt hàng thành công!</h2>
-                    <p style="color: var(--text-muted); font-size: 13.5px; margin-bottom: 8px;">Cảm ơn bạn đã ủng hộ <strong>Xà Bông Handmade ✓</strong>.</p>
+                    <p style="color: var(--text-muted); font-size: 13.5px; margin-bottom: 8px;">Cảm ơn bạn đã ủng hộ <strong>Xà Bông Handmade ✓</strong> · Chúc bạn Giáng Sinh an lành 🎄.</p>
                     <p style="color: var(--text-muted); font-size: 12.5px; margin-bottom: 12px;">Mã đơn hàng của bạn: <strong id="successOrderId" style="color: var(--accent);">#XBHM-8839</strong></p>
 
                     <!-- Thông báo riêng khi chọn thanh toán QR ngân hàng -->
@@ -2716,7 +2822,7 @@
         <button type="button" class="contact-footer-btn" id="openContactFooterBtn">
             ☎️ Liên Hệ
         </button>
-        <div>© 2026 Xà Bông Handmade ✓. Bảo lưu mọi quyền.</div>
+        <div>🎄 Chúc Mừng Giáng Sinh · © 2026 Xà Bông Handmade ✓. Bảo lưu mọi quyền.</div>
     </footer>
 
     <!-- JavaScript Application Logic -->
@@ -2872,6 +2978,36 @@
             }
         ];
 
+        // Tạo hiệu ứng tuyết rơi mượt mà trên mọi thiết bị
+        function initSnowfall() {
+            const container = document.getElementById('snowfallLayer');
+            if (!container) return;
+            const isMobile = window.innerWidth < 768;
+            const flakeCount = isMobile ? 22 : 42;
+            const symbols = ['❄', '❅', '✼', '•'];
+
+            container.innerHTML = '';
+            for (let i = 0; i < flakeCount; i++) {
+                const flake = document.createElement('div');
+                flake.className = 'snowflake';
+                flake.innerText = symbols[i % symbols.length];
+
+                const left = Math.random() * 100;
+                const duration = 8 + Math.random() * 10;
+                const delay = Math.random() * -14;
+                const size = isMobile ? (10 + Math.random() * 8) : (12 + Math.random() * 12);
+                const drift = (Math.random() * 90 - 45).toFixed(0) + 'px';
+
+                flake.style.left = left + '%';
+                flake.style.fontSize = size + 'px';
+                flake.style.animationDuration = duration + 's';
+                flake.style.animationDelay = delay + 's';
+                flake.style.setProperty('--drift', drift);
+
+                container.appendChild(flake);
+            }
+        }
+
         // Chuyển đổi nền Sáng / Tối
         function initTheme() {
             const savedTheme = localStorage.getItem('xbhm-theme') || 'light';
@@ -2947,6 +3083,7 @@
         }
 
         document.addEventListener("DOMContentLoaded", function() {
+            initSnowfall();
             initTheme();
             initScrollReveal();
             updateRealtimeClockAndGreeting();
