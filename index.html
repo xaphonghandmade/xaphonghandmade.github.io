@@ -10,51 +10,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #FBF6F1;
+            /* Bảng màu Giáng Sinh - Chế độ Sáng */
+            --bg-color: #FDF7F5;
             --surface-color: #FFFFFF;
-            --surface-elevated: #FDFBF9;
-            --header-bg: rgba(251, 246, 241, 0.92);
-            --text-main: #241914;
-            --text-muted: #6E615B;
-            --primary: #241914;
+            --surface-elevated: #FFFDFB;
+            --header-bg: rgba(253, 247, 245, 0.92);
+            --text-main: #2A1215;
+            --text-muted: #6E4F52;
+            --primary: #B71C1C;
             --primary-contrast: #FFFFFF;
-            --accent: #F4967D;
-            --accent-hover: #E08269;
-            --accent-soft: #FCE8E2;
-            --accent-soft-text: #C85A3C;
+            --accent: #C62828;
+            --accent-hover: #D32F2F;
+            --accent-soft: #FDECEA;
+            --accent-soft-text: #B71C1C;
             --xmas-red: #C62828;
-            --xmas-green: #2E7D32;
-            --xmas-gold: #D4AF37;
-            --border-color: #EADFD5;
-            --border-light: #F2ECE4;
-            --tag-bg: #F7F1EA;
+            --xmas-green: #1B5E20;
+            --xmas-gold: #C89B2B;
+            --border-color: #EAD4D1;
+            --border-light: #F5E6E4;
+            --tag-bg: #F9EFEA;
             --verified-blue: #1DA1F2;
-            --card-shadow: 0 4px 16px rgba(36, 25, 20, 0.04);
-            --card-shadow-hover: 0 14px 32px rgba(36, 25, 20, 0.09);
+            --card-shadow: 0 4px 16px rgba(183, 28, 28, 0.05);
+            --card-shadow-hover: 0 14px 32px rgba(27, 94, 32, 0.12);
             --transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         [data-theme="dark"] {
-            --bg-color: #161210;
-            --surface-color: #211B18;
-            --surface-elevated: #2A221E;
-            --header-bg: rgba(22, 18, 16, 0.92);
-            --text-main: #F5ECE6;
-            --text-muted: #B2A39A;
-            --primary: #F4967D;
-            --primary-contrast: #1A1412;
-            --accent: #F4967D;
-            --accent-hover: #FFA891;
-            --accent-soft: rgba(244, 150, 125, 0.16);
-            --accent-soft-text: #FFAD96;
-            --xmas-red: #E53935;
-            --xmas-green: #4CAF50;
+            /* Bảng màu Giáng Sinh - Chế độ Tối (Đêm Đông Thông Noel) */
+            --bg-color: #0D1B14;
+            --surface-color: #15281F;
+            --surface-elevated: #1C3429;
+            --header-bg: rgba(13, 27, 20, 0.92);
+            --text-main: #FDF6F0;
+            --text-muted: #B8CEC2;
+            --primary: #E53935;
+            --primary-contrast: #FFFFFF;
+            --accent: #E53935;
+            --accent-hover: #EF5350;
+            --accent-soft: rgba(229, 57, 53, 0.18);
+            --accent-soft-text: #FF8A80;
+            --xmas-red: #EF5350;
+            --xmas-green: #43A047;
             --xmas-gold: #FFD54F;
-            --border-color: #362D28;
-            --border-light: #2C2420;
-            --tag-bg: #29221E;
-            --card-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
-            --card-shadow-hover: 0 16px 36px rgba(0, 0, 0, 0.45);
+            --border-color: #264234;
+            --border-light: #1D3328;
+            --tag-bg: #1A2F25;
+            --card-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+            --card-shadow-hover: 0 16px 36px rgba(0, 0, 0, 0.52);
         }
 
         * {
@@ -90,7 +92,7 @@
             position: fixed;
             top: -24px;
             color: #FFFFFF;
-            text-shadow: 0 1px 4px rgba(36, 25, 20, 0.22);
+            text-shadow: 0 1px 5px rgba(183, 28, 28, 0.25);
             user-select: none;
             pointer-events: none;
             will-change: transform, opacity;
@@ -101,7 +103,7 @@
 
         [data-theme="dark"] .snowflake {
             color: #FFFDF9;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.45);
+            text-shadow: 0 0 8px rgba(255, 213, 79, 0.45);
         }
 
         @keyframes snowFall {
@@ -110,7 +112,7 @@
                 opacity: 0;
             }
             10% {
-                opacity: 0.9;
+                opacity: 0.92;
             }
             90% {
                 opacity: 0.85;
@@ -121,7 +123,7 @@
             }
         }
 
-        /* Dải đèn & vòng nguyệt quế Giáng sinh nhẹ nhàng trên header */
+        /* Dải đèn trang trí Giáng sinh */
         .xmas-garland-bar {
             height: 4px;
             width: 100%;
@@ -136,27 +138,21 @@
                 var(--xmas-gold) 42px,
                 var(--xmas-gold) 48px
             );
-            opacity: 0.9;
+            opacity: 0.95;
         }
 
         .xmas-tag-pill {
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            background: rgba(198, 40, 40, 0.1);
-            border: 1px solid rgba(198, 40, 40, 0.25);
+            background: var(--accent-soft);
+            border: 1px solid rgba(198, 40, 40, 0.28);
             color: var(--xmas-red);
             font-size: 11px;
             font-weight: 700;
             padding: 2px 9px;
             border-radius: 99px;
             letter-spacing: 0.2px;
-        }
-
-        [data-theme="dark"] .xmas-tag-pill {
-            background: rgba(229, 57, 53, 0.18);
-            border-color: rgba(255, 213, 79, 0.35);
-            color: #FF8A80;
         }
 
         /* ================= GPU-ACCELERATED KEYFRAME ANIMATIONS ================= */
@@ -189,21 +185,21 @@
 
         @keyframes pulseGlow {
             0%, 100% {
-                box-shadow: 0 4px 14px rgba(244, 150, 125, 0.32);
+                box-shadow: 0 4px 14px rgba(198, 40, 40, 0.32);
             }
             50% {
-                box-shadow: 0 8px 24px rgba(244, 150, 125, 0.58);
+                box-shadow: 0 8px 24px rgba(198, 40, 40, 0.58);
             }
         }
 
         @keyframes flamePulse {
             0%, 100% {
                 transform: scale3d(1, 1, 1);
-                box-shadow: 0 0 8px rgba(255, 87, 34, 0.45);
+                box-shadow: 0 0 8px rgba(198, 40, 40, 0.45);
             }
             50% {
                 transform: scale3d(1.06, 1.06, 1);
-                box-shadow: 0 0 18px rgba(255, 87, 34, 0.85);
+                box-shadow: 0 0 18px rgba(200, 155, 43, 0.85);
             }
         }
 
@@ -246,10 +242,10 @@
             right: 24px;
             background: var(--surface-color);
             color: var(--text-main);
-            border: 1px solid var(--accent);
+            border: 1.5px solid var(--xmas-gold);
             padding: 12px 18px;
             border-radius: 14px;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -333,8 +329,12 @@
 
         .greeting-text {
             font-weight: 700;
-            color: var(--accent-soft-text);
+            color: var(--xmas-green);
             white-space: nowrap;
+        }
+
+        [data-theme="dark"] .greeting-text {
+            color: var(--xmas-gold);
         }
 
         .clock-divider {
@@ -412,7 +412,7 @@
             gap: 18px;
             list-style: none;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         @media (min-width: 1160px) {
@@ -435,8 +435,8 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 1.5px;
-            background: var(--xmas-red);
+            height: 2px;
+            background: linear-gradient(90deg, var(--xmas-red), var(--xmas-gold));
             transition: width 0.3s ease;
         }
 
@@ -486,7 +486,7 @@
         }
 
         .theme-toggle-btn:hover {
-            border-color: var(--accent);
+            border-color: var(--xmas-gold);
             background: var(--accent-soft);
             transform: translateY(-1px) scale(1.05);
         }
@@ -500,7 +500,7 @@
             gap: 6px;
             height: 36px;
             font-size: 12.5px;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
             transition: var(--transition);
@@ -521,7 +521,7 @@
         }
 
         .icon-btn:hover {
-            border-color: var(--accent);
+            border-color: var(--xmas-red);
             transform: translateY(-1px);
         }
 
@@ -572,7 +572,7 @@
 
         .breadcrumb-container span {
             color: var(--text-main);
-            font-weight: 500;
+            font-weight: 600;
         }
 
         /* Main Content Layout */
@@ -600,12 +600,17 @@
 
         .page-title-box h1 {
             font-size: 26px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 4px;
             display: flex;
             align-items: center;
             flex-wrap: wrap;
             gap: 8px;
+            color: var(--xmas-red);
+        }
+
+        [data-theme="dark"] .page-title-box h1 {
+            color: #FF8A80;
         }
 
         @media (min-width: 768px) {
@@ -654,10 +659,14 @@
         .search-banner-label {
             font-size: 11.5px;
             font-weight: 700;
-            color: var(--xmas-red);
+            color: var(--xmas-green);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 2px;
+        }
+
+        [data-theme="dark"] .search-banner-label {
+            color: var(--xmas-gold);
         }
 
         .search-input-group {
@@ -673,8 +682,8 @@
         }
 
         .search-input-group:focus-within {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(244, 150, 125, 0.16);
+            border-color: var(--xmas-red);
+            box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.16);
         }
 
         .search-input-group input {
@@ -704,8 +713,8 @@
         }
 
         .search-btn:hover {
-            background: var(--accent);
-            color: #1A1412;
+            background: var(--xmas-green);
+            color: #FFFFFF;
             transform: translateY(-1px);
         }
 
@@ -752,10 +761,16 @@
         }
 
         .filter-header h3 {
-            font-size: 15px;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--xmas-red);
             display: flex;
             align-items: center;
             gap: 8px;
+        }
+
+        [data-theme="dark"] .filter-header h3 {
+            color: var(--xmas-gold);
         }
 
         .clear-filter {
@@ -767,7 +782,7 @@
         }
 
         .clear-filter:hover {
-            color: var(--accent);
+            color: var(--xmas-red);
         }
 
         .filter-group {
@@ -776,7 +791,7 @@
 
         .filter-group-title {
             font-size: 12.5px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 8px;
             color: var(--text-main);
         }
@@ -797,7 +812,7 @@
         }
 
         .checkbox-label input {
-            accent-color: var(--accent);
+            accent-color: var(--xmas-red);
             width: 16px;
             height: 16px;
             cursor: pointer;
@@ -823,7 +838,7 @@
 
         .range-slider {
             width: 100%;
-            accent-color: var(--accent);
+            accent-color: var(--xmas-red);
             cursor: pointer;
         }
 
@@ -850,14 +865,14 @@
         }
 
         .size-tag-btn:hover {
-            border-color: var(--accent);
+            border-color: var(--xmas-red);
             transform: translateX(3px);
         }
 
         .size-tag-btn.active {
-            background: var(--primary);
-            color: var(--primary-contrast);
-            border-color: var(--primary);
+            background: var(--xmas-green);
+            color: #FFFFFF;
+            border-color: var(--xmas-green);
         }
 
         /* Column 2: Product List */
@@ -887,7 +902,7 @@
 
         .result-count span {
             font-weight: 700;
-            color: var(--accent);
+            color: var(--xmas-red);
         }
 
         .sort-select {
@@ -931,12 +946,12 @@
         .product-card:hover {
             transform: translate3d(0, -6px, 0);
             box-shadow: var(--card-shadow-hover);
-            border-color: var(--accent);
+            border-color: var(--xmas-red);
         }
 
         .product-card.selected {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 2px var(--accent), var(--card-shadow-hover);
+            border-color: var(--xmas-red);
+            box-shadow: 0 0 0 2px var(--xmas-red), var(--card-shadow-hover);
         }
 
         .product-card.out-of-stock {
@@ -986,12 +1001,13 @@
         }
 
         .card-status-badge.sold-out {
-            background: #D32F2F;
+            background: #B71C1C;
         }
 
         .card-status-badge.hot-flame {
-            background: linear-gradient(135deg, #C62828, #2E7D32);
-            color: white;
+            background: linear-gradient(135deg, #C62828, #1B5E20);
+            color: #FFFDF9;
+            border: 1px solid rgba(255, 213, 79, 0.55);
             animation: flamePulse 2s infinite ease-in-out;
             font-weight: 700;
         }
@@ -1018,7 +1034,7 @@
 
         .product-name {
             font-size: 17px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 4px;
             color: var(--text-main);
         }
@@ -1032,9 +1048,13 @@
 
         .product-sales-count {
             font-size: 11.5px;
-            font-weight: 600;
-            color: var(--accent-soft-text);
+            font-weight: 700;
+            color: var(--xmas-red);
             margin-bottom: 6px;
+        }
+
+        [data-theme="dark"] .product-sales-count {
+            color: var(--xmas-gold);
         }
 
         .product-price {
@@ -1055,10 +1075,14 @@
         }
 
         .card-action-link {
-            color: var(--accent-soft-text);
-            font-weight: 600;
+            color: var(--xmas-green);
+            font-weight: 700;
             transition: transform 0.25s ease;
             display: inline-block;
+        }
+
+        [data-theme="dark"] .card-action-link {
+            color: #81C784;
         }
 
         .product-card:hover .card-action-link {
@@ -1076,6 +1100,7 @@
         .sidebar-panel {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
+            border-top: 3px solid var(--xmas-green);
             border-radius: 14px;
             padding: 16px;
             box-shadow: var(--card-shadow);
@@ -1095,13 +1120,18 @@
 
         .panel-heading {
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 1px solid var(--border-light);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            color: var(--xmas-red);
+        }
+
+        [data-theme="dark"] .panel-heading {
+            color: var(--xmas-gold);
         }
 
         .selected-preview-card {
@@ -1178,15 +1208,20 @@
         }
 
         .weight-btn:hover {
-            border-color: var(--accent);
+            border-color: var(--xmas-red);
             transform: translateY(-2px);
         }
 
         .weight-btn.active {
             background: var(--accent-soft);
-            border-color: var(--accent);
-            color: var(--accent-soft-text);
-            box-shadow: 0 2px 8px rgba(244, 150, 125, 0.22);
+            border-color: var(--xmas-red);
+            color: var(--xmas-red);
+            box-shadow: 0 2px 8px rgba(198, 40, 40, 0.2);
+        }
+
+        [data-theme="dark"] .weight-btn.active {
+            color: var(--xmas-gold);
+            border-color: var(--xmas-gold);
         }
 
         .stock-status-note {
@@ -1213,8 +1248,12 @@
         .price-display-box .amount {
             font-size: 20px;
             font-weight: 700;
-            color: var(--text-main);
+            color: var(--xmas-red);
             transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        [data-theme="dark"] .price-display-box .amount {
+            color: var(--xmas-gold);
         }
 
         .stock-badge-inline {
@@ -1223,7 +1262,11 @@
             gap: 6px;
             font-size: 11.5px;
             font-weight: 600;
-            color: #43A047;
+            color: var(--xmas-green);
+        }
+
+        [data-theme="dark"] .stock-badge-inline {
+            color: #66BB6A;
         }
 
         .stock-badge-inline.out {
@@ -1246,9 +1289,9 @@
 
         .add-to-cart-btn {
             width: 100%;
-            background: var(--accent);
-            color: #1A1412;
-            border: none;
+            background: linear-gradient(135deg, var(--xmas-red), #9A0007);
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 213, 79, 0.45);
             padding: 13px;
             border-radius: 10px;
             font-size: 14.5px;
@@ -1277,7 +1320,7 @@
         }
 
         .add-to-cart-btn:hover {
-            background: var(--accent-hover);
+            background: linear-gradient(135deg, var(--xmas-green), #1B5E20);
             transform: translateY(-2px);
         }
 
@@ -1288,6 +1331,7 @@
         .add-to-cart-btn:disabled {
             background: var(--border-color);
             color: var(--text-muted);
+            border-color: transparent;
             cursor: not-allowed;
             animation: none;
             box-shadow: none;
@@ -1359,7 +1403,7 @@
             height: 36px;
             border-radius: 10px;
             background: var(--accent-soft);
-            color: var(--accent-soft-text);
+            color: var(--xmas-red);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1381,18 +1425,22 @@
         }
 
         .smart-cart-close:hover {
-            background: var(--primary);
-            color: var(--primary-contrast);
-            border-color: var(--primary);
+            background: var(--xmas-red);
+            color: #FFFFFF;
+            border-color: var(--xmas-red);
         }
 
         /* Smart Progress Banner inside Floating Cart */
         .smart-perk-bar {
-            background: rgba(46, 125, 50, 0.12);
-            border-bottom: 1px solid rgba(46, 125, 50, 0.22);
+            background: rgba(27, 94, 32, 0.12);
+            border-bottom: 1px solid rgba(27, 94, 32, 0.24);
             padding: 10px 20px;
             font-size: 11.5px;
-            color: #4CAF50;
+            color: var(--xmas-green);
+        }
+
+        [data-theme="dark"] .smart-perk-bar {
+            color: #81C784;
         }
 
         .smart-perk-track {
@@ -1406,7 +1454,7 @@
 
         .smart-perk-fill {
             height: 100%;
-            background: linear-gradient(90deg, #2E7D32, #66BB6A);
+            background: linear-gradient(90deg, #C62828, #2E7D32);
             border-radius: 99px;
             transition: width 0.4s ease;
         }
@@ -1432,7 +1480,7 @@
         }
 
         .smart-cart-item:hover {
-            border-color: var(--accent);
+            border-color: var(--xmas-red);
             background: var(--surface-elevated);
         }
 
@@ -1467,7 +1515,11 @@
         .smart-cart-unit-price {
             font-size: 12.5px;
             font-weight: 700;
-            color: var(--accent-soft-text);
+            color: var(--xmas-red);
+        }
+
+        [data-theme="dark"] .smart-cart-unit-price {
+            color: var(--xmas-gold);
         }
 
         .smart-qty-pill {
@@ -1494,8 +1546,8 @@
         }
 
         .smart-qty-pill button:hover {
-            background: var(--accent);
-            color: #1A1412;
+            background: var(--xmas-red);
+            color: #FFFFFF;
         }
 
         .smart-qty-pill span {
@@ -1535,8 +1587,8 @@
 
         .smart-checkout-cta {
             width: 100%;
-            background: var(--primary);
-            color: var(--primary-contrast);
+            background: linear-gradient(135deg, var(--xmas-red), var(--xmas-green));
+            color: #FFFFFF;
             border: none;
             padding: 13px 16px;
             border-radius: 12px;
@@ -1551,8 +1603,7 @@
         }
 
         .smart-checkout-cta:hover {
-            background: var(--accent-hover);
-            color: #1A1412;
+            filter: brightness(1.08);
             transform: translateY(-2px);
         }
 
@@ -1603,13 +1654,13 @@
         }
 
         .step-item.active .step-num {
-            background: var(--primary);
-            color: var(--primary-contrast);
+            background: var(--xmas-red);
+            color: #FFFFFF;
         }
 
         .step-item.completed .step-num {
-            background: #2E7D32;
-            color: white;
+            background: var(--xmas-green);
+            color: #FFFFFF;
         }
 
         .checkout-grid {
@@ -1644,7 +1695,7 @@
 
         .edit-address-link {
             font-size: 11.5px;
-            color: var(--accent);
+            color: var(--xmas-red);
             cursor: pointer;
             font-weight: 600;
             text-decoration: underline;
@@ -1682,11 +1733,11 @@
         }
 
         .payment-method-option:hover {
-            border-color: var(--accent);
+            border-color: var(--xmas-red);
         }
 
         .payment-method-option.selected {
-            border-color: var(--accent);
+            border-color: var(--xmas-red);
             background: var(--tag-bg);
         }
 
@@ -1696,7 +1747,7 @@
             margin-top: 12px;
             padding: 16px;
             background: var(--surface-elevated);
-            border: 1.5px dashed var(--accent);
+            border: 1.5px dashed var(--xmas-red);
             border-radius: 12px;
             text-align: center;
             animation: scaleIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -1736,8 +1787,8 @@
 
         .pay-action-btn {
             width: 100%;
-            background: var(--accent);
-            color: #1A1412;
+            background: linear-gradient(135deg, var(--xmas-red), var(--xmas-green));
+            color: #FFFFFF;
             border: none;
             padding: 13px;
             border-radius: 10px;
@@ -1749,12 +1800,12 @@
             justify-content: center;
             gap: 8px;
             transition: var(--transition);
-            box-shadow: 0 4px 16px rgba(244,150,125,0.3);
+            box-shadow: 0 4px 16px rgba(198, 40, 40, 0.3);
             margin-top: 10px;
         }
 
         .pay-action-btn:hover {
-            background: var(--accent-hover);
+            filter: brightness(1.08);
             transform: translateY(-2px);
         }
 
@@ -1795,7 +1846,7 @@
             width: 46px;
             height: 46px;
             border: 4px solid var(--border-color);
-            border-top: 4px solid var(--accent);
+            border-top: 4px solid var(--xmas-red);
             border-radius: 50%;
             animation: spin 0.9s linear infinite;
         }
@@ -1810,8 +1861,8 @@
         .success-icon {
             width: 60px;
             height: 60px;
-            background: rgba(46, 125, 50, 0.16);
-            color: #4CAF50;
+            background: rgba(27, 94, 32, 0.16);
+            color: var(--xmas-green);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -1898,13 +1949,17 @@
             font-size: 40px;
             font-weight: 700;
             font-family: 'Cormorant Garamond', serif;
-            color: var(--text-main);
+            color: var(--xmas-red);
             line-height: 1;
             margin-bottom: 4px;
         }
 
+        [data-theme="dark"] .rating-score-big {
+            color: var(--xmas-gold);
+        }
+
         .stars-container {
-            color: #F5A623;
+            color: var(--xmas-gold);
             font-size: 14px;
             margin-bottom: 4px;
         }
@@ -1938,7 +1993,7 @@
 
         .bar-fill {
             height: 100%;
-            background: #F5A623;
+            background: linear-gradient(90deg, var(--xmas-red), var(--xmas-gold));
             border-radius: 4px;
             transition: width 0.6s ease;
         }
@@ -1964,21 +2019,26 @@
 
         .btn-outline-custom {
             background: var(--surface-color);
-            border: 1px solid var(--primary);
-            color: var(--text-main);
+            border: 1.5px solid var(--xmas-red);
+            color: var(--xmas-red);
             padding: 9px 14px;
             border-radius: 8px;
             font-size: 12.5px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             transition: var(--transition);
             width: 100%;
             text-align: center;
         }
 
+        [data-theme="dark"] .btn-outline-custom {
+            border-color: var(--xmas-gold);
+            color: var(--xmas-gold);
+        }
+
         .btn-outline-custom:hover {
-            background: var(--primary);
-            color: var(--primary-contrast);
+            background: var(--xmas-red);
+            color: #FFFFFF;
             transform: translateY(-1px);
         }
 
@@ -2004,13 +2064,13 @@
         }
 
         .review-filter-pill:hover {
-            border-color: var(--accent);
+            border-color: var(--xmas-red);
         }
 
         .review-filter-pill.active {
-            background: var(--primary);
-            color: var(--primary-contrast);
-            border-color: var(--primary);
+            background: var(--xmas-green);
+            color: #FFFFFF;
+            border-color: var(--xmas-green);
         }
 
         .reviews-grid {
@@ -2077,14 +2137,18 @@
 
         .verified-badge {
             font-size: 9.5px;
-            color: #4CAF50;
-            background: rgba(76, 175, 80, 0.14);
+            color: var(--xmas-green);
+            background: rgba(27, 94, 32, 0.14);
             padding: 2px 5px;
             border-radius: 4px;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
             gap: 3px;
+        }
+
+        [data-theme="dark"] .verified-badge {
+            color: #81C784;
         }
 
         .shop-reply-box {
@@ -2094,7 +2158,7 @@
             font-size: 11.5px;
             color: var(--text-muted);
             margin-top: 4px;
-            border-left: 2px solid var(--accent);
+            border-left: 2px solid var(--xmas-green);
         }
 
         .shop-reply-title {
@@ -2172,7 +2236,7 @@
         }
 
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            border-color: var(--accent);
+            border-color: var(--xmas-red);
         }
 
         .form-group textarea {
@@ -2185,6 +2249,7 @@
             margin-top: 36px;
             background: var(--surface-color);
             border: 1px solid var(--border-color);
+            border-top: 3px solid var(--xmas-red);
             border-radius: 16px;
             padding: 20px;
             display: grid;
@@ -2205,6 +2270,11 @@
         .about-workshop-content h2 {
             font-size: 26px;
             margin-bottom: 10px;
+            color: var(--xmas-red);
+        }
+
+        [data-theme="dark"] .about-workshop-content h2 {
+            color: var(--xmas-gold);
         }
 
         @media (min-width: 900px) {
@@ -2230,7 +2300,7 @@
 
         /* Footer & Contact Button */
         footer {
-            border-top: 1px solid var(--border-color);
+            border-top: 2px solid var(--border-color);
             background: var(--surface-color);
             padding: 28px 16px 38px 16px;
             text-align: center;
@@ -2245,9 +2315,9 @@
         }
 
         .contact-footer-btn {
-            background: var(--primary);
-            color: var(--primary-contrast);
-            border: none;
+            background: linear-gradient(135deg, var(--xmas-red), var(--xmas-green));
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 213, 79, 0.5);
             padding: 11px 24px;
             border-radius: 30px;
             font-size: 14px;
@@ -2261,10 +2331,9 @@
         }
 
         .contact-footer-btn:hover {
-            background: var(--accent);
-            color: #1A1412;
+            filter: brightness(1.08);
             transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 8px 24px rgba(244, 150, 125, 0.4);
+            box-shadow: 0 8px 24px rgba(198, 40, 40, 0.4);
         }
 
         .zalo-note-card {
@@ -2372,7 +2441,7 @@
                 <!-- Column 1: Filters -->
                 <div class="filter-card">
                     <div class="filter-header">
-                        <h3>Bộ lọc</h3>
+                        <h3>🎄 Bộ lọc</h3>
                         <span class="clear-filter" id="resetFilterBtn">Xóa lọc</span>
                     </div>
 
@@ -2602,7 +2671,7 @@
                                 <div style="font-weight: 700; font-size: 13.5px; margin-bottom: 4px;" id="displayReceiverNamePhone">Nguyễn Văn A · 0912345678</div>
                                 <div style="font-size: 12.5px; color: var(--text-muted);" id="displayReceiverAddress">Số 12, Đường Mẫu, Phường Bến Thành, TP. Hồ Chí Minh</div>
                             </div>
-                            <div style="font-size: 11.5px; color: #4CAF50; font-weight: 600;">✓ Giao tiêu chuẩn · Dự kiến 1–3 ngày (Miễn phí)</div>
+                            <div style="font-size: 11.5px; color: var(--xmas-green); font-weight: 600;">✓ Giao tiêu chuẩn · Dự kiến 1–3 ngày (Miễn phí)</div>
                         </div>
 
                         <div class="checkout-box" style="margin-bottom: 0;">
@@ -2625,8 +2694,8 @@
                             <!-- QR Payment Panel -->
                             <div class="qr-payment-panel" id="qrPaymentPanel">
                                 <div style="font-weight: 700; font-size: 13.5px; color: var(--text-main);">Quét mã QR để thanh toán</div>
-                                <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 2px;">Số tiền: <strong id="qrAmountDisplay" style="color: var(--accent-soft-text);">30.000 đ</strong></div>
-                                <div style="font-size: 12.5px; font-weight: 700; color: var(--accent-soft-text); background: var(--accent-soft); padding: 5px 10px; border-radius: 6px; display: inline-block; margin: 8px 0;">
+                                <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 2px;">Số tiền: <strong id="qrAmountDisplay" style="color: var(--xmas-red);">30.000 đ</strong></div>
+                                <div style="font-size: 12.5px; font-weight: 700; color: var(--xmas-red); background: var(--accent-soft); padding: 5px 10px; border-radius: 6px; display: inline-block; margin: 8px 0;">
                                     Mã đơn hàng: <span id="qrOrderCodeText" style="letter-spacing: 0.5px;">#XBHM-8839</span>
                                 </div>
                                 <img src="https://cdn.phototourl.com/anon/2026-11-17-08ca0b2a-f4e1-4e4b-a2af-7454c1426c9b.jpg" alt="Mã QR chuyển khoản ngân hàng">
@@ -2646,7 +2715,7 @@
                             </div>
                             <div class="summary-line">
                                 <span>Phí giao hàng</span>
-                                <span style="color: #4CAF50;">Miễn phí</span>
+                                <span style="color: var(--xmas-green); font-weight: 600;">Miễn phí</span>
                             </div>
                             <div class="summary-line total">
                                 <span>Tổng thanh toán</span>
@@ -2667,7 +2736,7 @@
                     <div class="success-icon">✓</div>
                     <h2 style="font-size: 26px; margin-bottom: 6px;">Đặt hàng thành công!</h2>
                     <p style="color: var(--text-muted); font-size: 13.5px; margin-bottom: 8px;">Cảm ơn bạn đã ủng hộ <strong>Xà Bông Handmade ✓</strong> · Chúc bạn Giáng Sinh an lành 🎄.</p>
-                    <p style="color: var(--text-muted); font-size: 12.5px; margin-bottom: 12px;">Mã đơn hàng của bạn: <strong id="successOrderId" style="color: var(--accent);">#XBHM-8839</strong></p>
+                    <p style="color: var(--text-muted); font-size: 12.5px; margin-bottom: 12px;">Mã đơn hàng của bạn: <strong id="successOrderId" style="color: var(--xmas-red);">#XBHM-8839</strong></p>
 
                     <!-- Thông báo riêng khi chọn thanh toán QR ngân hàng -->
                     <div id="qrSuccessNoticeBox" class="qr-zalo-alert-box" style="display: none;">
@@ -2728,7 +2797,7 @@
                 <div class="smart-summary-row">
                     <div>
                         <div style="font-size: 11.5px; color: var(--text-muted);">Tổng thanh toán dự kiến</div>
-                        <div style="font-size: 11px; color: #4CAF50; font-weight: 600;">✓ Đã áp dụng Freeship & Đóng gói thân thiện</div>
+                        <div style="font-size: 11px; color: var(--xmas-green); font-weight: 600;">✓ Đã áp dụng Freeship & Đóng gói thân thiện</div>
                     </div>
                     <div style="font-size: 19px; font-weight: 800; color: var(--text-main);" id="drawerTotalPrice">30.000 đ</div>
                 </div>
