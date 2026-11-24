@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Xà Bông Handmade ✓ | Merry Christmas</title>
+    <title>Xà Bông Handmade ✓ - Trường THPT Tân Kỳ 3 | Merry Christmas</title>
     <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1388,7 +1388,7 @@
             line-height: 1.4;
         }
 
-        /* ================= KHỐI STEM, CONTENT & LIVESTREAM (NHIỆM VỤ 3) ================= */
+        /* ================= KHỐI STEM, CONTENT & LIVESTREAM ================= */
         .stem-livestream-section {
             margin-top: 36px;
             border-top: 1px solid var(--border-color);
@@ -1804,6 +1804,13 @@
             margin-top: 2px;
         }
 
+        .promo-box-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
         .promo-input-row {
             display: flex;
             gap: 8px;
@@ -1833,7 +1840,7 @@
             color: #FFFFFF;
             border: none;
             border-radius: 8px;
-            padding: 8px 12px;
+            padding: 8px 14px;
             font-size: 12px;
             font-weight: 700;
             cursor: pointer;
@@ -1862,28 +1869,6 @@
 
         .promo-status-msg.error {
             color: #E53935;
-        }
-
-        .promo-hint-row {
-            font-size: 10.5px;
-            color: var(--text-muted);
-            margin-top: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .promo-quick-chip {
-            background: var(--accent-soft);
-            color: var(--xmas-red);
-            border: 1px solid rgba(198, 40, 40, 0.25);
-            border-radius: 6px;
-            padding: 2px 6px;
-            font-size: 10px;
-            font-weight: 700;
-            cursor: pointer;
         }
 
         .smart-cart-footer {
@@ -2722,7 +2707,6 @@
                 </ul>
 
                 <div class="header-actions">
-                    <!-- Nút chuyển nền Sáng / Tối (Đã bỏ chữ, chỉ giữ lại biểu tượng) -->
                     <button class="theme-toggle-btn" id="themeToggleBtn" type="button" title="Chuyển chế độ Sáng / Tối">
                         <span id="themeIcon">🌙</span>
                     </button>
@@ -3153,7 +3137,6 @@
                     <p style="color: var(--text-muted); font-size: 13.5px; margin-bottom: 8px;">Cảm ơn bạn đã ủng hộ <strong>Xà Bông Handmade ✓ · Trường THPT Tân Kỳ 3</strong> · Chúc bạn Giáng Sinh an lành 🎄.</p>
                     <p style="color: var(--text-muted); font-size: 12.5px; margin-bottom: 12px;">Mã đơn hàng của bạn: <strong id="successOrderId" style="color: var(--xmas-red);">#XBHM-8839</strong></p>
 
-                    <!-- Thông báo riêng khi chọn thanh toán QR ngân hàng -->
                     <div id="qrSuccessNoticeBox" class="qr-zalo-alert-box" style="display: none;">
                         <div style="font-size: 14.5px; font-weight: 700; color: #1E88E5; margin-bottom: 6px;">
                             📦 Shop sẽ kiểm tra đơn hàng và đóng gói!
@@ -3209,18 +3192,12 @@
             <div class="smart-cart-body" id="cartDrawerItemsList"></div>
 
             <div class="smart-cart-footer">
-                <!-- Khối nhập mã giảm giá 20-30% XABONGNHOM1 - 7 -->
+                <!-- Khối nhập mã ưu đãi livestream (không hiển thị gợi ý mã công khai) -->
                 <div class="promo-box-in-cart" style="margin-bottom: 12px;">
+                    <div class="promo-box-title">🎟️ Mã ưu đãi đặc quyền (20% – 30%)</div>
                     <div class="promo-input-row">
-                        <input type="text" id="promoCodeInput" class="promo-code-input" placeholder="Nhập mã (VD: XABONGNHOM1 - 7)...">
+                        <input type="text" id="promoCodeInput" class="promo-code-input" placeholder="Nhập mã ưu đãi của bạn...">
                         <button type="button" class="promo-apply-btn" id="applyPromoBtn">Áp dụng</button>
-                    </div>
-                    <div class="promo-hint-row">
-                        <span>Mã giảm 20%–30%: <strong>XABONGNHOM1</strong> → <strong>XABONGNHOM7</strong></span>
-                        <span>
-                            <button type="button" class="promo-quick-chip" data-code="XABONGNHOM1">NHOM1 (-20%)</button>
-                            <button type="button" class="promo-quick-chip" data-code="XABONGNHOM7">NHOM7 (-30%)</button>
-                        </span>
                     </div>
                     <div class="promo-status-msg" id="promoStatusMsg"></div>
                 </div>
@@ -3231,7 +3208,7 @@
                 </div>
 
                 <div class="smart-summary-row" id="drawerDiscountRow" style="display: none; margin-bottom: 6px;">
-                    <span style="font-size: 12px; color: var(--xmas-green); font-weight: 700;" id="drawerDiscountLabel">Giảm giá</span>
+                    <span style="font-size: 12px; color: var(--xmas-green); font-weight: 700;" id="drawerDiscountLabel">Ưu đãi</span>
                     <span style="font-size: 13px; color: var(--xmas-green); font-weight: 700;" id="drawerDiscountAmount">-0 đ</span>
                 </div>
 
@@ -3338,13 +3315,13 @@
     <!-- JavaScript Application Logic -->
     <script>
         const PROMO_CODES = {
-            "XABONGNHOM1": 20,
-            "XABONGNHOM2": 22,
-            "XABONGNHOM3": 24,
-            "XABONGNHOM4": 25,
-            "XABONGNHOM5": 26,
-            "XABONGNHOM6": 28,
-            "XABONGNHOM7": 30
+            "XBNOEL20": 20,
+            "XBNOEL22": 22,
+            "XBNOEL24": 24,
+            "XBNOEL25": 25,
+            "XBNOEL26": 26,
+            "XBNOEL28": 28,
+            "XBNOEL30": 30
         };
 
         const products = [
@@ -3486,7 +3463,7 @@
         let currentSelectedPrice = 30000;
         let currentActiveOrderId = "";
         let selectedPaymentMethod = "cod";
-        let appliedPromo = null; // { code: "XABONGNHOM1", percent: 20 }
+        let appliedPromo = null;
         let toastTimer = null;
         let cartItems = [
             {
@@ -3515,7 +3492,7 @@
             if (!code) {
                 appliedPromo = null;
                 statusEl.className = 'promo-status-msg error';
-                statusEl.innerText = 'Vui lòng nhập mã giảm giá từ XABONGNHOM1 đến XABONGNHOM7.';
+                statusEl.innerText = 'Vui lòng nhập mã ưu đãi trước khi áp dụng.';
                 renderSmartCartItems();
                 return;
             }
@@ -3525,17 +3502,16 @@
                 appliedPromo = { code, percent };
                 if (inputEl) inputEl.value = code;
                 statusEl.className = 'promo-status-msg success';
-                statusEl.innerText = `✓ Đã áp dụng mã ${code} (Giảm ${percent}%)`;
-                showToast(`Áp dụng mã ${code} - Giảm ${percent}%!`);
+                statusEl.innerText = `✓ Đã kích hoạt mã ${code} (Giảm ${percent}%)`;
+                showToast(`Áp dụng thành công mã ${code} - Giảm ${percent}%!`);
             } else {
                 appliedPromo = null;
                 statusEl.className = 'promo-status-msg error';
-                statusEl.innerText = 'Mã không hợp lệ. Chỉ áp dụng XABONGNHOM1 – XABONGNHOM7 (giảm 20%–30%).';
+                statusEl.innerText = 'Mã ưu đãi không đúng hoặc đã hết hạn.';
             }
             renderSmartCartItems();
         }
 
-        // Tạo hiệu ứng tuyết rơi mượt mà trên mọi thiết bị
         function initSnowfall() {
             const container = document.getElementById('snowfallLayer');
             if (!container) return;
@@ -3565,7 +3541,6 @@
             }
         }
 
-        // Chuyển đổi nền Sáng / Tối
         function initTheme() {
             const savedTheme = localStorage.getItem('xbhm-theme') || 'light';
             applyTheme(savedTheme);
@@ -3594,7 +3569,6 @@
             }, 2400);
         }
 
-        // Scroll Reveal Observer
         function initScrollReveal() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -3608,7 +3582,6 @@
             document.querySelectorAll('.reveal-item').forEach(el => observer.observe(el));
         }
 
-        // Đồng hồ thời gian thực & lời chào theo buổi
         function updateRealtimeClockAndGreeting() {
             const now = new Date();
             const hours = now.getHours();
@@ -3658,7 +3631,6 @@
             updateCartBadge();
             updateSidebarDetails(currentSelectedProduct);
 
-            // Sự kiện mã giảm giá trong giỏ hàng
             document.getElementById('applyPromoBtn').addEventListener('click', function() {
                 const val = document.getElementById('promoCodeInput').value;
                 applyPromoCode(val);
@@ -3669,15 +3641,7 @@
                     applyPromoCode(this.value);
                 }
             });
-            document.querySelectorAll('.promo-quick-chip').forEach(chip => {
-                chip.addEventListener('click', function() {
-                    const code = this.getAttribute('data-code');
-                    document.getElementById('promoCodeInput').value = code;
-                    applyPromoCode(code);
-                });
-            });
 
-            // Nút Liên Hệ Zalo ở cuối trang
             document.getElementById('openContactFooterBtn').addEventListener('click', function() {
                 document.getElementById('contactZaloModal').classList.add('open');
             });
@@ -3694,7 +3658,6 @@
                 });
             });
 
-            // Nút sao chép Zalo ở màn hình đặt hàng thành công bằng QR
             document.getElementById('copyBillZaloBtn').addEventListener('click', function() {
                 navigator.clipboard.writeText('84+333507317').then(() => {
                     this.innerText = `✓ Đã sao chép Zalo: 84+333507317`;
@@ -3705,7 +3668,6 @@
                 });
             });
 
-            // Cửa sổ nổi Giỏ hàng thông minh
             const smartCartOverlay = document.getElementById('smartCartOverlay');
             document.getElementById('openCartBtn').addEventListener('click', openSmartCartModal);
             document.getElementById('closeCartBtn').addEventListener('click', closeSmartCartModal);
@@ -3718,7 +3680,6 @@
                 switchView('checkout');
             });
 
-            // Thêm vào giỏ từ Sidebar
             document.getElementById('addToCartMainBtn').addEventListener('click', function() {
                 if(currentSelectedProduct.inStock) {
                     addProductToCart();
@@ -3727,7 +3688,6 @@
                 }
             });
 
-            // Đồng bộ chọn quy cách đóng gói giữa Bộ lọc và Sidebar
             function selectPackOption(packName, packPrice) {
                 currentSelectedWeight = packName;
                 currentSelectedPrice = packPrice;
@@ -3757,7 +3717,6 @@
                 });
             });
 
-            // Tìm kiếm & Lọc
             document.getElementById('searchExecBtn').addEventListener('click', executeSearch);
             document.getElementById('searchInput').addEventListener('input', executeSearch);
             document.getElementById('resetFilterBtn').addEventListener('click', resetFilters);
@@ -3766,7 +3725,6 @@
             });
             document.getElementById('sortSelect').addEventListener('change', sortProducts);
 
-            // Chỉnh sửa địa chỉ nhận hàng
             document.getElementById('openEditAddressBtn').addEventListener('click', function() {
                 document.getElementById('editAddressModal').classList.add('open');
             });
@@ -3785,12 +3743,10 @@
                 showToast('Đã cập nhật địa chỉ nhận hàng!');
             });
 
-            // Review Modal (1-5 sao)
             document.getElementById('openReviewModalBtn').addEventListener('click', openReviewModal);
             document.getElementById('closeModalBtn').addEventListener('click', closeReviewModal);
             document.getElementById('reviewForm').addEventListener('submit', submitNewReview);
 
-            // Lọc đánh giá theo số sao
             document.querySelectorAll('.review-filter-pill').forEach(pill => {
                 pill.addEventListener('click', function() {
                     document.querySelectorAll('.review-filter-pill').forEach(p => p.classList.remove('active'));
@@ -3800,7 +3756,6 @@
                 });
             });
 
-            // Thanh toán & Chuyển view
             document.getElementById('backToShopFromCheckout').addEventListener('click', function(e) {
                 e.preventDefault();
                 switchView('shop');
@@ -3810,7 +3765,6 @@
             });
             document.getElementById('completeOrderBtn').addEventListener('click', completeCheckoutOrder);
 
-            // Phương thức thanh toán & Hiển thị QR với Mã đơn hàng khớp
             const qrPanel = document.getElementById('qrPaymentPanel');
             document.querySelectorAll('.payment-method-option').forEach(opt => {
                 opt.addEventListener('click', function() {
@@ -4098,7 +4052,7 @@
             const discountRow = document.getElementById('checkoutDiscountRow');
             if (appliedPromo && discountAmount > 0) {
                 discountRow.style.display = 'flex';
-                document.getElementById('checkoutDiscountLabel').innerText = `Mã giảm giá (${appliedPromo.code} -${discountPercent}%)`;
+                document.getElementById('checkoutDiscountLabel').innerText = `Mã ưu đãi (${appliedPromo.code} -${discountPercent}%)`;
                 document.getElementById('checkoutDiscountAmount').innerText = '-' + discountAmount.toLocaleString() + ' đ';
             } else {
                 discountRow.style.display = 'none';
