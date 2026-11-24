@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Xà Bông Handmade ✓ - Tự nhiên & Lành tính | Merry Christmas</title>
+    <title>Xà Bông Handmade ✓ - Trường THPT Tân Kỳ 3 | Merry Christmas</title>
     <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -357,33 +357,73 @@
         }
 
         .logo {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
-            letter-spacing: 0.2px;
+            letter-spacing: 0.15px;
             color: var(--text-main);
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 6px;
-            line-height: 1.3;
+            gap: 8px;
+            line-height: 1.25;
             transition: transform 0.25s ease;
-            flex-shrink: 0;
+            flex-shrink: 1;
             min-width: 0;
         }
 
         @media (min-width: 768px) {
-            .logo { font-size: 18px; gap: 8px; }
+            .logo { font-size: 16.5px; gap: 10px; }
         }
 
-        .logo svg {
-            width: 18px;
-            height: 18px;
-            fill: var(--xmas-red);
+        .logo-school-img {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid var(--xmas-gold);
+            background: #FFFFFF;
             flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
         }
 
         @media (min-width: 768px) {
-            .logo svg { width: 20px; height: 20px; }
+            .logo-school-img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .logo-brand-stack {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .logo-main-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        .logo-school-sub {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 10.5px;
+            font-weight: 700;
+            color: var(--xmas-green);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        @media (min-width: 768px) {
+            .logo-school-sub {
+                font-size: 11.5px;
+            }
+        }
+
+        [data-theme="dark"] .logo-school-sub {
+            color: var(--xmas-gold);
         }
 
         .verified-badge-icon {
@@ -1348,6 +1388,189 @@
             line-height: 1.4;
         }
 
+        /* ================= KHỐI STEM, CONTENT & LIVESTREAM (NHIỆM VỤ 3) ================= */
+        .stem-livestream-section {
+            margin-top: 36px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 28px;
+        }
+
+        .section-heading-group {
+            margin-bottom: 18px;
+        }
+
+        .section-heading-group h2 {
+            font-size: 25px;
+            font-weight: 700;
+            color: var(--xmas-red);
+            margin-bottom: 4px;
+        }
+
+        [data-theme="dark"] .section-heading-group h2 {
+            color: var(--xmas-gold);
+        }
+
+        .section-heading-group p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .stem-content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        @media (min-width: 900px) {
+            .stem-content-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 18px;
+            }
+        }
+
+        .stem-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-top: 3px solid var(--xmas-green);
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .stem-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--card-shadow-hover);
+            border-top-color: var(--xmas-red);
+        }
+
+        .stem-card-badge {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--xmas-green);
+            background: rgba(27, 94, 32, 0.12);
+            padding: 3px 9px;
+            border-radius: 99px;
+            width: fit-content;
+        }
+
+        [data-theme="dark"] .stem-card-badge {
+            color: #81C784;
+            background: rgba(67, 160, 71, 0.18);
+        }
+
+        .stem-card h3 {
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.25;
+        }
+
+        .stem-card p {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .stem-list-mini {
+            list-style: none;
+            font-size: 12px;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 2px;
+        }
+
+        .stem-list-mini li::before {
+            content: "✦ ";
+            color: var(--xmas-gold);
+            font-weight: 700;
+        }
+
+        .livestream-banner-box {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--xmas-gold);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        @media (min-width: 900px) {
+            .livestream-banner-box {
+                grid-template-columns: 1.1fr 1fr;
+                padding: 24px;
+                gap: 24px;
+                align-items: start;
+            }
+        }
+
+        .livestream-meta-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent-soft);
+            color: var(--xmas-red);
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 99px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-pills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .timeline-pill-item {
+            background: var(--tag-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .timeline-pill-time {
+            font-size: 11.5px;
+            font-weight: 800;
+            color: var(--xmas-red);
+            margin-bottom: 2px;
+        }
+
+        [data-theme="dark"] .timeline-pill-time {
+            color: var(--xmas-gold);
+        }
+
+        .timeline-pill-desc {
+            font-size: 11.5px;
+            color: var(--text-main);
+            line-height: 1.4;
+        }
+
+        .prep-checklist-box {
+            background: var(--tag-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+
+        .prep-checklist-box h4 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
         /* ================= MODERN SMART FLOATING CART MODAL ================= */
         .smart-cart-overlay {
             position: fixed;
@@ -1375,7 +1598,7 @@
             border-radius: 20px;
             width: 100%;
             max-width: 500px;
-            max-height: 86vh;
+            max-height: 88vh;
             box-shadow: 0 24px 64px rgba(0, 0, 0, 0.32);
             display: flex;
             flex-direction: column;
@@ -1570,6 +1793,97 @@
         .smart-del-btn:hover {
             color: #E53935;
             background: rgba(229, 57, 53, 0.12);
+        }
+
+        /* Khối nhập mã giảm giá trong giỏ hàng */
+        .promo-box-in-cart {
+            background: var(--surface-elevated);
+            border: 1px dashed var(--xmas-gold);
+            border-radius: 12px;
+            padding: 10px 12px;
+            margin-top: 2px;
+        }
+
+        .promo-input-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .promo-code-input {
+            flex-grow: 1;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--text-main);
+            text-transform: uppercase;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .promo-code-input:focus {
+            border-color: var(--xmas-red);
+        }
+
+        .promo-apply-btn {
+            background: var(--xmas-green);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: var(--transition);
+        }
+
+        .promo-apply-btn:hover {
+            background: var(--xmas-red);
+        }
+
+        .promo-status-msg {
+            font-size: 11px;
+            margin-top: 6px;
+            font-weight: 600;
+            line-height: 1.35;
+        }
+
+        .promo-status-msg.success {
+            color: var(--xmas-green);
+        }
+
+        [data-theme="dark"] .promo-status-msg.success {
+            color: #81C784;
+        }
+
+        .promo-status-msg.error {
+            color: #E53935;
+        }
+
+        .promo-hint-row {
+            font-size: 10.5px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .promo-quick-chip {
+            background: var(--accent-soft);
+            color: var(--xmas-red);
+            border: 1px solid rgba(198, 40, 40, 0.25);
+            border-radius: 6px;
+            padding: 2px 6px;
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
         }
 
         .smart-cart-footer {
@@ -1774,6 +2088,15 @@
             font-size: 12.5px;
             margin-bottom: 9px;
             color: var(--text-muted);
+        }
+
+        .summary-line.discount {
+            color: var(--xmas-green);
+            font-weight: 700;
+        }
+
+        [data-theme="dark"] .summary-line.discount {
+            color: #81C784;
         }
 
         .summary-line.total {
@@ -2373,21 +2696,27 @@
             <!-- Hàng trên: Lời chào & Đồng hồ thời gian thực -->
             <div class="realtime-widget-row">
                 <div class="realtime-widget" id="realtimeWidget">
-                    <span class="greeting-text" id="greetingMessage">Chào Buổi Tối 🌙</span>
+                    <span class="greeting-text" id="greetingMessage">Chào Buổi Sáng ⛅️</span>
                     <span class="clock-divider">·</span>
-                    <span class="clock-datetime" id="realtimeClockDisplay">20:12:34 · Thứ Ba, 17/11/2026</span>
+                    <span class="clock-datetime" id="realtimeClockDisplay">09:27:00 · Thứ Ba, 24/11/2026</span>
                 </div>
             </div>
 
-            <!-- Hàng dưới: Logo, Menu, Nút Sáng/Tối (chỉ icon) & Giỏ hàng -->
+            <!-- Hàng dưới: Logo Trường THPT Tân Kỳ 3, Menu, Nút Sáng/Tối & Giỏ hàng -->
             <div class="header-main-row">
                 <a href="#" class="logo" onclick="switchView('shop'); return false;">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                    Xà Bông Handmade <span class="verified-badge-icon" title="Doanh nghiệp đã xác thực">✓</span>
+                    <img src="https://cdn.phototourl.com/anon/2026-11-24-ea1b10cb-aa9e-4710-bdd4-8775af05ed33.jpg" alt="Logo Trường THPT Tân Kỳ 3" class="logo-school-img">
+                    <div class="logo-brand-stack">
+                        <span class="logo-main-title">
+                            Xà Bông Handmade <span class="verified-badge-icon" title="Doanh nghiệp đã xác thực">✓</span>
+                        </span>
+                        <span class="logo-school-sub">Trường THPT Tân Kỳ 3</span>
+                    </div>
                 </a>
 
                 <ul class="nav-links">
                     <li><a href="#" onclick="switchView('shop'); return false;">Sản phẩm</a></li>
+                    <li><a href="#stem-livestream" onclick="scrollToSection('stem-livestream'); return false;">STEM & Livestream</a></li>
                     <li><a href="#reviews-section" onclick="scrollToSection('reviews-section'); return false;">Đánh giá</a></li>
                     <li><a href="#about-workshop" onclick="scrollToSection('about-workshop'); return false;">Giới thiệu</a></li>
                 </ul>
@@ -2410,7 +2739,7 @@
     <!-- ================= VIEW 1: SHOP CATALOG & DETAIL ================= -->
     <div id="shopView" class="view-section active">
         <div class="breadcrumb-container animate-fade-up">
-            <div>Trang chủ / <span>Xà Bông Handmade ✓</span></div>
+            <div>Trang chủ / <span>Xà Bông Handmade ✓ · Trường THPT Tân Kỳ 3</span></div>
             <span class="xmas-tag-pill">🎄 Mùa Giáng Sinh An Lành · Quà Tặng Tự Nhiên</span>
         </div>
 
@@ -2418,7 +2747,7 @@
             <div class="page-title-box animate-fade-up delay-1">
                 <h1>
                     Xà Bông Handmade <span class="verified-badge-icon" style="width:20px;height:20px;font-size:11px;" title="Doanh nghiệp đã xác thực">✓</span>
-                    <span class="xmas-tag-pill">❄️ Noel Edition</span>
+                    <span class="xmas-tag-pill">❄️ Noel Edition · THPT Tân Kỳ 3</span>
                 </h1>
                 <p>Sản phẩm thủ công tự nhiên từ dầu thực vật nguyên chất, an toàn và lành tính cho mọi làn da.</p>
             </div>
@@ -2426,7 +2755,7 @@
             <!-- Search Banner -->
             <div class="search-banner animate-fade-up delay-2">
                 <div>
-                    <div class="search-banner-label">🎄 BỘ SƯU TẬP QUÀ GIÁNG SINH THỦ CÔNG</div>
+                    <div class="search-banner-label">🎄 BỘ SƯU TẬP QUÀ GIÁNG SINH THỦ CÔNG · TRƯỜNG THPT TÂN KỲ 3</div>
                     <div style="font-size: 15px; font-weight: 600;">Chiết xuất từ dầu dừa, dầu ô liu & sáp ong tự nhiên</div>
                 </div>
                 <div class="search-input-group">
@@ -2558,6 +2887,88 @@
                 </div>
             </div>
 
+            <!-- ================= KHỐI NỘI DUNG STEM, CONTENT & LIVESTREAM ================= -->
+            <div class="stem-livestream-section reveal-item" id="stem-livestream">
+                <div class="section-heading-group">
+                    <h2>🧪 Hành Trình STEM, Truyền Thông & Livestream</h2>
+                    <p>Từ phòng thí nghiệm Hóa học đến trải nghiệm thực tế và các phiên phát sóng trực tiếp (20h00 – 21h30) · Trường THPT Tân Kỳ 3.</p>
+                </div>
+
+                <div class="stem-content-grid">
+                    <div class="stem-card">
+                        <span class="stem-card-badge">STORYTELLING STEM</span>
+                        <h3>Từ phòng thí nghiệm Hóa học đến bàn trang điểm</h3>
+                        <p>Nhật ký thực nghiệm của học sinh từ khâu cân đo tỉ mỉ, kiểm soát nhiệt độ phản ứng xà phòng hóa đến kiên nhẫn ủ đủ 28 ngày để đảm bảo độ an toàn cho làn da.</p>
+                        <ul class="stem-list-mini">
+                            <li>Cân đo dầu dừa, dầu ô liu, bơ hạt mỡ & sáp ong</li>
+                            <li>Theo dõi nhiệt độ phản ứng xà phòng hóa</li>
+                            <li>Ủ dưỡng đủ 28 ngày trước khi đưa vào sử dụng</li>
+                        </ul>
+                    </div>
+
+                    <div class="stem-card">
+                        <span class="stem-card-badge">KIẾN THỨC KHOA HỌC</span>
+                        <h3>Giải mã dưỡng chất thiên nhiên (Infographic)</h3>
+                        <p>So sánh cơ chế làm sạch dịu nhẹ của xà phòng giàu Glycerin tự nhiên với xà phòng công nghiệp, làm rõ các hoạt chất nổi bật trong từng dòng sản phẩm.</p>
+                        <ul class="stem-list-mini">
+                            <li><strong>Glycerin tự nhiên:</strong> Hỗ trợ giữ ẩm, hạn chế khô da</li>
+                            <li><strong>Trà xanh & Mướp đắng:</strong> EGCG chống oxy hóa & Vitamin C làm dịu da</li>
+                            <li><strong>Xơ mướp:</strong> Tẩy tế bào chết vật lý nhẹ nhàng</li>
+                        </ul>
+                    </div>
+
+                    <div class="stem-card">
+                        <span class="stem-card-badge">SOCIAL PROOF</span>
+                        <h3>Phản hồi thực tế từ cộng đồng</h3>
+                        <p>Tổng hợp hình ảnh và cảm nhận trải nghiệm trực tiếp từ thầy cô, phụ huynh và bạn bè sau khi dùng thử sản phẩm để tăng tính minh bạch và tin cậy.</p>
+                        <ul class="stem-list-mini">
+                            <li>Kiểm chứng độ êm dịu trên nhiều loại da</li>
+                            <li>Chia sẻ cảm nhận về mùi hương và độ tạo bọt</li>
+                            <li>Kết nối trực tiếp tại <strong>xaphonghandmade.github.io</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="livestream-banner-box">
+                    <div>
+                        <span class="livestream-meta-tag">🎥 03 PHIÊN LIVESTREAM · 20H00 – 21H30</span>
+                        <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 6px;">Kịch bản 90 phút & Ưu đãi Combo 5 bánh 125.000đ</h3>
+                        <p style="font-size: 12.5px; color: var(--text-muted);">
+                            Phát sóng trực tiếp trên Fanpage dự án và trang cá nhân thành viên, kết hợp thí nghiệm trực quan ngay trên sóng và đặt hàng nhanh qua mã QR dẫn tới <strong>xaphonghandmade.github.io</strong>.
+                        </p>
+
+                        <div class="timeline-pills">
+                            <div class="timeline-pill-item">
+                                <div class="timeline-pill-time">10 phút đầu</div>
+                                <div class="timeline-pill-desc">Giới thiệu câu chuyện dự án STEM của học sinh</div>
+                            </div>
+                            <div class="timeline-pill-item">
+                                <div class="timeline-pill-time">20 phút tiếp theo</div>
+                                <div class="timeline-pill-desc">Kiểm tra độ pH (giấy quỳ tím) & thử bọt mịn (cốc thủy tinh)</div>
+                            </div>
+                            <div class="timeline-pill-item">
+                                <div class="timeline-pill-time">40 phút tiếp theo</div>
+                                <div class="timeline-pill-desc">Giới thiệu 4 dòng sản phẩm & Combo 5 bánh chỉ 125.000đ</div>
+                            </div>
+                            <div class="timeline-pill-item">
+                                <div class="timeline-pill-time">20 phút cuối</div>
+                                <div class="timeline-pill-desc">Minigame tương tác giải đáp & chốt đơn nhanh</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="prep-checklist-box">
+                        <h4>Checklist bối cảnh & đạo cụ trực quan</h4>
+                        <ul class="stem-list-mini" style="gap: 7px;">
+                            <li>Góc quay thẩm mỹ, tận dụng ánh sáng tự nhiên rõ nét</li>
+                            <li>Trưng bày đầy đủ cả 4 dòng xà phòng handmade</li>
+                            <li>Dụng cụ thí nghiệm: giấy quỳ tím & cốc thủy tinh kiểm tra bọt</li>
+                            <li>Bảng mã QR dẫn trực tiếp tới <strong>xaphonghandmade.github.io</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <!-- Customer Reviews Section -->
             <div class="reviews-section reveal-item" id="reviews-section">
                 <div class="reviews-header" style="margin-bottom: 18px;">
@@ -2622,7 +3033,7 @@
             <div class="about-workshop-section reveal-item" id="about-workshop">
                 <div class="about-workshop-content">
                     <h2>Xà Bông Handmade <span class="verified-badge-icon">✓</span></h2>
-                    <p>Được làm thủ công từ các loại chất béo thực vật giàu dưỡng chất như dầu dừa, dầu ô liu, bơ hạt mỡ kết hợp cùng sáp ong tự nhiên qua phản ứng xà phòng hóa an toàn.</p>
+                    <p>Dự án STEM của học sinh <strong>Trường THPT Tân Kỳ 3</strong>, chế tác thủ công từ các loại chất béo thực vật giàu dưỡng chất như dầu dừa, dầu ô liu, bơ hạt mỡ kết hợp cùng sáp ong tự nhiên qua phản ứng xà phòng hóa an toàn.</p>
                     <p>Sản phẩm giữ lại lượng Glycerin tự nhiên giúp làn da luôn mềm mịn, sạch thoáng mà không hề gây khô rít sau khi sử dụng.</p>
                 </div>
                 <div>
@@ -2713,6 +3124,10 @@
                                 <span>Tạm tính</span>
                                 <span id="summarySubtotal">30.000 đ</span>
                             </div>
+                            <div class="summary-line discount" id="checkoutDiscountRow" style="display: none;">
+                                <span id="checkoutDiscountLabel">Mã giảm giá</span>
+                                <span id="checkoutDiscountAmount">-0 đ</span>
+                            </div>
                             <div class="summary-line">
                                 <span>Phí giao hàng</span>
                                 <span style="color: var(--xmas-green); font-weight: 600;">Miễn phí</span>
@@ -2735,7 +3150,7 @@
                 <div class="checkout-box success-screen">
                     <div class="success-icon">✓</div>
                     <h2 style="font-size: 26px; margin-bottom: 6px;">Đặt hàng thành công!</h2>
-                    <p style="color: var(--text-muted); font-size: 13.5px; margin-bottom: 8px;">Cảm ơn bạn đã ủng hộ <strong>Xà Bông Handmade ✓</strong> · Chúc bạn Giáng Sinh an lành 🎄.</p>
+                    <p style="color: var(--text-muted); font-size: 13.5px; margin-bottom: 8px;">Cảm ơn bạn đã ủng hộ <strong>Xà Bông Handmade ✓ · Trường THPT Tân Kỳ 3</strong> · Chúc bạn Giáng Sinh an lành 🎄.</p>
                     <p style="color: var(--text-muted); font-size: 12.5px; margin-bottom: 12px;">Mã đơn hàng của bạn: <strong id="successOrderId" style="color: var(--xmas-red);">#XBHM-8839</strong></p>
 
                     <!-- Thông báo riêng khi chọn thanh toán QR ngân hàng -->
@@ -2794,6 +3209,32 @@
             <div class="smart-cart-body" id="cartDrawerItemsList"></div>
 
             <div class="smart-cart-footer">
+                <!-- Khối nhập mã giảm giá 20-30% XABONGNHOM1 - 7 -->
+                <div class="promo-box-in-cart" style="margin-bottom: 12px;">
+                    <div class="promo-input-row">
+                        <input type="text" id="promoCodeInput" class="promo-code-input" placeholder="Nhập mã (VD: XABONGNHOM1 - 7)...">
+                        <button type="button" class="promo-apply-btn" id="applyPromoBtn">Áp dụng</button>
+                    </div>
+                    <div class="promo-hint-row">
+                        <span>Mã giảm 20%–30%: <strong>XABONGNHOM1</strong> → <strong>XABONGNHOM7</strong></span>
+                        <span>
+                            <button type="button" class="promo-quick-chip" data-code="XABONGNHOM1">NHOM1 (-20%)</button>
+                            <button type="button" class="promo-quick-chip" data-code="XABONGNHOM7">NHOM7 (-30%)</button>
+                        </span>
+                    </div>
+                    <div class="promo-status-msg" id="promoStatusMsg"></div>
+                </div>
+
+                <div class="smart-summary-row" style="margin-bottom: 4px;">
+                    <span style="font-size: 12px; color: var(--text-muted);">Tạm tính</span>
+                    <span style="font-size: 13px; font-weight: 600;" id="drawerSubtotalPrice">30.000 đ</span>
+                </div>
+
+                <div class="smart-summary-row" id="drawerDiscountRow" style="display: none; margin-bottom: 6px;">
+                    <span style="font-size: 12px; color: var(--xmas-green); font-weight: 700;" id="drawerDiscountLabel">Giảm giá</span>
+                    <span style="font-size: 13px; color: var(--xmas-green); font-weight: 700;" id="drawerDiscountAmount">-0 đ</span>
+                </div>
+
                 <div class="smart-summary-row">
                     <div>
                         <div style="font-size: 11.5px; color: var(--text-muted);">Tổng thanh toán dự kiến</div>
@@ -2875,7 +3316,7 @@
         <div class="modal-content">
             <button class="modal-close-btn" id="closeContactModalBtn" type="button">&times;</button>
             <h3 style="font-size: 21px; font-weight: 700; text-align: center; margin-bottom: 6px;">Liên hệ tư vấn & đặt hàng</h3>
-            <p style="font-size: 12.5px; color: var(--text-muted); text-align: center;">Kết nối trực tiếp với Xà Bông Handmade ✓ qua Zalo</p>
+            <p style="font-size: 12.5px; color: var(--text-muted); text-align: center;">Kết nối trực tiếp với Xà Bông Handmade ✓ · Trường THPT Tân Kỳ 3 qua Zalo</p>
             <div class="zalo-note-card">
                 <div style="font-size: 11.5px; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">Thông tin liên hệ Zalo</div>
                 <div class="zalo-number-highlight" id="zaloPhoneCopyTarget">Zalo: 84+333507317</div>
@@ -2891,11 +3332,21 @@
         <button type="button" class="contact-footer-btn" id="openContactFooterBtn">
             ☎️ Liên Hệ
         </button>
-        <div>🎄 Chúc Mừng Giáng Sinh · © 2026 Xà Bông Handmade ✓. Bảo lưu mọi quyền.</div>
+        <div>🎄 Chúc Mừng Giáng Sinh · © 2026 Xà Bông Handmade ✓ · Trường THPT Tân Kỳ 3. Bảo lưu mọi quyền.</div>
     </footer>
 
     <!-- JavaScript Application Logic -->
     <script>
+        const PROMO_CODES = {
+            "XABONGNHOM1": 20,
+            "XABONGNHOM2": 22,
+            "XABONGNHOM3": 24,
+            "XABONGNHOM4": 25,
+            "XABONGNHOM5": 26,
+            "XABONGNHOM6": 28,
+            "XABONGNHOM7": 30
+        };
+
         const products = [
             {
                 id: 1,
@@ -2963,7 +3414,7 @@
                 stars: 5,
                 date: "Hôm qua",
                 comment: "Bánh xà phòng 90g cầm rất chắc tay, thơm nhẹ tự nhiên, rửa tay hay tắm đều tạo bọt mịn mà không làm khô da. Mình mua hẳn gói 5 bánh 125k dùng dần siêu tiết kiệm!",
-                shopReply: "Xà Bông Handmade ✓ cảm ơn bạn đã tin tưởng và ủng hộ gói 5 bánh của shop ạ!"
+                shopReply: "Xà Bông Handmade ✓ · Trường THPT Tân Kỳ 3 cảm ơn bạn đã tin tưởng và ủng hộ gói 5 bánh của shop ạ!"
             },
             {
                 id: 2,
@@ -3035,6 +3486,7 @@
         let currentSelectedPrice = 30000;
         let currentActiveOrderId = "";
         let selectedPaymentMethod = "cod";
+        let appliedPromo = null; // { code: "XABONGNHOM1", percent: 20 }
         let toastTimer = null;
         let cartItems = [
             {
@@ -3046,6 +3498,42 @@
                 image: products[0].image
             }
         ];
+
+        function getCartTotals() {
+            const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.qty, 0);
+            const discountPercent = appliedPromo && subtotal > 0 ? appliedPromo.percent : 0;
+            const discountAmount = Math.round((subtotal * discountPercent) / 100);
+            const finalTotal = Math.max(0, subtotal - discountAmount);
+            return { subtotal, discountPercent, discountAmount, finalTotal };
+        }
+
+        function applyPromoCode(rawCode) {
+            const code = (rawCode || "").trim().toUpperCase();
+            const statusEl = document.getElementById('promoStatusMsg');
+            const inputEl = document.getElementById('promoCodeInput');
+
+            if (!code) {
+                appliedPromo = null;
+                statusEl.className = 'promo-status-msg error';
+                statusEl.innerText = 'Vui lòng nhập mã giảm giá từ XABONGNHOM1 đến XABONGNHOM7.';
+                renderSmartCartItems();
+                return;
+            }
+
+            if (Object.prototype.hasOwnProperty.call(PROMO_CODES, code)) {
+                const percent = PROMO_CODES[code];
+                appliedPromo = { code, percent };
+                if (inputEl) inputEl.value = code;
+                statusEl.className = 'promo-status-msg success';
+                statusEl.innerText = `✓ Đã áp dụng mã ${code} (Giảm ${percent}%)`;
+                showToast(`Áp dụng mã ${code} - Giảm ${percent}%!`);
+            } else {
+                appliedPromo = null;
+                statusEl.className = 'promo-status-msg error';
+                statusEl.innerText = 'Mã không hợp lệ. Chỉ áp dụng XABONGNHOM1 – XABONGNHOM7 (giảm 20%–30%).';
+            }
+            renderSmartCartItems();
+        }
 
         // Tạo hiệu ứng tuyết rơi mượt mà trên mọi thiết bị
         function initSnowfall() {
@@ -3169,6 +3657,25 @@
             renderReviews(reviewsList);
             updateCartBadge();
             updateSidebarDetails(currentSelectedProduct);
+
+            // Sự kiện mã giảm giá trong giỏ hàng
+            document.getElementById('applyPromoBtn').addEventListener('click', function() {
+                const val = document.getElementById('promoCodeInput').value;
+                applyPromoCode(val);
+            });
+            document.getElementById('promoCodeInput').addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    applyPromoCode(this.value);
+                }
+            });
+            document.querySelectorAll('.promo-quick-chip').forEach(chip => {
+                chip.addEventListener('click', function() {
+                    const code = this.getAttribute('data-code');
+                    document.getElementById('promoCodeInput').value = code;
+                    applyPromoCode(code);
+                });
+            });
 
             // Nút Liên Hệ Zalo ở cuối trang
             document.getElementById('openContactFooterBtn').addEventListener('click', function() {
@@ -3442,8 +3949,7 @@
             const perkPercent = document.getElementById('smartPerkPercent');
             const perkFill = document.getElementById('smartPerkFill');
 
-            let subtotal = 0;
-            let totalQty = cartItems.reduce((sum, item) => sum + item.qty, 0);
+            const totalQty = cartItems.reduce((sum, item) => sum + item.qty, 0);
             subtitleCount.innerText = `${totalQty} sản phẩm đã chọn`;
 
             if(cartItems.length === 0) {
@@ -3453,6 +3959,8 @@
                         <div style="font-weight: 600; color: var(--text-main); margin-bottom: 4px;">Giỏ hàng của bạn đang trống</div>
                         <div style="font-size: 11.5px;">Hãy chọn các bánh xà phòng thiên nhiên yêu thích để thêm vào giỏ nhé!</div>
                     </div>`;
+                document.getElementById('drawerSubtotalPrice').innerText = '0 đ';
+                document.getElementById('drawerDiscountRow').style.display = 'none';
                 document.getElementById('drawerTotalPrice').innerText = '0 đ';
                 perkText.innerText = 'Thêm sản phẩm để nhận ưu đãi Freeship';
                 perkPercent.innerText = '0%';
@@ -3461,7 +3969,6 @@
             }
 
             container.innerHTML = cartItems.map((item, idx) => {
-                subtotal += item.price * item.qty;
                 return `
                     <div class="smart-cart-item">
                         <img src="${item.image}" class="smart-cart-thumb" alt="">
@@ -3482,15 +3989,26 @@
                 `;
             }).join('');
 
-            document.getElementById('drawerTotalPrice').innerText = subtotal.toLocaleString() + ' đ';
+            const { subtotal, discountPercent, discountAmount, finalTotal } = getCartTotals();
 
-            if (subtotal >= 80000) {
+            document.getElementById('drawerSubtotalPrice').innerText = subtotal.toLocaleString() + ' đ';
+            const discountRow = document.getElementById('drawerDiscountRow');
+            if (appliedPromo && discountAmount > 0) {
+                discountRow.style.display = 'flex';
+                document.getElementById('drawerDiscountLabel').innerText = `Mã ${appliedPromo.code} (-${discountPercent}%)`;
+                document.getElementById('drawerDiscountAmount').innerText = '-' + discountAmount.toLocaleString() + ' đ';
+            } else {
+                discountRow.style.display = 'none';
+            }
+            document.getElementById('drawerTotalPrice').innerText = finalTotal.toLocaleString() + ' đ';
+
+            if (finalTotal >= 80000) {
                 perkText.innerText = '🎁 Tuyệt vời! Đơn hàng được Freeship + Tặng túi lưới tạo bọt';
                 perkPercent.innerText = '100%';
                 perkFill.style.width = '100%';
             } else {
-                const remain = 80000 - subtotal;
-                const pct = Math.min(100, Math.round((subtotal / 80000) * 100));
+                const remain = 80000 - finalTotal;
+                const pct = Math.min(100, Math.round((finalTotal / 80000) * 100));
                 perkText.innerText = `🚚 Freeship sẵn sàng! Mua thêm ${remain.toLocaleString()}đ nhận túi lưới tạo bọt`;
                 perkPercent.innerText = pct + '%';
                 perkFill.style.width = pct + '%';
@@ -3560,13 +4078,11 @@
 
         function renderCheckoutSummary() {
             const container = document.getElementById('checkoutItemsListContainer');
-            let subtotal = 0;
-            let totalQty = cartItems.reduce((sum, item) => sum + item.qty, 0);
+            const totalQty = cartItems.reduce((sum, item) => sum + item.qty, 0);
 
             document.getElementById('checkoutItemCountLabel').innerText = totalQty + ' sản phẩm';
 
             container.innerHTML = cartItems.map(item => {
-                subtotal += item.price * item.qty;
                 return `
                     <div class="checkout-product-row">
                         <div>
@@ -3578,8 +4094,18 @@
                 `;
             }).join('');
 
-            const formattedTotal = subtotal.toLocaleString() + ' đ';
-            document.getElementById('summarySubtotal').innerText = formattedTotal;
+            const { subtotal, discountPercent, discountAmount, finalTotal } = getCartTotals();
+            const discountRow = document.getElementById('checkoutDiscountRow');
+            if (appliedPromo && discountAmount > 0) {
+                discountRow.style.display = 'flex';
+                document.getElementById('checkoutDiscountLabel').innerText = `Mã giảm giá (${appliedPromo.code} -${discountPercent}%)`;
+                document.getElementById('checkoutDiscountAmount').innerText = '-' + discountAmount.toLocaleString() + ' đ';
+            } else {
+                discountRow.style.display = 'none';
+            }
+
+            const formattedTotal = finalTotal.toLocaleString() + ' đ';
+            document.getElementById('summarySubtotal').innerText = subtotal.toLocaleString() + ' đ';
             document.getElementById('summaryTotalAmount').innerText = formattedTotal;
             document.getElementById('payBtnAmountLabel').innerText = formattedTotal;
             document.getElementById('qrAmountDisplay').innerText = formattedTotal;
@@ -3606,6 +4132,11 @@
                 }
 
                 cartItems = [];
+                appliedPromo = null;
+                const promoInput = document.getElementById('promoCodeInput');
+                const promoStatus = document.getElementById('promoStatusMsg');
+                if (promoInput) promoInput.value = '';
+                if (promoStatus) promoStatus.innerText = '';
                 updateCartBadge();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }, 1600);
